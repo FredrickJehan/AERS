@@ -1,0 +1,37 @@
+ .portfolio-item {
+    margin-bottom: 30px;
+  }
+  
+  .headerURC {
+    height: 17vh;
+  }
+  
+  .URClogo {
+    width:100px;
+    height:100px;
+  }
+  
+  .headerText {
+    font-family: 'Montserrat', sans-serif;
+    font-style: bold;
+    color: black;
+    text-align:left;
+  }
+  
+  .navbar11 {
+    background-color: #369;
+    color:black;
+  }
+
+  .highlightHeader {
+        border-bottom: 4px red;
+  }
+
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+ }

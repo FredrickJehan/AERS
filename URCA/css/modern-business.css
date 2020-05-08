@@ -1,0 +1,31 @@
+/*!
+ * Start Bootstrap - Modern Business (https://startbootstrap.com/template-overviews/modern-business)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-logomodern-business-nav/blob/master/LICENSE)
+ */
+
+
+.portfolio-item {
+  margin-bottom: 30px;
+}
+
+.headerURC {
+  background:#369;
+  height: 15vh;
+}
+
+.URClogo {
+  width:100px;
+  height:100px;
+}
+
+.headerText {
+  font-family: 'Montserrat', sans-serif;
+  font-style: bold;
+  color: white;
+  float:left;
+}
+
+.navbar11 {
+  background-color: red;
+}
