@@ -1,0 +1,33 @@
+[
+    {
+        "presented_id": "98",
+        "publication_id": "76",
+        "title_presented": "Import Test",
+        "date_presentation": "2020-07",
+        "title_conference": "The conference of integrity",
+        "place_conference": "ateneo de naga",
+        "presented_type": "Conference Poster",
+        "file": "book_textbook.pdf",
+        "abstract": "asdfsadfdsaf",
+        "num_views": "0",
+        "status": "Approved",
+        "feedback": null,
+        "publication_type": "Presented Research",
+        "date_submission": "Jul 15 2020",
+        "submittor": "5",
+        "author_id": "88",
+        "user_id": "5",
+        "first_name": "Kyle Jhon",
+        "middle_initial": "A.",
+        "last_name": "Nolan",
+        "is_employee": "1",
+        "author_type": "Main",
+        "username": "knolan",
+        "middle_name": "A.",
+        "email": "knolan@gbox.adnu.edu.ph",
+        "password": "nolan",
+        "department": "Computer Studies",
+        "contact_number": "0",
+        "user_type": "Admin"
+    }
+]

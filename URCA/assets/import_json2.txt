@@ -1,0 +1,37 @@
+[
+    {
+        "completed_id": "75",
+        "publication_id": "75",
+        "title": "Mapping Datasets to Object Storage System",
+        "year": "2019",
+        "institution": "Institute for Datability Science, Osaka University Osaka, Japan",
+        "location": "Santa Cruz",
+        "url": "https://arxiv.org/abs/2007.01789",
+        "completed_type": "Thesis \/ Dissertation",
+        "file": "Mappping_Datasets_to_Object_Storage_System2.pdf",
+        "abstract": "to explore and analyze an archive of pictures of
+Buddha statues. The system combines different CBIR and classical
+retrieval techniques to assemble 2D pictures, 3D statue scans and
+meta-data, ",
+        "num_views": "0",
+        "status": "Unreviewed",
+        "feedback": null,
+        "publication_type": "Completed Research",
+        "date_submission": "Jul 12 2020",
+        "submittor": "72",
+        "author_id": "67",
+        "user_id": "72",
+        "first_name": "Kyle Jhon",
+        "middle_initial": "J.",
+        "last_name": "Nolan",
+        "is_employee": "1",
+        "author_type": "Main",
+        "username": "knolan",
+        "middle_name": "A.",
+        "email": "knolan@gbox.adnu.edu.ph",
+        "password": "nolan",
+        "department": "",
+        "contact_number": "0",
+        "user_type": "Admin"
+    }
+]

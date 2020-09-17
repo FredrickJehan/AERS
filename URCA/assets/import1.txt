@@ -1,0 +1,33 @@
+[
+    {
+        "presented_id": "4",
+        "publication_id": "88",
+        "title_presented": "ISA",
+        "date_presentation": "2020-07",
+        "title_conference": "Intelligent Shopping Assistant",
+        "place_conference": "University of Illinois",
+        "presented_type": "Conference Paper",
+        "file": "ISA-_An_Intelligent_Shopping_assistant.pdf",
+        "abstract": "Despite the growth of e-commerce, brick-andmortar stores are still the preferred destinations for many people. In this paper, we\r\npresent ISA, a mobile-based intelligent shopping assistant that is designed to improve shopping experience in physical stores. ISA assists\r\nusers by leveraging advanced techniques in\r\ncomputer vision, speech processing, and natural language processing. An in-store user only\r\nneeds to take a picture or scan the barcode of\r\nthe product of interest, and then the user can\r\ntalk to the assistant about the product. The\r\nassistant can also guide the user through the\r\npurchase process or recommend other similar\r\nproducts to the user. We take a data-driven\r\napproach in building the engines of ISA\u2019s natural language processing component, and the\r\nengines achieve good performance\r\n",
+        "num_views": "0",
+        "status": "Unreviewed",
+        "feedback": null,
+        "publication_type": "Presented Research",
+        "date_submission": "Jul 21 2020",
+        "submittor": "5",
+        "author_id": "200",
+        "user_id": "5",
+        "first_name": "Kyle",
+        "middle_initial": "C.",
+        "last_name": "Nolan",
+        "is_employee": "1",
+        "author_type": "Main",
+        "username": "admin",
+        "middle_name": "A.",
+        "email": "admin@gbox.adnu.edu.ph",
+        "password": "admin",
+        "department": "Computer Studies",
+        "contact_number": "0",
+        "user_type": "Admin"
+    }
+]

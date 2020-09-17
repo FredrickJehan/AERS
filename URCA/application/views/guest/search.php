@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Landing Page - Start Bootstrap Theme</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="<?php echo base_url('vendor/bootstrap/css/bootstrap.min.css');?>" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="<?php echo base_url('guestdesign2/vendor/fontawesome-free/css/all.min.css');?>" rel="stylesheet">
+  <link href="<?php echo base_url('guestdesign2/vendor/simple-line-icons/css/simple-line-icons.css');?>" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <!-- Custom styles for this template -->
+  <link href="<?php echo base_url('guestdesign2/css/landing-page.min.css');?>" rel="stylesheet">
+
+</head>
+<body>
+
+  <!-- Masthead -->
+  <header class="masthead text-white text-center">
+    <div class="overlay"></div>
+    <div class="container">
+      <form action="<?php echo base_url('main/search'); ?>" method="post">
+      <div class="row">
+        <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+            <div class="form-row">
+              <div class="col-12 col-md-9 mb-2 mb-md-0">
+                <input type="input" name="keyword" id="keyword" class="form-control form-control-lg" placeholder="Search for title...">
+              </div>
+              <div class="col-12 col-md-3 mb-3">
+                <button type="submit" class="btn btn-block btn-lg btn-primary">Search</button>
+              </div>
+            </div>
+        </div>
+      </form>
+      </div>
+    </div>
+  </header>
+  <!-- Testimonials -->
+  <section class="text-left bg-light">
+    <div class="container">
+      <h2 class="mb-4 mt-3">Search Results</h2>
+      <form action="<?php echo base_url('main/search_filter'); ?>" method="post">
+      <div class="row mb-3">
+            <div class="col"></div>
+            <label>Sort by:</label>
+            <div class="col-3">
+              <select class="form-control form-control-sm" name="department">
+                <option value="">Department</option>
+                <!--
+                <php foreach($dept as $row){ ?>
+                  <option value="<php echo $row->department ?>"><php echo $row->department ?></option>
+                <php } ?>
+                -->
+                <option value="Department of Media Studies">Department of Media Studies</option>
+                <option value="Department of Social Studies">Department of Social Studies</option>
+                <option value="Department of Literature and Language Studies">Department of Literature and Language Studies</option>
+                <option value="Department of Philosophy">Department of Philosophy</option>
+                <option value="Department of Psychology">Department of Psychology</option>
+                <option value="Department of Computer Science">Department of Computer Science</option>
+                <option value="Department of Digital Arts and Computer Animation">Department of Digital Arts and Computer Animation</option>
+              </select>
+            </div>
+            <div class="col-2">
+              <select id="sort_year"class="form-control form-control-sm" name="year">
+                <option value="">Year</option>
+              </select>
+            </div>
+            <div class="col-3">
+              <select class="form-control form-control-sm" name="type_research">
+                <option value="">Type of Research</option>
+                <!--
+                <php foreach($type as $row){ ?>
+                  <option value="<php echo $row->publication_type ?>"><php echo $row->publication_type ?></option>
+                <php } ?>
+                -->
+                <option value="Completed Research">Completed Research</option>
+                <option value="Presented Research">Presented Research</option>
+                <option value="Published Research">Published Research</option>
+                <option value="Creative Works">Creative Works</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-info btn-sm">Filter</button>
+            <div class="col"></div>
+      </div>
+      </form>
+      <?php foreach($search_com as $row){ ?>
+      <?php if($row->author_type == 'Main'){ ?>
+      <div class="row">
+          <div class="col-sm-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><?php echo $row->title?></h5>
+              <p class="card-text"><?php echo $row->last_name?>, <?php echo $row->first_name?></p>
+              <a class="btn btn-primary" href="<?php echo base_url('view/'.$row->publication_id);?>">View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <?php } ?>
+      <?php } ?>
+
+      <?php foreach($search_pre as $row){ ?>
+      <?php if($row->author_type == 'Main'){ ?>
+      <div class="row">
+          <div class="col-sm-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><?php echo $row->title_presented?></h5>
+              <p class="card-text"><?php echo $row->last_name?>, <?php echo $row->first_name?></p>
+              <a class="btn btn-primary" href="<?php echo base_url('view/'.$row->publication_id);?>">View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <?php }?>
+      <?php }?>
+
+      <?php foreach($search_pub as $row){ ?>
+      <?php if($row->author_type == 'Main'){ ?>
+      <div class="row">
+          <div class="col-sm-12">
+          <div class="card">
+            <div class="card-body">
+              <?php if($row->published_type == 'Journal Article'){ ?>
+                <h5 class="card-title"><?php echo $row->title_article ?></h5>
+              <?php }elseif($row->published_type == 'Book / Textbook'){ ?>
+                <h5 class="card-title"><?php echo $row->title_book ?></h5>
+              <?php }elseif($row->published_type == 'Book Chapter'){ ?>
+                <h5 class="card-title"><?php echo $row->title_chapter ?></h5>
+              <?php }else{ ?>
+                <h5 class="card-title"><?php echo $row->title_conference ?></h5>
+              <?php } ?>
+              <p class="card-text"><?php echo $row->last_name?>, <?php echo $row->first_name?></p>
+              <a class="btn btn-primary" href="<?php echo base_url('view/'.$row->publication_id);?>">View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <?php }?>
+      <?php }?>
+
+      <?php foreach($search_cre as $row){ ?>
+      <?php if($row->author_type == 'Main'){ ?>
+      <div class="row">
+          <div class="col-sm-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><?php echo $row->title_work?></h5>
+              <p class="card-text"><?php echo $row->last_name?>, <?php echo $row->first_name?></p>
+              <a class="btn btn-primary" href="<?php echo base_url('view/'.$row->publication_id);?>">View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <?php }?>
+      <?php }?>
+
+    </div>
+  </section>
+
+<script>
+  var max = new Date().getFullYear(),
+      min = 1900,
+      select = document.getElementById('sort_year');
+  for(var i = max; i>=min; i--){
+    var opt = document.createElement('option');
+    opt.value = i;
+    opt.innerHTML = i;
+    select.appendChild(opt);
+  }  
+</script>
+</body>
+
+</html>
