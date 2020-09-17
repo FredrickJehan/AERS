@@ -120,8 +120,8 @@ class Research extends CI_Controller{
                 $update_notif = $this->research_model->update_notif();
             }
         $output = '';
-        // $submittor = $this->get_current_user();
-        $data = $this->research_model->select_notif();
+        $submittor = $this->get_current_user();
+        $data = $this->research_model->select_notif($submittor);
         foreach($data->result() as $row){
             if($row->type == "Review"){
             $output .= 
@@ -136,7 +136,7 @@ class Research extends CI_Controller{
                 <Strong><b>'.$row->first_name.' '.$row->last_name.'</b> Commented on your Research</Strong></a>';    
             }
         }
-        $datacount = $this->research_model->count_notif();
+        $datacount = $this->research_model->count_notif($submittor);
         $count = $datacount->num_rows();
         $data2 = array(
             'load_notif' => $output,

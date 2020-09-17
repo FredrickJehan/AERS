@@ -16,21 +16,24 @@ class research_model extends CI_Model{
         $this->db->update('notification');
     }
 
-    public function select_notif(){
+    public function select_notif($submittor){
         $this->db->select('*');
         $this->db->from('notification');
         $this->db->join('user', 'user.user_id = notification.user_id', 'inner');
-        // $this->db->join('publication', 'publication.publication_id = notification.publication_id', 'inner');
+        $this->db->join('publication', 'publication.publication_id = notification.publication_id', 'inner');
         // $this->db->where('status', 'Unread');
-        // $this->db->where('submittor', $submittor);
+        $this->db->where('submittor', $submittor);
+        $this->db->limit(5);
         $this->db->order_by('notification_id', 'DESC');
         return $this->db->get();
     }
 
-    public function count_notif(){
+    public function count_notif($submittor){
         $this->db->select('*');
         $this->db->from('notification');
-        $this->db->where('status', 'Unread');
+        $this->db->join('publication', 'publication.publication_id = notification.publication_id', 'inner');
+        $this->db->where('notification.status', 'Unread');
+        $this->db->where('submittor', $submittor);
         return $this->db->get();
     }
 
