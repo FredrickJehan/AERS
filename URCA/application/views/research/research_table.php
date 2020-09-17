@@ -31,13 +31,13 @@
         ?>
         <?php echo implode(', ', $string) ?> (<?php echo $row->year?>). <i><?php echo $row->title?></i> (Master’s / Doctoral dissertation).
         <?php echo $row->location?>: <?php echo $row->institution?>. Retrieved from <?php echo $row->url?>
-        </a></td><br/>
+        </a></td>
       <?php }else{ ?>
         <?php echo implode(', ', $string) ?>
         (<?php echo $row->year?>). <i><?php echo $row->title?></i> (Master’s / Doctoral dissertation).
         <?php echo $row->location?>: <?php echo $row->institution?>.
       <?php } ?>
-      </a></td><br/>
+      </a></td><hr/>
     <?php } ?>
     </div>
   </div>
