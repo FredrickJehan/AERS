@@ -133,7 +133,7 @@ class Research extends CI_Controller{
                 $output .= 
                 '<div class="small text-black-500">'.$row->time.'</div>
                 <a href="'.base_url('research/view/'.$row->publication_id).'"
-                <Strong><b>'.$row->first_name.' '.$row->last_name.'</b> Commented on your Research</Strong></a>';    
+                <Strong></Strong><b>'.$row->first_name.' '.$row->last_name.'</b> Commented on your Research</Strong></a>';    
             }
         }
         $datacount = $this->research_model->count_notif($submittor);
