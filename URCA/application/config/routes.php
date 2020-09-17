@@ -63,13 +63,16 @@ $route['research'] = 'research/research_table';
 $route['publication'] = 'research/publication';
 $route['research/view/:num'] = 'research/research_view';
 $route['research/edit/:num'] = 'research/edit';
+// $route['research/search/(:any)'] = 'research/search';
+$route['research/search'] = 'research/search';
+$route['notification'] = 'research/notification';
 
 //GUEST
 //$route['home'] = 'guest/index';
 $route['about'] = 'main/about';
 $route['home'] = 'research/homepage'; 
-$route['detail'] = 'main/detailed_view';  
-$route['search'] = 'main/search';
+$route['view/:num'] = 'main/detailed_view';  
+// $route['search'] = 'main/search';
 
 //LOGIN/SESSION
 $route['login'] = 'welcome/login';
@@ -79,7 +82,9 @@ $route['logout'] = 'welcome/logout';
 
 //ADMIN CONTROLLER
 $route['admin'] = 'admin/index';
-$route['manage'] = 'admin/manage_submissions';
+$route['manage/unreviewed'] = 'admin/unreviewed_submissions';
+$route['manage/approved'] = 'admin/approved_submissions';
+$route['manage/rejected'] = 'admin/rejected_submissions';
 $route['export'] = 'admin/export';
 // $route['view/:num'] = 'admin/view_submissions';
 // $route['approve/:num'] = 'admin/approve_submissions';

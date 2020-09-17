@@ -28,7 +28,23 @@
   <!-- Custom styles for this page -->
   <link href="<?php echo base_url('URCstyles/vendor/datatables/dataTables.bootstrap4.min.css');?>" rel="stylesheet">
 
+
+<!-- Bootstrap core JavaScript-->
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="<?php echo base_url('URCstyles/vendor/jquery/jquery.min.js');?>"></script>
+  <script src="<?php echo base_url('URCstyles/vendor/bootstrap/js/bootstrap.bundle.min.js');?>"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="<?php echo base_url('URCstyles/vendor/jquery-easing/jquery.easing.min.js');?>"></script>
+
+  <!-- Page level plugins -->
+  <script src="<?php echo base_url('URCstyles/vendor/datatables/jquery.dataTables.min.js');?>"></script>
+  <script src="<?php echo base_url('URCstyles/vendor/datatables/dataTables.bootstrap4.min.js');?>"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="<?php echo base_url('URCstyles/js/demo/datatables-demo.js');?>"></script>
 </head>
+
 
 <body id="page-top">
 
@@ -43,7 +59,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           
         </div>
-        <div class="sidebar-brand-text mx-3"><?php echo $id?> AERS</div>
+        <div class="sidebar-brand-text mx-3">AERS</div>
       </a>
 
       <!-- Divider -->
@@ -59,7 +75,7 @@
       <!-- Divider -->
       <hr class="sidebar-divider">
 
-      <?php if($user_type == '0'){?>
+      <?php if($user_type == 'Researcher'){?>
       <!-- Nav Item - Charts -->
       <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url('dashboard');?>">
@@ -82,7 +98,7 @@
       <?php }?>
       <!-- Heading -->
     <?php 
-      if($user_type == '1'){?>
+      if($user_type == 'Admin'){?>
       <div class="sidebar-heading">
         Admin
       </div>
@@ -93,23 +109,16 @@
           <span>Dashboard</span></a>
       </li>
 
-      <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('manage');?>">
+        <a class="nav-link" href="<?php echo base_url('research');?>">
           <i class="fas fa-fw fa-table"></i>
-          <span>Manage</span></a>
+          <span>Research</span></a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url('export');?>">
           <i class="fas fa-fw fa-table"></i>
-          <span>Export</span></a>
-      </li>
-      
-      <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('rank');?>">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Rank</span></a>
+          <span>Reports</span></a>
       </li>
 
       <li class="nav-item">
@@ -117,8 +126,29 @@
           <i class="fas fa-fw fa-table"></i>
           <span>Registration</span></a>
       </li>
-    
-    
+
+      <div class="sidebar-heading">
+        Manage Research
+      </div>
+      <!-- Nav Item - Tables -->
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url('manage/unreviewed');?>">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Unreviewed</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url('manage/approved');?>">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Approved</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url('manage/rejected');?>">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Rejected</span></a>
+      </li>
+
     <?php }
     ?>
 
@@ -148,14 +178,11 @@
           </button>
 
           <!-- Topbar Search -->
-          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+
+          <form action="<?php echo base_url('research/search');?>" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-              <div class="input-group-append" href="<?php echo base_url('search');?>">
-                <button class="btn btn-primary" type="button">
-                  <i class="fas fa-search fa-sm"><a href="<?php echo base_url('search');?>"></a></i>
-                </button>
-              </div>
+              <input type="text" name="keyword" class="form-control bg-light border-0 small" placeholder="Search for title" aria-label="Search" aria-describedby="basic-addon2"></input>
+              <button type="submit" class="btn btn-primary"><i class="fas fa-search fa-sm"></i></button>
             </div>
           </form>
 
@@ -181,16 +208,29 @@
                 </form>
               </div>
             </li>
+          
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a id="dropdown" class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                 <span id="count" class="badge badge-danger badge-counter"></span>
+              </a>
+            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                <h6 class="dropdown-header">Notifcations</h6>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div id="notif"></div>
+                </a>
+              </div>
+            </li>
 
             <!-- Nav Item - Alerts -->
-            <li class="nav-item dropdown no-arrow mx-1">
+            <!-- <li class="nav-item dropdown no-arrow mx-1">
               <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
-                <!-- Counter - Alerts -->
-                <span class="badge badge-danger badge-counter">1</span>
-              </a>
+                Counter - Alerts -->
+                <!-- <span class="badge badge-danger badge-counter">1</span>
+              </a> -->
               <!-- Dropdown - Alerts -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+              <!-- <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                 <h6 class="dropdown-header">
                   Alerts Center
                 </h6>
@@ -207,7 +247,7 @@
                 </a>
                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
               </div>
-            </li>
+            </li> -->
 
             
             <div class="topbar-divider d-none d-sm-block"></div>
@@ -223,14 +263,6 @@
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
                 </a>
                 <div class="dropdown-divider"></div>
                 <!-- <a class="dropdown-item" href="logout"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>Logout</a> -->
@@ -248,5 +280,3 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
-

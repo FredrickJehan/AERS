@@ -1,117 +1,244 @@
-<h4 class="my-4">View</h4>
-    
+
 <div class="card shadow mb-4">
 <div class="card-body">
-        <!-- Table of Submitees -->
+  <?php
+    if($publication_type == 'Completed Research'){
+        foreach($research_data as $row){
+            if($row->completed_type == 'Thesis / Dissertation'){?>
+        <!-- Thesis / Dissertation form -->
         <table class="table table-bordered ">
         <tbody>
-            <tr>
-                <td width="200"><b>Author Name</b></td>
-                <?php foreach ($research_data as $row){ ?>
-                <td><?php echo $row->last_name?>, <?php echo $row->first_name?> <?php echo $row->middle_initial?></td>
-            </tr>
             <tr>
                 <td width="200"><b>Title of Research</b></td>
                 <td><?php echo $row->title?></td>
             </tr>
-            <!-- <tr>
-                <td width="200"><b>Type of Research</b></td>
-                <td><php echo $row->title?></td>
-            </tr> -->
             <tr>
-                <td width="200"><b>Status</b></td>
+                <td width="200"><b>Author Name</b></td>
+                <td><?php echo $row->last_name?>, <?php echo $row->first_name?> <?php echo $row->middle_initial?></td>
+            </tr>  
+            <tr>
+                <td width="200"><b>Abstract</b></td>
+                <td><?php echo $row->abstract?></td>
+            </tr>
+            <tr>
                 <td>
-                <?php 
-                  if($row->status == '0'){
-                    echo 'Not Yet Reviewed';
-                  }else if($row->status == '1'){
-                    echo 'Rejected'; echo $row->feedback;
-                  }else if($row->status == '2'){
-                    echo 'Approved';
-                  }
-                  ?>
-                  </td>
-            </tr>
-            <tr>
-                <td width="200"><b>Email</b></td>
-                <td><?php echo $row->email?></td>
-            </tr>
-            <tr> 
-                  <td width="200"><b>File</b></td></td>
-                  <td><a href="<?=base_url().'pdf/'.$row->file;?>" target="_blank"><?php echo $row->file; ?></a></td>
-                  <?php }?>
+               <a href="<?=base_url().'pdf/'.$row->file;?>" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i>Download PDF</a>
+                </td>
             </tr>
         </tbody>
         </table>
-  </div>
-  </div>
-<?php
-    if($publication_type == '1'){
-        foreach($research_data as $row){?>
+    <!-- ./Thesis / Dissertation form -->
+
         <?php
-            if($row->completed_type == '1'){?>
+            }else if($row->completed_type == 'Technical / Research Report'){?>
+    <!-- Technical / Research form -->
+    <div id="technical">
+    <form method="post" action="<?php echo base_url('research/completed_update/'.$row->publication_id)?>" enctype="multipart/form-data">
+        <p>Author*</p>
+        <input type='text' style="display:none" name="research_type" value='Technical / Research Report'></input>
+        <div class="form-row">
+            <div class="form-group col-md-5">
+                <label>First Name*</label>
+                <input type="text" name="first_name[]" value="<?php echo $row->first_name?>" class="form-control">
+                <span class="text-danger"><?php echo form_error("first_name");?></span>
+            </div>
+            <div class="form-group col-md-2">
+                <label>Middle Initial(s)*</label>
+                <input type="text" name="middle_initial[]" value="<?php echo $row->middle_initial?>" class="form-control">
+                <span class="text-danger"><?php echo form_error("middle_initial");?></span>
+            </div>
+            <div class="form-group col-md-5">
+                <label>Last Name*</label>
+                <input type="text" name="last_name[]" value="<?php echo $row->last_name?>" class="form-control">
+                <span class="text-danger"><?php echo form_error("last_name");?></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-2">
+                <label>Year Completed*</label>
+                <input type="number" name="year" value="<?php echo $row->year?>" class="form-control">
+                <span class="text-danger"><?php echo form_error("year");?></span>
+            </div>
+            <div class="form-group col-md-10">
+                <label>Title of Report*</label>
+                <input type="text" name="title" value="<?php echo $row->title?>" class="form-control">
+                <span class="text-danger"><?php echo form_error("title");?></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-7">
+                <label>Institution which commissioned the report / where report was completed*</label>
+                <input type="text" name="institution" value="<?php echo $row->institution?>" class="form-control">
+                <span class="text-danger"><?php echo form_error("institution");?></span>
+            </div>
+            <div class="form-group col-md-5">
+                <label>Location of Institute*</label>
+                <input type="text" name="location" value="<?php echo $row->location?>" class="form-control">
+                <span class="text-danger"><?php echo form_error("location");?></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>SUBMIT / UPLOAD in one file: Copy of full technical report*</label>
+            <input type="file" name="file" value="<?php echo $row->file?>" class="form-control-file">
+            <a href="<?php echo base_url()?>" target="__blank" value="<?php echo $row->file?>"></a>
+        </div>
+        <div class="form-group" style="text-align:center;">
+            <a href="#" class="btn btn-primary">Cancel</a>
+            <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
+        </div>
+        </form>
+    </div>
+    <!-- ./Technical / Research form -->
+        <?php }   
+        }
+    }else if($publication_type == 'Presented Research'){
+        foreach($research_data as $row){
+            if($row->presented_type == 'Conference Paper'){?>
+    <!-- Conference Paper form -->
+    <div id="conference">
+    <form method="post" action="<?php echo base_url('research/presented_update/'.$row->publication_id)?>" enctype="multipart/form-data">
+        <label>Author*</label>
+        <input type='text' style="display:none" name="research_type" value='Conference Paper'></input>
+        <?php foreach($author_data as $row){ ?>
+            <div class="form-row">
+            <div class="form-group col-md-5">
+                <label>First Name*</label>
+                <input type="text" name="first_name[]" value="<?php echo $row->first_name?>" class="form-control">
+                <span class="text-danger"><?php echo form_error("first_name");?></span>
+            </div>
+            <div class="form-group col-md-2">
+                <label>Middle Initial(s)*</label>
+                <input type="text" name="middle_initial[]" value="<?php echo $row->middle_initial?>" class="form-control">
+                <span class="text-danger"><?php echo form_error("middle_initial");?></span>
+            </div>
+            <div class="form-group col-md-5">
+                <label>Last Name*</label>
+                <input type="text" name="last_name[]" value="<?php echo $row->last_name?>" class="form-control">
+                <span class="text-danger"><?php echo form_error("last_name");?></span>
+            </div>
+        </div>               
+        <?php }?>
+        <?php foreach($research_data as $row){ ?>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label>Year completed*</label>
+                <input type="month" name="month_year" value="<?php echo $row->date_presentation?>" class="form-control">
+                <span class="text-danger"><?php echo form_error("month_year");?></span>
+            </div>
+            <div class="form-group col-md-8">
+                <label>Title of paper*</label>
+                <input type="text" name="title" value="<?php echo $row->title_presented?>" class="form-control">
+                <span class="text-danger"><?php echo form_error("title");?></span>
+            </div>
+        </div>
+        <div class="form-row">
+        <div class="form-group col-md-8">
+            <label>Full title of conference*</label>
+            <input type="text" name="title_conference" value="<?php echo $row->title_conference?>" class="form-control">
+            <span class="text-danger"><?php echo form_error("title_conference");?></span>
+        </div>
+        <div class="form-group col-md-4">
+            <label>Place of conference*</label>
+            <input type="text" name="place_conference" value="<?php echo $row->place_conference?>" class="form-control">
+            <span class="text-danger"><?php echo form_error("place_conference");?></span>
+        </div>
+        </div>
+        <div class="form-group">
+            <label>SUBMIT / UPLOAD in one file (jpg or pdf): Copy of Certificate of Presentation</label>
+            <input type="file" name="file" class="form-control-file">
+        </div>
+        <div class="form-group" style="text-align:center;">
+            <a href="#" class="btn btn-primary">Cancel</a>
+            <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
+        </div>
+        </form>
+    </div>
+        <?php } ?>
+    <!-- ./Conference Paper form -->
+
+            <?php
+            }else if($row->presented_type == 'Conference Poster'){?>
+    <!-- Conference Poster form -->
+    <div id="poster">
+    <form method="post" action="<?php echo base_url('research/presented_update/'.$row->publication_id)?>" enctype="multipart/form-data">
+        <div class="form-group"><label>Author*</label></div>
+        <input type='number' style="display:none" name="research_type" value='Conference Paper'></input>
+        <div class="form-row">
+            <div class="form-group col-md-5">
+                <label>First Name*</label>
+                <input type="text" name="first_name[]" value="<?php echo $row->first_name?>" class="form-control">
+                <span class="text-danger"><?php echo form_error("first_name");?></span>
+            </div>
+            <div class="form-group col-md-2">
+                <label>Middle Initial(s)*</label>
+                <input type="text" name="middle_initial[]" value="<?php echo $row->middle_initial?>" class="form-control">
+                <span class="text-danger"><?php echo form_error("middle_initial");?></span>
+            </div>
+            <div class="form-group col-md-5">
+                <label>Last Name*</label>
+                <input type="text" name="last_name[]" value="<?php echo $row->last_name?>" class="form-control">
+                <span class="text-danger"><?php echo form_error("last_name");?></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label>Year completed*</label>
+                <input type="month" name="month_year" value="<?php echo $row->date_presentation?>" class="form-control">
+                <span class="text-danger"><?php echo form_error("month_year");?></span>
+            </div>
+            <div class="form-group col-md-8">
+                <label>Title of Poster*</label>
+                <input type="text" name="title" value="<?php echo $row->title_presented?>" class="form-control">
+                <span class="text-danger"><?php echo form_error("title");?></span>
+            </div>
+        </div>
+        <div class="form-row">
+        <div class="form-group col-md-8">
+            <label>Full title of conference*</label>
+            <input type="text" name="title_conference" value="<?php echo $row->title_conference?>" class="form-control">
+            <span class="text-danger"><?php echo form_error("title_conference");?></span>
+        </div>
+        <div class="form-group col-md-4">
+            <label>Place of conference*</label>
+            <input type="text" name="place_conference" value="<?php echo $row->place_conference?>" class="form-control">
+            <span class="text-danger"><?php echo form_error("place_conference");?></span>
+        </div>
+        </div>
+        <div class="form-group">
+            <label>
+            SUBMIT / UPLOAD in one file: Copy of poster, picture of presenter with poster as background and/or Certificate of Poster Presentation
+            </label>
+            <input type="file" name="file" class="form-control-file">
+        </div>
+        <div class="form-group" style="text-align:center;">
+            <a href="#" class="btn btn-primary">Cancel</a>
+            <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
+        </div>
+        </form>
+    </div>
+    <!-- ./Conference Poster form -->
+
+            <?php }   
+        }
+    }else if($publication_type == '3'){
+        foreach($research_data as $row){
+            if($row->presented_type == '5'){
+                //journal article
+            }else if($row->presented_type == '6'){
+                //textbook
+            }else if($row->presented_type == '7'){
+                //chapter
+            }else{
+                //proceedings
+            }
+        }
         
-              
-        <?php
-            }else if($row->completed_type == '2'){
-                echo 'technical';
-            }   
-        }
-    }else if($publication_type == '2'){
-        foreach($research_data as $row){?>
-            <div class="form-group" style="text-align:center;">
-            <a href="#" class="btn btn-primary">Go Back</a>
-            <a href="<?php echo base_url('research/edit/'.$row->publication_id)?>" name="edit" class="btn btn-primary">Edit</a>
-            </div><?php
-            if($row->presented_type == '3'){
-                echo 'paper';
-            }else if($row->presented_type == '4'){
-                echo 'poster';
-            }   
-        }
+    }else{
+        // foreach($research_data as $row){
+        //     if($row->presented_type == '4'){
+            
+        //     }
     }
 ?>
-<?php
-  if (isset($this->session->userdata['logged_in'])) {
-    $user_type = ($this->session->userdata['logged_in']['user_type']);
-  }else {
-    redirect('login');
-  }
-?>
-<?php
-    foreach($research_data as $row){
-      if($user_type == '1'){ ?>
-        <div class="form-group" style="text-align:center;">
-          <a class="btn btn-danger" href="#" id="reject" data-toggle="modal" data-target="#rejectModal">Reject</a>
-          <a href="<?php echo base_url('admin/review/'.$row->publication_id);?>" class="btn btn-primary">Accept</a>
-          <a href="<?php echo base_url('research/edit/'.$row->publication_id)?>" name="edit" class="btn btn-primary">Edit</a> 
-        </div><?php 
-      }else if($user_type == '0'){ ?>
-            <div class="form-group" style="text-align:center;">
-                <a href="" class="btn btn-primary">Go Back</a>
-                <a href="<?php echo base_url('research/edit/'.$row->publication_id)?>" name="edit" class="btn btn-primary">Edit</a>
-            </div>
-    <?php }
-      }
-?>
-
-<!-- Logout Modal-->
-  <div class="modal fade" id="rejectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Send Feedback</h5>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <form method="post" action="<?php echo base_url('admin/review/'.$row->publication_id)?>">
-          <div class="modal-body">
-            <textarea name="feedback" class="form-control" placeholder="Enter Feedback" rows="5"></textarea>
-          </div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <input class="btn btn-primary" value="Submit" type="submit"></input>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
+</div>
+</div>

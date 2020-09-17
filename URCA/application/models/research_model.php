@@ -1,33 +1,453 @@
 <?php
 class research_model extends CI_Model{
 
-    public function select_researcher_id($username){
-        //inner w/o null, outer wilth null, left outer , right outer
-        $this->db->select('researcher.researcher_id');
-        $this->db->from('researcher');
-        $this->db->join('user', 'user.user_id = researcher.user_id', 'inner');
+    //inner w/o null, outer wilth null, left outer , right outer
+    public function current_user($username){
+        $this->db->select('user_id');
+        $this->db->from('user');
         $this->db->where('username', $username);
-        return $this->db->get()->row()->researcher_id;
+        return $this->db->get()->row()->user_id;
     }
 
-    public function select_all_completed($researcher_id){
+    //NOTIF
+    public function update_notif(){
+        $this->db->where('status', 'Unread');
+        $this->db->set('status', 'Read');
+        $this->db->update('notification');
+    }
+
+    public function select_notif(){
+        $this->db->select('*');
+        $this->db->from('notification');
+        $this->db->join('user', 'user.user_id = notification.user_id', 'inner');
+        // $this->db->join('publication', 'publication.publication_id = notification.publication_id', 'inner');
+        // $this->db->where('status', 'Unread');
+        // $this->db->where('submittor', $submittor);
+        $this->db->order_by('notification_id', 'DESC');
+        return $this->db->get();
+    }
+
+    public function count_notif(){
+        $this->db->select('*');
+        $this->db->from('notification');
+        $this->db->where('status', 'Unread');
+        return $this->db->get();
+    }
+
+    function send_notif($data2){
+        $this->db->insert('notification', $data2);
+    }
+
+    //SELECT RESEARCH DATA
+    public function select_user($username){
+        $this->db->select('*');
+        $this->db->from('user');
+        $this->db->where('username', $username);
+        return $this->db->get()->result();
+    }
+
+    //RESEARCH_TABLE VIEW
+    public function select_all_completed($user_id){
         $this->db->select('*');
         $this->db->from('completed');
         $this->db->join('publication', 'publication.publication_id = completed.publication_id', 'inner');
         $this->db->join('author', 'author.publication_id = publication.publication_id', 'inner');
-        $this->db->where('researcher_id', $researcher_id);
+        $array = array(
+            'user_id' => $user_id,
+            'author_type' => 'Main'
+        );
+        $this->db->where($array);
         return $this->db->get()->result();
     }
 
+    public function select_all_presented($user_id){
+        $this->db->select('*');
+        $this->db->from('presented');
+        $this->db->join('publication', 'publication.publication_id = presented.publication_id', 'inner');
+        $this->db->join('author', 'author.publication_id = publication.publication_id', 'inner');
+        $array = array(
+            'user_id' => $user_id,
+            'author_type' => 'Main'
+        );
+        $this->db->where($array);
+        return $this->db->get()->result();
+    }
+
+    public function select_all_published($user_id){
+        $this->db->select('*');
+        $this->db->from('published');
+        $this->db->join('publication', 'publication.publication_id = published.publication_id', 'inner');
+        $this->db->join('author', 'author.publication_id = publication.publication_id', 'inner');
+        $array = array(
+            'user_id' => $user_id,
+            'author_type' => 'Main'
+        );
+        $this->db->where($array);
+        return $this->db->get()->result();
+    }
+
+    public function select_all_creative($user_id){
+        $this->db->select('*');
+        $this->db->from('creative_works');
+        $this->db->join('publication', 'publication.publication_id = creative_works.publication_id', 'inner');
+        $this->db->join('author', 'author.publication_id = publication.publication_id', 'inner');
+        $array = array(
+            'user_id' => $user_id,
+            'author_type' => 'Main'
+        );
+        $this->db->where($array);
+        return $this->db->get()->result();
+    }
+    //END OF RESEARCH_TABLE VIEW
+
+    public function fetch_all_authors(){
+        $this->db->select('*');
+        $this->db->from('author');
+        return $this->db->get()->result();
+    }
+
+    public function display_authors($publication_id){
+        $this->db->select('*');
+        $this->db->from('author');
+        $this->db->where('publication_id', $publication_id);
+        return $this->db->get()->result();
+    }
+
+    public function publication_delete($id){
+        $this->db->where('publication_id', $id);
+        $this->db->delete(array('completed','author', 'presented', 'log', 'publication', 'comment', 'notification'));
+    }
+
+    //RECENT VIEW
+    public function select_all_completed_recent(){
+        $this->db->select('*');
+        $this->db->from('completed');
+        $this->db->join('publication', 'publication.publication_id = completed.publication_id', 'inner');
+        $this->db->join('author', 'author.publication_id = publication.publication_id', 'inner');
+        $array = array(
+            'author_type' => 'Main',
+            'status' => 'Approved'
+        );
+        $this->db->where($array);
+        $this->db->order_by('publication.publication_id', 'DESC');
+        $this->db->limit(2);
+        return $this->db->get()->result();
+    }
+
+    public function select_all_presented_recent(){
+        $this->db->select('*');
+        $this->db->from('presented');
+        $this->db->join('publication', 'publication.publication_id = presented.publication_id', 'inner');
+        $this->db->join('author', 'author.publication_id = publication.publication_id', 'inner');
+        $array = array(
+            'author_type' => 'Main',
+            'status' => 'Approved'
+        );
+        $this->db->where($array);
+        $this->db->order_by('publication.publication_id', 'DESC');
+        $this->db->limit(2);
+        return $this->db->get()->result();
+    }
+
+    public function select_all_published_recent(){
+        $this->db->select('*');
+        $this->db->from('published');
+        $this->db->join('publication', 'publication.publication_id = published.publication_id', 'inner');
+        $this->db->join('author', 'author.publication_id = publication.publication_id', 'inner');
+        $array = array(
+            'author_type' => 'Main',
+            'status' => 'Approved'
+        );
+        $this->db->where($array);
+        $this->db->order_by('publication.publication_id', 'DESC');
+        $this->db->limit(2);
+        return $this->db->get()->result();
+    }
+
+    public function select_all_creative_recent(){
+        $this->db->select('*');
+        $this->db->from('creative_works');
+        $this->db->join('publication', 'publication.publication_id = creative_works.publication_id', 'inner');
+        $this->db->join('author', 'author.publication_id = publication.publication_id', 'inner');
+        $array = array(
+            'author_type' => 'Main',
+            'status' => 'Approved'
+        );
+        $this->db->where($array);
+        $this->db->order_by('publication.publication_id', 'DESC');
+        $this->db->limit(2);
+        return $this->db->get()->result();
+    }
+    //END OF RECENT VIEW
+
+    //display last 5 publications
+    /*
+    public function recent_pub(){
+        $this->db->select('*');
+        $this->db->from('completed');
+        $this->db->join('publication', 'publication.publication_id = completed.publication_id', 'inner');
+        $this->db->join('author', 'author.publication_id = publication.publication_id', 'inner');
+        $array = array(
+            'author_type' => 'Main',
+            'status' => 'Approved'
+        );
+        $this->db->where($array);
+        $this->db->order_by('publication.publication_id', 'DESC');
+        $this->db->limit(2);
+        //order by publication_id desc and limit 5
+        return $this->db->get()->result();
+    }*/
+
+    public function get_notifications($user_id){
+        $this->db->select('*');
+        $this->db->from('notification');
+        $this->db->where('recepient', $user_id);
+    }
+
+    public function notification_insert($data){
+        $this->db->insert('notification');
+    }
+
+    /*
+    public function getDepartment(){
+        $this->db->distinct();
+        $this->db->group_by('department');
+        $user = $this->db->get('user');
+        if($user->num_rows() > 0){
+            return $user->result();
+        }
+    }
+
+    public function getType_Research(){
+        $this->db->distinct();
+        $this->db->group_by('publication_type');
+        $type = $this->db->get('publication');
+        if($type->num_rows() > 0){
+            return $type->result();
+        }
+    }
+    */
+    //Fetch Search Filter Data
+    public function search_filter_completed($department, $year, $type_of_research){
+        $this->db->select('*');
+        $this->db->from('completed');
+        $this->db->join('publication', 'publication.publication_id = completed.publication_id', 'inner');
+        $this->db->join('author', 'author.publication_id = publication.publication_id', 'inner');
+        $this->db->join('user', 'user.user_id = author.user_id', 'inner');
+        /*
+        $data = array(
+            'status' => 'Approved',
+            'department' => $department,
+            'year' => $year,
+            'publication_type' => $type_of_research
+        );
+        */
+        $this->db->where('status', 'Approved');
+        if($department != NULL){
+        $this->db->where('department', $department);
+        }
+        if($year != NULL){
+        $this->db->where('year', $year);
+        }
+        if($type_of_research != NULL){
+        $this->db->where('publication_type', $type_of_research);
+        }
+        return $this->db->get()->result();
+    }
+
+    public function search_filter_presented($department, $year, $type_of_research){
+        $this->db->select('*');
+        $this->db->from('presented');
+        $this->db->join('publication', 'publication.publication_id = presented.publication_id', 'inner');
+        $this->db->join('author', 'author.publication_id = publication.publication_id', 'inner');
+        $this->db->join('user', 'user.user_id = author.user_id', 'inner');
+        $data = array(
+            'status' => 'Approved',
+            'department' => $department,
+            'date_presentation' => $year,
+            'publication_type' => $type_of_research
+        );
+        $this->db->where('status', 'Approved');
+        if($department != NULL){
+        $this->db->where('department', $department);
+        }
+        if($year != NULL){
+        $this->db->where('date_presentation', $year);
+        }
+        if($type_of_research != NULL){
+        $this->db->where('publication_type', $type_of_research);
+        }
+        return $this->db->get()->result();
+    }
+
+    public function search_filter_published($department, $year, $type_of_research){
+        $this->db->select('*');
+        $this->db->from('published');
+        $this->db->join('publication', 'publication.publication_id = published.publication_id', 'inner');
+        $this->db->join('author', 'author.publication_id = publication.publication_id', 'inner');
+        $this->db->join('user', 'user.user_id = author.user_id', 'inner');
+        $data = array(
+            'status' => 'Approved',
+            'department' => $department,
+            'year_published' => $year,
+            'publication_type' => $type_of_research
+        );
+        $this->db->where('status', 'Approved');
+        if($department != NULL){
+        $this->db->where('department', $department);
+        }
+        if($year != NULL){
+        $this->db->where('year_published', $year);
+        }
+        if($type_of_research != NULL){
+        $this->db->where('publication_type', $type_of_research);
+        }
+        return $this->db->get()->result();
+    }
+
+    public function search_filter_creative($department, $year, $type_of_research){
+        $this->db->select('*');
+        $this->db->from('creative_works');
+        $this->db->join('publication', 'publication.publication_id = creative_works.publication_id', 'inner');
+        $this->db->join('author', 'author.publication_id = publication.publication_id', 'inner');
+        $this->db->join('user', 'user.user_id = author.user_id', 'inner');
+        $data = array(
+            'status' => 'Approved',
+            'department' => $department,
+            'month_year' => $year,
+            'publication_type' => $type_of_research
+        );
+        $this->db->where('status', 'Approved');
+        if($department != NULL){
+        $this->db->where('department', $department);
+        }
+        if($year != NULL){
+        $this->db->where('month_year', $year);
+        }
+        if($type_of_research != NULL){
+        $this->db->where('publication_type', $type_of_research);
+        }
+        return $this->db->get()->result();
+    }
+    //END OF FILTER SEARCH
+
+    //Fetch Search Function Data
+    public function search_completed($keyword){
+        $this->db->select('*');
+        $this->db->from('completed');
+        $this->db->join('publication', 'publication.publication_id = completed.publication_id', 'inner');
+        $this->db->join('author', 'publication.publication_id = author.publication_id', 'inner');
+        if($keyword != NULL){
+            $this->db->like('title', $keyword);
+            $this->db->or_like('year', $keyword);
+            $this->db->or_like('institution', $keyword);
+            $this->db->or_like('location', $keyword);
+            $this->db->or_like('completed_type', $keyword);
+            $this->db->or_like('author.first_name', $keyword);
+            $this->db->or_like('author.last_name', $keyword);
+        }
+        $data = array(
+            'author_type' => 'Main',
+            'status' => 'Approved'
+        );
+        $this->db->where($data);
+        //$this->db->order_by('publication.publication_id', 'DESC');
+        return $this->db->get()->result();
+    }
+
+    public function search_presented($keyword){
+        $this->db->select('*');
+        $this->db->from('presented');
+        $this->db->join('publication', 'publication.publication_id = presented.publication_id', 'inner');
+        $this->db->join('author', 'author.publication_id = publication.publication_id', 'inner');
+        if($keyword != NULL){
+            $this->db->like('title_presented', $keyword);
+            $this->db->or_like('date_presentation', $keyword);
+            $this->db->or_like('title_conference', $keyword);
+            $this->db->or_like('place_conference', $keyword);
+            $this->db->or_like('presented_type', $keyword);
+            $this->db->or_like('author.first_name', $keyword);
+            $this->db->or_like('author.last_name', $keyword);
+        }
+        
+        $data = array(
+            'author_type' => 'Main',
+            'status' => 'Approved'
+        );
+        $this->db->where($data);
+        //$this->db->order_by('publication.publication_id', 'DESC');
+        return $this->db->get()->result();
+    }
+
+    public function search_published($keyword){
+        $this->db->select('*');
+        $this->db->from('published');
+        $this->db->join('publication', 'publication.publication_id = published.publication_id', 'inner');
+        $this->db->join('author', 'author.publication_id = publication.publication_id', 'inner');
+        if($keyword != NULL){
+            $this->db->like('year_published', $keyword);
+            $this->db->or_like('title_article', $keyword);
+            $this->db->or_like('title_journal', $keyword);
+            $this->db->or_like('indexing_database', $keyword);
+            $this->db->or_like('title_chapter', $keyword);
+            $this->db->or_like('publisher', $keyword);
+            $this->db->or_like('place_of_publication', $keyword);
+            $this->db->or_like('place_of_conference', $keyword);
+            $this->db->or_like('published_type', $keyword);
+            $this->db->or_like('title_conference', $keyword);
+            $this->db->or_like('author.first_name', $keyword);
+            $this->db->or_like('author.last_name', $keyword);
+        }
+        $data = array(
+            'author_type' => 'Main',
+            'status' => 'Approved'
+        );
+        $this->db->where($data);
+        //$this->db->order_by('publication.publication_id', 'DESC');
+        return $this->db->get()->result();
+    }
+
+    public function search_creative($keyword){
+        $this->db->select('*');
+        $this->db->from('creative_works');
+        $this->db->join('publication', 'publication.publication_id = creative_works.publication_id', 'inner');
+        $this->db->join('author', 'author.publication_id = publication.publication_id', 'inner');
+        if($keyword != NULL){
+            $this->db->like('type_cw', $keyword);
+            $this->db->or_like('month_year', $keyword);
+            $this->db->or_like('title_work', $keyword);
+            $this->db->or_like('role', $keyword);
+            $this->db->or_like('place_performance', $keyword);
+            $this->db->or_like('publisher', $keyword);
+            $this->db->or_like('artwork_exhibited', $keyword);
+            $this->db->or_like('commission_agency', $keyword);
+            $this->db->or_like('scope_audience', $keyword);
+            $this->db->or_like('award_received', $keyword);
+            $this->db->or_like('author.first_name', $keyword);
+            $this->db->or_like('author.last_name', $keyword);
+        }
+        $data = array(
+            'author_type' => 'Main',
+            'status' => 'Approved'
+        );
+        $this->db->where($data);
+        //$this->db->order_by('publication.publication_id', 'DESC');
+        return $this->db->get()->result();
+    }
+    ///////////////////
+
+    //RESEARCH_TABLE VIEW
     public function select_all_completed_view($publication_id){
         $this->db->select('*');
         $this->db->from('completed');
         $this->db->join('publication', 'publication.publication_id = completed.publication_id', 'inner');
         $this->db->join('author', 'author.publication_id = publication.publication_id', 'inner');
-        $this->db->join('log', 'log.publication_id = publication.publication_id', 'inner');
-        $this->db->join('researcher', 'researcher.researcher_id = author.researcher_id', 'inner');
-        $this->db->join('user', 'user.user_id = researcher.user_id', 'inner');
-        $this->db->where('publication.publication_id', $publication_id);
+        $this->db->join('user', 'user.user_id = author.user_id', 'inner');
+        $array = array(
+            'publication.publication_id' => $publication_id,
+            'author_type' => 'Main'
+        );
+        $this->db->where($array);
         return $this->db->get()->result();
     }
 
@@ -36,19 +456,40 @@ class research_model extends CI_Model{
         $this->db->from('presented');
         $this->db->join('publication', 'publication.publication_id = presented.publication_id', 'inner');
         $this->db->join('author', 'author.publication_id = publication.publication_id', 'inner');
-        $this->db->join('log', 'log.publication_id = publication.publication_id', 'inner');
-        $this->db->join('researcher', 'researcher.researcher_id = author.researcher_id', 'inner');
-        $this->db->join('user', 'user.user_id = researcher.user_id', 'inner');
-        $this->db->where('publication.publication_id', $publication_id);
+        $this->db->join('user', 'user.user_id = author.user_id', 'inner');
+        $array = array(
+            'publication.publication_id' => $publication_id,
+            'author_type' => 'Main'
+        );
+        $this->db->where($array);
         return $this->db->get()->result();
     }
 
-    public function select_all_presented($researcher_id){
+    public function select_all_published_view($publication_id){
         $this->db->select('*');
-        $this->db->from('presented');
-        $this->db->join('publication', 'publication.publication_id = presented.publication_id', 'inner');
+        $this->db->from('published');
+        $this->db->join('publication', 'publication.publication_id = published.publication_id', 'inner');
         $this->db->join('author', 'author.publication_id = publication.publication_id', 'inner');
-        $this->db->where('researcher_id', $researcher_id);
+        $this->db->join('user', 'user.user_id = author.user_id', 'inner');
+        $array = array(
+            'publication.publication_id' => $publication_id,
+            'author_type' => 'Main'
+        );
+        $this->db->where($array);
+        return $this->db->get()->result();
+    }
+
+    public function select_all_creative_view($publication_id){
+        $this->db->select('*');
+        $this->db->from('creative_works');
+        $this->db->join('publication', 'publication.publication_id = creative_works.publication_id', 'inner');
+        $this->db->join('author', 'author.publication_id = publication.publication_id', 'inner');
+        $this->db->join('user', 'user.user_id = author.user_id', 'inner');
+        $array = array(
+            'publication.publication_id' => $publication_id,
+            'author_type' => 'Main'
+        );
+        $this->db->where($array);
         return $this->db->get()->result();
     }
 
@@ -65,56 +506,42 @@ class research_model extends CI_Model{
         $this->db->where('publication_id', $publication_id);
         return $this->db->get()->row()->completed_type;    
     }
+    
 
-    public function select_all_creative_work($publication_id){
-       
+    //INSERT FUNCTIONS
+    public function completed_insert($data){
+        $this->db->insert("completed", $data);
     }
 
-    //fetchs completed research similar to query
-    public function search_completed($query){
-        //$this->db->select('c.title, c.year, p.file, a.first_name, a.middle_initial, a.last_name  ');
-        //$this->db->from('completed AS c, publication AS p, author AS a');
-        $this->db->select('*');
-        $this->db->from('completed AS c');
-        $this->db->join('publication AS p', 'p.publication_id = c.publication_id');
-        $this->db->join('author AS a', 'a.publication_id = p.publication_id');
-        if($query != ''){
-            $this->db->like('c.title', $query);
-            $this->db->or_like('c.year', $query);
-            $this->db->or_like('c.institution', $query);
-            $this->db->or_like('c.location', $query);
-            $this->db->or_like('a.first_name', $query);
-            $this->db->or_like('a.middle_initial', $query);
-            $this->db->or_like('a.last_name', $query);
-        }
-        $this->db->order_by('p.publication_id', 'DESC');
-        return $this->db->get();
+    public function presented_insert($data){
+        $this->db->insert("presented", $data);
     }
 
-    //fetchs presented research similar to query
-    public function search_presented($query){     
-        $this->db->from('presented AS pr');
-        $this->db->join('publication AS p', 'p.publication_id = pr.publication_id');
-        $this->db->join('author AS a', 'a.publication_id = p.publication_id'); 
-        if($query != ''){
-            $this->db->like('pr.title_presented', $query);
-            $this->db->or_like('pr.date_presentation', $query);
-            $this->db->or_like('pr.title_conference', $query);
-            $this->db->or_like('pr.place_conference', $query);
-            $this->db->or_like('a.first_name', $query);
-            $this->db->or_like('a.middle_initial', $query);
-            $this->db->or_like('a.last_name', $query);
-        }
-        $this->db->order_by('p.publication_id', 'DESC');
-        return $this->db->get();
+    public function published_insert($data){
+        $this->db->insert("published", $data);
     }
 
-    public function fetch_data(){
-        $this->db->order_by("completed_id", "ASC");
-        $query = $this->db->get("completed");
-        return $query->result();
+    public function creative_insert($data){
+        $this->db->insert("creative_works", $data);
     }
 
+    public function author_insert($data){
+        $this->db->insert("author", $data);
+    }
+
+    public function publication_insert($data){
+        $this->db->insert("publication", $data);
+    }
+
+    public function comment_insert($data){
+        $this->db->insert("comment", $data);
+    }
+
+    public function editor_insert($data){
+        $this->db->indert("editor", $data);
+    }
+
+    //UPDATE FUNCTIONS
     public function publication_update($data, $id){
         $this->db->where('publication_id', $id);
         $this->db->update("publication", $data);
@@ -125,17 +552,19 @@ class research_model extends CI_Model{
         $this->db->update("completed", $data);
     }
 
+    public function published_update($data, $id){
+        $this->db->where('publication_id', $id);
+        $this->db->update("published", $data);
+    }
+
+    public function creative_update($data, $id){
+        $this->db->where('publication_id', $id);
+        $this->db->update("creative_works", $data);
+    }
+
     public function author_update($data, $id){  
         $this->db->where('publication_id', $id);
         $this->db->update("author", $data);
-    }
-    
-    public function completed_insert($data){
-        $this->db->insert("completed", $data);
-    }
-
-    public function comment_insert($data){
-        $this->db->insert("comment", $data);
     }
 
     public function comment_display($id){
@@ -144,29 +573,8 @@ class research_model extends CI_Model{
         $this->db->join('user', 'user.user_id = comment.user_id', 'inner');
         $this->db->join('publication', 'publication.publication_id = comment.publication_id', 'inner');
         $this->db->where('publication.publication_id', $id);
+        $this->db->order_by('comment_id', 'DESC');
         return $this->db->get()->result();
     }
-
-    public function presented_insert($data){
-        $this->db->insert("presented", $data);
-    }
-
-    public function author_insert($data){
-        $this->db->insert("author", $data);
-    }
-
-    public function publication_insert($data){
-        $this->db->insert("publication", $data);
-    }  
-
-    public function publication_delete($id){
-        $this->db->where('publication_id', $id);
-        $this->db->delete(array('completed','author', 'presented', 'log', 'publication', 'comment'));
-
-// $this->db->query("SET @num := 0;");
-// $this->db->query("UPDATE your_table SET id = @num := (@num+1);");
-// $this->db->query("ALTER TABLE tableName AUTO_INCREMENT = 1;");
-    }
-    
 }
 ?>

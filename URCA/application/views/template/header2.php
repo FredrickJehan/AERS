@@ -9,7 +9,7 @@
     </head>
     <body>
         <header>
-            <div class="container">
+            <div class="container mb-3">
                 <div id ="branding">
                     <img src="<?php echo base_url('gueststyle/img/logo.png');?>" style="width: 500px; height: 100x;">
                 </div>

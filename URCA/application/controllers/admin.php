@@ -9,8 +9,7 @@ class admin extends CI_Controller{
         $this->load->model('admin_model');
         $this->load->library('form_validation');
         $this->load->library('Pdf.php');
-        $this->load->helper('file');
-        $this->load->database();
+        $this->load->helper('download');
     }
     
     public function index(){
@@ -19,54 +18,245 @@ class admin extends CI_Controller{
         $this->load->view('template/footer');
     }
 
-    public function get_admin_id(){
+
+    public function get_current_user(){
         $username = $this->session->userdata['logged_in']['username'];
-        return $admin_id = $this->admin_model->select_admin_id($username);
+        return $user_id = $this->admin_model->current_user($username);
     }
 
-    public function manage_submissions(){
-        $data["publication_unapproved"] = $this->admin_model->publication_select_unapproved();
+    public function unreviewed_submissions(){
+        $data["publication_unreviewed"] = $this->admin_model->publication_select_unreviewed();
         $this->load->view('template/header');
-		$this->load->view('urc/manage', $data);
+		$this->load->view('urc/unreviewed', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function approved_submissions(){
+        $data["publication_approved"] = $this->admin_model->publication_select_approved();
+        $this->load->view('template/header');
+		$this->load->view('urc/approved', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function rejected_submissions(){
+        $data["publication_rejected"] = $this->admin_model->publication_select_rejected();
+        $this->load->view('template/header');
+		$this->load->view('urc/rejected', $data);
         $this->load->view('template/footer');
     }
 
     public function review(){
-        //status = 0 if unreviewd, 1 if rejected, 2 if approved
         $publication_id = $this->uri->segment(3); //display approve_submissions url
         // $this->form_validation->set_rules('feedback', 'feedback', 'required');
         if($this->input->post('feedback') == ''){
-            //apprive
+            //approve
             $data = array(
-                'status' => '2'
+                'status' => 'Approved'
             );
            $this->admin_model->publication_review($data, $publication_id);
         }else{
             //reject
             $data = array(
-                'status' => '1'
+                'status' => 'Rejected',
+                'feedback' => $this->input->post('feedback')
             );
             $this->admin_model->publication_review($data, $publication_id);
         }
-        //data for logs
+        $publication_id = $this->uri->segment(3); 
         date_default_timezone_set('Asia/Karachi');
         $now = date('Y-m-d H:i:s');
-        $data = array(
-            'admin_id' => $this->get_admin_id(),
-            'feedback' => $this->input->post('feedback'),
+        $data2 = array(
+            'user_id' => $this->get_current_user(),
+            'publication_id' => $publication_id,
+            'type' => 'Review',
             'time' => $now,
-            'publication_id' => $publication_id
+            'status' => 'Unread'
         );
-        $this->admin_model->logs_insert($data);
+        $this->admin_model->send_notif($data2);
+        // //data for logs
+        // date_default_timezone_set('Asia/Karachi');
+        // $now = date('Y-m-d H:i:s');
+        // $data = array(
+        //     'admin_id' => $this->get_admin_id(),
+        //     'feedback' => $this->input->post('feedback'),
+        //     'time' => $now,
+        //     'publication_id' => $publication_id
+        // );
+        // $this->admin_model->logs_insert($data);
     
-        redirect(base_url('research/view/'.$publication_id));
+        redirect(base_url('research/edit/'.$publication_id));
     }
 
     public function export(){
         $data["ex"] = $this->admin_model->fetch_data();
-        $data["test"] = $this->admin_model->fetch_pdf_completed();
+        $data["completed"] = $this->admin_model->fetch_pdf_completed();
+        $data["presented"] = $this->admin_model->fetch_pdf_presented();
+        $data["published"] = $this->admin_model->fetch_pdf_published();
+        $data["creative"] = $this->admin_model->fetch_pdf_creative();
+        $data["authors"] = $this->admin_model->fetch_all_authors_admin();
         $this->load->view('template/header');
-		$this->load->view('urc/export', $data);
+        $this->load->view('urc/export', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function export_json(){
+        $data["test"] = $this->admin_model->fetch_pdf_completed();
+        $result1 = $this->admin_model->fetch_json_completed();
+        $result2 = $this->admin_model->fetch_json_presented();
+        //$result = $this->admin_model->fetch_json_presented();
+        $filepath = "./download/json_code.txt"; 
+        if(write_file($filepath, $result1)){
+            write_file($filepath, $result2, 'a');
+            if(file_exists($filepath)){
+                $filedata = file_get_contents($filepath);
+                force_download($filepath, $filedata);
+            }
+        }else{
+            $data["export_response"] = 'Error could not export json code';
+        }
+        $this->load->view('template/header');
+        $this->load->view('urc/export', $data);
+    }
+
+    public function import_json(){
+        //config for upload
+        $config['upload_path'] = './assets/';
+        $config['allowed_types'] = 'txt';
+        $config['max_size'] = 0;
+        $config['remove_spaces'] = true;
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+        if(!$this->upload->do_upload('file')){
+            //displays error if file not uploaded correctly
+            $error = array('error' => $this->upload->display_errors());
+            $data["completed"] = $this->admin_model->fetch_pdf_completed();
+            $data["presented"] = $this->admin_model->fetch_pdf_presented();
+            $data["published"] = $this->admin_model->fetch_pdf_published();
+            $data["creative"] = $this->admin_model->fetch_pdf_creative();
+            $data["authors"] = $this->admin_model->fetch_all_authors_admin();
+            $this->load->view('template/header');
+            $this->load->view('urc/export', $error, $data);
+        }else{
+            //gets uploaded file
+            $upload = $this->upload->data();
+            $file_name = $upload['file_name'];
+            $get_file = file_get_contents('./assets/'.$file_name.'');
+            //decodes json contents in file
+            $decode = json_decode($get_file, true);
+            
+            //must check if file is not null otherwise error will occur
+            if($decode != NULL){
+                foreach($decode as $row){
+                    $user_array = array(
+                        'user_id' => $row['user_id'],
+                        'username' => $row['username'],
+                        'first_name' => $row['first_name'],
+                        'middle_name' => $row['middle_name'],
+                        'last_name' => $row['last_name'],
+                        'email' => $row['email'],
+                        'password' => $row['password'],
+                        'department' => $row['department'],
+                        'contact_number' => $row['contact_number'],
+                        'user_type' => $row['user_type']
+                    );
+                    $author_array = array(
+                        'author_id' => $row['author_id'],
+                        'user_id' => $row['user_id'],
+                        'publication_id' => $row['publication_id'],
+                        'first_name' => $row['first_name'],
+                        'middle_initial' => $row['middle_initial'],
+                        'last_name' => $row['last_name'],
+                        'is_employee' => $row['is_employee'],
+                        'author_type' => $row['author_type']
+                    );
+                    $publication_array = array(
+                        'publication_id' => $row['publication_id'],
+                        'file' => $row['file'],
+                        'abstract' => $row['abstract'],
+                        'num_views' => $row['num_views'],
+                        'status' => $row['status'],
+                        'feedback' => $row['feedback'],
+                        'publication_type' => $row['publication_type'],
+                        'date_submission' => $row['date_submission'],
+                        'submittor' => $row['submittor']
+                    );
+                    if(isset($row['completed_id'])){
+                        $array = array(
+                            'completed_id' => $row['completed_id'],
+                            'publication_id' => $row['publication_id'],
+                            'title' => $row['title'],
+                            'year' => $row['year'],
+                            'institution' => $row['institution'],
+                            'location' => $row['location'],
+                            'url' => $row['url'],
+                            'completed_type' => $row['completed_type']
+                        );
+                        $this->admin_model->import_completed($user_array, $author_array, $publication_array, $array);
+                    }elseif(isset($row['presented_id'])){
+                        $array = array(
+                            'presented_id' => $row['presented_id'],
+                            'publication_id' => $row['publication_id'],
+                            'title_presented' => $row['title_presented'],
+                            'date_presentation' => $row['date_presentation'],
+                            'title_conference' => $row['title_conference'],
+                            'place_conference' => $row['place_conference'],
+                            'presented_type' => $row['presented_type']
+                        );
+                        $this->admin_model->import_presented($user_array, $author_array, $publication_array, $array);
+                    }elseif(isset($row['published_id'])){
+                        $array = array(
+                            'published_id' => $row['published_id'],
+                            'publication_id' => $row['publication_id'],
+                            'year_published' => $row['year_published'],
+                            'title_article' => $row['title_article'],
+                            'title_journal' => $row['title_journal'],
+                            'vol_num' => $row['vol_num'],
+                            'issue_num' => $row['issue_num'],
+                            'page_num' => $row['page_num'],
+                            'indexing_database' => $row['indexing_database'],
+                            'peer_review' => $row['peer_review'],
+                            'title_book' => $row['title_book'],
+                            'title_chapter' => $row['title_chapter'],
+                            'publisher' => $row['publisher'],
+                            'place_of_publication' => $row['place_of_publication'],
+                            'place_of_conference' => $row['place_of_conference'],
+                            'published_type' => $row['published_type'],
+                            'title_conference' => $row['title_conference'],
+                            'url' => $row['url']
+                        );
+                        $this->admin_model->import_published($user_array, $author_array, $publication_array, $array);
+                    }else{
+                        $array = array(
+                            'cw_id' => $row['cw_id'],
+                            'publication_id' => $row['publication_id'],
+                            'type_cw' => $row['photography'],
+                            'month_year' => $row['month_year'],
+                            'title_work' => $row['title_work'],
+                            'role' => $row['role'],
+                            'place_performance' => $row['place_performance'],
+                            'publisher' => $row['publisher'],
+                            'artwork_exhibited' => $row['artwork_exhibited'],
+                            'duration_performance' => $row['duration_performance'],
+                            'commission_agency' => $row['commission_agency'],
+                            'scope_audience' => $row['scope_audience'],
+                            'award_received' => $row['award_received']
+                        );
+                        $this->admin_model->import_creative($user_array, $author_array, $publication_array, $array);
+                    }
+                }
+                $data['response'] = 'File has been imported.';
+            }else{
+                $data['response'] = 'File is not imported, Please try again.';
+            }
+            $data["completed"] = $this->admin_model->fetch_pdf_completed();
+            $data["presented"] = $this->admin_model->fetch_pdf_presented();
+            $data["published"] = $this->admin_model->fetch_pdf_published();
+            $data["creative"] = $this->admin_model->fetch_pdf_creative();
+            $data["authors"] = $this->admin_model->fetch_all_authors_admin();
+            $this->load->view('template/header');
+            $this->load->view('urc/export', $data);
+        }
     }
 
     public function pdfdetails(){ 
@@ -77,50 +267,167 @@ class admin extends CI_Controller{
         $this->pdf->stream("aers_data.pdf", array("Attachment"=>0));
     }
 
-    public function export_excel(){
+    function export_excel(){
         $this->load->library("excel");
         $object = new PHPExcel();
 
         $object->setActiveSheetIndex(0);
+        $object->getActiveSheet()->setTitle('Completed Research');
+        $presented_sheet = new PHPExcel_WorkSheet($object, "Presented Research");
+        $published_sheet = new PHPExcel_WorkSheet($object, "Published Research");
+        $creative_sheet = new PHPExcel_WorkSheet($object, "Creative Works Research");
+        $object->addSheet($presented_sheet, 1);
+        $object->addSheet($published_sheet, 2);
+        $object->addSheet($creative_sheet, 3);
 
-        $table_columns = array("Completed ID", "Publication ID", "Title", "Year", "Institute", "Location", "Url", "Completed Type");
+        $completed_columns = array("Author Name(s)", "Title", "Year", "Institute", "Location", "Url", "Completed Type");
+        $presented_columns = array("Author Name(s)", "Title Presented", "Date Presented", "Title of Conference", "Place of Conference", "Presented Type");
+        $published_columns = array("Author Name(s)", "Published Type", "Title of Article", "Title of Journal", "Title of Book", "Title_Chapter", "Title of Conference", "Year Published", "Vol. Number", "Issue Number", "Page Number", "Indexing Database", "Peer Review", "Publisher", "Place of Publication", "Place of Conference", "URL");
+        $creative_columns = array("Creator", "Type of Creative Work", "Date", "Title of Work", "Role", "Place of Performance/Exhibition/Publication", "Producer/Organizer/Publisher", "Number of Artworks Exhibited", "Duration of Performance/Exhibition", "Commissioning Agency", "Scope of Audience", "Award Received");
+        
+        $com_column = 0;
+        $pre_column = 0;
+        $pub_column = 0;
+        $cre_column = 0;
 
-        $column = 0;
-
-        foreach($table_columns as $field){
-            $object->getActiveSheet()->setCellValueByColumnAndRow($column, 1, $field);
-            $column++;
+        foreach($completed_columns as $field){
+            $object->getActiveSheet()->setCellValueByColumnAndRow($com_column, 1, $field);
+            $com_column++;
         }
 
-        $completed_research_data = $this->admin_model->fetch_data();
+        foreach($presented_columns as $field){
+            $object->getSheet(1)->setCellValueByColumnAndRow($pre_column, 1, $field);
+            $pre_column++;
+        }
+
+        foreach($published_columns as $field){
+            $object->getSheet(2)->setCellValueByColumnAndRow($pub_column, 1, $field);
+            $pub_column++;
+        }
+
+        foreach($creative_columns as $field){
+            $object->getSheet(3)->setCellValueByColumnAndRow($cre_column, 1, $field);
+            $cre_column++;
+        }
+
+        $completed_research_data = $this->admin_model->fetch_pdf_completed();
+        $presented_research_data = $this->admin_model->fetch_pdf_presented();
+        $published_research_data = $this->admin_model->fetch_pdf_published();
+        $creative_research_data = $this->admin_model->fetch_pdf_creative();
         
-        $excel_row = 2;
+        $com_row = 2;
+        $pre_row = 2;
+        $pub_row = 2;
+        $cre_row = 2;
+
 
         foreach($completed_research_data as $row){
-            $object->getActiveSheet()->setCellValueByColumnAndRow(0, $excel_row, $row->completed_id);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(1, $excel_row, $row->publication_id);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(2, $excel_row, $row->title);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(3, $excel_row, $row->year);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(4, $excel_row, $row->institution);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(5, $excel_row, $row->location);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(6, $excel_row, $row->url);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(7, $excel_row, $row->completed_type);
-            $excel_row++;
+            $data = $this->admin_model->fetch_author_excel($row->publication_id);
+            $string = array();
+            $i = 0;
+            foreach($data as $name){
+                $string[$i] = $name->first_name . " " . $name->middle_initial . " " . $name->last_name;
+                $i++;           
+            }
+            /*
+            foreach($data as $key){
+                $string =''.$key->first_name.' '.$key->middle_initial.' '.$key->last_name.'';
+            }
+            */
+            //$query = $this->admin_model->fetch_author_excel($row->publication_id);
+            //$result = settype($query, 'string');
+            $object->getActiveSheet()->setCellValueByColumnAndRow(0, $com_row, implode(', ', $string));
+            $object->getActiveSheet()->setCellValueByColumnAndRow(1, $com_row, $row->title);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(2, $com_row, $row->year);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(3, $com_row, $row->institution);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(4, $com_row, $row->location);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(5, $com_row, $row->url);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(6, $com_row, $row->completed_type);
+            $com_row++;
+        }
+
+        foreach($presented_research_data as $row){
+            $data = $this->admin_model->fetch_author_excel($row->publication_id);
+            $string = array();
+            $i = 0;
+            foreach($data as $name){
+                $string[$i] = $name->first_name . " " . $name->middle_initial . " " . $name->last_name;
+                $i++;           
+            }
+            $object->getSheet(1)->setCellValueByColumnAndRow(0, $pre_row, implode(', ', $string));
+            $object->getSheet(1)->setCellValueByColumnAndRow(1, $pre_row, $row->title_presented);
+            $object->getSheet(1)->setCellValueByColumnAndRow(2, $pre_row, $row->date_presentation);
+            $object->getSheet(1)->setCellValueByColumnAndRow(3, $pre_row, $row->title_conference);
+            $object->getSheet(1)->setCellValueByColumnAndRow(4, $pre_row, $row->place_conference);
+            $object->getSheet(1)->setCellValueByColumnAndRow(5, $pre_row, $row->presented_type);
+            $pre_row++;
+        }
+
+        foreach($published_research_data as $row){
+            $data = $this->admin_model->fetch_author_excel($row->publication_id);
+            $string = array();
+            $i = 0;
+            foreach($data as $name){
+                $string[$i] = $name->first_name . " " . $name->middle_initial . " " . $name->last_name;
+                $i++;           
+            }
+            $object->getSheet(2)->setCellValueByColumnAndRow(0, $pub_row, implode(', ', $string));
+            $object->getSheet(2)->setCellValueByColumnAndRow(1, $pub_row, $row->published_type);
+            $object->getSheet(2)->setCellValueByColumnAndRow(2, $pub_row, $row->title_article);
+            $object->getSheet(2)->setCellValueByColumnAndRow(3, $pub_row, $row->title_journal);
+            $object->getSheet(2)->setCellValueByColumnAndRow(4, $pub_row, $row->title_book);
+            $object->getSheet(2)->setCellValueByColumnAndRow(5, $pub_row, $row->title_chapter);
+            $object->getSheet(2)->setCellValueByColumnAndRow(6, $pub_row, $row->title_conference);
+            $object->getSheet(2)->setCellValueByColumnAndRow(7, $pub_row, $row->year_published);
+            $object->getSheet(2)->setCellValueByColumnAndRow(8, $pub_row, $row->vol_num);
+            $object->getSheet(2)->setCellValueByColumnAndRow(9, $pub_row, $row->issue_num);
+            $object->getSheet(2)->setCellValueByColumnAndRow(10, $pub_row, $row->page_num);
+            $object->getSheet(2)->setCellValueByColumnAndRow(11, $pub_row, $row->peer_review);
+            $object->getSheet(2)->setCellValueByColumnAndRow(12, $pub_row, $row->publisher);
+            $object->getSheet(2)->setCellValueByColumnAndRow(13, $pub_row, $row->place_of_publication);
+            $object->getSheet(2)->setCellValueByColumnAndRow(14, $pub_row, $row->place_of_conference);
+            $object->getSheet(2)->setCellValueByColumnAndRow(15, $pub_row, $row->url);
+            $pub_row++;
+        }
+
+        foreach($creative_research_data as $row){
+            $data = $this->admin_model->fetch_author_excel($row->publication_id);
+            $string = array();
+            $i = 0;
+            foreach($data as $name){
+                $string[$i] = $name->first_name . " " . $name->middle_initial . " " . $name->last_name;
+                $i++;           
+            }
+            $object->getSheet(3)->setCellValueByColumnAndRow(0, $cre_row, implode(', ', $string));
+            $object->getSheet(3)->setCellValueByColumnAndRow(1, $cre_row, $row->cw_type);
+            $object->getSheet(3)->setCellValueByColumnAndRow(2, $cre_row, $row->month_year);
+            $object->getSheet(3)->setCellValueByColumnAndRow(3, $cre_row, $row->title_work);
+            $object->getSheet(3)->setCellValueByColumnAndRow(4, $cre_row, $row->role);
+            $object->getSheet(3)->setCellValueByColumnAndRow(5, $cre_row, $row->place_performance);
+            $object->getSheet(3)->setCellValueByColumnAndRow(6, $cre_row, $row->publisher);
+            $object->getSheet(3)->setCellValueByColumnAndRow(7, $cre_row, $row->artwork_exhibited);
+            $object->getSheet(3)->setCellValueByColumnAndRow(8, $cre_row, $row->duration_performance);
+            $object->getSheet(3)->setCellValueByColumnAndRow(9, $cre_row, $row->commission_agency);
+            $object->getSheet(3)->setCellValueByColumnAndRow(10, $cre_row, $row->scope_audience);
+            $object->getSheet(3)->setCellValueByColumnAndRow(11, $cre_row, $row->award_received);
+            $cre_row++;
+        }
+
+        //adjust column width depending on string size of a cell
+        foreach($object->getWorksheetIterator() as $row){
+            $object->setActiveSheetIndex($object->getIndex($row));
+            $sheet = $object->getActiveSheet();
+            $cell_ite = $sheet->getRowIterator()->current()->getCellIterator();
+            $cell_ite->setIterateOnlyExistingCells(true);
+            foreach($cell_ite as $cell){
+                $sheet->getColumnDimension($cell->getColumn())->setAutoSize(true);
+            }
         }
 
         $object_writer = PHPExcel_IOFactory::createWriter($object, 'Excel5');
         header('Content-Type: application/vnd.ms-excel');
-        header('Content-Disposition: attachment;filename="Search_Data.xls"');
+        header('Content-Disposition: attachment;filename="URC_Data.xls"');
         $object_writer->save('php://output');
-    }
-
-    public function export_json(){
-        $data["test"] = $this->admin_model->fetch_pdf_completed();
-        $result = $this->admin_model->fetch_json_completed();
-        if(write_file('json_file.json', $result)){
-            $this->load->view('template/header');
-            $this->load->view('urc/export', $data);
-        }
     }
 }
 

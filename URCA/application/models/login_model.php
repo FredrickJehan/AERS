@@ -24,15 +24,6 @@ Class login_model extends CI_Model {
             return false;
         }
     }
-
-    public function researcher_insert($data2){
-        $this->db->insert('researcher', $data2);
-    }
-
-    public function admin_insert($data3){
-        $this->db->insert('admin', $data3);
-    }
-
 }
 
 ?>

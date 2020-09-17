@@ -33,7 +33,7 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Pending Research</div>
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Pending Reviews</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">3</div>
                     </div>
                     <div class="col-auto">
@@ -50,7 +50,7 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Input Admin Activity here</div>
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Approved Research</div>
                       <div class="row no-gutters align-items-center">
                         <div class="col-auto">
                           <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">3</div>
@@ -71,7 +71,7 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Published Research</div>
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Disapproved Research</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">3</div>
                     </div>
                     <div class="col-auto">

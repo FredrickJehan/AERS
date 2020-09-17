@@ -11,15 +11,15 @@
   <title>Landing Page - Start Bootstrap Theme</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="<?php echo base_url('vendor/bootstrap/css/bootstrap.min.css');?>" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
-  <link href="<?php echo base_url('gueststyle/v2/vendor/fontawesome-free/css/all.min.css');?>" rel="stylesheet">
-  <link href="<?php echo base_url('gueststyle/v2/vendor/simple-line-icons/css/simple-line-icons.css');?>" rel="stylesheet" type="text/css">
+  <link href="<?php echo base_url('guestdesign2/vendor/fontawesome-free/css/all.min.css');?>" rel="stylesheet">
+  <link href="<?php echo base_url('guestdesign2/vendor/simple-line-icons/css/simple-line-icons.css');?>" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
   <!-- Custom styles for this template -->
-  <link href="<?php echo base_url('gueststyle/v2/css/landing-page.min.css');?>" rel="stylesheet">
+  <link href="<?php echo base_url('guestdesign2/css/landing-page.min.css');?>" rel="stylesheet">
 
 </head>
 
@@ -30,21 +30,14 @@
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
-        <div class="col-xl-9 mx-auto">
-          <h1 class="mb-5">Search Research</h1>
-        </div>
-        <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-          <form>
+        <div class="col-md-10  col-lg-8 col-xl-7 mx-auto">
+         <form action="<?php echo base_url('main/search');?>" method="post">
             <div class="form-row">
-              <div class="col-12 col-md-12 mb-2 mb-md-0">
-                <input type="input" class="form-control form-control-lg" name="keyword" id="keyword" placeholder="Enter Research Title">
+              <div class="col-12 col-md-9 mb-2 mb-md-0" style="text-align: right">
+                <input type="input" name="keyword" id="keyword" class="form-control form-control-lg" placeholder="Search for title...">
               </div>
-            </div>
-            <div class="form-row">
-              <div class="col-12 col-md-9 mb-2 mb-md-0">
-              </div>
-              <div class="col-12 col-md-3 mb-2 mb-md-0">
-                <a href="<?php echo base_url('research/dummy_table');?>" style="text-decoration: none;">Advance Search</a>
+              <div class="col-12 col-md-3">
+                <button type="submit" class="btn btn-block btn-lg btn-primary">Search</button>
               </div>
             </div>
           </form>
@@ -53,93 +46,114 @@
     </div>
   </header>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-1">
-      </div>
-      <div class="col-md-10">
-        <div id="result"></div>
-      </div>
-      <div class="col-md-1">
-      </div>
-      <div id="result"></div>
-    </div>
-  </div>
-   
-   
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
+  <!-- Testimonials -->
+  <section class="text-left bg-light">
+    <div class="container">
+      <h2 class="mb-4 mt-3">Recent Publications</h2>
+        <!-- Recent Publicaitons-->
+        <?php foreach($recent_com as $row){ ?>
+      <div class="row">
+          <div class="col-sm-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><?php echo $row->title?></h5>
+              <p class="card-text"><?php echo $row->last_name?>, <?php echo $row->first_name?></p>
+              <a class="btn btn-primary" href="<?php echo base_url('view/'.$row->publication_id);?>">View</a>
+            </div>
           </div>
         </div>
-      </footer>
-      <!-- End of Footer -->
+      </div>
+      <br />
+      <?php }?>
 
+      <?php foreach($recent_pre as $row){ ?>
+      <div class="row">
+          <div class="col-sm-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><?php echo $row->title_presented?></h5>
+              <p class="card-text"><?php echo $row->last_name?>, <?php echo $row->first_name?></p>
+              <a class="btn btn-primary" href="<?php echo base_url('view/'.$row->publication_id);?>">View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <?php }?>
+
+      <?php foreach($recent_pub as $row){ ?>
+      <div class="row">
+          <div class="col-sm-12">
+          <div class="card">
+            <div class="card-body">
+              <?php if($row->published_type == 'Journal Article'){ ?>
+                <h5 class="card-title"><?php echo $row->title_article ?></h5>
+              <?php }elseif($row->published_type == 'Book / Textbook'){ ?>
+                <h5 class="card-title"><?php echo $row->title_book ?></h5>
+              <?php }elseif($row->published_type == 'Book Chapter'){ ?>
+                <h5 class="card-title"><?php echo $row->title_chapter ?></h5>
+              <?php }else{ ?>
+                <h5 class="card-title"><?php echo $row->title_conference ?></h5>
+              <?php } ?>
+              <p class="card-text"><?php echo $row->last_name?>, <?php echo $row->first_name?></p>
+              <a class="btn btn-primary" href="<?php echo base_url('view/'.$row->publication_id);?>">View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <?php }?>
+
+      <?php foreach($recent_cre as $row){ ?>
+      <div class="row">
+          <div class="col-sm-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><?php echo $row->title_work?></h5>
+              <p class="card-text"><?php echo $row->last_name?>, <?php echo $row->first_name?></p>
+              <a class="btn btn-primary" href="<?php echo base_url('view/'.$row->publication_id);?>">View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <?php }?>
+        <!-- ./End of Recent Publcations-->
     </div>
-    <!-- End of Content Wrapper -->
+  </section>
 
-  </div>
-  <!-- End of Page Wrapper -->
-
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
-
-  <!-- Bootstrap core JavaScript-->
-  <script src="<?php echo base_url('URCstyles/vendor/jquery/jquery.min.js');?>"></script>
-  <script src="<?php echo base_url('URCstyles/vendor/bootstrap/js/bootstrap.bundle.min.js');?>"></script>
-
-  <!-- Core plugin JavaScript-->
-  <script src="<?php echo base_url('URCstyles/vendor/jquery-easing/jquery.easing.min.js');?>"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="<?php echo base_url('URCstyles/js/sb-admin-2.min.js');?>"></script>
-
-  <!-- Page level plugins -->
-  <script src="<?php echo base_url('URCstyles/vendor/datatables/jquery.dataTables.min.js');?>"></script>
-  <script src="<?php echo base_url('URCstyles/vendor/datatables/dataTables.bootstrap4.min.js');?>"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="<?php echo base_url('URCstyles/js/demo/datatables-demo.js');?>"></script>
-
-</body>
-
-</html>
-
+  <!-- Footer -->
+  <footer class="footer bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+          <ul class="list-inline mb-2">
+            <li class="list-inline-item">
+              <a href="#">About</a>
+            </li>
+            <li class="list-inline-item">&sdot;</li>
+            <li class="list-inline-item">
+              <a href="#">Contact</a>
+            </li>
+            <li class="list-inline-item">&sdot;</li>
+            <li class="list-inline-item">
+              <a href="#">Terms of Use</a>
+            </li>
+            <li class="list-inline-item">&sdot;</li>
+            <li class="list-inline-item">
+              <a href="#">Privacy Policy</a>
+            </li>
+          </ul>
+          <p class="text-muted small mb-4 mb-lg-0">&copy; AERS 2020. All Rights Reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="<?php echo base_url('gueststyle/v2/vendor/jquery/jquery.min.js');?>"></script>
-  <script src="<?php echo base_url('gueststyle/v2/vendor/bootstrap/js/bootstrap.bundle.min.js');?>"></script>
+  <script src="<?php echo base_url('guestdesign2/vendor/jquery/jquery.min.js');?>"></script>
+  <script src="<?php echo base_url('guestdesign2/vendor/bootstrap/js/bootstrap.bundle.min.js');?>"></script>
 
 </body>
 
 </html>
-
-<script>
-    $(document).ready(function(){
-        load_data();
-
-    function load_data(query){
-        $.ajax({
-            url: "<?php echo base_url(); ?>research/search",
-            method: "POST",
-            data: {query:query},
-            success:function(data){
-                $('#result').html(data);
-            }
-        })
-    }
-
-    $('#keyword').keyup(function(){
-        var search = $(this).val();
-        if(search != ''){
-            load_data(search);
-        }else{
-            load_data();
-        }
-    });
-    });
-</script>

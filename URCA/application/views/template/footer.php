@@ -46,22 +46,35 @@
   </div>
 
 </body>
-  <!-- Bootstrap core JavaScript-->
-  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-  <script src="<?php echo base_url('URCstyles/vendor/jquery/jquery.min.js');?>"></script>
-  <script src="<?php echo base_url('URCstyles/vendor/bootstrap/js/bootstrap.bundle.min.js');?>"></script>
 
-  <!-- Core plugin JavaScript-->
-  <script src="<?php echo base_url('URCstyles/vendor/jquery-easing/jquery.easing.min.js');?>"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="<?php echo base_url('URCstyles/js/sb-admin-2.min.js');?>"></script>
-
-  <!-- Page level plugins -->
-  <script src="<?php echo base_url('URCstyles/vendor/datatables/jquery.dataTables.min.js');?>"></script>
-  <script src="<?php echo base_url('URCstyles/vendor/datatables/dataTables.bootstrap4.min.js');?>"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="<?php echo base_url('URCstyles/js/demo/datatables-demo.js');?>"></script>
 </html>
+<script>
+$(document).ready(function(){
 
+  function load_unseen_notification(view = ''){
+    $.ajax({
+        url:"<?php echo base_url("notification");?>",
+        method: "POST",
+        data:{view:view},
+        dataType: "json",
+        success:function(data){
+          $("#notif").html(data.load_notif);
+          if(data.unseen_notif > 0){
+            $("#count").html(data.unseen_notif);  
+          }
+        }
+    });
+  }
+
+  load_unseen_notification();
+
+$(document).on('click', '#dropdown', function(){
+  $('#count').html('');
+  load_unseen_notification('yes');
+ });
+ 
+ setInterval(function(){ 
+  load_unseen_notification();
+ }, 5000);
+});
+</script>

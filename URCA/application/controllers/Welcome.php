@@ -24,8 +24,8 @@ class Welcome extends CI_Controller{
     }
 
     public function registration_form() {
-        $this->load->view('template/header2');
-        $this->load->view('guest/registration');
+        $this->load->view('template/header');
+        $this->load->view('urc/registration');
     }
 
     // Validate and store registration data in database
@@ -37,12 +37,9 @@ class Welcome extends CI_Controller{
         $this->form_validation->set_rules('email', 'email', 'required|valid_email|is_unique[user.email]');
         $this->form_validation->set_rules('password', 'password', 'required');
         $this->form_validation->set_rules('user_type', 'user_type', 'required');
+        $this->form_validation->set_rules('department', 'department', 'required');
+        // $this->form_validation->set_rules('contact_number', 'contact_number', 'required|exact_length[11]');
 
-        $user_type = $this->input->post('user_type');
-        if($user_type == "0"){
-            $this->form_validation->set_rules('department', 'department', 'required');
-            $this->form_validation->set_rules('contact_number', 'contact_number', 'required|exact_length[11]');
-        }
         if ($this->form_validation->run() == FALSE) {
             $this->registration_form();
         }else {
@@ -53,23 +50,11 @@ class Welcome extends CI_Controller{
                 'last_name' => $this->input->post('last_name'),
                 'email' => $this->input->post('email'),
                 'password' => $this->input->post('password'),
+                'department' => $this->input->post('department'),
+                'contact_number' => $this->input->post('contact_number'),
                 'user_type' => $this->input->post('user_type')
             );
             $this->login_model->user_insert($data);
-            $last_id = $this->db->insert_id();
-            if($user_type == "0"){
-                $data2 = array(
-                    'department' => $this->input->post('department'),
-                    'contact_number' => $this->input->post('contact_number'),
-                    'user_id' => $last_id
-                );
-                $this->login_model->researcher_insert($data2);
-            }else if($user_type == "1"){
-                $data3 = array(
-                    'user_id' => $last_id
-                );
-                $this->login_model->admin_insert($data3);
-            }
             $data['message_display'] = 'Registration Successfully !';
             $this->login($data);
         }
