@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 17, 2020 at 04:45 PM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.4
+-- Generation Time: Sep 17, 2020 at 07:04 PM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -55,7 +55,12 @@ INSERT INTO `author` (`author_id`, `user_id`, `publication_id`, `first_name`, `m
 (109, 5, 71, 'Vernica', 'V.', 'Rosas', 1, 'Extra'),
 (110, 5, 72, 'Carl', 'W.', 'Ernest', 1, 'Main'),
 (200, 5, 88, 'Kyle', 'C.', 'Nolan', 1, 'Main'),
-(201, 5, 89, 'Kyle', 'A.', 'Nolan ', 1, 'Main');
+(201, 5, 89, 'Kyle', 'A.', 'Nolan ', 1, 'Main'),
+(202, 2, 90, 'Ryan Christian', 'Y.', 'Imperial ', 1, 'Main'),
+(203, 2, 91, 'Ryan Christian', 'Y.', 'Imperial ', 1, 'Main'),
+(204, 2, 92, 'Ryan Christian', 'Y.', 'Imperial ', 1, 'Main'),
+(205, 2, 93, 'Ryan Christian', 'Y.', 'Imperial ', 1, 'Main'),
+(206, 2, 94, 'Ryan Christian', 'Y.', 'Imperial ', 1, 'Main');
 
 -- --------------------------------------------------------
 
@@ -68,7 +73,7 @@ CREATE TABLE `comment` (
   `publication_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `message` varchar(255) NOT NULL,
-  `time_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `time_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -94,7 +99,12 @@ CREATE TABLE `completed` (
 
 INSERT INTO `completed` (`completed_id`, `publication_id`, `title`, `year`, `institution`, `location`, `url`, `completed_type`) VALUES
 (69, 70, 'Mapping Datasets to Object Storage System', 2013, 'University of California', 'Santa Cruz', 'https://arxiv.org/abs/2007.01789', 'Thesis / Dissertation'),
-(70, 89, 'Chinese.ART: A Multimodal Content-Based Analysis and Retrieval System for Buddha Statues', 2019, 'Institute for Datability Science, Osaka University', 'Bagumbayan, Naga City', '', 'Thesis / Dissertation');
+(70, 89, 'Chinese.ART: A Multimodal Content-Based Analysis and Retrieval System for Buddha Statues', 2019, 'Institute for Datability Science, Osaka University', 'Bagumbayan, Naga City', '', 'Thesis / Dissertation'),
+(71, 90, 'Teaching critical literacy: Case studies of teachers in the Philippines', 2019, 'Naga City', 'Ateneo de Naga University', 'http://www.uow.edu.au./theses/45789', 'Thesis / Dissertation'),
+(72, 91, 'Psychopathic personality traits in relational aggression among young adults', 2019, 'Naga City', 'Ateneo de Naga University', 'http://www.uow.edu.au./theses/45789', 'Thesis / Dissertation'),
+(73, 92, 'Psychopathic personality traits in relational aggression among young adults', 2019, 'Naga City', 'Ateneo de Naga University', 'http://www.uow.edu.au./theses/45789', 'Thesis / Dissertation'),
+(74, 93, 'Teaching critical literacy: Case studies of teachers in the Philippines', 2015, 'Naga City', 'Ateneo de Naga University', 'http://www.uow.edu.au./theses/45789', 'Thesis / Dissertation'),
+(75, 94, 'Teaching critical literacy: Case studies of teachers in the Philippines', 2019, 'Naga City', 'Ateneo de Naga University', 'http://www.uow.edu.au./theses/45789', 'Thesis / Dissertation');
 
 -- --------------------------------------------------------
 
@@ -142,7 +152,7 @@ CREATE TABLE `log` (
   `log_id` int(11) NOT NULL,
   `admin_id` int(11) NOT NULL,
   `publication_id` int(11) NOT NULL,
-  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `feedback` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -169,9 +179,15 @@ INSERT INTO `notification` (`notification_id`, `user_id`, `publication_id`, `typ
 (7, 5, 72, 'Review', '2020-07-21 04:52:15', 'Read'),
 (8, 5, 70, 'Review', '2020-07-21 04:52:24', 'Read'),
 (9, 5, 89, 'Review', '2020-07-21 11:41:35', 'Read'),
-(10, 5, 69, 'Review', '2020-09-16 01:16:48', 'Unread'),
-(11, 5, 88, 'Review', '2020-09-16 01:16:52', 'Unread'),
-(12, 5, 71, 'Review', '2020-09-16 01:16:57', 'Unread');
+(10, 5, 69, 'Review', '2020-09-16 01:16:48', 'Read'),
+(11, 5, 88, 'Review', '2020-09-16 01:16:52', 'Read'),
+(12, 5, 71, 'Review', '2020-09-16 01:16:57', 'Read'),
+(13, 1, 90, 'Review', '2020-09-17 21:09:18', 'Read'),
+(14, 1, 94, 'Review', '2020-09-17 21:15:02', 'Read'),
+(15, 1, 92, 'Review', '2020-09-17 21:15:15', 'Read'),
+(16, 1, 93, 'Review', '2020-09-17 21:15:26', 'Read'),
+(17, 1, 91, 'Review', '2020-09-17 21:15:36', 'Read'),
+(18, 1, 94, 'Review', '2020-09-17 21:25:12', 'Read');
 
 -- --------------------------------------------------------
 
@@ -226,7 +242,12 @@ INSERT INTO `publication` (`publication_id`, `file`, `abstract`, `num_views`, `s
 (71, 'Expresseive_Intervewing-A_conversation_system_for_coping_COVID_19.pdf', 'The ongoing COVID-19 pandemic has raised\r\nconcerns for many regarding personal and public health implications, financial security and\r\neconomic stability. Alongside many other\r\nunprecedented challenges, there are increasing concerns over social isolation and mental\r\nhealth. We introduce Expressive Interviewing–\r\nan interview-style conversational system that\r\ndraws on ideas from motivational interviewing and expressive writing. Expressive Interviewing seeks to encourage users to express\r\ntheir thoughts and feelings through writing by\r\nasking them questions about how COVID-19\r\nhas impacted their lives. We present relevant\r\naspects of the system’s design and implementation as well as quantitative and qualitative\r\nanalyses of user interactions with the system.\r\nIn addition, we conduct a comparative evaluation with a general purpose dialogue system\r\nfor mental health that shows our system potential in helping users to cope with COVID-19\r\nissues.', 0, 'Approved', NULL, 'Presented Research', 'Jul 21 2020', 5),
 (72, 'book_textbook4.pdf', NULL, 0, 'Approved', NULL, 'Published Research', 'Jul 21 2020', 5),
 (88, 'ISA-_An_Intelligent_Shopping_assistant.pdf', 'Despite the growth of e-commerce, brick-andmortar stores are still the preferred destinations for many people. In this paper, we\r\npresent ISA, a mobile-based intelligent shopping assistant that is designed to improve shopping experience in physical stores. ISA assists\r\nusers by leveraging advanced techniques in\r\ncomputer vision, speech processing, and natural language processing. An in-store user only\r\nneeds to take a picture or scan the barcode of\r\nthe product of interest, and then the user can\r\ntalk to the assistant about the product. The\r\nassistant can also guide the user through the\r\npurchase process or recommend other similar\r\nproducts to the user. We take a data-driven\r\napproach in building the engines of ISA’s natural language processing component, and the\r\nengines achieve good performance\r\n', 0, 'Approved', NULL, 'Presented Research', 'Jul 21 2020', 5),
-(89, 'Thesis1.pdf', 'test', 0, 'Rejected', 'wrong pdf', 'Completed Research', 'Jul 21 2020', 5);
+(89, 'Thesis1.pdf', 'test', 0, 'Rejected', 'wrong pdf', 'Completed Research', 'Jul 21 2020', 5),
+(90, 'aers_data29.pdf', 'ads', 0, 'Unreviewed', NULL, 'Completed Research', 'Sep 17 2020', 2),
+(91, 'ACCOUTING_Module17.pdf', 'test2', 0, 'Approved', NULL, 'Completed Research', 'Sep 17 2020', 2),
+(92, 'SALES_AND_MARKETING_Module11.pdf', 'test3', 0, 'Approved', NULL, 'Completed Research', 'Sep 17 2020', 2),
+(93, 'aers_data25.pdf', 'test4', 0, 'Approved', NULL, 'Completed Research', 'Sep 17 2020', 2),
+(94, 'SALES_AND_MARKETING_Module12.pdf', 'test5', 0, 'Rejected', 'test', 'Completed Research', 'Sep 17 2020', 2);
 
 -- --------------------------------------------------------
 
@@ -382,7 +403,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `author`
 --
 ALTER TABLE `author`
-  MODIFY `author_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=202;
+  MODIFY `author_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=207;
 
 --
 -- AUTO_INCREMENT for table `comment`
@@ -394,7 +415,7 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT for table `completed`
 --
 ALTER TABLE `completed`
-  MODIFY `completed_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `completed_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT for table `creative_works`
@@ -418,7 +439,7 @@ ALTER TABLE `log`
 -- AUTO_INCREMENT for table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `presented`
@@ -430,7 +451,7 @@ ALTER TABLE `presented`
 -- AUTO_INCREMENT for table `publication`
 --
 ALTER TABLE `publication`
-  MODIFY `publication_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `publication_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 
 --
 -- AUTO_INCREMENT for table `published`
