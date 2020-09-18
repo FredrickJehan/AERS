@@ -99,7 +99,30 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title"><?php echo $row->title?></h5>
-              <p class="card-text"><?php echo $row->last_name?>, <?php echo $row->first_name?></p>
+              <p class="card-text">
+              <?php
+              $string = array();
+              $i = 0;
+              foreach($authors as $name){
+                if($row->publication_id == $name->publication_id){
+                  if(isset($name->middle_initial)){
+                    $string[$i] = $name->last_name . ", " . substr($name->first_name, 0, 1) . ". " . $name->middle_initial; 
+                  }else{
+                    $string[$i] = $name->last_name . ", " . substr($name->first_name, 0, 1) . "."; 
+                  }
+                  $i++;
+                }
+              }
+            ?>
+            <?php if(!empty($row->url)){ ?>
+              <?php echo implode(', ', $string) ?> (<?php echo $row->year?>). <i><?php echo $row->title?></i> (Master’s / Doctoral dissertation).
+              <?php echo $row->location?>: <?php echo $row->institution?>. Retrieved from <?php echo $row->url?>
+            <?php }else{ ?>
+              <?php echo implode(', ', $string) ?>
+              (<?php echo $row->year?>). <i><?php echo $row->title?></i> (Master’s / Doctoral dissertation).
+              <?php echo $row->location?>: <?php echo $row->institution?>.
+            <?php } ?>
+              </p>
               <a class="btn btn-primary" href="<?php echo base_url('view/'.$row->publication_id);?>">View</a>
             </div>
           </div>
@@ -116,7 +139,24 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title"><?php echo $row->title_presented?></h5>
-              <p class="card-text"><?php echo $row->last_name?>, <?php echo $row->first_name?></p>
+              <p class="card-text">
+              <?php
+              $string = array();
+              $i = 0;
+              foreach($authors as $name){
+                if($row->publication_id == $name->publication_id){
+                  if(isset($name->middle_initial)){
+                    $string[$i] = $name->last_name . ", " . substr($name->first_name, 0, 1) . ". " . $name->middle_initial; 
+                  }else{
+                    $string[$i] = $name->last_name . ", " . substr($name->first_name, 0, 1) . "."; 
+                  }
+                  $i++;
+                }
+              } 
+            ?>
+            <?php echo implode(', ', $string) ?> (<?php echo $row->date_presentation;?>). <i><?php echo $row->title_presented;?></i>. Paper presented at the
+            <?php echo $row->title_conference;?>, <?php echo $row->place_conference;?>.
+              </p>
               <a class="btn btn-primary" href="<?php echo base_url('view/'.$row->publication_id);?>">View</a>
             </div>
           </div>
@@ -141,7 +181,46 @@
               <?php }else{ ?>
                 <h5 class="card-title"><?php echo $row->title_conference ?></h5>
               <?php } ?>
-              <p class="card-text"><?php echo $row->last_name?>, <?php echo $row->first_name?></p>
+              <p class="card-text">
+              <?php
+                $string = array();
+                $i = 0;
+                foreach($authors as $name){
+                  if($row->publication_id == $name->publication_id){
+                    if(isset($name->middle_initial)){
+                      $string[$i] = $name->last_name . ", " . substr($name->first_name, 0, 1) . ". " . $name->middle_initial; 
+                    }else{
+                      $string[$i] = $name->last_name . ", " . substr($name->first_name, 0, 1) . "."; 
+                    }
+                    $i++;
+                  }
+                } 
+              ?>
+              <?php if($row->published_type == 'Journal Article'){ ?>
+                <?php echo implode(', ', $string) ?>
+                (<?php echo $row->year_published; ?>). <?php echo $row->title_article; ?>. <i><?php echo $row->title_journal; ?></i>.
+                <?php echo $row->vol_num; if(isset($row->issue_num)){ ?>(<?php echo $row->issue_num; ?>),<?php }else{ ?>, <?php } ?>
+                <?php echo $row->page_num; ?>.
+
+              <?php }elseif($row->published_type == 'Book / Textbook'){ ?>
+                <?php echo implode(', ', $string) ?> (<?php echo $row->year_published; ?>). <i><?php echo $row->title_book; ?></i>. 
+                <?php echo $row->place_of_publication; ?>: <?php echo $row->publisher; ?>.
+
+              <?php }elseif($row->published_type == 'Book Chapter'){ ?>
+                <?php echo implode(', ', $string) ?> (<?php echo $row->year_published; ?>). <?php echo $row->title_chapter; ?>.
+                <i><?php echo $row->title_book; ?></i> (<?php echo $row->page_num; ?>). <?php echo $row->place_of_publication; ?>: 
+                <?php echo $row->publisher; ?>.
+
+              <?php }else{ ?>
+                <?php echo implode(', ', $string) ?> (<?php echo $row->year_published; ?>). <?php echo $row->title_article; ?>. <?php echo $row->place_of_conference; ?> 
+                (<?php echo $row->page_num; ?>). <?php echo $row->place_of_publication; ?>: <?php echo $row->publisher; ?> 
+                <?php if(isset($row->url)){ ?>
+                  .Retrieved from<?php echo $row->url; ?>
+                <?php }else{ ?>.<?php } ?>
+
+              <?php } ?>
+              
+              </p>
               <a class="btn btn-primary" href="<?php echo base_url('view/'.$row->publication_id);?>">View</a>
             </div>
           </div>
@@ -158,7 +237,13 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title"><?php echo $row->title_work?></h5>
-              <p class="card-text"><?php echo $row->last_name?>, <?php echo $row->first_name?></p>
+              <p class="card-text">
+              <?php if(isset($row->middle_initial)){ ?>
+              <?php echo $row->title_work?> By <?php echo $row->first_name?> <?php echo $row->middle_initial?> <?php echo $row->last_name?>.
+              <?php }else{ ?>
+                <?php echo $row->title_work?> By <?php echo $row->first_name?> <?php echo $row->last_name?>.
+              <?php } ?>
+              </p>
               <a class="btn btn-primary" href="<?php echo base_url('view/'.$row->publication_id);?>">View</a>
             </div>
           </div>
