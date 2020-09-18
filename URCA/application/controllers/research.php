@@ -366,10 +366,16 @@ class Research extends CI_Controller{
         $middle_initial = $this->input->post('middle_initial');
         $last_name = $this->input->post('last_name');
 
+        $author = $this->research_model->getAuthor_id($publication_id);
+        $author_id = array();
+        $x = 0;
+        foreach($author as $row){
+            $author_id[$x] = $row->author_id;
+            $x++;
+        }
         for($i = 0; $i < count($first_name); $i++){
             if($i == 0){
                 $data1 = array(
-                    'publication_id' => $last_id,
                     'user_id' => $this->get_current_user(),
                     'first_name' => $first_name[$i],
                     'middle_initial' => $middle_initial[$i],
@@ -379,7 +385,6 @@ class Research extends CI_Controller{
                 );
             }else{
                 $data1 = array(
-                    'publication_id' => $last_id,
                     'user_id' => $this->get_current_user(),
                     'first_name' => $first_name[$i],
                     'middle_initial' => $middle_initial[$i],
@@ -388,7 +393,7 @@ class Research extends CI_Controller{
                     'author_type' => 'Extra'
                 );
             }
-            $this->research_model->author_update($author, $publication_id);
+            $this->research_model->author_update($data1, $author_id[$i]);
         }
             // $author = array(
             //     'publication_id' => $publication_id,

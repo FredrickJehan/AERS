@@ -148,11 +148,17 @@
                     </span>
                 </div>
                 <div class="form-group">
+                    <p><b>Note: Before clicking the edit button, please reupload file.</b></p>
+                </div>
+                <div class="form-group">
+                    <label>Current file: </label>
+                    <a href="<?=base_url().'pdf/'.$row->file;?>" target="_blank"><?php echo $row->file; ?></a>
+                </div>
+                <div class="form-group">
                     <label>
                         SUBMIT / UPLOAD in one file: Copy of front page, approval pages, table of contents for unpublished thesis*
                     </label>
                     <input type="file" name="file" class="form-control-file">
-                    <a href="<?=base_url().'pdf/'.$row->file;?>" target="_blank"><?php echo $row->file; ?></a>
                 </div>
                 <div class="form-group">
                     <label>Abstract</label>
@@ -179,7 +185,7 @@
             <!-- ./Thesis / Dissertation form -->
 
         <?php
-            }else if($row->completed_type == 'Technical / Research Report'){ ?>
+            }else{ ?>
                 <!-- Technical / Research form -->
                 <div id="technical">
                 <form method="post" action="<?php echo base_url('research/completed_update/'.$row->publication_id)?>" enctype="multipart/form-data">

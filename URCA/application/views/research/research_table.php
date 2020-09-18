@@ -15,20 +15,21 @@
     <?php
       foreach($completed_research as $row){ ?>
       <td><a href="<?php echo base_url('research/edit/'.$row->publication_id);?>">
-      <?php if(!empty($row->url)){
-          $string = array();
-          $i = 0;
-          foreach($authors as $name){
-            if($row->publication_id == $name->publication_id){
-              if(isset($name->middle_initial)){
-                $string[$i] = $name->last_name . ", " . substr($name->first_name, 0, 1) . ". " . $name->middle_initial; 
-              }else{
-                $string[$i] = $name->last_name . ", " . substr($name->first_name, 0, 1) . "."; 
-              }
-              $i++;
+      <?php
+        $string = array();
+        $i = 0;
+        foreach($authors as $name){
+          if($row->publication_id == $name->publication_id){
+            if(isset($name->middle_initial)){
+              $string[$i] = $name->last_name . ", " . substr($name->first_name, 0, 1) . ". " . $name->middle_initial; 
+            }else{
+              $string[$i] = $name->last_name . ", " . substr($name->first_name, 0, 1) . "."; 
             }
-          } 
-        ?>
+            $i++;
+          }
+        }
+      ?>
+      <?php if(!empty($row->url)){ ?>
         <?php echo implode(', ', $string) ?> (<?php echo $row->year?>). <i><?php echo $row->title?></i> (Master’s / Doctoral dissertation).
         <?php echo $row->location?>: <?php echo $row->institution?>. Retrieved from <?php echo $row->url?>
         </a></td>
