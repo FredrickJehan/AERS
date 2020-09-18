@@ -28,6 +28,11 @@ class research_model extends CI_Model{
         return $this->db->get();
     }
 
+    function publication_review($data, $id){
+        $this->db->where('publication_id', $id);
+        $this->db->update('publication', $data);
+    }
+    
     public function count_notif($submittor){
         $this->db->select('*');
         $this->db->from('notification');

@@ -159,8 +159,20 @@
                     <textarea name="abstract" class="form-control" rows="5"><?php echo $row->abstract?></textarea>
                 </div>
                 <div class="form-group" style="text-align:center;">
-                    <a href="#" class="btn btn-primary">Cancel</a>
-                    <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
+                <?php
+                    foreach($research_data as $row){
+                        if($user_type == 'Admin'){ ?>
+                            <input type="submit" name="submit" value="Edit" class="btn btn-primary"></input>
+                        <?php 
+                        }else if($user_type == 'Researcher' && $row->status == 'Unreviewed' || $row->status == 'Rejected'){ ?>
+                            <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
+                        <?php
+                        }else if($user_type == 'Researcher' && $row->status == 'Approved'){ ?>
+                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Unsubmit</a>
+                        <?php
+                        }
+                    }
+                ?>
                 </div>
                 </form>
             </div>
@@ -229,8 +241,17 @@
                         <a href="<?php echo base_url()?>" target="__blank" value="<?php echo $row->file?>"></a>
                     </div>
                     <div class="form-group" style="text-align:center;">
-                        <a href="#" class="btn btn-primary">Cancel</a>
-                        <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
+                    <?php
+                    foreach($research_data as $row){
+                        if($user_type == 'Admin'){ ?>
+                            <input type="submit" name="submit" value="Edit" class="btn btn-primary"></input>
+                        <?php 
+                        }else if($user_type == 'Researcher'){ ?>
+                            <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
+                        <?php
+                        }
+                    }
+                ?>
                     </div>
                     </form>
                 </div>
@@ -302,8 +323,17 @@
                         <input type="file" name="file" class="form-control-file">
                     </div>
                     <div class="form-group" style="text-align:center;">
-                        <a href="#" class="btn btn-primary">Cancel</a>
-                        <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
+                    <?php
+                    foreach($research_data as $row){
+                        if($user_type == 'Admin'){ ?>
+                            <input type="submit" name="submit" value="Edit" class="btn btn-primary"></input>
+                        <?php 
+                        }else if($user_type == 'Researcher'){ ?>
+                            <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
+                        <?php
+                        }
+                    }
+                ?>
                     </div>
                     </form>
                 </div>
@@ -373,8 +403,17 @@
                         <input type="file" name="file" class="form-control-file">
                     </div>
                     <div class="form-group" style="text-align:center;">
-                        <a href="#" class="btn btn-primary">Cancel</a>
-                        <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
+                    <?php
+                    foreach($research_data as $row){
+                        if($user_type == 'Admin'){ ?>
+                            <input type="submit" name="submit" value="Edit" class="btn btn-primary"></input>
+                        <?php 
+                        }else if($user_type == 'Researcher'){ ?>
+                            <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
+                        <?php
+                        }
+                    }
+                ?>
                     </div>
                     </form>
                 </div>
@@ -510,7 +549,17 @@
                     <input type="file" name="file" class="form-control-file" required>
                 </div>
                 <div class="form-group" style="text-align:center;">
-                    <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
+                <?php
+                    foreach($research_data as $row){
+                        if($user_type == 'Admin'){ ?>
+                            <input type="submit" name="submit" value="Edit" class="btn btn-primary"></input>
+                        <?php 
+                        }else if($user_type == 'Researcher'){ ?>
+                            <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
+                        <?php
+                        }
+                    }
+                ?>
                 </div>
                 </form>
             </div>
@@ -582,7 +631,17 @@
                         <input type="file" name="file" class="form-control-file" required>
                     </div>
                     <div class="form-group" style="text-align:center;">
-                        <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
+                    <?php
+                    foreach($research_data as $row){
+                        if($user_type == 'Admin'){ ?>
+                            <input type="submit" name="submit" value="Edit" class="btn btn-primary"></input>
+                        <?php 
+                        }else if($user_type == 'Researcher'){ ?>
+                            <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
+                        <?php
+                        }
+                    }
+                ?>
                     </div>
                     </form>
                 </div>
@@ -666,7 +725,17 @@
                         <input type="file" name="file" class="form-control-file" required>
                     </div>
                     <div class="form-group" style="text-align:center;">
-                        <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
+                    <?php
+                    foreach($research_data as $row){
+                        if($user_type == 'Admin'){ ?>
+                            <input type="submit" name="submit" value="Edit" class="btn btn-primary"></input>
+                        <?php 
+                        }else if($user_type == 'Researcher'){ ?>
+                            <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
+                        <?php
+                        }
+                    }
+                ?>
                     </div>
                     </form>
                 </div>
@@ -767,7 +836,17 @@
                     <input type="file" name="file" class="form-control-file">
                 </div>
                 <div class="form-group" style="text-align:center;">
-                    <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
+                <?php
+                    foreach($research_data as $row){
+                        if($user_type == 'Admin'){ ?>
+                            <input type="submit" name="submit" value="Edit" class="btn btn-primary"></input>
+                        <?php 
+                        }else if($user_type == 'Researcher'){ ?>
+                            <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
+                        <?php
+                        }
+                    }
+                ?>
                 </div>
                 </form>
             </div>
@@ -907,7 +986,17 @@
                     <input type="file" name="file" class="form-control-file" id="exampleFormControlFile1">
                 </div>
                 <div class="form-group" style="text-align:center;">
-                    <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
+                <?php
+                    foreach($research_data as $row){
+                        if($user_type == 'Admin'){ ?>
+                            <input type="submit" name="submit" value="Edit" class="btn btn-primary"></input>
+                        <?php 
+                        }else if($user_type == 'Researcher'){ ?>
+                            <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
+                        <?php
+                        }
+                    }
+                ?>
                 </div>
                 </form>
             </div>

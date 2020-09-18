@@ -102,6 +102,16 @@ class Research extends CI_Controller{
     }
     */
 
+    public function unsubmit(){
+        $publication_id = $this->uri->segment(3);
+        $data = array(
+            'status' => 'Unreviewed',
+        );
+        $this->research_model->publication_review($data, $publication_id);
+        redirect(base_url() . "research/edit/".$publication_id);
+
+    }
+
     public function search(){
         $keyword = $this->input->post('keyword');
         $data['search_result'] = $this->research_model->search_completed($keyword);
