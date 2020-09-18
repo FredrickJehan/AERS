@@ -37,6 +37,7 @@ class Research extends CI_Controller{
         $this->load->view('template/footer');
     }
 
+    /*
     public function search2(){
         $output = '';
         $query = '';
@@ -99,6 +100,7 @@ class Research extends CI_Controller{
         $output .='</table>';
         echo $output;
     }
+    */
 
     public function search(){
         $keyword = $this->input->post('keyword');
@@ -113,6 +115,7 @@ class Research extends CI_Controller{
 		$this->load->view('research/search', $data);
         $this->load->view('template/footer');
     }
+    
 
     public function notification(){
         if(isset($_POST["view"])){
@@ -146,6 +149,7 @@ class Research extends CI_Controller{
 
         }
     }
+
 
     public function research_table(){
         $user_id = $this->get_current_user();
@@ -227,7 +231,7 @@ class Research extends CI_Controller{
     public function edit(){
         $publication_id = $this->uri->segment(3); 
         $data['publication_type'] = $this->get_publication_type($publication_id); 
-        $data["author_data"] = $this->research_model->display_authors($publication_id);
+        $data["author_data"] = $this->research_model->fetch_all_authors();
 
         if($data['publication_type'] == 'Completed Research'){
             $data['research_data'] = $this->research_model->select_all_completed_view($publication_id); 

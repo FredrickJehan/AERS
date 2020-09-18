@@ -94,30 +94,29 @@
                 <label>Author*</label>
                 <input type='text' style="display:none" name="research_type" value='Thesis / Dissertation'></input>
                 <div class="form-row">
-                    <table class="table table-borderless" id="table_thesis">
+                    <table class="table table-borderless">
                         <tr>
                             <th>First Name*</th>
                             <th>Middle Initial(s)*</th>
                             <th>Last Name*</th>
-                            <th></th>
                         </tr>
+                        <?php foreach($author_data as $name){ 
+                            if($row->publication_id == $name->publication_id){ ?>
                         <tr>
                             <td>
-                                <input type="text" name="first_name[]" value="<?php echo $row->first_name?>" class="form-control" required>
+                                <input type="text" name="first_name[]" value="<?php echo $name->first_name?>" class="form-control" required>
                                 <span class="text-danger"><?php echo form_error("first_name[]");?></span>
                             </td>
                             <td>
-                                <input type="text" name="middle_initial[]" value="<?php echo $row->middle_name?>" class="form-control" required>
+                                <input type="text" name="middle_initial[]" value="<?php echo $name->middle_initial?>" class="form-control" required>
                                 <span class="text-danger"><?php echo form_error("middle_initial[]");?></span>
                             </td>
                             <td>
-                                <input type="text" name="last_name[]" value="<?php echo $row->last_name?> "class="form-control" required>
+                                <input type="text" name="last_name[]" value="<?php echo $name->last_name?> "class="form-control" required>
                                 <span class="text-danger"><?php echo form_error("last_name[]");?></span>
                             </td>
-                            <td>
-                                <input class="btn btn-primary" type="button" id="add_thesis" name="Add" value="Add">
-                            </td>
                         </tr>
+                        <?php } } ?>
                     </table>
                 </div>
                 <div class="form-row">
@@ -175,31 +174,30 @@
                     <p>Author*</p>
                     <input type='text' style="display:none" name="research_type" value='Technical / Research Report'></input>
                     <div class="form-row">
-                    <table class="table table-borderless" id="table_technical">
-                            <tr>
-                                <th>First Name*</th>
-                                <th>Middle Initial(s)*</th>
-                                <th>Last Name*</th>
-                                <th></th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="text" name="first_name[]" value="<?php echo $row->first_name?>" class="form-control" required>
-                                    <span class="text-danger"><?php echo form_error("first_name[]");?></span>
-                                </td>
-                                <td>
-                                    <input type="text" name="middle_initial[]" value="<?php echo $row->middle_name?>" class="form-control" required>
-                                    <span class="text-danger"><?php echo form_error("middle_initial[]");?></span>
-                                </td>
-                                <td>
-                                    <input type="text" name="last_name[]" value="<?php echo $row->last_name?> "class="form-control" required>
-                                    <span class="text-danger"><?php echo form_error("last_name[]");?></span>
-                                </td>
-                                <td>
-                                    <input class="btn btn-primary" type="button" id="add_technical" name="Add" value="Add">
-                                </td>
-                            </tr>
-                        </table>
+                    <table class="table table-borderless">
+                        <tr>
+                            <th>First Name*</th>
+                            <th>Middle Initial(s)*</th>
+                            <th>Last Name*</th>
+                        </tr>
+                        <?php foreach($author_data as $name){ 
+                            if($row->publication_id == $name->publication_id){ ?>
+                        <tr>
+                            <td>
+                                <input type="text" name="first_name[]" value="<?php echo $name->first_name?>" class="form-control" required>
+                                <span class="text-danger"><?php echo form_error("first_name[]");?></span>
+                            </td>
+                            <td>
+                                <input type="text" name="middle_initial[]" value="<?php echo $name->middle_initial?>" class="form-control" required>
+                                <span class="text-danger"><?php echo form_error("middle_initial[]");?></span>
+                            </td>
+                            <td>
+                                <input type="text" name="last_name[]" value="<?php echo $name->last_name?> "class="form-control" required>
+                                <span class="text-danger"><?php echo form_error("last_name[]");?></span>
+                            </td>
+                        </tr>
+                        <?php } } ?>
+                    </table>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-2">
@@ -249,31 +247,30 @@
                     <input type='text' style="display:none" name="research_type" value='Conference Paper'></input>
                     <!--<php foreach($author_data as $row){ ?>-->
                         <div class="form-row">
-                        <table class="table table-borderless" id="table_conference">
-                            <tr>
-                                <th>First Name*</th>
-                                <th>Middle Initial(s)*</th>
-                                <th>Last Name*</th>
-                                <th></th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="text" name="first_name[]" value="<?php echo $row->first_name?>" class="form-control" required>
-                                    <span class="text-danger"><?php echo form_error("first_name[]");?></span>
-                                </td>
-                                <td>
-                                    <input type="text" name="middle_initial[]" value="<?php echo $row->middle_name?>" class="form-control" required>
-                                    <span class="text-danger"><?php echo form_error("middle_initial[]");?></span>
-                                </td>
-                                <td>
-                                    <input type="text" name="last_name[]" value="<?php echo $row->last_name?> "class="form-control" required>
-                                    <span class="text-danger"><?php echo form_error("last_name[]");?></span>
-                                </td>
-                                <td>
-                                    <input class="btn btn-primary" type="button" id="add_conference" name="Add" value="Add">
-                                </td>
-                            </tr>
-                        </table>
+                        <table class="table table-borderless">
+                        <tr>
+                            <th>First Name*</th>
+                            <th>Middle Initial(s)*</th>
+                            <th>Last Name*</th>
+                        </tr>
+                        <?php foreach($author_data as $name){ 
+                            if($row->publication_id == $name->publication_id){ ?>
+                        <tr>
+                            <td>
+                                <input type="text" name="first_name[]" value="<?php echo $name->first_name?>" class="form-control" required>
+                                <span class="text-danger"><?php echo form_error("first_name[]");?></span>
+                            </td>
+                            <td>
+                                <input type="text" name="middle_initial[]" value="<?php echo $name->middle_initial?>" class="form-control" required>
+                                <span class="text-danger"><?php echo form_error("middle_initial[]");?></span>
+                            </td>
+                            <td>
+                                <input type="text" name="last_name[]" value="<?php echo $name->last_name?> "class="form-control" required>
+                                <span class="text-danger"><?php echo form_error("last_name[]");?></span>
+                            </td>
+                        </tr>
+                        <?php } } ?>
+                    </table>
                     </div>               
                     <!--<php }?> -->
                     <div class="form-row">
@@ -320,30 +317,29 @@
                     <div class="form-group"><label>Author*</label></div>
                     <input type='number' style="display:none" name="research_type" value='Conference Paper'></input>
                     <div class="form-row">
-                    <table class="table table-borderless" id="table_poster">
+                    <table class="table table-borderless">
                         <tr>
                             <th>First Name*</th>
                             <th>Middle Initial(s)*</th>
                             <th>Last Name*</th>
-                            <th></th>
                         </tr>
+                        <?php foreach($author_data as $name){ 
+                            if($row->publication_id == $name->publication_id){ ?>
                         <tr>
                             <td>
-                                <input type="text" name="first_name[]" value="<?php echo $row->first_name?>" class="form-control" required>
+                                <input type="text" name="first_name[]" value="<?php echo $name->first_name?>" class="form-control" required>
                                 <span class="text-danger"><?php echo form_error("first_name[]");?></span>
                             </td>
                             <td>
-                                <input type="text" name="middle_initial[]" value="<?php echo $row->middle_name?>" class="form-control" required>
+                                <input type="text" name="middle_initial[]" value="<?php echo $name->middle_initial?>" class="form-control" required>
                                 <span class="text-danger"><?php echo form_error("middle_initial[]");?></span>
                             </td>
                             <td>
-                                <input type="text" name="last_name[]" value="<?php echo $row->last_name?> "class="form-control" required>
+                                <input type="text" name="last_name[]" value="<?php echo $name->last_name?> "class="form-control" required>
                                 <span class="text-danger"><?php echo form_error("last_name[]");?></span>
                             </td>
-                            <td>
-                                <input class="btn btn-primary" type="button" id="add_poster" name="Add" value="Add">
-                            </td>
                         </tr>
+                        <?php } } ?>
                     </table>
                     </div>
                     <div class="form-row">
@@ -397,30 +393,29 @@
                 </div>
                 <input type='text' style="display:none" name="research_type" value="Journal Article"></input>
                 <div class="form-row">
-                    <table class="table table-borderless" id="table_journal">
+                <table class="table table-borderless">
                         <tr>
                             <th>First Name*</th>
                             <th>Middle Initial(s)*</th>
                             <th>Last Name*</th>
-                            <th></th>
                         </tr>
+                        <?php foreach($author_data as $name){ 
+                            if($row->publication_id == $name->publication_id){ ?>
                         <tr>
                             <td>
-                                <input type="text" name="first_name[]" value="<?php echo $row->first_name?>" class="form-control" required>
+                                <input type="text" name="first_name[]" value="<?php echo $name->first_name?>" class="form-control" required>
                                 <span class="text-danger"><?php echo form_error("first_name[]");?></span>
                             </td>
                             <td>
-                                <input type="text" name="middle_initial[]" value="<?php echo $row->middle_name?>" class="form-control" required>
+                                <input type="text" name="middle_initial[]" value="<?php echo $name->middle_initial?>" class="form-control" required>
                                 <span class="text-danger"><?php echo form_error("middle_initial[]");?></span>
                             </td>
                             <td>
-                                <input type="text" name="last_name[]" value="<?php echo $row->last_name?> "class="form-control" required>
+                                <input type="text" name="last_name[]" value="<?php echo $name->last_name?> "class="form-control" required>
                                 <span class="text-danger"><?php echo form_error("last_name[]");?></span>
                             </td>
-                            <td>
-                                <input class="btn btn-primary" type="button" id="add_journal" name="Add" value="Add">
-                            </td>
                         </tr>
+                        <?php } } ?>
                     </table>
                 </div>
                 <div class="form-row">
@@ -529,31 +524,30 @@
                     </div>
                     <input type='text' style="display:none" name="research_type" value="Book / Textbook"></input>
                     <div class="form-row">
-                        <table class="table table-borderless" id="table_book">
-                            <tr>
-                                <th>First Name*</th>
-                                <th>Middle Initial(s)*</th>
-                                <th>Last Name*</th>
-                                <th></th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="text" name="first_name[]" value="<?php echo $row->first_name?>" class="form-control" required>
-                                    <span class="text-danger"><?php echo form_error("first_name[]");?></span>
-                                </td>
-                                <td>
-                                    <input type="text" name="middle_initial[]" value="<?php echo $row->middle_name?>" class="form-control" required>
-                                    <span class="text-danger"><?php echo form_error("middle_initial[]");?></span>
-                                </td>
-                                <td>
-                                    <input type="text" name="last_name[]" value="<?php echo $row->last_name?> "class="form-control" required>
-                                    <span class="text-danger"><?php echo form_error("last_name[]");?></span>
-                                </td>
-                                <td>
-                                    <input class="btn btn-primary" type="button" id="add_book" name="Add" value="Add">
-                                </td>
-                            </tr>
-                        </table>
+                    <table class="table table-borderless">
+                        <tr>
+                            <th>First Name*</th>
+                            <th>Middle Initial(s)*</th>
+                            <th>Last Name*</th>
+                        </tr>
+                        <?php foreach($author_data as $name){ 
+                            if($row->publication_id == $name->publication_id){ ?>
+                        <tr>
+                            <td>
+                                <input type="text" name="first_name[]" value="<?php echo $name->first_name?>" class="form-control" required>
+                                <span class="text-danger"><?php echo form_error("first_name[]");?></span>
+                            </td>
+                            <td>
+                                <input type="text" name="middle_initial[]" value="<?php echo $name->middle_initial?>" class="form-control" required>
+                                <span class="text-danger"><?php echo form_error("middle_initial[]");?></span>
+                            </td>
+                            <td>
+                                <input type="text" name="last_name[]" value="<?php echo $name->last_name?> "class="form-control" required>
+                                <span class="text-danger"><?php echo form_error("last_name[]");?></span>
+                            </td>
+                        </tr>
+                        <?php } } ?>
+                    </table>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-3">
@@ -603,31 +597,30 @@
                     </div>
                     <input type='text' style="display:none" name="research_type" value="Book Chapter"></input>
                     <div class="form-row">
-                        <table class="table table-borderless" id="table_bookchap">
-                            <tr>
-                                <th>First Name*</th>
-                                <th>Middle Initial(s)*</th>
-                                <th>Last Name*</th>
-                                <th></th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="text" name="first_name[]" value="<?php echo $row->first_name?>" class="form-control" required>
-                                    <span class="text-danger"><?php echo form_error("first_name[]");?></span>
-                                </td>
-                                <td>
-                                    <input type="text" name="middle_initial[]" value="<?php echo $row->middle_name?>" class="form-control" required>
-                                    <span class="text-danger"><?php echo form_error("middle_initial[]");?></span>
-                                </td>
-                                <td>
-                                    <input type="text" name="last_name[]" value="<?php echo $row->last_name?> "class="form-control" required>
-                                    <span class="text-danger"><?php echo form_error("last_name[]");?></span>
-                                </td>
-                                <td>
-                                    <input class="btn btn-primary" type="button" id="add_bookchap" name="Add" value="Add">
-                                </td>
-                            </tr>
-                        </table>
+                    <table class="table table-borderless">
+                        <tr>
+                            <th>First Name*</th>
+                            <th>Middle Initial(s)*</th>
+                            <th>Last Name*</th>
+                        </tr>
+                        <?php foreach($author_data as $name){ 
+                            if($row->publication_id == $name->publication_id){ ?>
+                        <tr>
+                            <td>
+                                <input type="text" name="first_name[]" value="<?php echo $name->first_name?>" class="form-control" required>
+                                <span class="text-danger"><?php echo form_error("first_name[]");?></span>
+                            </td>
+                            <td>
+                                <input type="text" name="middle_initial[]" value="<?php echo $name->middle_initial?>" class="form-control" required>
+                                <span class="text-danger"><?php echo form_error("middle_initial[]");?></span>
+                            </td>
+                            <td>
+                                <input type="text" name="last_name[]" value="<?php echo $name->last_name?> "class="form-control" required>
+                                <span class="text-danger"><?php echo form_error("last_name[]");?></span>
+                            </td>
+                        </tr>
+                        <?php } } ?>
+                    </table>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-2">
@@ -687,30 +680,29 @@
                 </div>
                 <input type='text' style="display:none" name="research_type" value="Conference Proceedings"></input>
                 <div class="form-row">
-                    <table class="table table-borderless" id="table_conproc">
+                <table class="table table-borderless">
                         <tr>
                             <th>First Name*</th>
                             <th>Middle Initial(s)*</th>
                             <th>Last Name*</th>
-                            <th></th>
                         </tr>
+                        <?php foreach($author_data as $name){ 
+                            if($row->publication_id == $name->publication_id){ ?>
                         <tr>
                             <td>
-                                <input type="text" name="first_name[]" value="<?php echo $row->first_name?>" class="form-control" required>
+                                <input type="text" name="first_name[]" value="<?php echo $name->first_name?>" class="form-control" required>
                                 <span class="text-danger"><?php echo form_error("first_name[]");?></span>
                             </td>
                             <td>
-                                <input type="text" name="middle_initial[]" value="<?php echo $row->middle_name?>" class="form-control" required>
+                                <input type="text" name="middle_initial[]" value="<?php echo $name->middle_initial?>" class="form-control" required>
                                 <span class="text-danger"><?php echo form_error("middle_initial[]");?></span>
                             </td>
                             <td>
-                                <input type="text" name="last_name[]" value="<?php echo $row->last_name?> "class="form-control" required>
+                                <input type="text" name="last_name[]" value="<?php echo $name->last_name?> "class="form-control" required>
                                 <span class="text-danger"><?php echo form_error("last_name[]");?></span>
                             </td>
-                            <td>
-                                <input class="btn btn-primary" type="button" id="add_conproc" name="Add" value="Add">
-                            </td>
                         </tr>
+                        <?php } } ?>
                     </table>
                 </div>
                 <div class="form-row">
@@ -796,7 +788,7 @@
                     </div>
                     <div class="form-group col-md-2">
                         <label>M.I.(S)*</label>
-                        <input type="text" name="middle_initial[]" value="<?php echo $row->middle_name?>" class="form-control" required>
+                        <input type="text" name="middle_initial[]" value="<?php echo $row->middle_initial?>" class="form-control" required>
                     </div>
                     <div class="form-group col-md-5">
                         <label>Lastname*</label>
@@ -928,6 +920,7 @@
 </div>
 
 <script type="text/javascript">
+    /*
     $(document).ready(function(){
         //html
         var thesis ='<tr><td><input type="text" name="first_name[]" class="form-control" required></td><td><input type="text" name="middle_initial[]" class="form-control" required></td><td><input type="text" name="last_name[]" class="form-control" required></td><td><input class="btn btn-danger"type="button" id="remove_thesis" name="remove" value="Remove"></td></tr>';
@@ -1026,4 +1019,5 @@
             min--;
         });
     });
+    */
 </script>
