@@ -27,42 +27,49 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('guestdesign/css/main.css');?>">
 <!--===============================================================================================-->
 </head>
+<style>
+
+</style>
 <?php
 if (isset($this->session->userdata['logged_in'])) {
     redirect(base_url() . 'dashboard');
 }
 ?>
 <body>
-	
+	<section class="bg-light">
 	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100 p-t-50 p-b-90">
-			<?php echo form_open('dashboard'); ?>
-				<form class="login100-form validate-form flex-sb flex-w">
-					<span class="login100-form-title p-b-51">
-						Login
-					</span>
-					<div class="wrap-input100 validate-input m-b-16">
-						<input class="input100" type="text" name="username" id="username" placeholder="Username">
-						<span class="focus-input100"></span>
-					</div>
-					
-					
-					<div class="wrap-input100 validate-input m-b-16">
-						<input class="input100" type="password" name="password" id= "password" placeholder="Password">
-						<span class="focus-input100"></span>
-					</div>
+		<div class="container">
+			<div class="card mx-auto mb-4 mt-4" style="width: 22rem;">
+				<div class="card-body">
+				<div class="wrap-login100 p-t-40 p-b-80">
+				<?php echo form_open('dashboard'); ?>
+					<form class="login100-form validate-form flex-sb flex-w">
+						<span class="login100-form-title p-b-51">
+							AERS
+						</span>
+						<div class="wrap-input100 validate-input m-b-16">
+							<input class="input100" type="text" name="username" id="username" placeholder="Username">
+							<span class="focus-input100"></span>
+						</div>
+						
+						
+						<div class="wrap-input100 validate-input m-b-16">
+							<input class="input100" type="password" name="password" id= "password" placeholder="Password">
+							<span class="focus-input100"></span>
+						</div>
 
-					<div class="container-login100-form-btn m-t-17">
-						<button class="login100-form-btn " type="submit" value="Login" class="btn float-right login_btn">
-						Login
-						</button>
-					</div>
+						<div class="container-login100-form-btn m-t-17">
+							<button class="login100-form-btn " type="submit" value="Login" class="btn float-right login_btn">
+							Login
+							</button>
+						</div>
 
-				</form>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
+	</section>
 	
 
 	<div id="dropDownSelect1"></div>
