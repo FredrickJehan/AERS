@@ -565,8 +565,15 @@ class research_model extends CI_Model{
         $this->db->update("creative_works", $data);
     }
 
+    public function getAuthor_id($publication_id){
+        $this->db->select('author_id');
+        $this->db->from('author');
+        $this->db->where('publication_id', $publication_id);
+        return $this->db->get()->result();
+    }
+
     public function author_update($data, $id){  
-        $this->db->where('publication_id', $id);
+        $this->db->where('author_id', $id);
         $this->db->update("author", $data);
     }
 
