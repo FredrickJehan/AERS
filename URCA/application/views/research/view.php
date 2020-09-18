@@ -32,213 +32,253 @@
         <?php
             }else if($row->completed_type == 'Technical / Research Report'){?>
     <!-- Technical / Research form -->
-    <div id="technical">
-    <form method="post" action="<?php echo base_url('research/completed_update/'.$row->publication_id)?>" enctype="multipart/form-data">
-        <p>Author*</p>
-        <input type='text' style="display:none" name="research_type" value='Technical / Research Report'></input>
-        <div class="form-row">
-            <div class="form-group col-md-5">
-                <label>First Name*</label>
-                <input type="text" name="first_name[]" value="<?php echo $row->first_name?>" class="form-control">
-                <span class="text-danger"><?php echo form_error("first_name");?></span>
-            </div>
-            <div class="form-group col-md-2">
-                <label>Middle Initial(s)*</label>
-                <input type="text" name="middle_initial[]" value="<?php echo $row->middle_initial?>" class="form-control">
-                <span class="text-danger"><?php echo form_error("middle_initial");?></span>
-            </div>
-            <div class="form-group col-md-5">
-                <label>Last Name*</label>
-                <input type="text" name="last_name[]" value="<?php echo $row->last_name?>" class="form-control">
-                <span class="text-danger"><?php echo form_error("last_name");?></span>
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-2">
-                <label>Year Completed*</label>
-                <input type="number" name="year" value="<?php echo $row->year?>" class="form-control">
-                <span class="text-danger"><?php echo form_error("year");?></span>
-            </div>
-            <div class="form-group col-md-10">
-                <label>Title of Report*</label>
-                <input type="text" name="title" value="<?php echo $row->title?>" class="form-control">
-                <span class="text-danger"><?php echo form_error("title");?></span>
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-7">
-                <label>Institution which commissioned the report / where report was completed*</label>
-                <input type="text" name="institution" value="<?php echo $row->institution?>" class="form-control">
-                <span class="text-danger"><?php echo form_error("institution");?></span>
-            </div>
-            <div class="form-group col-md-5">
-                <label>Location of Institute*</label>
-                <input type="text" name="location" value="<?php echo $row->location?>" class="form-control">
-                <span class="text-danger"><?php echo form_error("location");?></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label>SUBMIT / UPLOAD in one file: Copy of full technical report*</label>
-            <input type="file" name="file" value="<?php echo $row->file?>" class="form-control-file">
-            <a href="<?php echo base_url()?>" target="__blank" value="<?php echo $row->file?>"></a>
-        </div>
-        <div class="form-group" style="text-align:center;">
-            <a href="#" class="btn btn-primary">Cancel</a>
-            <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
-        </div>
-        </form>
-    </div>
+    <table class="table table-bordered ">
+        <tbody>
+            <tr>
+                <td width="200"><b>Title of Research</b></td>
+                <td><?php echo $row->title?></td>
+            </tr>
+            <tr>
+                <td width="200"><b>Author Name</b></td>
+                <td><?php echo $row->last_name?>, <?php echo $row->first_name?> <?php echo $row->middle_initial?></td>
+            </tr>  
+            <tr>
+                <td width="200"><b>Abstract</b></td>
+                <td><?php echo $row->abstract?></td>
+            </tr>
+            <tr>
+                <td>
+               <a href="<?=base_url().'pdf/'.$row->file;?>" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i>Download PDF</a>
+                </td>
+            </tr>
+        </tbody>
+        </table>
     <!-- ./Technical / Research form -->
         <?php }   
         }
     }else if($publication_type == 'Presented Research'){
         foreach($research_data as $row){
-            if($row->presented_type == 'Conference Paper'){?>
+            if($row->presented_type == 'Conference Paper'){ ?>
     <!-- Conference Paper form -->
-    <div id="conference">
-    <form method="post" action="<?php echo base_url('research/presented_update/'.$row->publication_id)?>" enctype="multipart/form-data">
-        <label>Author*</label>
-        <input type='text' style="display:none" name="research_type" value='Conference Paper'></input>
-        <?php foreach($author_data as $row){ ?>
-            <div class="form-row">
-            <div class="form-group col-md-5">
-                <label>First Name*</label>
-                <input type="text" name="first_name[]" value="<?php echo $row->first_name?>" class="form-control">
-                <span class="text-danger"><?php echo form_error("first_name");?></span>
-            </div>
-            <div class="form-group col-md-2">
-                <label>Middle Initial(s)*</label>
-                <input type="text" name="middle_initial[]" value="<?php echo $row->middle_initial?>" class="form-control">
-                <span class="text-danger"><?php echo form_error("middle_initial");?></span>
-            </div>
-            <div class="form-group col-md-5">
-                <label>Last Name*</label>
-                <input type="text" name="last_name[]" value="<?php echo $row->last_name?>" class="form-control">
-                <span class="text-danger"><?php echo form_error("last_name");?></span>
-            </div>
-        </div>               
-        <?php }?>
-        <?php foreach($research_data as $row){ ?>
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                <label>Year completed*</label>
-                <input type="month" name="month_year" value="<?php echo $row->date_presentation?>" class="form-control">
-                <span class="text-danger"><?php echo form_error("month_year");?></span>
-            </div>
-            <div class="form-group col-md-8">
-                <label>Title of paper*</label>
-                <input type="text" name="title" value="<?php echo $row->title_presented?>" class="form-control">
-                <span class="text-danger"><?php echo form_error("title");?></span>
-            </div>
-        </div>
-        <div class="form-row">
-        <div class="form-group col-md-8">
-            <label>Full title of conference*</label>
-            <input type="text" name="title_conference" value="<?php echo $row->title_conference?>" class="form-control">
-            <span class="text-danger"><?php echo form_error("title_conference");?></span>
-        </div>
-        <div class="form-group col-md-4">
-            <label>Place of conference*</label>
-            <input type="text" name="place_conference" value="<?php echo $row->place_conference?>" class="form-control">
-            <span class="text-danger"><?php echo form_error("place_conference");?></span>
-        </div>
-        </div>
-        <div class="form-group">
-            <label>SUBMIT / UPLOAD in one file (jpg or pdf): Copy of Certificate of Presentation</label>
-            <input type="file" name="file" class="form-control-file">
-        </div>
-        <div class="form-group" style="text-align:center;">
-            <a href="#" class="btn btn-primary">Cancel</a>
-            <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
-        </div>
-        </form>
-    </div>
-        <?php } ?>
+    <table class="table table-bordered ">
+        <tbody>
+            <tr>
+                <td width="200"><b>Title of Research</b></td>
+                <td><?php echo $row->title_presented?></td>
+            </tr>
+            <tr>
+            <td width="200"><b>Authors Name</b></td>
+            <td>
+            <?php foreach($author_data as $name){ 
+                if($row->publication_id == $name->publication_id){ ?>
+                    <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
+            <?php } } ?>
+            </td>
+            </tr>  
+            <tr>
+                <td width="200"><b>Abstract</b></td>
+                <td><?php echo $row->abstract?></td>
+            </tr>
+            <tr>
+                <td>
+               <a href="<?=base_url().'pdf/'.$row->file;?>" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i>Download PDF</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
     <!-- ./Conference Paper form -->
 
-            <?php
-            }else if($row->presented_type == 'Conference Poster'){?>
+        <?php
+            }else if($row->presented_type == 'Conference Poster'){ ?>
     <!-- Conference Poster form -->
-    <div id="poster">
-    <form method="post" action="<?php echo base_url('research/presented_update/'.$row->publication_id)?>" enctype="multipart/form-data">
-        <div class="form-group"><label>Author*</label></div>
-        <input type='number' style="display:none" name="research_type" value='Conference Paper'></input>
-        <div class="form-row">
-            <div class="form-group col-md-5">
-                <label>First Name*</label>
-                <input type="text" name="first_name[]" value="<?php echo $row->first_name?>" class="form-control">
-                <span class="text-danger"><?php echo form_error("first_name");?></span>
-            </div>
-            <div class="form-group col-md-2">
-                <label>Middle Initial(s)*</label>
-                <input type="text" name="middle_initial[]" value="<?php echo $row->middle_initial?>" class="form-control">
-                <span class="text-danger"><?php echo form_error("middle_initial");?></span>
-            </div>
-            <div class="form-group col-md-5">
-                <label>Last Name*</label>
-                <input type="text" name="last_name[]" value="<?php echo $row->last_name?>" class="form-control">
-                <span class="text-danger"><?php echo form_error("last_name");?></span>
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                <label>Year completed*</label>
-                <input type="month" name="month_year" value="<?php echo $row->date_presentation?>" class="form-control">
-                <span class="text-danger"><?php echo form_error("month_year");?></span>
-            </div>
-            <div class="form-group col-md-8">
-                <label>Title of Poster*</label>
-                <input type="text" name="title" value="<?php echo $row->title_presented?>" class="form-control">
-                <span class="text-danger"><?php echo form_error("title");?></span>
-            </div>
-        </div>
-        <div class="form-row">
-        <div class="form-group col-md-8">
-            <label>Full title of conference*</label>
-            <input type="text" name="title_conference" value="<?php echo $row->title_conference?>" class="form-control">
-            <span class="text-danger"><?php echo form_error("title_conference");?></span>
-        </div>
-        <div class="form-group col-md-4">
-            <label>Place of conference*</label>
-            <input type="text" name="place_conference" value="<?php echo $row->place_conference?>" class="form-control">
-            <span class="text-danger"><?php echo form_error("place_conference");?></span>
-        </div>
-        </div>
-        <div class="form-group">
-            <label>
-            SUBMIT / UPLOAD in one file: Copy of poster, picture of presenter with poster as background and/or Certificate of Poster Presentation
-            </label>
-            <input type="file" name="file" class="form-control-file">
-        </div>
-        <div class="form-group" style="text-align:center;">
-            <a href="#" class="btn btn-primary">Cancel</a>
-            <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
-        </div>
-        </form>
-    </div>
+    <table class="table table-bordered ">
+        <tbody>
+            <tr>
+                <td width="200"><b>Title of Research</b></td>
+                <td><?php echo $row->title_presented?></td>
+            </tr>
+            <tr>
+            <td width="200"><b>Authors Name</b></td>
+            <td>
+            <?php foreach($author_data as $name){ 
+                if($row->publication_id == $name->publication_id){ ?>
+                    <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
+            <?php } } ?>
+            </td>
+            </tr>  
+            <tr>
+                <td width="200"><b>Abstract</b></td>
+                <td><?php echo $row->abstract?></td>
+            </tr>
+            <tr>
+                <td>
+               <a href="<?=base_url().'pdf/'.$row->file;?>" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i>Download PDF</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
     <!-- ./Conference Poster form -->
+        <?php }  } 
 
-            <?php }   
-        }
     }else if($publication_type == '3'){
         foreach($research_data as $row){
-            if($row->presented_type == '5'){
-                //journal article
-            }else if($row->presented_type == '6'){
-                //textbook
-            }else if($row->presented_type == '7'){
-                //chapter
-            }else{
-                //proceedings
+            if($row->presented_type == '5'){ ?>
+        <!-- Journal Article form -->
+        <table class="table table-bordered ">
+        <tbody>
+            <tr>
+                <td width="200"><b>Title of Research</b></td>
+                <td><?php echo $row->title_article?></td>
+            </tr>
+            <tr>
+            <td width="200"><b>Authors Name</b></td>
+            <td>
+            <?php foreach($author_data as $name){ 
+                if($row->publication_id == $name->publication_id){ ?>
+                    <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
+            <?php } } ?>
+            </td>
+            </tr>  
+            <tr>
+                <td width="200"><b>Abstract</b></td>
+                <td><?php echo $row->abstract?></td>
+            </tr>
+            <tr>
+                <td>
+               <a href="<?=base_url().'pdf/'.$row->file;?>" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i>Download PDF</a>
+                </td>
+            </tr>
+        </tbody>
+        </table>
+        <!-- ./Journal Article form -->
+            <?php 
+            }else if($row->presented_type == '6'){ ?>
+        <!-- Textbook form -->
+        <table class="table table-bordered ">
+        <tbody>
+            <tr>
+                <td width="200"><b>Title of Research</b></td>
+                <td><?php echo $row->title_article?></td>
+            </tr>
+            <tr>
+            <td width="200"><b>Authors Name</b></td>
+            <td>
+            <?php foreach($author_data as $name){ 
+                if($row->publication_id == $name->publication_id){ ?>
+                    <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
+            <?php } } ?>
+            </td>
+            </tr>  
+            <tr>
+                <td width="200"><b>Abstract</b></td>
+                <td><?php echo $row->abstract?></td>
+            </tr>
+            <tr>
+                <td>
+               <a href="<?=base_url().'pdf/'.$row->file;?>" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i>Download PDF</a>
+                </td>
+            </tr>
+        </tbody>
+        </table>
+        <!-- ./Textbook form -->
+            <?php 
+            }else if($row->presented_type == '7'){ ?>
+        <!-- Chapter form -->
+        <table class="table table-bordered ">
+        <tbody>
+            <tr>
+                <td width="200"><b>Title of Research</b></td>
+                <td><?php echo $row->title_article?></td>
+            </tr>
+            <tr>
+            <td width="200"><b>Authors Name</b></td>
+            <td>
+            <?php foreach($author_data as $name){ 
+                if($row->publication_id == $name->publication_id){ ?>
+                    <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
+            <?php } } ?>
+            </td>
+            </tr>  
+            <tr>
+                <td width="200"><b>Abstract</b></td>
+                <td><?php echo $row->abstract?></td>
+            </tr>
+            <tr>
+                <td>
+               <a href="<?=base_url().'pdf/'.$row->file;?>" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i>Download PDF</a>
+                </td>
+            </tr>
+        </tbody>
+        </table>
+        <!-- ./Chapter form -->
+            <?php 
+            }else{ ?>
+        <!-- Proceedings form -->
+        <table class="table table-bordered ">
+        <tbody>
+            <tr>
+                <td width="200"><b>Title of Research</b></td>
+                <td><?php echo $row->title_article?></td>
+            </tr>
+            <tr>
+            <td width="200"><b>Authors Name</b></td>
+            <td>
+            <?php foreach($author_data as $name){ 
+                if($row->publication_id == $name->publication_id){ ?>
+                    <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
+            <?php } } ?>
+            </td>
+            </tr>  
+            <tr>
+                <td width="200"><b>Abstract</b></td>
+                <td><?php echo $row->abstract?></td>
+            </tr>
+            <tr>
+                <td>
+               <a href="<?=base_url().'pdf/'.$row->file;?>" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i>Download PDF</a>
+                </td>
+            </tr>
+        </tbody>
+        </table>
+        <!-- ./Proceedings form -->
+            <?php 
             }
         }
         
     }else{
-        // foreach($research_data as $row){
-        //     if($row->presented_type == '4'){
-            
-        //     }
-    }
+        foreach($research_data as $row){
+            if($row->presented_type == '4'){ ?>
+        <!-- Creative Work form-->
+        <table class="table table-bordered ">
+        <tbody>
+            <tr>
+                <td width="200"><b>Title of Research</b></td>
+                <td><?php echo $row->title_work?></td>
+            </tr>
+            <tr>
+            <td width="200"><b>Authors Name</b></td>
+            <td>
+            <?php foreach($author_data as $name){ 
+                if($row->publication_id == $name->publication_id){ ?>
+                    <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
+            <?php } } ?>
+            </td>
+            </tr>  
+            <tr>
+                <td width="200"><b>Abstract</b></td>
+                <td><?php echo $row->abstract?></td>
+            </tr>
+            <tr>
+                <td>
+               <a href="<?=base_url().'pdf/'.$row->file;?>" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i>Download PDF</a>
+                </td>
+            </tr>
+        </tbody>
+        </table>
+        <!-- ./Creative Work form-->
+        <?php 
+        }
+    } }
 ?>
 </div>
 </div>
