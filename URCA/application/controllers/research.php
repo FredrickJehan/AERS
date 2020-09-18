@@ -102,6 +102,12 @@ class Research extends CI_Controller{
     }
     */
 
+    public function like(){
+        $publication_id = $this->uri->segment(3);
+        $this->research_model->like($publication_id);
+        redirect(base_url() . "research/view/".$publication_id);
+    }
+
     public function unsubmit(){
         $publication_id = $this->uri->segment(3);
         $data = array(
@@ -188,6 +194,7 @@ class Research extends CI_Controller{
 
     public function research_view(){
         $publication_id = $this->uri->segment(3); 
+        $data['like_data'] = $this->research_model->like_count($publication_id);
         $data['publication_type'] = $this->get_publication_type($publication_id); 
         $data["author_data"] = $this->research_model->fetch_all_authors();
         

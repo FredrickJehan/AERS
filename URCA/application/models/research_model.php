@@ -9,6 +9,19 @@ class research_model extends CI_Model{
         return $this->db->get()->row()->user_id;
     }
 
+    public function like($id){
+        $this->db->set('num_views', 'num_views+1', FALSE);
+        $this->db->where('publication_id', $id);
+        $this->db->update('publication');
+    }
+
+    public function like_count($id){
+        $this->db->select('*');
+        $this->db->from('publication');
+        $this->db->where('publication_id', $id);
+        return $this->db->get();
+    }
+
     //NOTIF
     public function update_notif(){
         $this->db->where('status', 'Unread');

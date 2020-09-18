@@ -1,3 +1,16 @@
+<div class="d-md-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">View</h1>
+  
+  <?php 
+    foreach($like_data->result() as $row){ ?>
+        Likes: <?php echo $row->num_views;?>
+  <?php } ?>
+  <?php 
+    foreach($research_data as $row){ ?>
+        <a href="<?php echo base_url('research/like/'.$row->publication_id);?>" class="d-none d-md-inline-block btn btn-sm btn-info shadow-sm">
+  <?php } ?>
+  <i class="fas fa-thumbs-up fa-md text-white-50"></i> Like this Research</a>
+</div>
 
 <div class="card shadow mb-4">
 <div class="card-body">
