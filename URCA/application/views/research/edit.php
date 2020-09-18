@@ -246,8 +246,11 @@
                         if($user_type == 'Admin'){ ?>
                             <input type="submit" name="submit" value="Edit" class="btn btn-primary"></input>
                         <?php 
-                        }else if($user_type == 'Researcher'){ ?>
+                        }else if($user_type == 'Researcher' && $row->status == 'Unreviewed' || $row->status == 'Rejected'){ ?>
                             <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
+                        <?php
+                        }else if($user_type == 'Researcher' && $row->status == 'Approved'){ ?>
+                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Unsubmit</a>
                         <?php
                         }
                     }
@@ -328,8 +331,11 @@
                         if($user_type == 'Admin'){ ?>
                             <input type="submit" name="submit" value="Edit" class="btn btn-primary"></input>
                         <?php 
-                        }else if($user_type == 'Researcher'){ ?>
+                        }else if($user_type == 'Researcher' && $row->status == 'Unreviewed' || $row->status == 'Rejected'){ ?>
                             <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
+                        <?php
+                        }else if($user_type == 'Researcher' && $row->status == 'Approved'){ ?>
+                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Unsubmit</a>
                         <?php
                         }
                     }
@@ -408,8 +414,11 @@
                         if($user_type == 'Admin'){ ?>
                             <input type="submit" name="submit" value="Edit" class="btn btn-primary"></input>
                         <?php 
-                        }else if($user_type == 'Researcher'){ ?>
+                        }else if($user_type == 'Researcher' && $row->status == 'Unreviewed' || $row->status == 'Rejected'){ ?>
                             <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
+                        <?php
+                        }else if($user_type == 'Researcher' && $row->status == 'Approved'){ ?>
+                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Unsubmit</a>
                         <?php
                         }
                     }
@@ -554,8 +563,11 @@
                         if($user_type == 'Admin'){ ?>
                             <input type="submit" name="submit" value="Edit" class="btn btn-primary"></input>
                         <?php 
-                        }else if($user_type == 'Researcher'){ ?>
+                        }else if($user_type == 'Researcher' && $row->status == 'Unreviewed' || $row->status == 'Rejected'){ ?>
                             <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
+                        <?php
+                        }else if($user_type == 'Researcher' && $row->status == 'Approved'){ ?>
+                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Unsubmit</a>
                         <?php
                         }
                     }
@@ -636,8 +648,11 @@
                         if($user_type == 'Admin'){ ?>
                             <input type="submit" name="submit" value="Edit" class="btn btn-primary"></input>
                         <?php 
-                        }else if($user_type == 'Researcher'){ ?>
+                        }else if($user_type == 'Researcher' && $row->status == 'Unreviewed' || $row->status == 'Rejected'){ ?>
                             <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
+                        <?php
+                        }else if($user_type == 'Researcher' && $row->status == 'Approved'){ ?>
+                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Unsubmit</a>
                         <?php
                         }
                     }
@@ -730,8 +745,11 @@
                         if($user_type == 'Admin'){ ?>
                             <input type="submit" name="submit" value="Edit" class="btn btn-primary"></input>
                         <?php 
-                        }else if($user_type == 'Researcher'){ ?>
+                        }else if($user_type == 'Researcher' && $row->status == 'Unreviewed' || $row->status == 'Rejected'){ ?>
                             <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
+                        <?php
+                        }else if($user_type == 'Researcher' && $row->status == 'Approved'){ ?>
+                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Unsubmit</a>
                         <?php
                         }
                     }
@@ -841,8 +859,11 @@
                         if($user_type == 'Admin'){ ?>
                             <input type="submit" name="submit" value="Edit" class="btn btn-primary"></input>
                         <?php 
-                        }else if($user_type == 'Researcher'){ ?>
+                        }else if($user_type == 'Researcher' && $row->status == 'Unreviewed' || $row->status == 'Rejected'){ ?>
                             <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
+                        <?php
+                        }else if($user_type == 'Researcher' && $row->status == 'Approved'){ ?>
+                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Unsubmit</a>
                         <?php
                         }
                     }
@@ -991,8 +1012,11 @@
                         if($user_type == 'Admin'){ ?>
                             <input type="submit" name="submit" value="Edit" class="btn btn-primary"></input>
                         <?php 
-                        }else if($user_type == 'Researcher'){ ?>
+                        }else if($user_type == 'Researcher' && $row->status == 'Unreviewed' || $row->status == 'Rejected'){ ?>
                             <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
+                        <?php
+                        }else if($user_type == 'Researcher' && $row->status == 'Approved'){ ?>
+                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Unsubmit</a>
                         <?php
                         }
                     }
