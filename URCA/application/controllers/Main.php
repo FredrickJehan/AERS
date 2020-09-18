@@ -28,8 +28,8 @@ class Main extends CI_Controller{
 
     public function search(){
         $keyword = $this->input->post('keyword', true);
-        $data['dept'] = $this->research_model->getDepartment();
-        $data['type'] = $this->research_model->getType_Research();
+        //$data['dept'] = $this->research_model->getDepartment();
+        //$data['type'] = $this->research_model->getType_Research();
         $data['search_com'] = $this->research_model->search_completed($keyword);
         $data['search_pre'] = $this->research_model->search_presented($keyword);
         $data['search_pub'] = $this->research_model->search_published($keyword);
