@@ -32,7 +32,7 @@ class research_model extends CI_Model{
         $this->db->where('publication_id', $id);
         $this->db->update('publication', $data);
     }
-    
+
     public function count_notif($submittor){
         $this->db->select('*');
         $this->db->from('notification');
@@ -123,7 +123,7 @@ class research_model extends CI_Model{
 
     public function publication_delete($id){
         $this->db->where('publication_id', $id);
-        $this->db->delete(array('completed','author', 'presented', 'log', 'publication', 'comment', 'notification'));
+        $this->db->delete(array('completed','author', 'presented', 'creative_works', 'published', 'log', 'notification' ,'comment' , 'publication'));
     }
 
     //RECENT VIEW
