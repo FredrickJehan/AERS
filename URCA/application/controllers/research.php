@@ -174,6 +174,7 @@ class Research extends CI_Controller{
         $data["published_research"] = $this->research_model->select_all_published($user_id);
         $data["creative_research"] = $this->research_model->select_all_creative($user_id);
         $data["authors"] = $this->research_model->fetch_all_authors();
+        $data["editors"] = $this->research_model->fetch_all_editors();
         //$data["creative_research"] = $this->research_model->display_authors($user_id);
         //$data["creative_research"] = $this->research_model->select_all_creative($user_id);
         // foreach($completed_research as $row){
