@@ -414,19 +414,19 @@ class Research extends CI_Controller{
             // $this->research_model->author_update($author, $publication_id);
     }
 
-    public function editor_submit($last_id){
+    public function editor_submit($pub_id){
         $editor_fn = $this->input->post('editor_fn');
         $editor_mi = $this->input->post('editor_mi');
         $editor_ln = $this->input->post('editor_ln');
         for($i = 0; $i < count($editor_fn); $i++){
             $data = array(
-                'publication' => $last_id,
+                'published_id' => $pub_id,
                 'editor_fn' => $editor_fn[$i],
                 'editor_mi' => $editor_mi[$i],
                 'editor_ln' => $editor_ln[$i]
             );
-        }
         $this->research_model->editor_insert($data);
+        }
     }
 
     public function completed_submit(){
@@ -585,9 +585,6 @@ class Research extends CI_Controller{
             $this->research_form();
         }else{
             $last_id = $this->author_publication_data($research_type);
-            if($research_type == 'Book Chapter' || $research_type == 'Conference Proceedings'){
-                $this->editor_submit($last_id);
-            }
             //data for completed
             $data2 = array(
                 'title_article' => $this->input->post('title_article'),
@@ -611,6 +608,10 @@ class Research extends CI_Controller{
             );
             //if upate
             $this->research_model->published_insert($data2);
+            $pub_id = $this->db->insert_id();
+            if($research_type == 'Book Chapter' || $research_type == 'Conference Proceedings'){
+                $this->editor_submit($pub_id);
+            }
             redirect(base_url() . "research");
         } 
     }

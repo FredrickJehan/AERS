@@ -559,7 +559,7 @@ class research_model extends CI_Model{
     }
 
     public function editor_insert($data){
-        $this->db->indert("editor", $data);
+        $this->db->insert("editor", $data);
     }
 
     //UPDATE FUNCTIONS
