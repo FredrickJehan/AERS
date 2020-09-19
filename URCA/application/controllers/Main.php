@@ -17,6 +17,7 @@ class Main extends CI_Controller{
         $data['recent_pub'] = $this->research_model->select_all_published_recent();
         $data['recent_cre'] = $this->research_model->select_all_creative_recent();
         $data['authors'] = $this->research_model->fetch_all_authors();
+        $data['editors'] = $this->research_model->fetch_all_editors();
         $this->load->view('template/header2');
         $this->load->view('guest/index', $data);
     }
@@ -36,6 +37,7 @@ class Main extends CI_Controller{
         $data['search_pub'] = $this->research_model->search_published($keyword);
         $data['search_cre'] = $this->research_model->search_creative($keyword);
         $data['authors'] = $this->research_model->fetch_all_authors();
+        $data['editors'] = $this->research_model->fetch_all_editors();
         // if($keyword == NULL){
         //     redirect('search/'.$this->input>post('keyword'));
         // }
@@ -55,6 +57,7 @@ class Main extends CI_Controller{
         $data['search_pub'] = $this->research_model->search_filter_published($department, $year, $type_of_research);
         $data['search_cre'] = $this->research_model->search_filter_creative($department, $year, $type_of_research);
         $data['authors'] = $this->research_model->fetch_all_authors();
+        $data['editors'] = $this->research_model->fetch_all_editors();
         $this->load->view('template/header2');
 		$this->load->view('guest/search', $data);
         $this->load->view('template/footer2');

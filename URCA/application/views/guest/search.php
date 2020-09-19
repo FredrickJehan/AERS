@@ -220,12 +220,12 @@
 
               <?php }elseif($row->published_type == 'Book Chapter'){ ?>
                 <?php echo implode(', ', $string) ?> (<?php echo $row->year_published; ?>). <?php echo $row->title_chapter; ?>. In <?php echo implode(', ', $string_ed) ?>(Eds.),
-                <i><?php echo $row->title_book; ?></i> (<?php echo $row->page_num; ?>). <?php echo $row->place_of_publication; ?>: 
+                <i><?php echo $row->title_book; ?></i> (pp. <?php echo $row->page_num; ?>). <?php echo $row->place_of_publication; ?>: 
                 <?php echo $row->publisher; ?>.
 
               <?php }else{ ?>
                 <?php echo implode(', ', $string) ?> (<?php echo $row->year_published; ?>). <?php echo $row->title_article; ?>. In <?php echo implode(', ', $string_ed) ?>(Eds.),<?php echo $row->place_of_conference; ?> 
-                (<?php echo $row->page_num; ?>). <?php echo $row->place_of_publication; ?>: <?php echo $row->publisher; ?> 
+                (pp. <?php echo $row->page_num; ?>). <?php echo $row->place_of_publication; ?>: <?php echo $row->publisher; ?> 
                 <?php if(isset($row->url)){ ?>
                   .Retrieved from<?php echo $row->url; ?>
                 <?php }else{ ?>.<?php } ?>

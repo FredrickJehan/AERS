@@ -133,6 +133,18 @@
                     }
                     $i++;
                   }
+                }
+                $string_ed = array();
+                $x = 0;
+                foreach($editors as $ed){
+                  if($row->published_id == $ed->published_id){
+                    if(isset($ed->editor_mi)){
+                      $string_ed[$x] = substr($ed->editor_fn, 0, 1) . ". " . $ed->editor_mi . " " . $ed->editor_ln; 
+                    }else{
+                      $string_ed[$x] = substr($ed->editor_fn, 0, 1) . ". " . $ed->editor_ln; 
+                    }
+                    $x++;
+                  }
                 }    
             ?>
                 <tr>
@@ -155,14 +167,14 @@
 
                     <?php }elseif($row->published_type == 'Book Chapter'){ ?>
                         <?php echo implode(', ', $string) ?>
-                        (<?php echo $row->year_published; ?>). <?php echo $row->title_chapter; ?>.
-                        <i><?php echo $row->title_book; ?></i> (<?php echo $row->page_num; ?>). <?php echo $row->place_of_publication; ?>: 
+                        (<?php echo $row->year_published; ?>). <?php echo $row->title_chapter; ?>. In <?php echo implode(', ', $string_ed) ?>(Eds.),
+                        <i><?php echo $row->title_book; ?></i> (pp. <?php echo $row->page_num; ?>). <?php echo $row->place_of_publication; ?>: 
                         <?php echo $row->publisher; ?>.
 
                     <?php }else{ ?>
                         <?php echo implode(', ', $string) ?>
-                        (<?php echo $row->year_published; ?>). <?php echo $row->title_article; ?>. <?php echo $row->place_of_conference; ?> 
-                        (<?php echo $row->page_num; ?>). <?php echo $row->place_of_publication; ?>: <?php echo $row->publisher; ?> 
+                        (<?php echo $row->year_published; ?>). <?php echo $row->title_article; ?>. In <?php echo implode(', ', $string_ed) ?>(Eds.),<?php echo $row->place_of_conference; ?> 
+                        (pp. <?php echo $row->page_num; ?>). <?php echo $row->place_of_publication; ?>: <?php echo $row->publisher; ?> 
                         <?php if(isset($row->url)){ ?>
                         .Retrieved from<?php echo $row->url; ?>
                         <?php }else{ ?>.<?php } ?>

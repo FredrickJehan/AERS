@@ -345,6 +345,13 @@ class admin_model extends CI_Model{
         $this->db->from('author');
         return $this->db->get()->result();
     }
+
+    public function fetch_all_editors_admin(){
+        $this->db->select('*');
+        $this->db->from('editor');
+        return $this->db->get()->result();
+    }
+
     public function fetch_author_excel($publication_id){
         $this->db->select('*');
         $this->db->from('author');
