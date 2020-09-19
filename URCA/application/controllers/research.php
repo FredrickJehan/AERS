@@ -250,6 +250,7 @@ class Research extends CI_Controller{
         $publication_id = $this->uri->segment(3); 
         $data['publication_type'] = $this->get_publication_type($publication_id); 
         $data["author_data"] = $this->research_model->fetch_all_authors();
+        $data["editor_data"] = $this->research_model->fetch_all_editors();
 
         if($data['publication_type'] == 'Completed Research'){
             $data['research_data'] = $this->research_model->select_all_completed_view($publication_id); 

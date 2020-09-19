@@ -719,6 +719,35 @@
                             <span class="text-danger"><?php echo form_error("title_book");?></span>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label>Editor*</label>
+                    </div>
+                    <div class="form-row">
+                        <table class="table table-borderless" id="table_bookchap_ed">
+                            <tr>
+                                <th>First Name*</th>
+                                <th>Middle Initial(s)*</th>
+                                <th>Last Name*</th>
+                            </tr>
+                            <?php foreach($editor_data as $e_name){ 
+                                    if($row->published_id == $e_name->published_id){?>
+                            <tr>
+                                <td>
+                                    <input type="text" name="editor_fn[]"  class="form-control" value="<?php echo $e_name->editor_fn ?>" required>
+                                    <span class="text-danger"><?php echo form_error("editor_fn[]");?></span>
+                                </td>
+                                <td>
+                                    <input type="text" name="editor_mi[]"  class="form-control" value="<?php echo $e_name->editor_mi ?>" required>
+                                    <span class="text-danger"><?php echo form_error("editor_mi[]");?></span>
+                                </td>
+                                <td>
+                                    <input type="text" name="editor_ln[]" class="form-control" value="<?php echo $e_name->editor_ln ?>" required>
+                                    <span class="text-danger"><?php echo form_error("editor_ln[]");?></span>
+                                </td>
+                            </tr>
+                            <?php } } ?>
+                        </table>
+                    </div>
                     <div class="form-row">
                         <div class="form-group col-md-2">
                             <label>Page Numbers*</label>
@@ -826,6 +855,35 @@
                         <input type="text" name="place" class="form-control" value="<?php echo $row->place_of_publication?>" required>
                         <span class="text-danger"><?php echo form_error("place");?></span>
                     </div>  
+                </div>
+                <div class="form-group">
+                    <label>Editor*</label>
+                </div>
+                <div class="form-row">
+                    <table class="table table-borderless" id="table_conproc_ed">
+                        <tr>
+                            <th>First Name*</th>
+                            <th>Middle Initial(s)*</th>
+                            <th>Last Name*</th>
+                        </tr>
+                        <?php foreach($editor_data as $e_name){ 
+                                if($row->published_id == $e_name->published_id){?>
+                            <tr>
+                                <td>
+                                    <input type="text" name="editor_fn[]"  class="form-control" value="<?php echo $e_name->editor_fn ?>" required>
+                                    <span class="text-danger"><?php echo form_error("editor_fn[]");?></span>
+                                </td>
+                                <td>
+                                    <input type="text" name="editor_mi[]"  class="form-control" value="<?php echo $e_name->editor_mi ?>" required>
+                                    <span class="text-danger"><?php echo form_error("editor_mi[]");?></span>
+                                </td>
+                                <td>
+                                    <input type="text" name="editor_ln[]" class="form-control" value="<?php echo $e_name->editor_ln ?>" required>
+                                    <span class="text-danger"><?php echo form_error("editor_ln[]");?></span>
+                                </td>
+                            </tr>
+                            <?php } } ?>
+                    </table>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-2">
