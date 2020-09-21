@@ -368,6 +368,7 @@ class admin_model extends CI_Model{
         $pub = $this->fetch_pdf_published();
         $cre = $this->fetch_pdf_creative();
         $authors = $this->fetch_all_authors_admin();
+        $editors = $this->fetch_all_editors_admin();
         $output ='
             <table width="100%" cellspacing="5" cellpadding="5">
         ';
@@ -497,7 +498,7 @@ class admin_model extends CI_Model{
                 }elseif($row->published_type == 'Book Chapter'){
                 $output .='
                         '.implode(', ', $string).'('.$row->year_published.'). '.$row->title_chapter.'. 
-                        <i>'.$row->title_book.'</i>('.$row->page_num.'). '.$row->place_of_publication.':'.$row->publisher.'.'; 
+                        <i>'.$row->title_book.'</i>(pp. '.$row->page_num.'). '.$row->place_of_publication.':'.$row->publisher.'.'; 
                 $output .='
                     </td>
                 </tr>
@@ -505,7 +506,7 @@ class admin_model extends CI_Model{
                 }else{
                 $output .='
                     '.implode(', ', $string).'('.$row->year_published.'). '.$row->title_chapter.'. 
-                    <i>'.$row->title_book.'</i>('.$row->page_num.'). '.$row->place_of_publication.':'.$row->publisher.''; 
+                    <i>'.$row->title_book.'</i>(pp. '.$row->page_num.'). '.$row->place_of_publication.':'.$row->publisher.''; 
                     if(isset($row->url)){
                         $output .='.Retrieved from '.$row->url.'';
                     }else{
