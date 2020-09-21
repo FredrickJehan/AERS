@@ -440,6 +440,7 @@ class admin_model extends CI_Model{
                         $i++;
                     }
                 }
+                $date = date_create("$row->date_presentation");
                 $output .='
                 <tr>
                     <td width="20%">'.implode(', ', $string).'</td>
@@ -447,7 +448,7 @@ class admin_model extends CI_Model{
                     <td width="5%"><center>'.$row->num_views.'</center></td>
                     <td width="10%">'.$row->publication_type.'</td>
                     <td width="45%">
-                        '.implode(', ', $string).'('.$row->date_presentation.'). 
+                        '.implode(', ', $string).'('.date_format($date, 'Y').', '.date_format($date, 'F').'). 
                         <i>'.$row->title_presented.'</i>. '.$row->title_conference.': '.$row->place_conference.'.
                     </td>
                 </tr>    
@@ -469,6 +470,18 @@ class admin_model extends CI_Model{
                         }
                         $i++;
                     }
+                }
+                $string_ed = array();
+                $x = 0;
+                foreach($editors as $ed){
+                  if($row->published_id == $ed->published_id){
+                    if(isset($ed->editor_mi)){
+                      $string_ed[$x] = substr($ed->editor_fn, 0, 1) . ". " . $ed->editor_mi . " " . $ed->editor_ln; 
+                    }else{
+                      $string_ed[$x] = substr($ed->editor_fn, 0, 1) . ". " . $ed->editor_ln; 
+                    }
+                    $x++;
+                  }
                 }
                 $output .='
                 <tr>
@@ -497,7 +510,7 @@ class admin_model extends CI_Model{
                 ';
                 }elseif($row->published_type == 'Book Chapter'){
                 $output .='
-                        '.implode(', ', $string).'('.$row->year_published.'). '.$row->title_chapter.'. 
+                        '.implode(', ', $string).'('.$row->year_published.'). '.$row->title_chapter.'. In '.implode(', ', $string_ed).'(Eds),  
                         <i>'.$row->title_book.'</i>(pp. '.$row->page_num.'). '.$row->place_of_publication.':'.$row->publisher.'.'; 
                 $output .='
                     </td>
@@ -505,7 +518,7 @@ class admin_model extends CI_Model{
                 ';
                 }else{
                 $output .='
-                    '.implode(', ', $string).'('.$row->year_published.'). '.$row->title_chapter.'. 
+                    '.implode(', ', $string).'('.$row->year_published.'). '.$row->title_chapter.'. In '.implode(', ', $string_ed).'(Eds), 
                     <i>'.$row->title_book.'</i>(pp. '.$row->page_num.'). '.$row->place_of_publication.':'.$row->publisher.''; 
                     if(isset($row->url)){
                         $output .='.Retrieved from '.$row->url.'';

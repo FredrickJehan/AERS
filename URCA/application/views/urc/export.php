@@ -105,7 +105,8 @@
                     }
                     $i++;
                   }
-                }    
+                }
+                $date = date_create("$row->date_presentation");     
             ?>
               <tr>
                 <td>
@@ -115,7 +116,7 @@
                 <td><?php echo $row->publication_type?></td>
                 <td>
                     <?php echo implode(', ', $string) ?>
-                    (<?php echo $row->date_presentation;?>). <i><?php echo $row->title_conference;?></i>. Paper presented at the
+                    (<?php echo date_format($date, "Y");?>, <?php echo date_format($date, "F");?>). <i><?php echo $row->title_conference;?></i>. Paper presented at the
                     <?php echo $row->title_conference;?>, <?php echo $row->place_conference;?>.</a>
                 </td>
               </tr>
