@@ -299,7 +299,7 @@ class research_model extends CI_Model{
         $this->db->where('department', $department);
         }
         if($year != NULL){
-        $this->db->where('date_presentation', $year);
+        $this->db->like('date_presentation', $year);
         }
         if($type_of_research != NULL){
         $this->db->where('publication_type', $type_of_research);
