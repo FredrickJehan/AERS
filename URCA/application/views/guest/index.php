@@ -294,7 +294,17 @@
   <!-- Bootstrap core JavaScript -->
   <script src="<?php echo base_url('guestdesign2/vendor/jquery/jquery.min.js');?>"></script>
   <script src="<?php echo base_url('guestdesign2/vendor/bootstrap/js/bootstrap.bundle.min.js');?>"></script>
-
+  <script>
+  var max = new Date().getFullYear(),
+      min = 1900,
+      select = document.getElementById('sort_year');
+  for(var i = max; i>=min; i--){
+    var opt = document.createElement('option');
+    opt.value = i;
+    opt.innerHTML = i;
+    select.appendChild(opt);
+  }  
+</script>
 </body>
 
 </html>
