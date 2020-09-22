@@ -11,7 +11,7 @@
   <title>Landing Page - Start Bootstrap Theme</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="<?php echo base_url('vendor/bootstrap/css/bootstrap.min.css');?>" rel="stylesheet">
+  <link href="<?php echo base_url('guestdesign2/vendor/bootstrap/css/bootstrap.min.css');?>" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
   <link href="<?php echo base_url('guestdesign2/vendor/fontawesome-free/css/all.min.css');?>" rel="stylesheet">
