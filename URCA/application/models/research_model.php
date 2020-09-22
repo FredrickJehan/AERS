@@ -601,6 +601,25 @@ class research_model extends CI_Model{
         $this->db->update("author", $data);
     }
 
+    public function getPublished_id($publication_id){
+        $this->db->select('published_id');
+        $this->db->from('published');
+        $this->db->where('publication_id', $publication_id);
+        return $this->db->get()->result();
+    }
+
+    public function getEditor_id($published_id){
+        $this->db->select('editor_id');
+        $this->db->from('editor');
+        $this->db->where('published_id', $published_id);
+        return $this->db->get()->result();
+    }
+
+    public function editor_update($data, $id){  
+        $this->db->where('editor_id', $id);
+        $this->db->update("editor", $data);
+    }
+
     public function comment_display($id){
         $this->db->select('*');
         $this->db->from('comment');

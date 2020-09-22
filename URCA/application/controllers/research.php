@@ -377,33 +377,22 @@ class Research extends CI_Controller{
         $last_name = $this->input->post('last_name');
 
         $author = $this->research_model->getAuthor_id($publication_id);
-        $author_id = array();
-        $x = 0;
-        foreach($author as $row){
-            $author_id[$x] = $row->author_id;
-            $x++;
-        }
+       
         for($i = 0; $i < count($first_name); $i++){
             if($i == 0){
                 $data1 = array(
-                    'user_id' => $this->get_current_user(),
                     'first_name' => $first_name[$i],
                     'middle_initial' => $middle_initial[$i],
                     'last_name' => $last_name[$i],
-                    'is_employee' => '1',
-                    'author_type' => 'Main'
                 );
             }else{
                 $data1 = array(
-                    'user_id' => $this->get_current_user(),
                     'first_name' => $first_name[$i],
                     'middle_initial' => $middle_initial[$i],
                     'last_name' => $last_name[$i],
-                    'is_employee' => '1',
-                    'author_type' => 'Extra'
                 );
             }
-            $this->research_model->author_update($data1, $author_id[$i]);
+            $this->research_model->author_update($data1, $author[$i]);
         }
             // $author = array(
             //     'publication_id' => $publication_id,
@@ -428,6 +417,23 @@ class Research extends CI_Controller{
                 'editor_ln' => $editor_ln[$i]
             );
         $this->research_model->editor_insert($data);
+        }
+    }
+
+    public function editor_publication_update($publication_id){
+        $editor_fn = $this->input->post('editor_fn');
+        $editor_mi = $this->input->post('editor_mi');
+        $editor_ln = $this->input->post('editor_ln');
+        $published_id = $this->research_model->getPublished_id($publication_id);
+        $editor = $this->research_model->getEditor_id(implode($published_id));
+       
+        for($i = 0; $i < count($editor_fn); $i++){
+            $data = array(
+                'editor_fn' => $editor_fn[$i],
+                'editor_mi' => $editor_mi[$i],
+                'editor_ln' => $editor_ln[$i]
+            );
+        $this->research_model->editor_update($data, $editor[$i]);
         }
     }
 
@@ -658,6 +664,9 @@ class Research extends CI_Controller{
             // $this->research_form();
         }else{
             $publication_id = $this->uri->segment(3);
+            if($research_type == 'Book Chapter' || $research_type == 'Conference Proceedings'){
+                $this->editor_publication_update($publication_id);
+            }
             $this->author_publication_update($publication_id);
             //data for presented
             $data2 = array(
