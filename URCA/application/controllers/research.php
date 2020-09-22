@@ -101,10 +101,32 @@ class Research extends CI_Controller{
         echo $output;
     }
     */
+    public function like_check(){
+        $publication_id = $this->uri->segment(3);
+        $user_id = $this->get_current_user();
+
+        $data_check = array(
+            'user_id' => $user_id
+        );
+        $result = $this->research_model->like_check($data_check);
+            if($result == TRUE) {
+                //user already liked the research
+                return TRUE;
+            }else{
+                //not yet liked
+                return FALSE;
+            }
+    }
 
     public function like(){
         $publication_id = $this->uri->segment(3);
-        $this->research_model->like($publication_id);
+        $user_id = $this->get_current_user();
+
+        $data = array(
+            'user_id' => $user_id,
+            'pub_id' => $publication_id
+        );
+        $this->research_model->like($data);
         redirect(base_url() . "research/view/".$publication_id);
     }
 
@@ -198,6 +220,7 @@ class Research extends CI_Controller{
         $data['like_data'] = $this->research_model->like_count($publication_id);
         $data['publication_type'] = $this->get_publication_type($publication_id); 
         $data["author_data"] = $this->research_model->fetch_all_authors();
+        $data['like_or_not'] = $this->like_check();
         
         if($data['publication_type'] == 'Completed Research'){
             $data['research_data'] = $this->research_model->select_all_completed_view($publication_id); 

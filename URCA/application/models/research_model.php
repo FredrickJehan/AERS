@@ -9,17 +9,30 @@ class research_model extends CI_Model{
         return $this->db->get()->row()->user_id;
     }
 
-    public function like($id){
-        $this->db->set('num_views', 'num_views+1', FALSE);
-        $this->db->where('publication_id', $id);
-        $this->db->update('publication');
+    public function like($data){
+        $this->db->insert('like_tbl', $data);
+    }
+
+    public function like_update($id){
+        $this->db->set('like_counter', 'like_counter+1', FALSE);
+        $this->db->where('pub_id', $id);
+        $this->db->update('like_tbl');
+    }
+
+    public function like_check($data){
+        $query = $this->db->get_where('like_tbl', $data);
+        if ($query->num_rows() == 1) {
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public function like_count($id){
         $this->db->select('*');
-        $this->db->from('publication');
-        $this->db->where('publication_id', $id);
-        return $this->db->get();
+        $this->db->from('like_tbl');
+        $this->db->where('pub_id', $id);
+        return $this->db->get()->num_rows();
     }
 
     //NOTIF
