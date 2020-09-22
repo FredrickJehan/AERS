@@ -84,9 +84,24 @@ class Main extends CI_Controller{
 		$this->load->view('template/footer');
     }
 
+    public function get_publication_type($publication_id){
+        return $publication_type = $this->research_model->select_publication_type($publication_id);
+    }
+
     public function detailed_view(){
-        $id = $this->uri->segment(2);
-        $data['research_detailed'] = $this->research_model->select_all_completed_view($id);
+        $publication_id = $this->uri->segment(2); 
+        $data['publication_type'] = $this->get_publication_type($publication_id); 
+        $data["author_data"] = $this->research_model->fetch_all_authors();
+        
+        if($data['publication_type'] == 'Completed Research'){
+            $data['research_data'] = $this->research_model->select_all_completed_view($publication_id); 
+        }elseif($data['publication_type'] == 'Presented Research'){
+            $data['research_data'] = $this->research_model->select_all_presented_view($publication_id);
+        }elseif($data['publication_type'] == 'Published Research'){
+            $data['research_data'] = $this->research_model->select_all_published_view($publication_id);
+        }else{
+            $data['research_data'] = $this->research_model->select_all_creative_work($publication_id);
+        }
         $this->load->view('template/header2');
         $this->load->view("guest/detailed", $data);
         $this->load->view('template/footer2');

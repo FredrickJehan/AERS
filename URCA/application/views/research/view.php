@@ -133,9 +133,9 @@
     <!-- ./Conference Poster form -->
         <?php }  } 
 
-    }else if($publication_type == '3'){
+    }else if($publication_type == 'Published Research'){
         foreach($research_data as $row){
-            if($row->presented_type == '5'){ ?>
+            if($row->published_type == 'Journal Article'){ ?>
         <!-- Journal Article form -->
         <table class="table table-bordered ">
         <tbody>
@@ -165,7 +165,7 @@
         </table>
         <!-- ./Journal Article form -->
             <?php 
-            }else if($row->presented_type == '6'){ ?>
+            }else if($row->published_type == 'Book / Textbook'){ ?>
         <!-- Textbook form -->
         <table class="table table-bordered ">
         <tbody>
@@ -195,7 +195,7 @@
         </table>
         <!-- ./Textbook form -->
             <?php 
-            }else if($row->presented_type == '7'){ ?>
+            }else if($row->published_type == 'Book Chapter'){ ?>
         <!-- Chapter form -->
         <table class="table table-bordered ">
         <tbody>
@@ -259,8 +259,7 @@
         }
         
     }else{
-        foreach($research_data as $row){
-            if($row->presented_type == '4'){ ?>
+        foreach($research_data as $row){ ?>
         <!-- Creative Work form-->
         <table class="table table-bordered ">
         <tbody>
@@ -290,7 +289,6 @@
         </table>
         <!-- ./Creative Work form-->
         <?php 
-        }
     } }
 ?>
 </div>
