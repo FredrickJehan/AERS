@@ -375,9 +375,8 @@ class Research extends CI_Controller{
         $first_name = $this->input->post('first_name');
         $middle_initial = $this->input->post('middle_initial');
         $last_name = $this->input->post('last_name');
-
-        $author = $this->research_model->getAuthor_id($publication_id);
        
+        $author = $this->research_model->getAuthor_id($publication_id);
         for($i = 0; $i < count($first_name); $i++){
             if($i == 0){
                 $data1 = array(
@@ -420,20 +419,21 @@ class Research extends CI_Controller{
         }
     }
 
-    public function editor_publication_update($publication_id){
+    public function editor_publication_update($publication_id, $published_id){
         $editor_fn = $this->input->post('editor_fn');
         $editor_mi = $this->input->post('editor_mi');
         $editor_ln = $this->input->post('editor_ln');
-        $published_id = $this->research_model->getPublished_id($publication_id);
-        $editor = $this->research_model->getEditor_id(implode($published_id));
-       
+
+        $editor_id = $this->researh_model->getEditor_id($published_id);
         for($i = 0; $i < count($editor_fn); $i++){
             $data = array(
+                'published_id' => $publication_id,
                 'editor_fn' => $editor_fn[$i],
                 'editor_mi' => $editor_mi[$i],
                 'editor_ln' => $editor_ln[$i]
             );
-        $this->research_model->editor_update($data, $editor[$i]);
+            //$sad = key($editor[$i]);
+        $this->research_model->editor_update($data, $editor_id[$i]);
         }
     }
 
@@ -664,10 +664,11 @@ class Research extends CI_Controller{
             // $this->research_form();
         }else{
             $publication_id = $this->uri->segment(3);
-            if($research_type == 'Book Chapter' || $research_type == 'Conference Proceedings'){
-                $this->editor_publication_update($publication_id);
-            }
+            $published_id = $this->research_model->getPublished_id($publication_id);
             $this->author_publication_update($publication_id);
+            if($research_type == 'Book Chapter' || $research_type == 'Conference Proceedings'){
+                $this->editor_publication_update($publication_id, $published_id);
+            }
             //data for presented
             $data2 = array(
                 'title_article' => $this->input->post('title_article'),
@@ -690,6 +691,7 @@ class Research extends CI_Controller{
                 'publication_id' => $last_id
             );
             $this->research_model->published_update($data2, $publication_id);
+            
             redirect(base_url() . "research");
         }
     }

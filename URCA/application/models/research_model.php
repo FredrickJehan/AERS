@@ -605,7 +605,9 @@ class research_model extends CI_Model{
         $this->db->select('published_id');
         $this->db->from('published');
         $this->db->where('publication_id', $publication_id);
-        return $this->db->get()->result();
+        $query = $this->db->get();
+        $result = $query->row();
+        return $result->published_id;
     }
 
     public function getEditor_id($published_id){
@@ -615,7 +617,7 @@ class research_model extends CI_Model{
         return $this->db->get()->result();
     }
 
-    public function editor_update($data, $id){  
+    public function editor_update($data, $id){
         $this->db->where('editor_id', $id);
         $this->db->update("editor", $data);
     }
