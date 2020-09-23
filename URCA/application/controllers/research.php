@@ -141,12 +141,16 @@ class Research extends CI_Controller{
     }
 
     public function search(){
-        $keyword = $this->input->post('keyword');
-        $data['search_result'] = $this->research_model->search_completed($keyword);
-        $data['search_result'] = $this->research_model->search_presented($keyword);
-        $data['search_result'] = $this->research_model->search_published($keyword);
-        $data['search_result'] = $this->research_model->search_creative($keyword);
-        // if($keyword === NULL){
+        $keyword = $this->input->post('keyword', true);
+        //$data['dept'] = $this->research_model->getDepartment();
+        //$data['type'] = $this->research_model->getType_Research();
+        $data['search_com'] = $this->research_model->search_completed($keyword);
+        $data['search_pre'] = $this->research_model->search_presented($keyword);
+        $data['search_pub'] = $this->research_model->search_published($keyword);
+        $data['search_cre'] = $this->research_model->search_creative($keyword);
+        $data['authors'] = $this->research_model->fetch_all_authors();
+        $data['editors'] = $this->research_model->fetch_all_editors();
+        // if($keyword == NULL){
         //     redirect('search/'.$this->input>post('keyword'));
         // }
         $this->load->view('template/header');
