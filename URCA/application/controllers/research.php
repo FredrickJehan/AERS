@@ -106,7 +106,8 @@ class Research extends CI_Controller{
         $user_id = $this->get_current_user();
 
         $data_check = array(
-            'user_id' => $user_id
+            'user_id' => $user_id,
+            'pub_id' => $publication_id
         );
         $result = $this->research_model->like_check($data_check);
             if($result == TRUE) {
