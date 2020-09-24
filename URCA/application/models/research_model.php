@@ -47,7 +47,7 @@ class research_model extends CI_Model{
 
     public function like_update($id){
         $this->db->set('like_counter', 'like_counter+1', FALSE);
-        $this->db->where('pub_id', $id);
+        $this->db->where('publication_id', $id);
         $this->db->update('like_tbl');
     }
 
@@ -63,7 +63,7 @@ class research_model extends CI_Model{
     public function like_count($id){
         $this->db->select('*');
         $this->db->from('like_tbl');
-        $this->db->where('pub_id', $id);
+        $this->db->where('publication_id', $id);
         return $this->db->get()->num_rows();
     }
 
