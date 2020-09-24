@@ -1,6 +1,19 @@
-<div class="d-md-flex align-items-center justify-content-between mb-4">
-  <h1 class="h3 mb-0 text-gray-800">View</h1>
-</div>
+<head>
+<!-- Bootstrap core CSS -->
+<link href="<?php echo base_url('guestdesign2/vendor/bootstrap/css/bootstrap.min.css');?>" rel="stylesheet">
+
+<!-- Custom fonts for this template -->
+<link href="<?php echo base_url('guestdesign2/vendor/fontawesome-free/css/all.min.css');?>" rel="stylesheet">
+<link href="<?php echo base_url('guestdesign2/vendor/simple-line-icons/css/simple-line-icons.css');?>" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+<!-- Custom styles for this template -->
+<link href="<?php echo base_url('guestdesign2/css/landing-page.min.css');?>" rel="stylesheet">
+
+</head>
+
+<div class="container">
+<br>
 
 <div class="card shadow mb-4">
 <div class="card-body">
@@ -282,4 +295,6 @@
     } }
 ?>
 </div>
+</div>
+
 </div>
