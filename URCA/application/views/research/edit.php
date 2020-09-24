@@ -116,6 +116,7 @@
                                 <span class="text-danger"><?php echo form_error("last_name[]");?></span>
                             </td>
                         </tr>
+                                <input type="hidden" name="author_id[]" value="<?php echo $name->author_id?>">
                         <?php } } ?>
                     </table>
                 </div>
@@ -214,6 +215,7 @@
                                 <span class="text-danger"><?php echo form_error("last_name[]");?></span>
                             </td>
                         </tr>
+                                <input type="hidden" name="author_id[]" value="<?php echo $name->author_id?>">
                         <?php } } ?>
                     </table>
                     </div>
@@ -299,6 +301,7 @@
                                 <span class="text-danger"><?php echo form_error("last_name[]");?></span>
                             </td>
                         </tr>
+                                <input type="hidden" name="author_id[]" value="<?php echo $name->author_id?>">
                         <?php } } ?>
                     </table>
                     </div>               
@@ -381,6 +384,7 @@
                                 <span class="text-danger"><?php echo form_error("last_name[]");?></span>
                             </td>
                         </tr>
+                                <input type="hidden" name="author_id[]" value="<?php echo $name->author_id?>">
                         <?php } } ?>
                     </table>
                     </div>
@@ -469,6 +473,7 @@
                                 <span class="text-danger"><?php echo form_error("last_name[]");?></span>
                             </td>
                         </tr>
+                                <input type="hidden" name="author_id[]" value="<?php echo $name->author_id?>">
                         <?php } } ?>
                     </table>
                 </div>
@@ -613,6 +618,7 @@
                                 <span class="text-danger"><?php echo form_error("last_name[]");?></span>
                             </td>
                         </tr>
+                                <input type="hidden" name="author_id[]" value="<?php echo $name->author_id?>">
                         <?php } } ?>
                     </table>
                     </div>
@@ -699,6 +705,7 @@
                                 <span class="text-danger"><?php echo form_error("last_name[]");?></span>
                             </td>
                         </tr>
+                                <input type="hidden" name="author_id[]" value="<?php echo $name->author_id?>">
                         <?php } } ?>
                     </table>
                     </div>
@@ -824,6 +831,7 @@
                                 <span class="text-danger"><?php echo form_error("last_name[]");?></span>
                             </td>
                         </tr>
+                                <input type="hidden" name="author_id[]" value="<?php echo $name->author_id?>">
                         <?php } } ?>
                     </table>
                 </div>
@@ -959,6 +967,7 @@
                         <input type="text" name="last_name[]" value="<?php echo $row->last_name?>" class="form-control" required>
                     </div>
                 </div>
+                <input type="hidden" name="author_id[]" value="<?php echo $row->author_id?>">
                 <div class="form-row">
                     <div class="form-group col-md-6">
                     <label>Type of Research/Creative Work*</label>

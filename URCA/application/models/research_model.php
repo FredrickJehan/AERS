@@ -592,6 +592,11 @@ class research_model extends CI_Model{
         $this->db->update("completed", $data);
     }
 
+    public function presented_update($data, $id){
+        $this->db->where('publication_id', $id);
+        $this->db->update("presented", $data);
+    }
+
     public function published_update($data, $id){
         $this->db->where('publication_id', $id);
         $this->db->update("published", $data);
@@ -603,7 +608,7 @@ class research_model extends CI_Model{
     }
 
     public function getAuthor_id($publication_id){
-        $this->db->select('author_id');
+        $this->db->select('*');
         $this->db->from('author');
         $this->db->where('publication_id', $publication_id);
         return $this->db->get()->result();
@@ -615,16 +620,14 @@ class research_model extends CI_Model{
     }
 
     public function getPublished_id($publication_id){
-        $this->db->select('published_id');
+        $this->db->select('*');
         $this->db->from('published');
         $this->db->where('publication_id', $publication_id);
-        $query = $this->db->get();
-        $result = $query->row();
-        return $result->published_id;
+        return $this->db->get()->result();
     }
 
     public function getEditor_id($published_id){
-        $this->db->select('editor_id');
+        $this->db->select('*');
         $this->db->from('editor');
         $this->db->where('published_id', $published_id);
         return $this->db->get()->result();
