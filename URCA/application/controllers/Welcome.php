@@ -12,9 +12,21 @@ class Welcome extends CI_Controller{
         $this->load->model('login_model');
     }
 
+    public function get_current_user(){
+        $username = $this->session->userdata['logged_in']['username'];
+        return $user_id = $this->research_model->current_user($username);
+    }
+
     public function dashboard(){
+        $this->load->model('research_model');
+        $user_id = $this->get_current_user();
+        $data['completed_count'] = $this->research_model->completed_count($user_id);
+        $data['presented_count'] = $this->research_model->presented_count($user_id);
+        $data['published_count'] = $this->research_model->published_count($user_id);
+        $data['creative_count'] = $this->research_model->creative_count($user_id);
+
         $this->load->view('template/header');
-		$this->load->view('main/dashboard');
+		$this->load->view('main/dashboard', $data);
         $this->load->view('template/footer');
     }
 

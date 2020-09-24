@@ -9,6 +9,38 @@ class research_model extends CI_Model{
         return $this->db->get()->row()->user_id;
     }
 
+    public function completed_count($id){
+        $this->db->select('*');
+        $this->db->from('publication');
+        $this->db->where('submittor', $id);
+        $this->db->where('publication_type', "Completed Research");
+        return $this->db->get()->num_rows();
+    }
+
+    public function presented_count($id){
+        $this->db->select('*');
+        $this->db->from('publication');
+        $this->db->where('submittor', $id);
+        $this->db->where('publication_type', "Presented Research");
+        return $this->db->get()->num_rows();
+    }
+
+    public function published_count($id){
+        $this->db->select('*');
+        $this->db->from('publication');
+        $this->db->where('submittor', $id);
+        $this->db->where('publication_type', "Published Research");
+        return $this->db->get()->num_rows();
+    }
+
+    public function creative_count($id){
+        $this->db->select('*');
+        $this->db->from('publication');
+        $this->db->where('submittor', $id);
+        $this->db->where('publication_type', "Creative Works");
+        return $this->db->get()->num_rows();
+    }
+
     public function like($data){
         $this->db->insert('like_tbl', $data);
     }
@@ -155,7 +187,7 @@ class research_model extends CI_Model{
 
     public function publication_delete($id){
         $this->db->where('publication_id', $id);
-        $this->db->delete(array('completed','author', 'presented', 'creative_works', 'published', 'log', 'notification' ,'comment' , 'publication'));
+        $this->db->delete(array('completed', 'author', 'presented', 'creative_works', 'published', 'log', 'notification' ,'comment' , 'like_tbl', 'publication'));
     }
 
     //RECENT VIEW
