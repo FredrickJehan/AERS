@@ -13,8 +13,13 @@ class admin extends CI_Controller{
     }
     
     public function index(){
+        $data['total_pub'] = $this->research_model->total_pub_count();
+        $data['unreviewed_count'] = $this->research_model->unreviewed_count();
+        $data['reviewed_count'] = $this->research_model->reviewed_count();
+        $data['rejected_count'] = $this->research_model->rejected_count();
+
         $this->load->view('template/header');
-		$this->load->view('urc/dashboard');
+		$this->load->view('urc/dashboard', $data);
         $this->load->view('template/footer');
     }
 

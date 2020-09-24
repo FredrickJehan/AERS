@@ -16,11 +16,11 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Rank</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">Professors 3</div>
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Publications</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $total_pub?></div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                      <i class="fas fa-book fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -33,8 +33,8 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Pending Reviews</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">3</div>
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Unreviewed Research</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $unreviewed_count?></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-book fa-2x text-gray-300"></i>
@@ -53,7 +53,7 @@
                       <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Approved Research</div>
                       <div class="row no-gutters align-items-center">
                         <div class="col-auto">
-                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">3</div>
+                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php echo $approved_count?></div>
                         </div>
                       </div>
                     </div>
@@ -71,8 +71,8 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Disapproved Research</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">3</div>
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Rejected Research</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $rejected_count?></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-book fa-2x text-gray-300"></i>

@@ -12,6 +12,33 @@ class admin_model extends CI_Model{
         $this->db->insert('notification', $data2);
     }
 
+    public function total_pub_count(){
+        $this->db->select('*');
+        $this->db->from('publication');
+        return $this->db->get()->num_rows();
+    }
+
+    public function unreviewed_count(){
+        $this->db->select('*');
+        $this->db->from('publication');
+        $this->db->where('status', 'Unreviewed');
+        return $this->db->get()->num_rows();
+    }
+
+    public function approved_count(){
+        $this->db->select('*');
+        $this->db->from('publication');
+        $this->db->where('status', 'Approved');
+        return $this->db->get()->num_rows();
+    }
+
+    public function rejected_count(){
+        $this->db->select('*');
+        $this->db->from('publication');
+        $this->db->where('status', 'Rejected');
+        return $this->db->get()->num_rows();
+    }
+
     public function current_user($username){
         $this->db->select('user_id');
         $this->db->from('user');
