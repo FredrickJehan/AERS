@@ -37,7 +37,7 @@
                 <input type="input" name="keyword" id="keyword" class="form-control form-control-lg" placeholder="Search for title...">
               </div>
               <div class="col-12 col-md-3">
-                <button type="submit" class="btn btn-block btn-lg btn-primary">Search</button>
+                <button type="submit" class="btn btn-block btn-lg btn-primary">Search &nbsp<i class="fas fa-search fa-sm"></i></button>
               </div>
             </div>
           </form>
