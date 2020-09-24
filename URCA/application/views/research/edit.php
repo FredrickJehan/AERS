@@ -485,7 +485,7 @@
                     </div>
                     <div class="form-group col-md-5">
                         <label>Title of Article*</label>
-                        <input type="text" name="title" class="form-control" value="<?php echo $row->title_article?>" required>
+                        <input type="text" name="title_article" class="form-control" value="<?php echo $row->title_article?>" required>
                         <span class="text-danger"><?php echo form_error("title");?></span>
                     </div>
                     <div class="form-group col-md-5">
