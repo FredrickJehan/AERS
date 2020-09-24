@@ -72,7 +72,7 @@ if (isset($this->session->userdata['logged_in'])) {
 	</section>
 	
 
-	<div id="dropDownSelect1"></div>
+	<!-- <div id="dropDownSelect1"></div> -->
 	
 <!--===============================================================================================-->
 	<script src="<?php echo base_url('guestdesign/vendor/jquery/jquery-3.2.1.min.js');?>"></script>

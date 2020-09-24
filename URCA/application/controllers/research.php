@@ -30,10 +30,16 @@ class Research extends CI_Controller{
     }
 
     public function publication(){
-        $researcher_id = $this->get_researcher_id();
-        $data["completed_research"] = $this->research_model->select_all_completed($researcher_id);
+        $this->load->model('admin_model');
+        $data["ex"] = $this->admin_model->fetch_data();
+        $data["completed"] = $this->admin_model->fetch_pdf_completed();
+        $data["presented"] = $this->admin_model->fetch_pdf_presented();
+        $data["published"] = $this->admin_model->fetch_pdf_published();
+        $data["creative"] = $this->admin_model->fetch_pdf_creative();
+        $data["authors"] = $this->admin_model->fetch_all_authors_admin();
+        $data["editors"] = $this->admin_model->fetch_all_editors_admin();
         $this->load->view('template/header');
-		$this->load->view('research/publication', $data);
+        $this->load->view('research/pub', $data);
         $this->load->view('template/footer');
     }
 
