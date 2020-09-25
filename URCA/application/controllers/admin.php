@@ -289,7 +289,7 @@ class admin extends CI_Controller{
 
         $completed_columns = array("Author Name(s)", "Title", "Year", "Institute", "Location", "Url", "Completed Type");
         $presented_columns = array("Author Name(s)", "Title Presented", "Date Presented", "Title of Conference", "Place of Conference", "Presented Type");
-        $published_columns = array("Author Name(s)", "Published Type", "Title of Article", "Title of Journal", "Title of Book", "Title_Chapter", "Title of Conference", "Year Published", "Vol. Number", "Issue Number", "Page Number", "Indexing Database", "Peer Review", "Publisher", "Place of Publication", "Place of Conference", "URL");
+        $published_columns = array("Author Name(s)", "Published Type", "Title of Article", "Editor Name(s)", "Title of Journal", "Title of Book", "Title_Chapter", "Title of Conference", "Year Published", "Vol. Number", "Issue Number", "Page Number", "Indexing Database", "Peer Review", "Publisher", "Place of Publication", "Place of Conference", "URL");
         $creative_columns = array("Creator", "Type of Creative Work", "Date", "Title of Work", "Role", "Place of Performance/Exhibition/Publication", "Producer/Organizer/Publisher", "Number of Artworks Exhibited", "Duration of Performance/Exhibition", "Commissioning Agency", "Scope of Audience", "Award Received");
         
         $com_column = 0;
@@ -372,28 +372,38 @@ class admin extends CI_Controller{
 
         foreach($published_research_data as $row){
             $data = $this->admin_model->fetch_author_excel($row->publication_id);
+            $data1 = $this->admin_model->fetch_all_editors_admin();
             $string = array();
             $i = 0;
             foreach($data as $name){
                 $string[$i] = $name->first_name . " " . $name->middle_initial . " " . $name->last_name;
                 $i++;           
             }
+            $string1 = array();
+            $x = 0;
+            foreach($data1 as $ed){
+                if($row->published_id == $ed->published_id){
+                    $string1[$x] = $ed->editor_fn . " " . $ed->editor_mi . " " . $ed->editor_ln;
+                    $x++;
+                }
+            }
             $object->getSheet(2)->setCellValueByColumnAndRow(0, $pub_row, implode(', ', $string));
             $object->getSheet(2)->setCellValueByColumnAndRow(1, $pub_row, $row->published_type);
             $object->getSheet(2)->setCellValueByColumnAndRow(2, $pub_row, $row->title_article);
-            $object->getSheet(2)->setCellValueByColumnAndRow(3, $pub_row, $row->title_journal);
-            $object->getSheet(2)->setCellValueByColumnAndRow(4, $pub_row, $row->title_book);
-            $object->getSheet(2)->setCellValueByColumnAndRow(5, $pub_row, $row->title_chapter);
-            $object->getSheet(2)->setCellValueByColumnAndRow(6, $pub_row, $row->title_conference);
-            $object->getSheet(2)->setCellValueByColumnAndRow(7, $pub_row, $row->year_published);
-            $object->getSheet(2)->setCellValueByColumnAndRow(8, $pub_row, $row->vol_num);
-            $object->getSheet(2)->setCellValueByColumnAndRow(9, $pub_row, $row->issue_num);
-            $object->getSheet(2)->setCellValueByColumnAndRow(10, $pub_row, $row->page_num);
-            $object->getSheet(2)->setCellValueByColumnAndRow(11, $pub_row, $row->peer_review);
-            $object->getSheet(2)->setCellValueByColumnAndRow(12, $pub_row, $row->publisher);
-            $object->getSheet(2)->setCellValueByColumnAndRow(13, $pub_row, $row->place_of_publication);
-            $object->getSheet(2)->setCellValueByColumnAndRow(14, $pub_row, $row->place_of_conference);
-            $object->getSheet(2)->setCellValueByColumnAndRow(15, $pub_row, $row->url);
+            $object->getSheet(2)->setCellValueByColumnAndRow(3, $pub_row, implode(', ', $string1));
+            $object->getSheet(2)->setCellValueByColumnAndRow(4, $pub_row, $row->title_journal);     
+            $object->getSheet(2)->setCellValueByColumnAndRow(5, $pub_row, $row->title_book);
+            $object->getSheet(2)->setCellValueByColumnAndRow(6, $pub_row, $row->title_chapter);
+            $object->getSheet(2)->setCellValueByColumnAndRow(7, $pub_row, $row->title_conference);
+            $object->getSheet(2)->setCellValueByColumnAndRow(8, $pub_row, $row->year_published);
+            $object->getSheet(2)->setCellValueByColumnAndRow(9, $pub_row, $row->vol_num);
+            $object->getSheet(2)->setCellValueByColumnAndRow(10, $pub_row, $row->issue_num);
+            $object->getSheet(2)->setCellValueByColumnAndRow(11, $pub_row, $row->page_num);
+            $object->getSheet(2)->setCellValueByColumnAndRow(12, $pub_row, $row->peer_review);
+            $object->getSheet(2)->setCellValueByColumnAndRow(13, $pub_row, $row->publisher);
+            $object->getSheet(2)->setCellValueByColumnAndRow(14, $pub_row, $row->place_of_publication);
+            $object->getSheet(2)->setCellValueByColumnAndRow(15, $pub_row, $row->place_of_conference);
+            $object->getSheet(2)->setCellValueByColumnAndRow(16, $pub_row, $row->url);
             $pub_row++;
         }
 

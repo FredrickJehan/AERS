@@ -389,6 +389,7 @@ class admin_model extends CI_Model{
         return $this->db->get()->result();
     }
 
+
     public function fetch_download_pdf(){
         $comp = $this->fetch_pdf_completed();
         $pre = $this->fetch_pdf_presented();
