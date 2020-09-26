@@ -464,16 +464,16 @@ class Research extends CI_Controller{
         }
     }
 
-    public function editor_update($publication_id){
+    public function editor_update(){
         $editor_fn = $this->input->post('editor_fn');
         $editor_mi = $this->input->post('editor_mi');
         $editor_ln = $this->input->post('editor_ln');
         $editor_id = $this->input->post('editor_id');
-        $published_id = $this->research_model->getPublished_id($publication_id);
+        $published_id = $this->input->post('published_id');
         for($i = 0; $i < count($editor_id); $i++){
             $data3[] = array(
                 'editor_id' => $editor_id[$i],
-                'published_id' => $published_id,
+                'published_id' => $published_id[$i],
                 'editor_fn' => $editor_fn[$i],
                 'editor_mi' => $editor_mi[$i],
                 'editor_ln' => $editor_ln[$i]
@@ -739,16 +739,13 @@ class Research extends CI_Controller{
             $this->form_validation->set_rules('place', 'place', 'required');
             $this->form_validation->set_rules('url', 'url');
         }
-        //from author
-  
+
         if($this->form_validation->run() == FALSE){
             $this->research_form();
         }else{
-            $research_type = $this->input->post('research_type');
             $publication_id = $this->uri->segment(3);
             $this->author_publication_update($publication_id);
 
-            //data for presented
             $data2 = array(
                 'title_article' => $this->input->post('title_article'),
                 'year_published' => $this->input->post('year'),
@@ -767,12 +764,13 @@ class Research extends CI_Controller{
                 'place_of_conference' => $this->input->post('place_con'),
                 'url' => $this->input->post('url'),
                 'published_type' => $research_type,
-                'publication_id' => $publication_id
+                'publication_id' => $last_id
             );
+
             $this->research_model->published_update($data2, $publication_id);
-            if($research_type == 'Book Chapter' || $research_type == 'Conference Proceedings'){
-                $this->editor_update($publication_id);
-            }
+            //if($research_type == 'Book Chapter' || $research_type == 'Conference Proceedings'){
+            //    $this->editor_update($publication_id);
+            //}
             redirect(base_url() . "research");
         }
     }
@@ -831,7 +829,7 @@ class Research extends CI_Controller{
         //from author
   
         if($this->form_validation->run() == FALSE){
-            // $this->research_form();
+            $this->research_form();
         }else{
             $research_type = $this->input->post('research_type');
             $publication_id = $this->uri->segment(3);
