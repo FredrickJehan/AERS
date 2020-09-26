@@ -764,7 +764,7 @@ class Research extends CI_Controller{
                 'place_of_conference' => $this->input->post('place_con'),
                 'url' => $this->input->post('url'),
                 'published_type' => $research_type,
-                'publication_id' => $last_id
+                'publication_id' => $publication_id
             );
 
             $this->research_model->published_update($data2, $publication_id);
