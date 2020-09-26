@@ -464,6 +464,24 @@ class Research extends CI_Controller{
         }
     }
 
+    public function editor_update($publication_id){
+        $editor_fn = $this->input->post('editor_fn');
+        $editor_mi = $this->input->post('editor_mi');
+        $editor_ln = $this->input->post('editor_ln');
+        $editor_id = $this->input->post('editor_id');
+        $published_id = $this->research_model->getPublished_id($publication_id);
+        for($i = 0; $i < count($editor_id); $i++){
+            $data3[] = array(
+                'editor_id' => $editor_id[$i],
+                'published_id' => $published_id,
+                'editor_fn' => $editor_fn[$i],
+                'editor_mi' => $editor_mi[$i],
+                'editor_ln' => $editor_ln[$i]
+            );
+        }
+        $this->db->update_batch('editor', $data3, 'editor_id');
+    }
+
     /*
     public function editor_publication_update($publication_id){
         $editor_fn = $this->input->post('editor_fn');
@@ -726,12 +744,10 @@ class Research extends CI_Controller{
         if($this->form_validation->run() == FALSE){
             $this->research_form();
         }else{
+            $research_type = $this->input->post('research_type');
             $publication_id = $this->uri->segment(3);
             $this->author_publication_update($publication_id);
-            /*
-            if($research_type == 'Book Chapter' || $research_type == 'Conference Proceedings'){
-                $this->editor_publication_update($publication_id);
-            }*/
+
             //data for presented
             $data2 = array(
                 'title_article' => $this->input->post('title_article'),
@@ -754,7 +770,9 @@ class Research extends CI_Controller{
                 'publication_id' => $publication_id
             );
             $this->research_model->published_update($data2, $publication_id);
-            
+            if($research_type == 'Book Chapter' || $research_type == 'Conference Proceedings'){
+                $this->editor_update($publication_id);
+            }
             redirect(base_url() . "research");
         }
     }

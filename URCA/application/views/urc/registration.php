@@ -57,8 +57,9 @@
     <div id="Researcher" stlye="display:none">
         <div class="form-row">
             <div class="form-group col-md-6">
+                <label>Department</label>
                 <select class="form-control" name="department">
-                    <option>Department</option>
+                    <option>Select</option>
                     <option value="Department of Media Studies">Department of Media Studies</option>
                     <option value="Department of Social Studies">Department of Social Studies</option>
                     <option value="Department of Literature and Language Studies">Department of Literature and Language Studies</option>

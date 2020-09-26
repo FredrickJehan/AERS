@@ -752,6 +752,8 @@
                                     <span class="text-danger"><?php echo form_error("editor_ln[]");?></span>
                                 </td>
                             </tr>
+                                    <input type="hidden" name="editor_id[]" value="<?php echo $e_name->editor_id ?>">
+                                    <input type="hidden" name="published_id[]" value="<?php echo $row->published_id ?>">
                             <?php } } ?>
                         </table>
                     </div>
@@ -890,6 +892,8 @@
                                     <span class="text-danger"><?php echo form_error("editor_ln[]");?></span>
                                 </td>
                             </tr>
+                                <input type="hidden" name="editor_id[]" value="<?php echo $e_name->editor_id ?>">
+                                <input type="hidden" name="published_id[]" value="<?php echo $row->published_id ?>">
                             <?php } } ?>
                     </table>
                 </div>
