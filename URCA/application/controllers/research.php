@@ -390,19 +390,17 @@ class Research extends CI_Controller{
         return $last_id;
     }
 
-    public function author_publication_update($publication_id, $research_type){
+    public function author_publication_update($publication_id){
         //data for author
         $first_name = $this->input->post('first_name');
         $middle_initial = $this->input->post('middle_initial');
         $last_name = $this->input->post('last_name');
         $author_id = $this->input->post('author_id');
 
-        if(count($author_id) > 1){
             for($i = 0; $i < count($author_id); $i++){
                 if($i == 0){
-                    $data1 = array(
+                    $data1[] = array(
                         'author_id' => $author_id[$i],
-                        'publication_id' => $publication_id,
                         'user_id' => $this->get_current_user(),
                         'first_name' => $first_name[$i],
                         'middle_initial' => $middle_initial[$i],
@@ -411,9 +409,8 @@ class Research extends CI_Controller{
                         'author_type' => 'Main'
                     );
                 }else{
-                    $data1 = array(
+                    $data1[] = array(
                         'author_id' => $author_id[$i],
-                        'publication_id' => $publication_id,
                         'user_id' => $this->get_current_user(),
                         'first_name' => $first_name[$i],
                         'middle_initial' => $middle_initial[$i],
@@ -424,30 +421,6 @@ class Research extends CI_Controller{
                 }
             }
             $this->db->update_batch('author', $data1, 'author_id');
-        }else{
-            $data1 = array(
-                'author_id' => $author_id[$i],
-                'publication_id' => $publication_id,
-                'user_id' => $this->get_current_user(),
-                'first_name' => $first_name[$i],
-                'middle_initial' => $middle_initial[$i],
-                'last_name' => $last_name[$i],
-                'is_employee' => '1',
-                'author_type' => 'Main'
-            );
-            $this->db->where('publication_id', $publication_id);
-            $this->db->update('author', $data1);
-        }
-
-        if($research_type == 'Thesis / Dissertation' || $research_type == 'Technical / Research Report'){
-            $publication_type = 'Completed Research';
-        }elseif($research_type == 'Conference Paper' || $research_type == 'Conference Poster'){
-            $publication_type = 'Presented Research';
-        }elseif($research_type == 'Journal Article' || $research_type == 'Book / Textbook' || $research_type == 'Book Chapter' || $research_type == 'Conference Proceedings'){
-            $publication_type = 'Published Research';
-        }else{
-            $publication_type = 'Creative Works';
-        }
 
         $file = $this->upload_file();
         //data for publication
@@ -459,7 +432,6 @@ class Research extends CI_Controller{
             'submittor' => $this->get_current_user(),
             'abstract' => $this->input->post('abstract'),
             'num_views' => '0',
-            'publication_type' => $research_type,
             'status' => 'Unreviewed'
         );
         $this->research_model->publication_update($data, $publication_id);
@@ -728,7 +700,7 @@ class Research extends CI_Controller{
             if($research_type == 'Book Chapter' || $research_type == 'Conference Proceedings'){
                 $this->editor_update();
             }
-            $this->author_publication_update($publication_id, $research_type);
+            $this->author_publication_update($publication_id);
 
             $data2 = array(
                 'title_article' => $this->input->post('title_article'),
@@ -812,9 +784,9 @@ class Research extends CI_Controller{
         if($this->form_validation->run() == FALSE){
             $this->research_form();
         }else{
-            $research_type = $this->input->post('research_type');
+            //$research_type = $this->input->post('research_type');
             $publication_id = $this->uri->segment(3);
-            $this->author_publication_update($publication_id, $research_type);
+            $this->author_publication_update($publication_id);
             //data
             $data2 = array(
                 'type_cw' => $this->input->post('type'),

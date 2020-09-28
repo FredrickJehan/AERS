@@ -1033,22 +1033,25 @@
             <!-- Creative form -->
             <div id="creative">
                 <form method="post" action="<?php echo base_url()?>research/creative_submit" enctype="multipart/form-data">
-                <a style="display:none" name="research_type" value='9'></a>
+                <!--<a style="display:none" name="research_type" value='9'></a>-->
+                <?php foreach($author_data as $name){ 
+                    if($row->publication_id == $name->publication_id){ ?>
                 <div class="form-row">
                     <div class="form-group col-md-5">
                         <label>First Name*</label>
-                        <input type="text" name="first_name[]" value="<?php echo $row->first_name?>" class="form-control" required>
+                        <input type="text" name="first_name[]" value="<?php echo $name->first_name?>" class="form-control" required>
                     </div>
                     <div class="form-group col-md-2">
                         <label>M.I.(S)*</label>
-                        <input type="text" name="middle_initial[]" value="<?php echo $row->middle_initial?>" class="form-control" required>
+                        <input type="text" name="middle_initial[]" value="<?php echo $name->middle_initial?>" class="form-control" required>
                     </div>
                     <div class="form-group col-md-5">
                         <label>Lastname*</label>
-                        <input type="text" name="last_name[]" value="<?php echo $row->last_name?>" class="form-control" required>
+                        <input type="text" name="last_name[]" value="<?php echo $name->last_name?>" class="form-control" required>
                     </div>
                 </div>
-                <input type="hidden" name="author_id[]" value="<?php echo $row->author_id?>">
+                <input type="hidden" name="author_id[]" value="<?php echo $name->author_id?>">
+                <?php } } ?>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                     <label>Type of Research/Creative Work*</label>
