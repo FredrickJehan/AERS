@@ -1031,7 +1031,7 @@
         foreach($research_data as $row){ 
 ?>
             <!-- Creative form -->
-            <div id="creative" style="display:none;">
+            <div id="creative">
                 <form method="post" action="<?php echo base_url()?>research/creative_submit" enctype="multipart/form-data">
                 <a style="display:none" name="research_type" value='9'></a>
                 <div class="form-row">
