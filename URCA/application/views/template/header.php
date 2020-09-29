@@ -104,7 +104,7 @@
       </div>
 
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('admin');?>">
+        <a class="nav-link" href="<?php echo base_url('dashboard');?>">
           <i class="fas fa-fw fa-table"></i>
           <span>Dashboard</span></a>
       </li>
