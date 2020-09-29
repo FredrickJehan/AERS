@@ -634,7 +634,7 @@
         <?php
             }elseif($row->published_type == 'Book / Textbook'){ ?>
                 <div id="book">
-                    <form method="post" action="<?php echo base_url()?>research/published_submit" enctype="multipart/form-data">
+                    <form method="post" action="<?php echo base_url('research/published_update/'.$row->publication_id)?>" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>Author*</label>
                     </div>
@@ -732,7 +732,7 @@
             }elseif($row->published_type == 'Book Chapter'){?>
                 <!-- Book Chapter form -->
                 <div id="chapter">
-                    <form method="post" action="<?php echo base_url()?>research/published_update" enctype="multipart/form-data">
+                    <form method="post" action="<?php echo base_url('research/published_update/'.$row->publication_id)?>" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>Author*</label>
                     </div>
@@ -871,7 +871,7 @@
 <?php       }else{ ?>
                 <!-- Conference Proceedings form -->
                 <div id="proceedings">
-                <form method="post" action="<?php echo base_url()?>research/published_submit" enctype="multipart/form-data">
+                <form method="post" action="<?php echo base_url('research/published_update/'.$row->publication_id)?>" enctype="multipart/form-data">
                 <div class="form-group">
                     <label>Author*</label>
                 </div>
@@ -1032,7 +1032,7 @@
 ?>
             <!-- Creative form -->
             <div id="creative">
-                <form method="post" action="<?php echo base_url()?>research/creative_submit" enctype="multipart/form-data">
+                <form method="post" action="<?php echo base_url('research/creative_update/'.$row->publication_id)?>" enctype="multipart/form-data">
                 <!--<a style="display:none" name="research_type" value='9'></a>-->
                 <?php foreach($author_data as $name){ 
                     if($row->publication_id == $name->publication_id){ ?>
