@@ -23,7 +23,7 @@ class Welcome extends CI_Controller{
         //admin
         $data['total_pub'] = $this->research_model->total_pub_count();
         $data['unreviewed_count'] = $this->research_model->unreviewed_count();
-        $data['reviewed_count'] = $this->research_model->approved_count();
+        $data['approved_count'] = $this->research_model->approved_count();
         $data['rejected_count'] = $this->research_model->rejected_count();
         //researcher
         $data['completed_count'] = $this->research_model->completed_count($user_id);
