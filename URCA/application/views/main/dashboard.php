@@ -1,3 +1,11 @@
+
+<?php
+  if (isset($this->session->userdata['logged_in'])) {
+    $user_type = ($this->session->userdata['logged_in']['user_type']);
+  }else {
+    redirect('login');
+  }
+?>
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
@@ -16,8 +24,22 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Completed Research</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $completed_count ?></div>
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                      <?php if($user_type == 'Researcher'){?>
+                        Completed Research
+                      <?php }?>
+                      <?php if($user_type == 'Admin'){?>
+                        Total Publications
+                      <?php }?>
+                      </div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">
+                      <?php if($user_type == 'Researcher'){?>
+                        <?php echo $completed_count ?>
+                      <?php }?>
+                      <?php if($user_type == 'Admin'){?>
+                        <?php echo $total_pub?>
+                      <?php }?>
+                      </div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-book fa-2x text-gray-300"></i>
@@ -33,8 +55,22 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Presented Research</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $presented_count ?></div>
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                      <?php if($user_type == 'Researcher'){?>
+                        Presented Research
+                      <?php }?>
+                      <?php if($user_type == 'Admin'){?>
+                        Unreviewed Research
+                      <?php }?>
+                      </div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">
+                      <?php if($user_type == 'Researcher'){?>
+                        <?php echo $presented_count ?>
+                      <?php }?>
+                      <?php if($user_type == 'Admin'){?>
+                        <?php echo $unreviewed_count ?>
+                      <?php }?>
+                      </div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-book fa-2x text-gray-300"></i>
@@ -50,10 +86,24 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Published Research </div>
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                      <?php if($user_type == 'Researcher'){?>
+                        Published Research
+                      <?php }?>
+                      <?php if($user_type == 'Admin'){?>
+                        Approved Research
+                      <?php }?> 
+                      </div>
                       <div class="row no-gutters align-items-center">
                         <div class="col-auto">
-                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php echo $published_count ?></div>
+                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                          <?php if($user_type == 'Researcher'){?>
+                            <?php echo $published_count ?>
+                          <?php }?>
+                          <?php if($user_type == 'Admin'){?>
+                            <?php echo $approved_count ?>
+                          <?php }?>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -71,8 +121,22 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Creative Research</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $creative_count ?></div>
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                      <?php if($user_type == 'Researcher'){?>
+                        Creative Works
+                      <?php }?>
+                      <?php if($user_type == 'Admin'){?>
+                        Rejected Research
+                      <?php }?>
+                      </div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">
+                      <?php if($user_type == 'Researcher'){?>
+                        <?php echo $creative_count ?>
+                      <?php }?>
+                      <?php if($user_type == 'Admin'){?>
+                        <?php echo $rejected_count ?>
+                      <?php }?>
+                      </div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-book fa-2x text-gray-300"></i>

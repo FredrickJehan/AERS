@@ -20,6 +20,12 @@ class Welcome extends CI_Controller{
     public function dashboard(){
         $this->load->model('research_model');
         $user_id = $this->get_current_user();
+        //admin
+        $data['total_pub'] = $this->research_model->total_pub_count();
+        $data['unreviewed_count'] = $this->research_model->unreviewed_count();
+        $data['reviewed_count'] = $this->research_model->approved_count();
+        $data['rejected_count'] = $this->research_model->rejected_count();
+        //researcher
         $data['completed_count'] = $this->research_model->completed_count($user_id);
         $data['presented_count'] = $this->research_model->presented_count($user_id);
         $data['published_count'] = $this->research_model->published_count($user_id);
