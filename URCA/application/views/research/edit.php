@@ -1056,17 +1056,127 @@
                     <div class="form-group col-md-6">
                     <label>Type of Research/Creative Work*</label>
                     <select class="form-control" name="type" required>
-                        <option>Select</option>
-                        <option value="Art Work">Art Work</option>
-                        <option value="Film">Film</option>
-                        <option value="Photography">Photography</option>
-                        <option value="Software Application">Software Applicaiton</option>
-                        <option value="Graphic Design">Graphic Design</option>
-                        <option value="Theatre">Theatre</option>
-                        <option value="Dance">Dance</option>
-                        <option value="Performance">Performance</option>
-                        <option value="Mural">Mural</option>
-                        <option value="Specify">Specify</option>
+                        <?php if($row->type_cw == 'Art Work'){ ?>
+                            <option>Select</option>
+                            <option value="Art Work" selected>Art Work</option>
+                            <option value="Film">Film</option>
+                            <option value="Photography">Photography</option>
+                            <option value="Software Application">Software Applicaiton</option>
+                            <option value="Graphic Design">Graphic Design</option>
+                            <option value="Theatre">Theatre</option>
+                            <option value="Dance">Dance</option>
+                            <option value="Performance">Performance</option>
+                            <option value="Mural">Mural</option>
+                            <option value="Specify">Specify</option>
+                        <?php }elseif($row->type_cw == 'Film'){ ?>
+                            <option>Select</option>
+                            <option value="Art Work">Art Work</option>
+                            <option value="Film" selected>Film</option>
+                            <option value="Photography">Photography</option>
+                            <option value="Software Application">Software Applicaiton</option>
+                            <option value="Graphic Design">Graphic Design</option>
+                            <option value="Theatre">Theatre</option>
+                            <option value="Dance">Dance</option>
+                            <option value="Performance">Performance</option>
+                            <option value="Mural">Mural</option>
+                            <option value="Specify">Specify</option>
+                        <?php }elseif($row->type_cw == 'Photography'){ ?>
+                            <option>Select</option>
+                            <option value="Art Work">Art Work</option>
+                            <option value="Film">Film</option>
+                            <option value="Photography" selected>Photography</option>
+                            <option value="Software Application">Software Applicaiton</option>
+                            <option value="Graphic Design">Graphic Design</option>
+                            <option value="Theatre">Theatre</option>
+                            <option value="Dance">Dance</option>
+                            <option value="Performance">Performance</option>
+                            <option value="Mural">Mural</option>
+                            <option value="Specify">Specify</option>
+                        <?php }elseif($row->type_cw == 'Software Application'){ ?>
+                            <option>Select</option>
+                            <option value="Art Work">Art Work</option>
+                            <option value="Film">Film</option>
+                            <option value="Photography">Photography</option>
+                            <option value="Software Application" selected>Software Applicaiton</option>
+                            <option value="Graphic Design">Graphic Design</option>
+                            <option value="Theatre">Theatre</option>
+                            <option value="Dance">Dance</option>
+                            <option value="Performance">Performance</option>
+                            <option value="Mural">Mural</option>
+                            <option value="Specify">Specify</option>
+                        <?php }elseif($row->type_cw == 'Graphic Design'){ ?>
+                            <option>Select</option>
+                            <option value="Art Work">Art Work</option>
+                            <option value="Film">Film</option>
+                            <option value="Photography">Photography</option>
+                            <option value="Software Application">Software Applicaiton</option>
+                            <option value="Graphic Design" selected>Graphic Design</option>
+                            <option value="Theatre">Theatre</option>
+                            <option value="Dance">Dance</option>
+                            <option value="Performance">Performance</option>
+                            <option value="Mural">Mural</option>
+                            <option value="Specify">Specify</option>
+                        <?php }elseif($row->type_cw == 'Theatre'){ ?>
+                            <option>Select</option>
+                            <option value="Art Work">Art Work</option>
+                            <option value="Film">Film</option>
+                            <option value="Photography">Photography</option>
+                            <option value="Software Application">Software Applicaiton</option>
+                            <option value="Graphic Design">Graphic Design</option>
+                            <option value="Theatre" selected>Theatre</option>
+                            <option value="Dance">Dance</option>
+                            <option value="Performance">Performance</option>
+                            <option value="Mural">Mural</option>
+                            <option value="Specify">Specify</option>
+                        <?php }elseif($row->type_cw == 'Dance'){ ?>
+                            <option>Select</option>
+                            <option value="Art Work">Art Work</option>
+                            <option value="Film">Film</option>
+                            <option value="Photography">Photography</option>
+                            <option value="Software Application">Software Applicaiton</option>
+                            <option value="Graphic Design">Graphic Design</option>
+                            <option value="Theatre">Theatre</option>
+                            <option value="Dance" selected>Dance</option>
+                            <option value="Performance">Performance</option>
+                            <option value="Mural">Mural</option>
+                            <option value="Specify">Specify</option>
+                        <?php }elseif($row->type_cw == 'Performance'){ ?>
+                            <option>Select</option>
+                            <option value="Art Work">Art Work</option>
+                            <option value="Film">Film</option>
+                            <option value="Photography">Photography</option>
+                            <option value="Software Application">Software Applicaiton</option>
+                            <option value="Graphic Design">Graphic Design</option>
+                            <option value="Theatre">Theatre</option>
+                            <option value="Dance">Dance</option>
+                            <option value="Performance" selected>Performance</option>
+                            <option value="Mural">Mural</option>
+                            <option value="Specify">Specify</option>
+                        <?php }elseif($row->type_cw == 'Mural'){ ?>
+                            <option>Select</option>
+                            <option value="Art Work">Art Work</option>
+                            <option value="Film">Film</option>
+                            <option value="Photography">Photography</option>
+                            <option value="Software Application">Software Applicaiton</option>
+                            <option value="Graphic Design">Graphic Design</option>
+                            <option value="Theatre">Theatre</option>
+                            <option value="Dance">Dance</option>
+                            <option value="Performance">Performance</option>
+                            <option value="Mural" selected>Mural</option>
+                            <option value="Specify">Specify</option>
+                        <?php }else{ ?>
+                            <option>Select</option>
+                            <option value="Art Work">Art Work</option>
+                            <option value="Film">Film</option>
+                            <option value="Photography">Photography</option>
+                            <option value="Software Application">Software Applicaiton</option>
+                            <option value="Graphic Design">Graphic Design</option>
+                            <option value="Theatre">Theatre</option>
+                            <option value="Dance">Dance</option>
+                            <option value="Performance">Performance</option>
+                            <option value="Mural">Mural</option>
+                            <option value="Specify" selected>Specify</option>
+                        <?php } ?>
                     </select>
                     </div>
                     <div class="form-group col-md-6">
