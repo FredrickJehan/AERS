@@ -113,7 +113,7 @@ class Research extends CI_Controller{
 
         $data_check = array(
             'user_id' => $user_id,
-            'pub_id' => $publication_id
+            'publication_id' => $publication_id
         );
         $result = $this->research_model->like_check($data_check);
             if($result == TRUE) {
@@ -131,7 +131,7 @@ class Research extends CI_Controller{
 
         $data = array(
             'user_id' => $user_id,
-            'pub_id' => $publication_id
+            'publication_id' => $publication_id
         );
         $this->research_model->like($data);
         redirect(base_url() . "research/view/".$publication_id);
