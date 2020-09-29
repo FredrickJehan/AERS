@@ -634,7 +634,7 @@
         <?php
             }elseif($row->published_type == 'Book / Textbook'){ ?>
                 <div id="book">
-                    <form method="post" action="<?php echo base_url()?>research/published_submit" enctype="multipart/form-data">
+                    <form method="post" action="<?php echo base_url('research/published_update/'.$row->publication_id)?>" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>Author*</label>
                     </div>
@@ -732,7 +732,7 @@
             }elseif($row->published_type == 'Book Chapter'){?>
                 <!-- Book Chapter form -->
                 <div id="chapter">
-                    <form method="post" action="<?php echo base_url()?>research/published_update" enctype="multipart/form-data">
+                    <form method="post" action="<?php echo base_url('research/published_update/'.$row->publication_id)?>" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>Author*</label>
                     </div>
@@ -871,7 +871,7 @@
 <?php       }else{ ?>
                 <!-- Conference Proceedings form -->
                 <div id="proceedings">
-                <form method="post" action="<?php echo base_url()?>research/published_submit" enctype="multipart/form-data">
+                <form method="post" action="<?php echo base_url('research/published_update/'.$row->publication_id)?>" enctype="multipart/form-data">
                 <div class="form-group">
                     <label>Author*</label>
                 </div>
@@ -1032,7 +1032,7 @@
 ?>
             <!-- Creative form -->
             <div id="creative">
-                <form method="post" action="<?php echo base_url()?>research/creative_submit" enctype="multipart/form-data">
+                <form method="post" action="<?php echo base_url('research/creative_update/'.$row->publication_id)?>" enctype="multipart/form-data">
                 <!--<a style="display:none" name="research_type" value='9'></a>-->
                 <?php foreach($author_data as $name){ 
                     if($row->publication_id == $name->publication_id){ ?>
@@ -1056,17 +1056,127 @@
                     <div class="form-group col-md-6">
                     <label>Type of Research/Creative Work*</label>
                     <select class="form-control" name="type" required>
-                        <option>Select</option>
-                        <option value="Art Work">Art Work</option>
-                        <option value="Film">Film</option>
-                        <option value="Photography">Photography</option>
-                        <option value="Software Application">Software Applicaiton</option>
-                        <option value="Graphic Design">Graphic Design</option>
-                        <option value="Theatre">Theatre</option>
-                        <option value="Dance">Dance</option>
-                        <option value="Performance">Performance</option>
-                        <option value="Mural">Mural</option>
-                        <option value="Specify">Specify</option>
+                        <?php if($row->type_cw == 'Art Work'){ ?>
+                            <option>Select</option>
+                            <option value="Art Work" selected>Art Work</option>
+                            <option value="Film">Film</option>
+                            <option value="Photography">Photography</option>
+                            <option value="Software Application">Software Applicaiton</option>
+                            <option value="Graphic Design">Graphic Design</option>
+                            <option value="Theatre">Theatre</option>
+                            <option value="Dance">Dance</option>
+                            <option value="Performance">Performance</option>
+                            <option value="Mural">Mural</option>
+                            <option value="Specify">Specify</option>
+                        <?php }elseif($row->type_cw == 'Film'){ ?>
+                            <option>Select</option>
+                            <option value="Art Work">Art Work</option>
+                            <option value="Film" selected>Film</option>
+                            <option value="Photography">Photography</option>
+                            <option value="Software Application">Software Applicaiton</option>
+                            <option value="Graphic Design">Graphic Design</option>
+                            <option value="Theatre">Theatre</option>
+                            <option value="Dance">Dance</option>
+                            <option value="Performance">Performance</option>
+                            <option value="Mural">Mural</option>
+                            <option value="Specify">Specify</option>
+                        <?php }elseif($row->type_cw == 'Photography'){ ?>
+                            <option>Select</option>
+                            <option value="Art Work">Art Work</option>
+                            <option value="Film">Film</option>
+                            <option value="Photography" selected>Photography</option>
+                            <option value="Software Application">Software Applicaiton</option>
+                            <option value="Graphic Design">Graphic Design</option>
+                            <option value="Theatre">Theatre</option>
+                            <option value="Dance">Dance</option>
+                            <option value="Performance">Performance</option>
+                            <option value="Mural">Mural</option>
+                            <option value="Specify">Specify</option>
+                        <?php }elseif($row->type_cw == 'Software Application'){ ?>
+                            <option>Select</option>
+                            <option value="Art Work">Art Work</option>
+                            <option value="Film">Film</option>
+                            <option value="Photography">Photography</option>
+                            <option value="Software Application" selected>Software Applicaiton</option>
+                            <option value="Graphic Design">Graphic Design</option>
+                            <option value="Theatre">Theatre</option>
+                            <option value="Dance">Dance</option>
+                            <option value="Performance">Performance</option>
+                            <option value="Mural">Mural</option>
+                            <option value="Specify">Specify</option>
+                        <?php }elseif($row->type_cw == 'Graphic Design'){ ?>
+                            <option>Select</option>
+                            <option value="Art Work">Art Work</option>
+                            <option value="Film">Film</option>
+                            <option value="Photography">Photography</option>
+                            <option value="Software Application">Software Applicaiton</option>
+                            <option value="Graphic Design" selected>Graphic Design</option>
+                            <option value="Theatre">Theatre</option>
+                            <option value="Dance">Dance</option>
+                            <option value="Performance">Performance</option>
+                            <option value="Mural">Mural</option>
+                            <option value="Specify">Specify</option>
+                        <?php }elseif($row->type_cw == 'Theatre'){ ?>
+                            <option>Select</option>
+                            <option value="Art Work">Art Work</option>
+                            <option value="Film">Film</option>
+                            <option value="Photography">Photography</option>
+                            <option value="Software Application">Software Applicaiton</option>
+                            <option value="Graphic Design">Graphic Design</option>
+                            <option value="Theatre" selected>Theatre</option>
+                            <option value="Dance">Dance</option>
+                            <option value="Performance">Performance</option>
+                            <option value="Mural">Mural</option>
+                            <option value="Specify">Specify</option>
+                        <?php }elseif($row->type_cw == 'Dance'){ ?>
+                            <option>Select</option>
+                            <option value="Art Work">Art Work</option>
+                            <option value="Film">Film</option>
+                            <option value="Photography">Photography</option>
+                            <option value="Software Application">Software Applicaiton</option>
+                            <option value="Graphic Design">Graphic Design</option>
+                            <option value="Theatre">Theatre</option>
+                            <option value="Dance" selected>Dance</option>
+                            <option value="Performance">Performance</option>
+                            <option value="Mural">Mural</option>
+                            <option value="Specify">Specify</option>
+                        <?php }elseif($row->type_cw == 'Performance'){ ?>
+                            <option>Select</option>
+                            <option value="Art Work">Art Work</option>
+                            <option value="Film">Film</option>
+                            <option value="Photography">Photography</option>
+                            <option value="Software Application">Software Applicaiton</option>
+                            <option value="Graphic Design">Graphic Design</option>
+                            <option value="Theatre">Theatre</option>
+                            <option value="Dance">Dance</option>
+                            <option value="Performance" selected>Performance</option>
+                            <option value="Mural">Mural</option>
+                            <option value="Specify">Specify</option>
+                        <?php }elseif($row->type_cw == 'Mural'){ ?>
+                            <option>Select</option>
+                            <option value="Art Work">Art Work</option>
+                            <option value="Film">Film</option>
+                            <option value="Photography">Photography</option>
+                            <option value="Software Application">Software Applicaiton</option>
+                            <option value="Graphic Design">Graphic Design</option>
+                            <option value="Theatre">Theatre</option>
+                            <option value="Dance">Dance</option>
+                            <option value="Performance">Performance</option>
+                            <option value="Mural" selected>Mural</option>
+                            <option value="Specify">Specify</option>
+                        <?php }else{ ?>
+                            <option>Select</option>
+                            <option value="Art Work">Art Work</option>
+                            <option value="Film">Film</option>
+                            <option value="Photography">Photography</option>
+                            <option value="Software Application">Software Applicaiton</option>
+                            <option value="Graphic Design">Graphic Design</option>
+                            <option value="Theatre">Theatre</option>
+                            <option value="Dance">Dance</option>
+                            <option value="Performance">Performance</option>
+                            <option value="Mural">Mural</option>
+                            <option value="Specify" selected>Specify</option>
+                        <?php } ?>
                     </select>
                     </div>
                     <div class="form-group col-md-6">
