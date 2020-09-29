@@ -526,11 +526,11 @@ exhibition / performance*
                 <label>Peer-review*</label>
                 <br />  
                 <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="yes_peer" name="peer" class="custom-control-input">
+                    <input type="radio" id="yes_peer" name="peer" value="yes" class="custom-control-input">
                     <label class="custom-control-label" for="yes_peer">Yes</label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="no_peer"name="peer" class="custom-control-input">
+                    <input type="radio" id="no_peer"name="peer" value="no" class="custom-control-input">
                     <label class="custom-control-label" for="no_peer">No</label>
                 </div>
             </div>
@@ -540,6 +540,10 @@ exhibition / performance*
                 SUBMIT / UPLOAD in one file: Copy of original article submitted, Copy of peer-review, Copy of full published paper*
             </label>
             <input type="file" name="file" class="form-control-file" required>
+        </div>
+        <div class="form-group">
+            <label>Abstract</label>
+            <textarea name="abstract" class="form-control" placeholder="Type here your abstract" rows="5" ></textarea>
         </div>
         <div class="form-group" style="text-align:center;">
             <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
@@ -614,6 +618,10 @@ exhibition / performance*
                 SUBMIT / UPLOAD in one file: Copy of front page, copyright page, table of contents, about the author(s) page*
             </label>
             <input type="file" name="file" class="form-control-file" required>
+        </div>
+        <div class="form-group">
+            <label>Abstract</label>
+            <textarea name="abstract" class="form-control" placeholder="Type here your abstract" rows="5" ></textarea>
         </div>
         <div class="form-group" style="text-align:center;">
             <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
@@ -728,6 +736,10 @@ exhibition / performance*
                 Copy of peer-review, Copy of full chapter published in the edited book*
             </label>
             <input type="file" name="file" class="form-control-file" required>
+        </div>
+        <div class="form-group">
+            <label>Abstract</label>
+            <textarea name="abstract" class="form-control" placeholder="Type here your abstract" rows="5" ></textarea>
         </div>
         <div class="form-group" style="text-align:center;">
             <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
@@ -852,6 +864,10 @@ exhibition / performance*
 of contents, copy of peer-review, copy of published conference proceedings
             </label>
             <input type="file" name="file" class="form-control-file">
+        </div>
+        <div class="form-group">
+            <label>Abstract</label>
+            <textarea name="abstract" class="form-control" placeholder="Type here your abstract" rows="5" ></textarea>
         </div>
         <div class="form-group" style="text-align:center;">
             <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>

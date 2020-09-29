@@ -72,7 +72,7 @@
         ?>
         <?php echo implode(', ', $string) ?> (<?php echo date_format($date, "Y");?>, <?php echo date_format($date, "F");?>). <i><?php echo $row->title_presented;?></i>. Paper presented at the
         <?php echo $row->title_conference;?>, <?php echo $row->place_conference;?>.
-        </a></td><br/><br/>
+        </a></td><br/><hr/>
     <?php } ?>
     </div>
   </div>
@@ -140,7 +140,7 @@
           <?php } ?>
         </a>
       </td>
-      <br /><br />
+      <br /><hr/>
     <?php } ?>
     </div>
   </div>
@@ -164,7 +164,7 @@
           <?php } ?>
         </a>
       </td>
-      <br />
+      <hr />
     <?php } ?>
     </div>
   </div>

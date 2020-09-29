@@ -244,9 +244,20 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <p><b>Note: Before clicking the edit button, please reupload file.</b></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Current file: </label>
+                        <a href="<?=base_url().'pdf/'.$row->file;?>" target="_blank"><?php echo $row->file; ?></a>
+                    </div>
+                    <div class="form-group">
                         <label>SUBMIT / UPLOAD in one file: Copy of full technical report*</label>
                         <input type="file" name="file" value="<?php echo $row->file?>" class="form-control-file">
                         <a href="<?php echo base_url()?>" target="__blank" value="<?php echo $row->file?>"></a>
+                    </div>
+                    <div class="form-group">
+                        <label>Abstract</label>
+                        <textarea name="abstract" class="form-control" rows="5"><?php echo $row->abstract?></textarea>
                     </div>
                     <div class="form-group" style="text-align:center;">
                     <?php
@@ -319,20 +330,31 @@
                         </div>
                     </div>
                     <div class="form-row">
-                    <div class="form-group col-md-8">
-                        <label>Full title of conference*</label>
-                        <input type="text" name="title_conference" value="<?php echo $row->title_conference?>" class="form-control">
-                        <span class="text-danger"><?php echo form_error("title_conference");?></span>
+                        <div class="form-group col-md-8">
+                            <label>Full title of conference*</label>
+                            <input type="text" name="title_conference" value="<?php echo $row->title_conference?>" class="form-control">
+                            <span class="text-danger"><?php echo form_error("title_conference");?></span>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Place of conference*</label>
+                            <input type="text" name="place_conference" value="<?php echo $row->place_conference?>" class="form-control">
+                            <span class="text-danger"><?php echo form_error("place_conference");?></span>
+                        </div>
                     </div>
-                    <div class="form-group col-md-4">
-                        <label>Place of conference*</label>
-                        <input type="text" name="place_conference" value="<?php echo $row->place_conference?>" class="form-control">
-                        <span class="text-danger"><?php echo form_error("place_conference");?></span>
+                    <div class="form-group">
+                        <p><b>Note: Before clicking the edit button, please reupload file.</b></p>
                     </div>
+                    <div class="form-group">
+                        <label>Current file: </label>
+                        <a href="<?=base_url().'pdf/'.$row->file;?>" target="_blank"><?php echo $row->file; ?></a>
                     </div>
                     <div class="form-group">
                         <label>SUBMIT / UPLOAD in one file (jpg or pdf): Copy of Certificate of Presentation</label>
                         <input type="file" name="file" class="form-control-file">
+                    </div>
+                    <div class="form-group">
+                        <label>Abstract</label>
+                        <textarea name="abstract" class="form-control" rows="5"><?php echo $row->abstract?></textarea>
                     </div>
                     <div class="form-group" style="text-align:center;">
                     <?php
@@ -413,10 +435,21 @@
                     </div>
                     </div>
                     <div class="form-group">
+                        <p><b>Note: Before clicking the edit button, please reupload file.</b></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Current file: </label>
+                        <a href="<?=base_url().'pdf/'.$row->file;?>" target="_blank"><?php echo $row->file; ?></a>
+                    </div>
+                    <div class="form-group">
                         <label>
                         SUBMIT / UPLOAD in one file: Copy of poster, picture of presenter with poster as background and/or Certificate of Poster Presentation
                         </label>
                         <input type="file" name="file" class="form-control-file">
+                    </div>
+                    <div class="form-group">
+                        <label>Abstract</label>
+                        <textarea name="abstract" class="form-control" rows="5"><?php echo $row->abstract?></textarea>
                     </div>
                     <div class="form-group" style="text-align:center;">
                     <?php
@@ -562,11 +595,22 @@
                         <?php } ?>
                     </div>
                 </div>
+                    <div class="form-group">
+                        <p><b>Note: Before clicking the edit button, please reupload file.</b></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Current file: </label>
+                        <a href="<?=base_url().'pdf/'.$row->file;?>" target="_blank"><?php echo $row->file; ?></a>
+                    </div>
                 <div class="form-group">
                     <label>
                         SUBMIT / UPLOAD in one file: Copy of original article submitted, Copy of peer-review, Copy of full published paper*
                     </label>
                     <input type="file" name="file" class="form-control-file" required>
+                </div>
+                <div class="form-group">
+                    <label>Abstract</label>
+                    <textarea name="abstract" class="form-control" rows="5"><?php echo $row->abstract?></textarea>
                 </div>
                 <div class="form-group" style="text-align:center;">
                 <?php
@@ -649,10 +693,21 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <p><b>Note: Before clicking the edit button, please reupload file.</b></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Current file: </label>
+                        <a href="<?=base_url().'pdf/'.$row->file;?>" target="_blank"><?php echo $row->file; ?></a>
+                    </div>
+                    <div class="form-group">
                         <label>
                             SUBMIT / UPLOAD in one file: Copy of front page, copyright page, table of contents, about the author(s) page*
                         </label>
                         <input type="file" name="file" class="form-control-file" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Abstract</label>
+                        <textarea name="abstract" class="form-control" rows="5"><?php echo $row->abstract?></textarea>
                     </div>
                     <div class="form-group" style="text-align:center;">
                     <?php
@@ -752,6 +807,8 @@
                                     <span class="text-danger"><?php echo form_error("editor_ln[]");?></span>
                                 </td>
                             </tr>
+                                    <input type="hidden" name="editor_id[]" value="<?php echo $e_name->editor_id ?>">
+                                    <input type="hidden" name="published_id[]" value="<?php echo $row->published_id ?>">
                             <?php } } ?>
                         </table>
                     </div>
@@ -775,11 +832,22 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <p><b>Note: Before clicking the edit button, please reupload file.</b></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Current file: </label>
+                        <a href="<?=base_url().'pdf/'.$row->file;?>" target="_blank"><?php echo $row->file; ?></a>
+                    </div>
+                    <div class="form-group">
                         <label>
                             SUBMIT / UPLOAD in one file: CCopy of front page of the book, copyright page, table of contents,
                             Copy of peer-review, Copy of full chapter published in the edited book*
                         </label>
                         <input type="file" name="file" class="form-control-file" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Abstract</label>
+                        <textarea name="abstract" class="form-control" rows="5"><?php echo $row->abstract?></textarea>
                     </div>
                     <div class="form-group" style="text-align:center;">
                     <?php
@@ -890,6 +958,8 @@
                                     <span class="text-danger"><?php echo form_error("editor_ln[]");?></span>
                                 </td>
                             </tr>
+                                <input type="hidden" name="editor_id[]" value="<?php echo $e_name->editor_id ?>">
+                                <input type="hidden" name="published_id[]" value="<?php echo $row->published_id ?>">
                             <?php } } ?>
                     </table>
                 </div>
@@ -919,11 +989,22 @@
                     <?php } ?>
                 </div>
                 <div class="form-group">
+                    <p><b>Note: Before clicking the edit button, please reupload file.</b></p>
+                </div>
+                <div class="form-group">
+                    <label>Current file: </label>
+                    <a href="<?=base_url().'pdf/'.$row->file;?>" target="_blank"><?php echo $row->file; ?></a>
+                </div>
+                <div class="form-group">
                     <label>
                         SUBMIT / UPLOAD in one file: Copy of front page of conference proceedings, copyright page, table
         of contents, copy of peer-review, copy of published conference proceedings
                     </label>
                     <input type="file" name="file" class="form-control-file">
+                </div>
+                <div class="form-group">
+                    <label>Abstract</label>
+                    <textarea name="abstract" class="form-control" rows="5"><?php echo $row->abstract?></textarea>
                 </div>
                 <div class="form-group" style="text-align:center;">
                 <?php
@@ -950,24 +1031,27 @@
         foreach($research_data as $row){ 
 ?>
             <!-- Creative form -->
-            <div id="creative" style="display:none;">
+            <div id="creative">
                 <form method="post" action="<?php echo base_url()?>research/creative_submit" enctype="multipart/form-data">
-                <a style="display:none" name="research_type" value='9'></a>
+                <!--<a style="display:none" name="research_type" value='9'></a>-->
+                <?php foreach($author_data as $name){ 
+                    if($row->publication_id == $name->publication_id){ ?>
                 <div class="form-row">
                     <div class="form-group col-md-5">
                         <label>First Name*</label>
-                        <input type="text" name="first_name[]" value="<?php echo $row->first_name?>" class="form-control" required>
+                        <input type="text" name="first_name[]" value="<?php echo $name->first_name?>" class="form-control" required>
                     </div>
                     <div class="form-group col-md-2">
                         <label>M.I.(S)*</label>
-                        <input type="text" name="middle_initial[]" value="<?php echo $row->middle_initial?>" class="form-control" required>
+                        <input type="text" name="middle_initial[]" value="<?php echo $name->middle_initial?>" class="form-control" required>
                     </div>
                     <div class="form-group col-md-5">
                         <label>Lastname*</label>
-                        <input type="text" name="last_name[]" value="<?php echo $row->last_name?>" class="form-control" required>
+                        <input type="text" name="last_name[]" value="<?php echo $name->last_name?>" class="form-control" required>
                     </div>
                 </div>
-                <input type="hidden" name="author_id[]" value="<?php echo $row->author_id?>">
+                <input type="hidden" name="author_id[]" value="<?php echo $name->author_id?>">
+                <?php } } ?>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                     <label>Type of Research/Creative Work*</label>
