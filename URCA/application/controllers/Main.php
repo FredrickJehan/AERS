@@ -47,9 +47,9 @@ class Main extends CI_Controller{
     }
 
     public function search_filter(){
-        $department = $this->input->post('department', true);
-        $year = $this->input->post('year', true);
-        $type_of_research = $this->input->post('type_research', true);
+        $department = $this->input->post('department');
+        $year = $this->input->post('year');
+        $type_of_research = $this->input->post('type_research');
         //$data['dept'] = $this->research_model->getDepartment();
         //$data['type'] = $this->research_model->getType_Research();
         $data['search_com'] = $this->research_model->search_filter_completed($department, $year, $type_of_research);

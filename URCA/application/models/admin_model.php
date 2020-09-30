@@ -146,7 +146,86 @@ class admin_model extends CI_Model{
         $query = $this->db->get("completed");
         return $query->result();
     }
+
+    //get model functions for json export
+    public function get_users(){
+        $this->db->select('*');
+        $this->db->from('user');
+        $query = $this->db->get();
+        return json_encode($query->result(), JSON_PRETTY_PRINT); 
+    }
+
+    public function get_authors(){
+        $this->db->select('*');
+        $this->db->from('author');
+        $query = $this->db->get();
+        return json_encode($query->result(), JSON_PRETTY_PRINT); 
+    }
     
+    public function get_publications(){
+        $this->db->select('*');
+        $this->db->from('publication');
+        $query = $this->db->get();
+        return json_encode($query->result(), JSON_PRETTY_PRINT); 
+    }
+
+    public function get_completed(){
+        $this->db->select('*');
+        $this->db->from('completed');
+        $query = $this->db->get();
+        return json_encode($query->result(), JSON_PRETTY_PRINT); 
+    }
+
+    public function get_presented(){
+        $this->db->select('*');
+        $this->db->from('presented');
+        $query = $this->db->get();
+        return json_encode($query->result(), JSON_PRETTY_PRINT); 
+    }
+
+    public function get_published(){
+        $this->db->select('*');
+        $this->db->from('published');
+        $query = $this->db->get();
+        return json_encode($query->result(), JSON_PRETTY_PRINT); 
+    }
+
+    public function get_creative(){
+        $this->db->select('*');
+        $this->db->from('creative_works');
+        $query = $this->db->get();
+        return json_encode($query->result(), JSON_PRETTY_PRINT); 
+    }
+
+    public function get_comment(){
+        $this->db->select('*');
+        $this->db->from('comment');
+        $query = $this->db->get();
+        return json_encode($query->result(), JSON_PRETTY_PRINT); 
+    }
+
+    public function get_notification(){
+        $this->db->select('*');
+        $this->db->from('notification');
+        $query = $this->db->get();
+        return json_encode($query->result(), JSON_PRETTY_PRINT); 
+    }
+
+    public function get_like_tbl(){
+        $this->db->select('*');
+        $this->db->from('like_tbl');
+        $query = $this->db->get();
+        return json_encode($query->result(), JSON_PRETTY_PRINT); 
+    }
+
+    public function get_editor(){
+        $this->db->select('*');
+        $this->db->from('editor');
+        $query = $this->db->get();
+        return json_encode($query->result(), JSON_PRETTY_PRINT); 
+    }
+    //end of json export model
+
     public function fetch_json_completed(){
         $this->db->select('*');
         $this->db->from('completed AS c');
@@ -190,7 +269,8 @@ class admin_model extends CI_Model{
         $query = $this->db->get();
         return json_encode($query->result(), JSON_PRETTY_PRINT);
     }
-    
+
+    //Get table contents for import
     public function import_user_check($data){
         $this->db->select('*');
         $this->db->from('user');
@@ -207,6 +287,181 @@ class admin_model extends CI_Model{
         return $query->result_array();
     }
 
+    public function import_author_check($data){
+        $this->db->select('*');
+        $this->db->from('author');
+        $this->db->where('author_id', $data['author_id']);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function import_completed_check($data){
+        $this->db->select('*');
+        $this->db->from('completed');
+        $this->db->where('completed_id', $data['completed_id']);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function import_presented_check($data){
+        $this->db->select('*');
+        $this->db->from('presented');
+        $this->db->where('presented_id', $data['presented_id']);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function import_published_check($data){
+        $this->db->select('*');
+        $this->db->from('published');
+        $this->db->where('published_id', $data['published_id']);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function import_creative_check($data){
+        $this->db->select('*');
+        $this->db->from('creative_works');
+        $this->db->where('cw_id', $data['cw_id']);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function import_comment_check($data){
+        $this->db->select('*');
+        $this->db->from('comment');
+        $this->db->where('comment_id', $data['comment_id']);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function import_notification_check($data){
+        $this->db->select('*');
+        $this->db->from('notification');
+        $this->db->where('notification_id', $data['notification_id']);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function import_like_tbl_check($data){
+        $this->db->select('*');
+        $this->db->from('like_tbl');
+        $this->db->where('like_id', $data['like_id']);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function import_editor_check($data){
+        $this->db->select('*');
+        $this->db->from('editor');
+        $this->db->where('editor_id', $data['editor_id']);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    //End of get table contents
+
+    //Import Functions
+    public function import_user($data){
+        $num_query = $this->import_user_check($data);
+        if(count($num_query) == 0){
+            $this->db->insert('user', $data);
+        }else{
+            $this->db->update('user', $data);
+        }
+    }
+
+    public function import_publication($data){
+        $num_query = $this->import_publication_check($data);
+        if(count($num_query) == 0){
+            $this->db->insert('publication', $data);
+        }else{
+            $this->db->update('publication', $data);
+        }
+    }
+
+    public function import_author($data){
+        $num_query = $this->import_author_check($data);
+        if(count($num_query) == 0){
+            $this->db->insert('author', $data);
+        }else{
+            $this->db->update('author', $data);
+        }
+    }
+
+    public function import_completed($data){
+        $num_query = $this->import_completed_check($data);
+        if(count($num_query) == 0){
+            $this->db->insert('completed', $data);
+        }else{
+            $this->db->update('completed', $data);
+        }
+    }
+
+    public function import_presented($data){
+        $num_query = $this->import_presented_check($data);
+        if(count($num_query) == 0){
+            $this->db->insert('presented', $data);
+        }else{
+            $this->db->update('presented', $data);
+        }
+    }
+
+    public function import_published($data){
+        $num_query = $this->import_published_check($data);
+        if(count($num_query) == 0){
+            $this->db->insert('published', $data);
+        }else{
+            $this->db->update('published', $data);
+        }
+    }
+
+    public function import_creative($data){
+        $num_query = $this->import_creative_check($data);
+        if(count($num_query) == 0){
+            $this->db->insert('creative_works', $data);
+        }else{
+            $this->db->update('creative_works', $data);
+        }
+    }
+
+    public function import_comment($data){
+        $num_query = $this->import_comment_check($data);
+        if(count($num_query) == 0){
+            $this->db->insert('comment', $data);
+        }else{
+            $this->db->update('comment', $data);
+        }
+    }
+
+    public function import_notification($data){
+        $num_query = $this->import_notification_check($data);
+        if(count($num_query) == 0){
+            $this->db->insert('notification', $data);
+        }else{
+            $this->db->update('notification', $data);
+        }
+    }
+
+    public function import_like_tbl($data){
+        $num_query = $this->import_like_tbl_check($data);
+        if(count($num_query) == 0){
+            $this->db->insert('like_tbl', $data);
+        }else{
+            $this->db->update('like_tbl', $data);
+        }
+    }
+
+    public function import_editor($data){
+        $num_query = $this->import_editor_check($data);
+        if(count($num_query) == 0){
+            $this->db->insert('editor', $data);
+        }else{
+            $this->db->update('editor', $data);
+        }
+    }
+    //End of Import functions
+
+    /*
     public function import_completed($user_array, $author_array, $publication_array, $array){
         $user_query = $this->import_user_check($user_array);
         //$author_query = $this->import_author_check($author_array);
@@ -310,6 +565,7 @@ class admin_model extends CI_Model{
             $this->db->update('user', $user_array);
         }
     }
+    */
 
     public function fetch_pdf_completed(){
         $this->db->select('*');

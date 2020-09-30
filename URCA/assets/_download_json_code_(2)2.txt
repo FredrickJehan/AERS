@@ -1,0 +1,24 @@
+[
+    {
+        "publication_id": "102",
+        "file": "Sad.pdf",
+        "abstract": "import test",
+        "num_views": "0",
+        "status": "Unreviewed",
+        "feedback": null,
+        "publication_type": "Presented Research",
+        "date_submission": "Sep 30 2020",
+        "submittor": "11"
+    },
+    {
+        "publication_id": "103",
+        "file": "Sad.pdf",
+        "abstract": "import test2",
+        "num_views": "0",
+        "status": "Unreviewed",
+        "feedback": null,
+        "publication_type": "Presented Research",
+        "date_submission": "Sep 30 2020",
+        "submittor": "11"
+    }
+]

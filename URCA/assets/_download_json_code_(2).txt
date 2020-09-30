@@ -1,0 +1,13 @@
+[
+    {
+        "publication_id": "101",
+        "file": "Sad.pdf",
+        "abstract": "import test",
+        "num_views": "0",
+        "status": "Unreviewed",
+        "feedback": null,
+        "publication_type": "Presented Research",
+        "date_submission": "Sep 30 2020",
+        "submittor": "11"
+    }
+]
