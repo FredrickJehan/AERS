@@ -1,0 +1,35 @@
+[
+    {
+        "publication_id": "10",
+        "file": "Thesis21.pdf",
+        "abstract": "Import Test",
+        "num_views": "0",
+        "status": "Unreviewed",
+        "feedback": null,
+        "publication_type": "Completed Research",
+        "date_submission": "Sep 30 2020",
+        "submittor": "1"
+    }
+][
+    {
+        "author_id": "50",
+        "user_id": "1",
+        "publication_id": "10",
+        "first_name": "Benjamin",
+        "middle_initial": "T.",
+        "last_name": "Renoust",
+        "is_employee": "1",
+        "author_type": "Main"
+    }
+][
+    {
+        "completed_id": "10",
+        "publication_id": "10",
+        "title": "import test completed",
+        "year": "2019",
+        "institution": "Booyah",
+        "location": "Osaka Japan",
+        "url": null,
+        "completed_type": "Thesis \/ Dissertation"
+    }
+]

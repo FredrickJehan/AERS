@@ -147,91 +147,14 @@ class admin_model extends CI_Model{
         return $query->result();
     }
 
-    //get model functions for json export
-    public function get_users(){
-        $this->db->select('*');
-        $this->db->from('user');
-        $query = $this->db->get();
-        return json_encode($query->result(), JSON_PRETTY_PRINT); 
-    }
-
-    public function get_authors(){
-        $this->db->select('*');
-        $this->db->from('author');
-        $query = $this->db->get();
-        return json_encode($query->result(), JSON_PRETTY_PRINT); 
-    }
-    
-    public function get_publications(){
-        $this->db->select('*');
-        $this->db->from('publication');
-        $query = $this->db->get();
-        return json_encode($query->result(), JSON_PRETTY_PRINT); 
-    }
-
-    public function get_completed(){
-        $this->db->select('*');
-        $this->db->from('completed');
-        $query = $this->db->get();
-        return json_encode($query->result(), JSON_PRETTY_PRINT); 
-    }
-
-    public function get_presented(){
-        $this->db->select('*');
-        $this->db->from('presented');
-        $query = $this->db->get();
-        return json_encode($query->result(), JSON_PRETTY_PRINT); 
-    }
-
-    public function get_published(){
-        $this->db->select('*');
-        $this->db->from('published');
-        $query = $this->db->get();
-        return json_encode($query->result(), JSON_PRETTY_PRINT); 
-    }
-
-    public function get_creative(){
-        $this->db->select('*');
-        $this->db->from('creative_works');
-        $query = $this->db->get();
-        return json_encode($query->result(), JSON_PRETTY_PRINT); 
-    }
-
-    public function get_comment(){
-        $this->db->select('*');
-        $this->db->from('comment');
-        $query = $this->db->get();
-        return json_encode($query->result(), JSON_PRETTY_PRINT); 
-    }
-
-    public function get_notification(){
-        $this->db->select('*');
-        $this->db->from('notification');
-        $query = $this->db->get();
-        return json_encode($query->result(), JSON_PRETTY_PRINT); 
-    }
-
-    public function get_like_tbl(){
-        $this->db->select('*');
-        $this->db->from('like_tbl');
-        $query = $this->db->get();
-        return json_encode($query->result(), JSON_PRETTY_PRINT); 
-    }
-
-    public function get_editor(){
-        $this->db->select('*');
-        $this->db->from('editor');
-        $query = $this->db->get();
-        return json_encode($query->result(), JSON_PRETTY_PRINT); 
-    }
-    //end of json export model
-
     public function fetch_json_completed(){
         $this->db->select('*');
         $this->db->from('completed AS c');
-        $this->db->join('publication AS p', 'p.publication_id = c.publication_id');
-        $this->db->join('author AS a', 'a.publication_id = p.publication_id');
-        $this->db->join('user AS u', 'u.user_id = a.user_id');
+        $this->db->join('publication AS p', 'p.publication_id = c.publication_id', 'inner');
+        $this->db->join('author AS a', 'a.publication_id = p.publication_id', 'inner');
+        $this->db->join('user AS u', 'u.user_id = a.user_id', 'inner');
+        $this->db->join('like_tbl AS lb', 'lb.user_id = u.user_id', 'inner');
+        $this->db->join('comment AS com', 'com.publication_id = p.publication_id', 'inner');
         $this->db->order_by('p.publication_id', 'ASC');
         $query = $this->db->get();
         return json_encode($query->result(), JSON_PRETTY_PRINT);
@@ -240,9 +163,11 @@ class admin_model extends CI_Model{
     public function fetch_json_presented(){
         $this->db->select('*');
         $this->db->from('presented AS pr');
-        $this->db->join('publication AS p', 'p.publication_id = pr.publication_id');
-        $this->db->join('author AS a', 'a.publication_id = p.publication_id');
-        $this->db->join('user AS u', 'u.user_id = a.user_id');
+        $this->db->join('publication AS p', 'p.publication_id = pr.publication_id', 'inner');
+        $this->db->join('author AS a', 'a.publication_id = p.publication_id', 'inner');
+        $this->db->join('user AS u', 'u.user_id = a.user_id', 'inner');
+        $this->db->join('like_tbl AS lb', 'lb.user_id = u.user_id', 'inner');
+        $this->db->join('comment AS com', 'com.publication_id = p.publication_id', 'inner');
         $this->db->order_by('p.publication_id', 'ASC');
         $query = $this->db->get();
         return json_encode($query->result(), JSON_PRETTY_PRINT);
@@ -251,9 +176,12 @@ class admin_model extends CI_Model{
     public function fetch_json_published(){
         $this->db->select('*');
         $this->db->from('published AS pp');
-        $this->db->join('publication AS p', 'p.publication_id = pp.publication_id');
-        $this->db->join('author AS a', 'a.publication_id = p.publication_id');
-        $this->db->join('user AS u', 'u.user_id = a.user_id');
+        $this->db->join('publication AS p', 'p.publication_id = pp.publication_id', 'inner');
+        $this->db->join('editor AS e', 'e.published_id = pp.published_id', 'inner');
+        $this->db->join('author AS a', 'a.publication_id = p.publication_id', 'inner');
+        $this->db->join('user AS u', 'u.user_id = a.user_id', 'inner');
+        $this->db->join('like_tbl AS lb', 'lb.user_id = u.user_id', 'inner');
+        $this->db->join('comment AS co', 'co.publication_id = p.publication_id', 'inner');
         $this->db->order_by('p.publication_id', 'ASC');
         $query = $this->db->get();
         return json_encode($query->result(), JSON_PRETTY_PRINT);
@@ -262,9 +190,11 @@ class admin_model extends CI_Model{
     public function fetch_json_creative(){
         $this->db->select('*');
         $this->db->from('creative_works AS c');
-        $this->db->join('publication AS p', 'p.publication_id = c.publication_id');
-        $this->db->join('author AS a', 'a.publication_id = p.publication_id');
-        $this->db->join('user AS u', 'u.user_id = a.user_id');
+        $this->db->join('publication AS p', 'p.publication_id = c.publication_id', 'inner');
+        $this->db->join('author AS a', 'a.publication_id = p.publication_id', 'iner');
+        $this->db->join('user AS u', 'u.user_id = a.user_id', 'inner');
+        $this->db->join('like_tbl AS lb', 'lb.user_id = u.user_id', 'inner');
+        $this->db->join('comment AS com', 'com.publication_id = p.publication_id', 'inner');
         $this->db->order_by('p.publication_id', 'ASC');
         $query = $this->db->get();
         return json_encode($query->result(), JSON_PRETTY_PRINT);
@@ -286,7 +216,7 @@ class admin_model extends CI_Model{
         $query = $this->db->get();
         return $query->result_array();
     }
-
+    /*
     public function import_author_check($data){
         $this->db->select('*');
         $this->db->from('author');
@@ -358,110 +288,9 @@ class admin_model extends CI_Model{
         $query = $this->db->get();
         return $query->result_array();
     }
+    */
     //End of get table contents
 
-    //Import Functions
-    public function import_user($data){
-        $num_query = $this->import_user_check($data);
-        if(count($num_query) == 0){
-            $this->db->insert('user', $data);
-        }else{
-            $this->db->update('user', $data);
-        }
-    }
-
-    public function import_publication($data){
-        $num_query = $this->import_publication_check($data);
-        if(count($num_query) == 0){
-            $this->db->insert('publication', $data);
-        }else{
-            $this->db->update('publication', $data);
-        }
-    }
-
-    public function import_author($data){
-        $num_query = $this->import_author_check($data);
-        if(count($num_query) == 0){
-            $this->db->insert('author', $data);
-        }else{
-            $this->db->update('author', $data);
-        }
-    }
-
-    public function import_completed($data){
-        $num_query = $this->import_completed_check($data);
-        if(count($num_query) == 0){
-            $this->db->insert('completed', $data);
-        }else{
-            $this->db->update('completed', $data);
-        }
-    }
-
-    public function import_presented($data){
-        $num_query = $this->import_presented_check($data);
-        if(count($num_query) == 0){
-            $this->db->insert('presented', $data);
-        }else{
-            $this->db->update('presented', $data);
-        }
-    }
-
-    public function import_published($data){
-        $num_query = $this->import_published_check($data);
-        if(count($num_query) == 0){
-            $this->db->insert('published', $data);
-        }else{
-            $this->db->update('published', $data);
-        }
-    }
-
-    public function import_creative($data){
-        $num_query = $this->import_creative_check($data);
-        if(count($num_query) == 0){
-            $this->db->insert('creative_works', $data);
-        }else{
-            $this->db->update('creative_works', $data);
-        }
-    }
-
-    public function import_comment($data){
-        $num_query = $this->import_comment_check($data);
-        if(count($num_query) == 0){
-            $this->db->insert('comment', $data);
-        }else{
-            $this->db->update('comment', $data);
-        }
-    }
-
-    public function import_notification($data){
-        $num_query = $this->import_notification_check($data);
-        if(count($num_query) == 0){
-            $this->db->insert('notification', $data);
-        }else{
-            $this->db->update('notification', $data);
-        }
-    }
-
-    public function import_like_tbl($data){
-        $num_query = $this->import_like_tbl_check($data);
-        if(count($num_query) == 0){
-            $this->db->insert('like_tbl', $data);
-        }else{
-            $this->db->update('like_tbl', $data);
-        }
-    }
-
-    public function import_editor($data){
-        $num_query = $this->import_editor_check($data);
-        if(count($num_query) == 0){
-            $this->db->insert('editor', $data);
-        }else{
-            $this->db->update('editor', $data);
-        }
-    }
-    //End of Import functions
-
-    /*
     public function import_completed($user_array, $author_array, $publication_array, $array){
         $user_query = $this->import_user_check($user_array);
         //$author_query = $this->import_author_check($author_array);
@@ -514,21 +343,32 @@ class admin_model extends CI_Model{
         }
     }
 
-    public function import_published($user_array, $author_array, $publication_array, $array){
+    public function import_published($user_array, $author_array, $publication_array, $array, $editor_array){
         $user_query = $this->import_user_check($user_array);
         //$author_query = $this->import_author_check($author_array);
         $publication_query = $this->import_publication_check($publication_array);
+        $editor_query = $this->import_editor_check($editor_array);
         //$published_query = $this->import_published_check($array);
         if(count($user_query) == 0){
             $this->db->insert('user', $user_array);
             $this->db->insert('publication', $publication_array);
             $this->db->insert('author', $author_array);
             $this->db->insert('published', $array);
+            if(!empty($editor_array)){
+                $this->db->insert('editor', $editor_array);
+            }
         }elseif(count($publication_query) == 0){
             $this->db->insert('publication', $publication_array);
             $this->db->insert('author', $author_array);
             $this->db->insert('published', $array);
+            if(!empty($editor_array)){
+                $this->db->insert('editor', $editor_array);
+            }
         }else{
+            if(!empty($editor_array)){
+                $this->db->where('editor_id', $editor_array['editor_id']);
+                $this->db->update('published', $editor_array);
+            }
             $this->db->where('published_id', $array['published_id']);
             $this->db->update('published', $array);
             $this->db->where('author_id', $author_array['author_id']);
@@ -565,7 +405,6 @@ class admin_model extends CI_Model{
             $this->db->update('user', $user_array);
         }
     }
-    */
 
     public function fetch_pdf_completed(){
         $this->db->select('*');

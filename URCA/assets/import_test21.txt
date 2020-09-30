@@ -1,0 +1,12 @@
+[
+    {
+        "completed_id": "10",
+        "publication_id": "10",
+        "title": "import test completed",
+        "year": "2019",
+        "institution": "Booyah",
+        "location": "Osaka Japan",
+        "url": null,
+        "completed_type": "Thesis \/ Dissertation"
+    }
+]
