@@ -660,9 +660,8 @@ class admin_model extends CI_Model{
         <tr>
             <p><b><th width="20%">Author</th></b></p>
             <p><b><th width="20%">Department</th></b></p> 
-            <p><b><th width="5%">Number of Views</th></b></p>
             <p><b><th width="10%">Type of Research</th></b></p>
-            <p><b><th width="45%">Citation</th></b></p>
+            <p><b><th width="50%">Citation</th></b></p>
         </tr>
         ';
 
@@ -685,19 +684,18 @@ class admin_model extends CI_Model{
                     <tr>
                         <td width="20%">'.implode(', ', $string).'</td>
                         <td width="20%">'.$row->department.'</td>
-                        <td width="5%"><center>'.$row->num_views.'</center></td>
                         <td width="10%">'.$row->publication_type.'</td>
                     ';
         if(!empty($row->url)){
         $output .='    
-                    <td width="45%">
+                    <td width="50%">
                     '.implode(', ', $string).'('.$row->year.').
                     <i>'.$row->title.'</i>. '.$row->location.': '.$row->institution.'. Retrieved from '.$row->url.'
                     </td>
             ';    
         }else{
         $output .='
-                    <td width="45%">
+                    <td width="50%">
                     '.implode(', ', $string).'('.$row->year.'). 
                     <i>'.$row->title.'</i>. '.$row->location.': '.$row->institution.'.
                     </td>
@@ -729,9 +727,8 @@ class admin_model extends CI_Model{
                 <tr>
                     <td width="20%">'.implode(', ', $string).'</td>
                     <td width="20%">'.$row->department.'</td>
-                    <td width="5%"><center>'.$row->num_views.'</center></td>
                     <td width="10%">'.$row->publication_type.'</td>
-                    <td width="45%">
+                    <td width="50%">
                         '.implode(', ', $string).'('.date_format($date, 'Y').', '.date_format($date, 'F').'). 
                         <i>'.$row->title_presented.'</i>. '.$row->title_conference.': '.$row->place_conference.'.
                     </td>
@@ -771,9 +768,8 @@ class admin_model extends CI_Model{
                 <tr>
                     <td width="20%">'.implode(', ', $string).'</td>
                     <td width="20%">'.$row->department.'</td>
-                    <td width="5%"><center>'.$row->num_views.'</center></td>
                     <td width="10%">'.$row->publication_type.'</td>
-                    <td width="45%">
+                    <td width="50%">
                 ';
                 if($row->publication_type == 'Journal Article'){
                 $output .='
@@ -830,9 +826,8 @@ class admin_model extends CI_Model{
                 $output .='    
                     </td>
                     <td width="20%">'.$row->department.'</td>
-                    <td width="5%"><center>'.$row->num_views.'</center></td>
                     <td width="10%">'.$row->publication_type.'</td>
-                    <td width="45%">
+                    <td width="50%">
                 ';
                 if(isset($row->middle_initial)){
                     $output .=''.$row->title_work.' by '.$row->last_name.', '.substr($row->first_name, 0, 1).'. '.$row->middle_initial.'';

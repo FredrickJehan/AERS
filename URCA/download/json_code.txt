@@ -7,7 +7,7 @@
         "last_name": "Daluro",
         "email": "dalurof@gmail.com",
         "password": "admin",
-        "department": null,
+        "department": "Department of Computer Science",
         "contact_number": null,
         "user_type": "Admin"
     },
@@ -34,6 +34,207 @@
         "department": "Department of Social Studies",
         "contact_number": "2147483647",
         "user_type": "Researcher"
+    },
+    {
+        "user_id": "4",
+        "username": "jehan0269",
+        "first_name": "Jehan",
+        "middle_name": "F.",
+        "last_name": "Antonio",
+        "email": "jantonio@gmail.com",
+        "password": "jehan",
+        "department": "Department of Psychology",
+        "contact_number": "231423423",
+        "user_type": "Researcher"
+    },
+    {
+        "user_id": "5",
+        "username": "Levi",
+        "first_name": "Levi",
+        "middle_name": "A.",
+        "last_name": "Angeles",
+        "email": "langeles@gmail.com",
+        "password": "levi",
+        "department": "Department of Computer Science",
+        "contact_number": "1231423525",
+        "user_type": "Researcher"
+    }
+][
+    {
+        "publication_id": "3",
+        "file": "Thesis21.pdf",
+        "abstract": "We introduce BUDA.ART, a system designed to assist researchers\r\nin Art History, to explore and analyze an archive of pictures of\r\nBuddha statues. The system combines different CBIR and classical\r\nretrieval techniques to assemble 2D pictures, 3D statue scans and\r\nmeta-data, that is focused on the Buddha facial characteristics. We\r\nbuild the system from an archive of 50,000 Buddhism pictures,\r\nidentify unique Buddha statues, extract contextual information,\r\nand provide specific facial embedding to first index the archive.",
+        "num_views": "0",
+        "status": "Approved",
+        "feedback": null,
+        "publication_type": "Completed Research",
+        "date_submission": "Sep 30 2020",
+        "submittor": "1"
+    },
+    {
+        "publication_id": "4",
+        "file": "Paper11.pdf",
+        "abstract": "Despite the growth of e-commerce, brick-andmortar stores are still the preferred destinations for many people. In this paper, we\r\npresent ISA, a mobile-based intelligent shopping assistant that is designed to improve shopping experience in physical stores. ISA assists users by leveraging advanced techniques in\r\ncomputer vision, speech processing, and natural language processing. An in-store user only needs to take a picture or scan the barcode of the product of interest, and then the user can talk to the assistant about the product. The assistant can also guide the user through the purchase process or recommend other similar products to the user.",
+        "num_views": "0",
+        "status": "Approved",
+        "feedback": null,
+        "publication_type": "Presented Research",
+        "date_submission": "Sep 30 2020",
+        "submittor": "1"
+    },
+    {
+        "publication_id": "104",
+        "file": "Paper12.pdf",
+        "abstract": "he recent COVID-19 pandemic has caused unprecedented impact across the globe. We have also witnessed millions of people with increased mental health issues, such as depression, stress, worry, fear, disgust, sadness, and anxiety, which have become one of the major public health concerns\r\nduring this severe health crisis. For instance, depression is one of the most common mental health issues according to the findings made by the World Health Organisation (WHO). Depression can\r\ncause serious emotional, behavioural and physical health problems with significant consequences, both personal and social costs included. This paper studies community depression dynamics due to COVID-19 pandemic through user-generated content on Twitter. A new approach based on multi-modal features from tweets and Term Frequency-Inverse Document Frequency (TFIDF) is proposed to build depression classification models. Multimodal features capture depression cues from emotion, topic and domain-specific perspectives.",
+        "num_views": "0",
+        "status": "Approved",
+        "feedback": null,
+        "publication_type": "Presented Research",
+        "date_submission": "Sep 30 2020",
+        "submittor": "2"
+    },
+    {
+        "publication_id": "105",
+        "file": "Book17.pdf",
+        "abstract": "A valuable study of the nature and development of terrorism in all its forms in the late 20th and early 21st centuries. Powerfully argued and thought-provoking, Terrorism and Global Disorder examines whether the world changed as a result of the events of 11 September 2001. It argues that the significance of 9\/11 has been overstated and that terrorism with a global reach is best seen as a consequence of other, more fundamental changes. The author contends that the development and global outreach of terrorism stem from the end of the Cold War and the collapse of the  superpower hegemony, aided by the spread of international technology and communications. He also examines the consequences of the political exploitation of terrorism and underlines the dangers created by the politicization of counter-terrorism for partisan purposes.",
+        "num_views": "0",
+        "status": "Approved",
+        "feedback": null,
+        "publication_type": "Published Research",
+        "date_submission": "Sep 30 2020",
+        "submittor": "2"
+    },
+    {
+        "publication_id": "106",
+        "file": "Paper13.pdf",
+        "abstract": "The ongoing COVID-19 pandemic has raised concerns for many regarding personal and public health implications, financial security and economic stability. Alongside many other unprecedented challenges, there are increasing concerns over social isolation and mental health. We introduce Expressive Interviewing\u2013 an interview-style conversational system that draws on ideas from motivational interviewing and expressive writing. Expressive Interviewing seeks to encourage users to express their thoughts and feelings through writing by asking them questions about how COVID-19 has impacted their lives.",
+        "num_views": "0",
+        "status": "Approved",
+        "feedback": null,
+        "publication_type": "Presented Research",
+        "date_submission": "Sep 30 2020",
+        "submittor": "2"
+    },
+    {
+        "publication_id": "107",
+        "file": "Book18.pdf",
+        "abstract": "Avoiding the traps of sensational political expose and specialized scholarly Orientalism, \r\nCarl Ernst introduces readers to the profound spiritual resources of Islam while clarifying diversity and debate within the tradition. \r\nFraming his argument in terms of religious studies, Ernst describes how Protestant definitions of religion and anti-Muslim prejudice\r\n have affected views of Islam in Europe and America. \r\nHe also covers the contemporary importance of Islam in both its traditional settings and its new locations and provides\r\na context for understanding extremist movements like fundamentalism. \r\nHe concludes with an overview of critical debates on important contemporary issues such as gender \r\nand veiling, state politics, and science and religion.",
+        "num_views": "0",
+        "status": "Approved",
+        "feedback": null,
+        "publication_type": "Published Research",
+        "date_submission": "Sep 30 2020",
+        "submittor": "3"
+    },
+    {
+        "publication_id": "108",
+        "file": "Paper14.pdf",
+        "abstract": "Psychological traumas are thought to be present in a wide range of conditions, including\r\npost-traumatic stress disorder, disorganised attachment, personality disorders, dissociative\r\nidentity disorder and psychosis. This work presents a new psychotherapy for psychological\r\ntraumas, based on a functional model of the mind, built with elements borrowed from the\r\nfields of computer science, artificial intelligence and neural networks. The model revolves\r\naround the concept of hierarchical value and explains the emergence of dissociation and splitting in response to emotional pain. The key intuition is that traumas are caused by too strong\r\nnegative emotions, which are in turn made possible by a low-value self, which is in turn determined by low-value self-associated ideas. The therapeutic method compiles a list of patient\u2019s\r\ntraumas, identifies for each trauma a list of low-value self-associated ideas, and provides for\r\neach idea a list of counterexamples, to raise the self value and solve the trauma. Since the\r\npsychotherapy proposed has not been clinically tested, statements on its effectiveness are\r\npremature.",
+        "num_views": "0",
+        "status": "Approved",
+        "feedback": null,
+        "publication_type": "Presented Research",
+        "date_submission": "Sep 30 2020",
+        "submittor": "4"
+    },
+    {
+        "publication_id": "109",
+        "file": "Paper15.pdf",
+        "abstract": "Emotions are a central key for understanding human beings and of fundamental importance regarding their impact in human and animal behaviors.\r\nThey have been for a long time a subject of study for various scholars including in particular philosophers and mystics [5, 7, 27, 29, 22, 31, 35, 36]. In\r\nmodern science, the emotional phenomenon has attracted for a few decades\r\nan increasing number of studies, notably in the fields of Psychology, Psychiatry, Neuroscience and Biochemistry [1, 3, 2, 9, 11, 17, 16, 19, 20, 23,\r\n24, 25, 26, 32, 34]. However, since our perception of emotions is not, so\r\nfar, directly detectable nor recordable by our measure instruments, Physics\r\nand Mathematics have not been so far used academically to provide a precise description of the phenomenon of feeling an emotion. Relying upon the\r\nworks of O. Elahi [10, 14] and on the hypothesis that the human soul and its\r\npsyche may manifest in ourselves (in both conscious and unconscious manner) in an analog way as electromagnetic waves [13], we propose here a few\r\nmathematical descriptions consistent with the human personal experience,\r\nof the feeling and cognition of emotions.",
+        "num_views": "0",
+        "status": "Approved",
+        "feedback": null,
+        "publication_type": "Presented Research",
+        "date_submission": "Sep 30 2020",
+        "submittor": "4"
+    },
+    {
+        "publication_id": "110",
+        "file": "Chapter9.pdf",
+        "abstract": "In the sense of constructed disposition, it\u2019s the remaining space that confi gures interfaces for\r\nhuman interaction. It\u2019s the place that adapts continuously to human action through built-up\r\nscenarios that enact ambiences whose poetic quality gives things a signifi cant presence that\r\ninfects human beings. This space is confi gured by projections of things that transmit qualities\r\nperceived in their experimentation. The architecture designs the remnant to preserve intimacy\r\nor foster sociability by establishing interfaces for problem solving. It\u2019s indissociable from the\r\nidentifi cation of the possibilities of the built that grants use to the built remainder. The place\r\nas a concrete manifestation of space, receives uses and habits, building its identity. The space\r\nsignifi cance results both from interdictions and contradictions, as well as from the concessions and\r\ncompatibilities of urban life.",
+        "num_views": "0",
+        "status": "Approved",
+        "feedback": null,
+        "publication_type": "Published Research",
+        "date_submission": "Sep 30 2020",
+        "submittor": "3"
+    },
+    {
+        "publication_id": "111",
+        "file": "Paper16.pdf",
+        "abstract": "In the past years, e-Science applications have evolved from large-scale simulations executed in a single cluster to more complex workflows where these\r\nsimulations are combined with High-Performance Data Analytics (HPDA). To\r\nimplement these workflows, developers are currently using different patterns;\r\nmainly task-based and dataflow. However, since these patterns are usually managed by separated frameworks, the implementation of these applications requires\r\nto combine them; considerably increasing the effort for learning, deploying, and\r\nintegrating applications in the different frameworks.\r\nThis paper tries to reduce this effort by proposing a way to extend taskbased management systems to support continuous input and output data to\r\nenable the combination of task-based workflows and dataflows (Hybrid Workflows from now on) using a single programming model. Hence, developers can\r\nbuild complex Data Science workflows with different approaches depending on\r\nthe requirements. To illustrate the capabilities of Hybrid Workflows, we have\r\nbuilt a Distributed Stream Library and a fully functional prototype extending\r\nCOMPSs, a mature, general-purpose, task-based, parallel programming model.",
+        "num_views": "0",
+        "status": "Approved",
+        "feedback": null,
+        "publication_type": "Presented Research",
+        "date_submission": "Sep 30 2020",
+        "submittor": "5"
+    },
+    {
+        "publication_id": "112",
+        "file": "Paper17.pdf",
+        "abstract": "The library is definitely one of the most visited place in a university. The main objective of this research is to develop a mobile application to make students stay more connected with the library. Research has been carried out to know the main problems faced by students in the library. The system developed tackles the problems of finding free seats, as well as keeping bags safe by automating a locker. Besides, the application also provide students a way of filtering their seats to\r\nknow if seats are available on the same table. Additionally, if seats are not available when filtering, students can get a notification as soon as the seats are available.",
+        "num_views": "0",
+        "status": "Approved",
+        "feedback": null,
+        "publication_type": "Presented Research",
+        "date_submission": "Sep 30 2020",
+        "submittor": "5"
+    },
+    {
+        "publication_id": "113",
+        "file": "Paper18.pdf",
+        "abstract": "The Share.TEC system has the main goal to establish a highly visible and functional\r\nportal with advanced brokerage services that will provide personalised access to a \r\nwide-range of teacher education(TE)content. The heart of the TEC system is the central\r\nrepository storing metadata about TE resources. In this paper we describe the design \r\nof the digital Share.TEC repository, providing the more flexible and powerful ways for\r\nrepresenting Common Metadata Model(CMM)metadata records and objects from the Teacher\r\nEducation Ontology(TEO), and ensuring the most efficient and comprehensive search and\r\nreasoning abilities, as the key factors for the success of the Share.TEC project.We\r\ndescribe the data models for representing CMM and TEO, as well as the processes \r\nensuring their correct coexistence.",
+        "num_views": "0",
+        "status": "Approved",
+        "feedback": null,
+        "publication_type": "Presented Research",
+        "date_submission": "Sep 30 2020",
+        "submittor": "5"
+    },
+    {
+        "publication_id": "114",
+        "file": "Chapter10.pdf",
+        "abstract": "Automation is increasing rapidly, and intelligence in applications emerges\r\nas a new form of automation. The impact of automation is observed in the software,\r\nhardware, and machine layer. Due to automation, human intervention is reduced\r\nin a number of areas such as manufacturing, transport, utilities, defense, facilities,\r\noperations and lately, information technology. With this view in mind, we have\r\ndeveloped library system for renewal and submission of books. To develop this\r\nsystem, we have used a microcontroller, a barcode scanner, and conveyor. First, we\r\ndeveloped graphical user interface with MATLAB and then with LabVIEW for this\r\nsystem. Developed library system allows students to renew and submit in 24\/7 basis.",
+        "num_views": "0",
+        "status": "Approved",
+        "feedback": null,
+        "publication_type": "Published Research",
+        "date_submission": "Sep 30 2020",
+        "submittor": "5"
+    },
+    {
+        "publication_id": "115",
+        "file": "Paper19.pdf",
+        "abstract": "Software engineering is a human activity. Despite this, human aspects\r\nare under-represented in technical debt research, perhaps because they are challenging to valorize.\r\nThis study\u2019s objective was to investigate the relationship between technical debt\r\nand affective states (feelings, emotions, and moods) from software practitioners.\r\nForty participants from twelve companies took part in a mixed-methods design,\r\nconsisting of a repeated-measures experiment, a survey employing a questionnaire,\r\nand semi-structured interviews.\r\nThe statistical analysis shows that different design smells negatively or positively\r\nimpact affective states. From the qualitative data, it is clear that technical debt\r\nactivates a substantial portion of the emotional room and is psychologically taxing.\r\nFurther, reactions to technical debt appear to fall in different levels of maturity.",
+        "num_views": "0",
+        "status": "Approved",
+        "feedback": null,
+        "publication_type": "Presented Research",
+        "date_submission": "Sep 30 2020",
+        "submittor": "5"
+    },
+    {
+        "publication_id": "116",
+        "file": "Paper20.pdf",
+        "abstract": "With the increased attention on thermal imagery for Covid-19 screening, the public sector may believe there are new opportunities to exploit thermal as a modality for computer vision and AI. Thermal physiology research has been ongoing since the late nineties. This research lies at the intersections of medicine, psychology, machine learning, optics, and affective computing. We\r\nwill review the known factors of thermal vs. RGB imaging for facial emotion recognition. But we also propose that thermal imagery may provide a semi-anonymous modality for computer vision, over RGB, which has been plagued by misuse in facial recognition. However, the transition to adopting thermal imagery as a source for any human-centered AI task is not easy and relies on the availability of high fidelity data sources across multiple demographics and thorough validation. This paper takes the reader on a short review of machine learning in thermal FER and the limitations of collecting and developing thermal FER data for AI training. Our motivation is to provide an introductory overview into recent advances for thermal FER and stimulate conversation about the limitations in current datasets.",
+        "num_views": "0",
+        "status": "Approved",
+        "feedback": null,
+        "publication_type": "Presented Research",
+        "date_submission": "Sep 30 2020",
+        "submittor": "5"
+    },
+    {
+        "publication_id": "117",
+        "file": "Paper21.pdf",
+        "abstract": "This note is a sketch of how the concept of robopsychology and robophilosophy could be reinterpreted and repositioned in the spirit of the original\r\nvocation of psychology and philosophy. The notion of the robopsychology\r\nas a fictional science and a fictional occupation was introduced by Asimov\r\nin the middle of the last century. The robophilosophy, on the other hand,\r\nis only a few years old today. But at this moment, none of these new\r\nemerging disciplines focus on the fundamental and overall issues of the\r\ndevelopment of artificial general intelligence. Instead, they focus only on\r\nissues that, although are extremely important, play a complementary role,\r\nsuch as moral or ethical ones, rather than the big questions of life. We try\r\nto outline a conception in which the robophilosophy and robopsychology\r\nwill be able to play a similar leading rule in the progress of artificial intelligence than the philosophy and psychology have done in the progress of\r\nhuman intelligence.",
+        "num_views": "0",
+        "status": "Approved",
+        "feedback": null,
+        "publication_type": "Presented Research",
+        "date_submission": "Sep 30 2020",
+        "submittor": "5"
     }
 ][
     {
@@ -95,29 +296,336 @@
         "last_name": "Lipka",
         "is_employee": "1",
         "author_type": "Extra"
-    }
-][
-    {
-        "publication_id": "3",
-        "file": "Thesis21.pdf",
-        "abstract": "We introduce BUDA.ART, a system designed to assist researchers\r\nin Art History, to explore and analyze an archive of pictures of\r\nBuddha statues. The system combines different CBIR and classical\r\nretrieval techniques to assemble 2D pictures, 3D statue scans and\r\nmeta-data, that is focused on the Buddha facial characteristics. We\r\nbuild the system from an archive of 50,000 Buddhism pictures,\r\nidentify unique Buddha statues, extract contextual information,\r\nand provide specific facial embedding to first index the archive.",
-        "num_views": "0",
-        "status": "Unreviewed",
-        "feedback": null,
-        "publication_type": "Completed Research",
-        "date_submission": "Sep 30 2020",
-        "submittor": "1"
     },
     {
-        "publication_id": "4",
-        "file": "Paper11.pdf",
-        "abstract": "Despite the growth of e-commerce, brick-andmortar stores are still the preferred destinations for many people. In this paper, we\r\npresent ISA, a mobile-based intelligent shopping assistant that is designed to improve shopping experience in physical stores. ISA assists users by leveraging advanced techniques in\r\ncomputer vision, speech processing, and natural language processing. An in-store user only needs to take a picture or scan the barcode of the product of interest, and then the user can talk to the assistant about the product. The assistant can also guide the user through the purchase process or recommend other similar products to the user.",
-        "num_views": "0",
-        "status": "Unreviewed",
-        "feedback": null,
-        "publication_type": "Presented Research",
-        "date_submission": "Sep 30 2020",
-        "submittor": "1"
+        "author_id": "9",
+        "user_id": "2",
+        "publication_id": "104",
+        "first_name": "Jianlong",
+        "middle_initial": "A.",
+        "last_name": "Zhou",
+        "is_employee": "1",
+        "author_type": "Main"
+    },
+    {
+        "author_id": "10",
+        "user_id": "2",
+        "publication_id": "104",
+        "first_name": "Hamad",
+        "middle_initial": "H.",
+        "last_name": "Zogan",
+        "is_employee": "1",
+        "author_type": "Extra"
+    },
+    {
+        "author_id": "11",
+        "user_id": "2",
+        "publication_id": "104",
+        "first_name": "Shuqiao",
+        "middle_initial": "Y.",
+        "last_name": "Yang",
+        "is_employee": "1",
+        "author_type": "Extra"
+    },
+    {
+        "author_id": "12",
+        "user_id": "2",
+        "publication_id": "104",
+        "first_name": "Shoaib",
+        "middle_initial": "S.",
+        "last_name": "Jameel",
+        "is_employee": "1",
+        "author_type": "Extra"
+    },
+    {
+        "author_id": "13",
+        "user_id": "2",
+        "publication_id": "105",
+        "first_name": "Adrian",
+        "middle_initial": "K.",
+        "last_name": "Guelke",
+        "is_employee": "1",
+        "author_type": "Main"
+    },
+    {
+        "author_id": "14",
+        "user_id": "2",
+        "publication_id": "106",
+        "first_name": "Charles",
+        "middle_initial": "D.",
+        "last_name": "Welch",
+        "is_employee": "1",
+        "author_type": "Main"
+    },
+    {
+        "author_id": "15",
+        "user_id": "2",
+        "publication_id": "106",
+        "first_name": "Allison",
+        "middle_initial": "P.",
+        "last_name": "Lahnala",
+        "is_employee": "1",
+        "author_type": "Extra"
+    },
+    {
+        "author_id": "16",
+        "user_id": "2",
+        "publication_id": "106",
+        "first_name": "Vernica",
+        "middle_initial": "P.",
+        "last_name": "Rosa",
+        "is_employee": "1",
+        "author_type": "Extra"
+    },
+    {
+        "author_id": "17",
+        "user_id": "3",
+        "publication_id": "107",
+        "first_name": "Carl",
+        "middle_initial": "W.",
+        "last_name": "Ernest",
+        "is_employee": "1",
+        "author_type": "Main"
+    },
+    {
+        "author_id": "18",
+        "user_id": "4",
+        "publication_id": "108",
+        "first_name": "Natalia",
+        "middle_initial": "B.",
+        "last_name": "Mota",
+        "is_employee": "1",
+        "author_type": "Main"
+    },
+    {
+        "author_id": "19",
+        "user_id": "4",
+        "publication_id": "108",
+        "first_name": "Mauro",
+        "middle_initial": "J.",
+        "last_name": "Copelli",
+        "is_employee": "1",
+        "author_type": "Extra"
+    },
+    {
+        "author_id": "20",
+        "user_id": "4",
+        "publication_id": "108",
+        "first_name": "Sidarta",
+        "middle_initial": "K.",
+        "last_name": "Riberio",
+        "is_employee": "1",
+        "author_type": "Extra"
+    },
+    {
+        "author_id": "21",
+        "user_id": "4",
+        "publication_id": "109",
+        "first_name": "Benjamin",
+        "middle_initial": "F.",
+        "last_name": "Ambrosio",
+        "is_employee": "1",
+        "author_type": "Main"
+    },
+    {
+        "author_id": "22",
+        "user_id": "3",
+        "publication_id": "110",
+        "first_name": "Jose",
+        "middle_initial": "S.",
+        "last_name": "Dias",
+        "is_employee": "1",
+        "author_type": "Main"
+    },
+    {
+        "author_id": "23",
+        "user_id": "3",
+        "publication_id": "110",
+        "first_name": "Dulce",
+        "middle_initial": "K.",
+        "last_name": "Loucao",
+        "is_employee": "1",
+        "author_type": "Extra"
+    },
+    {
+        "author_id": "24",
+        "user_id": "5",
+        "publication_id": "111",
+        "first_name": "Christian",
+        "middle_initial": "R.",
+        "last_name": "Cortes",
+        "is_employee": "1",
+        "author_type": "Main"
+    },
+    {
+        "author_id": "25",
+        "user_id": "5",
+        "publication_id": "112",
+        "first_name": "Bibi Raissah",
+        "middle_initial": "R.",
+        "last_name": "Oderuth",
+        "is_employee": "1",
+        "author_type": "Main"
+    },
+    {
+        "author_id": "26",
+        "user_id": "5",
+        "publication_id": "112",
+        "first_name": "Koseheta",
+        "middle_initial": "K.",
+        "last_name": "Ramkissoon",
+        "is_employee": "1",
+        "author_type": "Extra"
+    },
+    {
+        "author_id": "27",
+        "user_id": "5",
+        "publication_id": "112",
+        "first_name": "Roopesh",
+        "middle_initial": "L.",
+        "last_name": "Sungkur",
+        "is_employee": "1",
+        "author_type": "Extra"
+    },
+    {
+        "author_id": "28",
+        "user_id": "5",
+        "publication_id": "113",
+        "first_name": "Krassen",
+        "middle_initial": "M.",
+        "last_name": "Stefanov",
+        "is_employee": "1",
+        "author_type": "Main"
+    },
+    {
+        "author_id": "29",
+        "user_id": "5",
+        "publication_id": "113",
+        "first_name": "Pavel",
+        "middle_initial": "G.",
+        "last_name": "Boychev",
+        "is_employee": "1",
+        "author_type": "Extra"
+    },
+    {
+        "author_id": "30",
+        "user_id": "5",
+        "publication_id": "113",
+        "first_name": "Alexander",
+        "middle_initial": "G.",
+        "last_name": "Grigorov",
+        "is_employee": "1",
+        "author_type": "Extra"
+    },
+    {
+        "author_id": "31",
+        "user_id": "5",
+        "publication_id": "113",
+        "first_name": "Atanas",
+        "middle_initial": "B.",
+        "last_name": "Geogiev",
+        "is_employee": "1",
+        "author_type": "Extra"
+    },
+    {
+        "author_id": "32",
+        "user_id": "5",
+        "publication_id": "114",
+        "first_name": "George",
+        "middle_initial": "A.",
+        "last_name": "Ranganathan",
+        "is_employee": "1",
+        "author_type": "Main"
+    },
+    {
+        "author_id": "33",
+        "user_id": "5",
+        "publication_id": "114",
+        "first_name": "Joy",
+        "middle_initial": "P.",
+        "last_name": "Chen",
+        "is_employee": "1",
+        "author_type": "Extra"
+    },
+    {
+        "author_id": "34",
+        "user_id": "5",
+        "publication_id": "114",
+        "first_name": "Alvaro",
+        "middle_initial": "M.",
+        "last_name": "Rocha",
+        "is_employee": "1",
+        "author_type": "Extra"
+    },
+    {
+        "author_id": "35",
+        "user_id": "5",
+        "publication_id": "115",
+        "first_name": "Jesper",
+        "middle_initial": "J.",
+        "last_name": "Olsson",
+        "is_employee": "1",
+        "author_type": "Main"
+    },
+    {
+        "author_id": "36",
+        "user_id": "5",
+        "publication_id": "115",
+        "first_name": "Eric",
+        "middle_initial": "P.",
+        "last_name": "Risfelt",
+        "is_employee": "1",
+        "author_type": "Extra"
+    },
+    {
+        "author_id": "37",
+        "user_id": "5",
+        "publication_id": "115",
+        "first_name": "Terese",
+        "middle_initial": "M.",
+        "last_name": "Besker",
+        "is_employee": "1",
+        "author_type": "Extra"
+    },
+    {
+        "author_id": "38",
+        "user_id": "5",
+        "publication_id": "116",
+        "first_name": "Catherine",
+        "middle_initial": "A.",
+        "last_name": "Ordun",
+        "is_employee": "1",
+        "author_type": "Main"
+    },
+    {
+        "author_id": "39",
+        "user_id": "5",
+        "publication_id": "116",
+        "first_name": "Edward",
+        "middle_initial": "Z.",
+        "last_name": "Raff",
+        "is_employee": "1",
+        "author_type": "Extra"
+    },
+    {
+        "author_id": "40",
+        "user_id": "5",
+        "publication_id": "116",
+        "first_name": "Sanjay",
+        "middle_initial": "Y.",
+        "last_name": "Purusotham",
+        "is_employee": "1",
+        "author_type": "Extra"
+    },
+    {
+        "author_id": "41",
+        "user_id": "5",
+        "publication_id": "117",
+        "first_name": "Norbert",
+        "middle_initial": "N.",
+        "last_name": "B\u00e1tfai",
+        "is_employee": "1",
+        "author_type": "Main"
     }
 ][
     {
@@ -139,5 +647,349 @@
         "title_conference": "Intelligent Shopping Assistant",
         "place_conference": "University of Illinois",
         "presented_type": "Conference Paper"
+    },
+    {
+        "presented_id": "2",
+        "publication_id": "104",
+        "title_presented": "Detecting Community Depression Dynamics Due to COVID-19 Pandemic in Australia",
+        "date_presentation": "2020-01",
+        "title_conference": "Community Depression Conference",
+        "place_conference": "University of technology Sydney,Australia",
+        "presented_type": "Conference Paper"
+    },
+    {
+        "presented_id": "3",
+        "publication_id": "106",
+        "title_presented": "Expressive Interviewing",
+        "date_presentation": "2020-07",
+        "title_conference": "A Conversational System for coping with COVID-19",
+        "place_conference": "University of micihgan",
+        "presented_type": "Conference Paper"
+    },
+    {
+        "presented_id": "4",
+        "publication_id": "108",
+        "title_presented": "A Connectionist-inspired Treatment Proposal for Relational Traumas",
+        "date_presentation": "2016-10",
+        "title_conference": "VOCSMAT: a connectionist-inspired treatment proposal for relational traumas",
+        "place_conference": "University of technology Sydney, Australia",
+        "presented_type": "Conference Paper"
+    },
+    {
+        "presented_id": "5",
+        "publication_id": "109",
+        "title_presented": "Towards a Mathematical Modeling of Emotions",
+        "date_presentation": "2020-09",
+        "title_conference": "Beyond the brain: towards a mathematical modeling of emotions",
+        "place_conference": "University of Normandie",
+        "presented_type": "Conference Paper"
+    },
+    {
+        "presented_id": "6",
+        "publication_id": "111",
+        "title_presented": "A Program Model for Hybrid Workflows",
+        "date_presentation": "2020-07",
+        "title_conference": "Combining task-based workflows and dataflows all-in-one",
+        "place_conference": "Barcelona Supercomputing Center (BSC)",
+        "presented_type": "Conference Paper"
+    },
+    {
+        "presented_id": "7",
+        "publication_id": "112",
+        "title_presented": "Smart Campus Library System",
+        "date_presentation": "2019-09",
+        "title_conference": "Conference on Next Generation Computing Applications",
+        "place_conference": "University of Mauritius Reduit, Mauritius",
+        "presented_type": "Conference Paper"
+    },
+    {
+        "presented_id": "8",
+        "publication_id": "113",
+        "title_presented": "Share.TEC",
+        "date_presentation": "2009-10",
+        "title_conference": "Repository System",
+        "place_conference": "Sofia University",
+        "presented_type": "Conference Paper"
+    },
+    {
+        "presented_id": "9",
+        "publication_id": "115",
+        "title_presented": "A psychoempirical software engineering experiment",
+        "date_presentation": "2020-09",
+        "title_conference": "Measuring affective states from technical debt: A psychoempirical software engineering experiment",
+        "place_conference": "University of Oslo",
+        "presented_type": "Conference Paper"
+    },
+    {
+        "presented_id": "10",
+        "publication_id": "116",
+        "title_presented": "A Review of Problems and Limitations in Standard Design and Data",
+        "date_presentation": "2020-09",
+        "title_conference": "The Use of AI for Thermal Emotion Recognition: A Review of Problems and Limitations in Standard Design and Data",
+        "place_conference": "University of Maryland",
+        "presented_type": "Conference Paper"
+    },
+    {
+        "presented_id": "11",
+        "publication_id": "117",
+        "title_presented": "A Common Programming Language of Robopsychology and Robophilosophy",
+        "date_presentation": "2020-09",
+        "title_conference": "Hacking with God: a Common Programming Language of Robopsychology and Robophilosophy",
+        "place_conference": "University of Debrecen, Hungary",
+        "presented_type": "Conference Paper"
+    }
+][
+    {
+        "published_id": "1",
+        "publication_id": "105",
+        "year_published": "2006",
+        "title_article": null,
+        "title_journal": null,
+        "vol_num": null,
+        "issue_num": null,
+        "page_num": null,
+        "indexing_database": null,
+        "peer_review": null,
+        "title_book": "Terrorism and global disorder",
+        "title_chapter": null,
+        "publisher": "I. B. Tauris",
+        "place_of_publication": "London",
+        "place_of_conference": null,
+        "published_type": "Book \/ Textbook",
+        "title_conference": null,
+        "url": null
+    },
+    {
+        "published_id": "2",
+        "publication_id": "107",
+        "year_published": "2004",
+        "title_article": null,
+        "title_journal": null,
+        "vol_num": null,
+        "issue_num": null,
+        "page_num": null,
+        "indexing_database": null,
+        "peer_review": null,
+        "title_book": "Following Muhammad: Rethinking Islam in the Contemporary World (Islamic Civilization and Muslim Networks)",
+        "title_chapter": null,
+        "publisher": "The University of North Carolina Press",
+        "place_of_publication": "London",
+        "place_of_conference": null,
+        "published_type": "Book \/ Textbook",
+        "title_conference": null,
+        "url": null
+    },
+    {
+        "published_id": "3",
+        "publication_id": "110",
+        "year_published": "2020",
+        "title_article": null,
+        "title_journal": null,
+        "vol_num": null,
+        "issue_num": null,
+        "page_num": "48-55",
+        "indexing_database": null,
+        "peer_review": null,
+        "title_book": "SPACE International Conference 2019 on Architectural History and Theory",
+        "title_chapter": "SPACE BETWEEN US REMAINING SPACE DESIGN FOR INTERACTION",
+        "publisher": "University of Lisbon",
+        "place_of_publication": "Portugal",
+        "place_of_conference": null,
+        "published_type": "Book Chapter",
+        "title_conference": null,
+        "url": null
+    },
+    {
+        "published_id": "4",
+        "publication_id": "114",
+        "year_published": "2020",
+        "title_article": null,
+        "title_journal": null,
+        "vol_num": null,
+        "issue_num": null,
+        "page_num": "14-15",
+        "indexing_database": null,
+        "peer_review": null,
+        "title_book": "Inventive Communication and computational Technologies",
+        "title_chapter": "AD-LIB: Automated Library System",
+        "publisher": "Springer",
+        "place_of_publication": "India",
+        "place_of_conference": null,
+        "published_type": "Book Chapter",
+        "title_conference": null,
+        "url": null
+    }
+][][
+    {
+        "comment_id": "1",
+        "publication_id": "3",
+        "user_id": "1",
+        "message": "Great work!!",
+        "time_created": "2020-09-30 13:36:11"
+    }
+][
+    {
+        "notification_id": "1",
+        "user_id": "1",
+        "publication_id": "3",
+        "type": "Review",
+        "time": "2020-09-30 13:35:16",
+        "status": "Read"
+    },
+    {
+        "notification_id": "2",
+        "user_id": "1",
+        "publication_id": "4",
+        "type": "Review",
+        "time": "2020-09-30 13:35:31",
+        "status": "Read"
+    },
+    {
+        "notification_id": "3",
+        "user_id": "1",
+        "publication_id": "3",
+        "type": "Comment",
+        "time": "2020-09-30 13:36:11",
+        "status": "Read"
+    },
+    {
+        "notification_id": "4",
+        "user_id": "1",
+        "publication_id": "109",
+        "type": "Review",
+        "time": "2020-09-30 13:37:26",
+        "status": "Unread"
+    },
+    {
+        "notification_id": "5",
+        "user_id": "1",
+        "publication_id": "117",
+        "type": "Review",
+        "time": "2020-09-30 13:37:31",
+        "status": "Unread"
+    },
+    {
+        "notification_id": "6",
+        "user_id": "1",
+        "publication_id": "111",
+        "type": "Review",
+        "time": "2020-09-30 13:37:34",
+        "status": "Unread"
+    },
+    {
+        "notification_id": "7",
+        "user_id": "1",
+        "publication_id": "110",
+        "type": "Review",
+        "time": "2020-09-30 13:37:37",
+        "status": "Unread"
+    },
+    {
+        "notification_id": "8",
+        "user_id": "1",
+        "publication_id": "107",
+        "type": "Review",
+        "time": "2020-09-30 13:37:40",
+        "status": "Unread"
+    },
+    {
+        "notification_id": "9",
+        "user_id": "1",
+        "publication_id": "105",
+        "type": "Review",
+        "time": "2020-09-30 13:37:43",
+        "status": "Unread"
+    },
+    {
+        "notification_id": "10",
+        "user_id": "1",
+        "publication_id": "108",
+        "type": "Review",
+        "time": "2020-09-30 13:37:46",
+        "status": "Unread"
+    },
+    {
+        "notification_id": "11",
+        "user_id": "1",
+        "publication_id": "112",
+        "type": "Review",
+        "time": "2020-09-30 13:37:49",
+        "status": "Unread"
+    },
+    {
+        "notification_id": "12",
+        "user_id": "1",
+        "publication_id": "115",
+        "type": "Review",
+        "time": "2020-09-30 13:37:53",
+        "status": "Unread"
+    },
+    {
+        "notification_id": "13",
+        "user_id": "1",
+        "publication_id": "116",
+        "type": "Review",
+        "time": "2020-09-30 13:37:56",
+        "status": "Unread"
+    },
+    {
+        "notification_id": "14",
+        "user_id": "1",
+        "publication_id": "114",
+        "type": "Review",
+        "time": "2020-09-30 13:37:59",
+        "status": "Unread"
+    },
+    {
+        "notification_id": "15",
+        "user_id": "1",
+        "publication_id": "113",
+        "type": "Review",
+        "time": "2020-09-30 13:38:02",
+        "status": "Unread"
+    },
+    {
+        "notification_id": "16",
+        "user_id": "1",
+        "publication_id": "106",
+        "type": "Review",
+        "time": "2020-09-30 13:38:05",
+        "status": "Unread"
+    },
+    {
+        "notification_id": "17",
+        "user_id": "1",
+        "publication_id": "104",
+        "type": "Review",
+        "time": "2020-09-30 13:38:08",
+        "status": "Unread"
+    }
+][
+    {
+        "like_id": "1",
+        "user_id": "1",
+        "publication_id": "3"
+    }
+][
+    {
+        "editor_id": "1",
+        "published_id": "3",
+        "editor_fn": "Jose",
+        "editor_mi": "S.",
+        "editor_ln": "Dias"
+    },
+    {
+        "editor_id": "2",
+        "published_id": "3",
+        "editor_fn": "Dulce",
+        "editor_mi": "K.",
+        "editor_ln": "Loucao"
+    },
+    {
+        "editor_id": "3",
+        "published_id": "4",
+        "editor_fn": "Kelly",
+        "editor_mi": "J.",
+        "editor_ln": "Gadot"
     }
 ]
