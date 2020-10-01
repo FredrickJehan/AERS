@@ -100,7 +100,7 @@ class Main extends CI_Controller{
         }elseif($data['publication_type'] == 'Published Research'){
             $data['research_data'] = $this->research_model->select_all_published_view($publication_id);
         }else{
-            $data['research_data'] = $this->research_model->select_all_creative_work($publication_id);
+            $data['research_data'] = $this->research_model->select_all_creative_view($publication_id);
         }
         $this->load->view('template/header2');
         $this->load->view("guest/detailed", $data);

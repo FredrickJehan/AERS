@@ -144,7 +144,7 @@
         <tbody>
             <tr>
                 <td width="200"><b>Title of Research</b></td>
-                <td><?php echo $row->title_article?></td>
+                <td><?php echo $row->title_journal?></td>
             </tr>
             <tr>
             <td width="200"><b>Authors Name</b></td>
@@ -174,7 +174,7 @@
         <tbody>
             <tr>
                 <td width="200"><b>Title of Research</b></td>
-                <td><?php echo $row->title_article?></td>
+                <td><?php echo $row->title_book?></td>
             </tr>
             <tr>
             <td width="200"><b>Authors Name</b></td>
@@ -204,7 +204,7 @@
         <tbody>
             <tr>
                 <td width="200"><b>Title of Research</b></td>
-                <td><?php echo $row->title_article?></td>
+                <td><?php echo $row->title_chapter?></td>
             </tr>
             <tr>
             <td width="200"><b>Authors Name</b></td>
