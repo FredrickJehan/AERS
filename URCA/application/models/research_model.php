@@ -62,6 +62,7 @@ class research_model extends CI_Model{
         $this->db->from('like_tbl');
         $this->db->join('publication', 'publication.publication_id = like_tbl.publication_id', 'inner');
         $this->db->join('completed', 'completed.publication_id = publication.publication_id', 'inner');
+        $this->db->join('author', 'author.publication_id = publication.publication_id', 'inner');
         $this->db->group_by('like_tbl.publication_id');
         $this->db->where('like_tbl.user_id', $user_id);
         // $this->db->order_by('user_id', 'DESC');

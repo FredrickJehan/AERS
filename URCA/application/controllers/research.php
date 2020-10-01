@@ -114,6 +114,7 @@ class Research extends CI_Controller{
 
     public function like_view() {
         $user_id = $this->get_current_user();
+        $data["author_data"] = $this->research_model->fetch_all_authors();
         $data['liked_completed'] = $this->research_model->get_like_completed($user_id);
         $data['liked_presented'] = $this->research_model->get_like_presented($user_id);
         $data['liked_published'] = $this->research_model->get_like_published($user_id);
