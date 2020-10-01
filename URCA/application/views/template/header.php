@@ -86,13 +86,13 @@
       <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url('research');?>">
           <i class="fas fa-fw fa-chart-area"></i>
-          <span>Research</span></a>
+          <span>My Research</span></a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url('publication');?>">
           <i class="fas fa-fw fa-table"></i>
-          <span>Publication</span></a>
+          <span>Archive</span></a>
       </li>
       
       <?php }?>
@@ -112,7 +112,7 @@
       <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url('research');?>">
           <i class="fas fa-fw fa-table"></i>
-          <span>Research</span></a>
+          <span>My Research</span></a>
       </li>
 
       <li class="nav-item">
