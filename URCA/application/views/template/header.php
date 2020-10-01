@@ -90,6 +90,12 @@
       </li>
 
       <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url('liked_research');?>">
+          <i class="fas fa-fw fa-table"></i>
+          <span>My Likes</span></a>
+      </li>
+
+      <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url('archive');?>">
           <i class="fas fa-fw fa-table"></i>
           <span>Archive</span></a>

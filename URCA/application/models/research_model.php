@@ -9,6 +9,59 @@ class research_model extends CI_Model{
         return $this->db->get()->row()->user_id;
     }
 
+    public function get_like_completed($user_id) {
+        $this->db->select('like_tbl.publication_id, COUNT(like_tbl.user_id) as total, completed.title');
+        $this->db->from('like_tbl');
+        $this->db->join('publication', 'publication.publication_id = like_tbl.publication_id', 'inner');
+        $this->db->join('completed', 'completed.publication_id = publication.publication_id', 'inner');
+        $this->db->group_by('like_tbl.publication_id');
+        $this->db->where('like_tbl.user_id', $user_id);
+        // $this->db->order_by('user_id', 'DESC');
+        return $this->db->get();
+    }
+
+    public function get_like_presented($user_id) {
+        $this->db->select('like_tbl.publication_id, COUNT(like_tbl.user_id) as total, presented.title_presented');
+        $this->db->from('like_tbl');
+        $this->db->join('publication', 'publication.publication_id = like_tbl.publication_id', 'inner');
+        $this->db->join('presented', 'presented.publication_id = publication.publication_id', 'inner');
+        $this->db->group_by('like_tbl.publication_id');
+        $this->db->where('like_tbl.user_id', $user_id);
+        // $this->db->order_by('user_id', 'DESC');
+        return $this->db->get();
+    }
+
+    public function get_like_published($user_id) {
+        $this->db->select('like_tbl.publication_id, COUNT(like_tbl.user_id) as total, published.title_article');
+        $this->db->from('like_tbl');
+        $this->db->join('publication', 'publication.publication_id = like_tbl.publication_id', 'inner');
+        $this->db->join('published', 'published.publication_id = publication.publication_id', 'inner');
+        $this->db->group_by('like_tbl.publication_id');
+        $this->db->where('like_tbl.user_id', $user_id);
+        // $this->db->order_by('user_id', 'DESC');
+        return $this->db->get();
+    }
+
+    public function get_like_creative($user_id) {
+        $this->db->select('like_tbl.publication_id, COUNT(like_tbl.user_id) as total, creative_works.title_work');
+        $this->db->from('like_tbl');
+        $this->db->join('publication', 'publication.publication_id = like_tbl.publication_id', 'inner');
+        $this->db->join('creative_works', 'creative_works.publication_id = publication.publication_id', 'inner');
+        $this->db->group_by('like_tbl.publication_id');
+        $this->db->where('like_tbl.user_id', $user_id);
+        // $this->db->order_by('user_id', 'DESC');
+        return $this->db->get();
+    }
+
+    // public function get_like_research($user_id) {
+    //     $this->db->select('publication_id, COUNT(user_id) as total');
+    //     $this->db->from('like_tbl');
+    //     $this->db->group_by('publication_id');
+    //     $this->db->where('user_id', $user_id);
+    //     // $this->db->order_by('user_id', 'DESC');
+    //     return $this->db->get();
+    // }
+
     public function total_pub_count(){
         $this->db->select('*');
         $this->db->from('publication');

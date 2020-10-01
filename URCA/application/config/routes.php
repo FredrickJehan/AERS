@@ -63,6 +63,8 @@ $route['research'] = 'research/research_table';
 $route['archive'] = 'research/publication';
 $route['research/view/:num'] = 'research/research_view';
 $route['research/edit/:num'] = 'research/edit';
+$route['liked_research'] = 'research/like_view';
+
 // $route['research/search/(:any)'] = 'research/search';
 $route['research/search'] = 'research/search';
 $route['notification'] = 'research/notification';

@@ -107,6 +107,19 @@ class Research extends CI_Controller{
         echo $output;
     }
     */
+
+    public function like_view() {
+        $user_id = $this->get_current_user();
+        $data['liked_completed'] = $this->research_model->get_like_completed($user_id);
+        $data['liked_presented'] = $this->research_model->get_like_presented($user_id);
+        $data['liked_published'] = $this->research_model->get_like_published($user_id);
+        $data['liked_creative'] = $this->research_model->get_like_creative($user_id);
+        
+
+        $this->load->view('template/header');
+		$this->load->view('research/like', $data);
+        $this->load->view('template/footer');
+    }
     public function like_check(){
         $publication_id = $this->uri->segment(3);
         $user_id = $this->get_current_user();
