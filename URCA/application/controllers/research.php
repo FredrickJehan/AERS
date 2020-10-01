@@ -111,6 +111,22 @@ class Research extends CI_Controller{
     // public function most_likes() {
     //     $data['most_liked'] = $this->research_model->get_most_likes();
     // }
+
+    public function comment_report() {
+        $publication_id = $this->uri->segment(3);
+        date_default_timezone_set('Asia/Karachi');
+        $now = date('Y-m-d H:i:s');
+        $data = array(
+            'user_id' => $this->get_current_user(),
+            'publication_id' => $publication_id,
+            'type' => 'Report',
+            'time' => $now,
+            'status' => 'Unread'
+        );
+        $this->research_model->report_comment($data);
+        redirect(base_url() . "research/view/".$publication_id);
+    }
+
     public function comment_delete() {
         $publication_id = $this->uri->segment(3);
 
@@ -196,24 +212,42 @@ class Research extends CI_Controller{
             if($_POST["view"] != ''){
                 $update_notif = $this->research_model->update_notif();
             }
+        if (isset($this->session->userdata['logged_in'])) {
+            $user_type = ($this->session->userdata['logged_in']['user_type']);
+        }
         $output = '';
         $submittor = $this->get_current_user();
         $data = $this->research_model->select_notif($submittor);
-        foreach($data->result() as $row){
-            if($row->type == "Review"){
-            $output .= 
-                '<div class="small text-black-500">'.$row->time.'</div>
-                <a href="'.base_url('research/edit/'.$row->publication_id).'"
-                <Strong>Your Research has been Reviewed</Strong></a>';
-            }
-            else{
+        
+        $admin_data = $this->research_model->select_notif_admin();
+        foreach($admin_data->result() as $row){
+            if($user_type == "Admin"){
                 $output .= 
                 '<div class="small text-black-500">'.$row->time.'</div>
                 <a href="'.base_url('research/view/'.$row->publication_id).'"
-                <Strong></Strong><b>'.$row->first_name.' '.$row->last_name.'</b> Commented on your Research</Strong></a>';    
+                <Strong>Comment Reported</Strong></a>';
             }
         }
-        $datacount = $this->research_model->count_notif($submittor);
+
+        foreach($data->result() as $row){
+            if($row->type == "Review"){
+                $output .= 
+                    '<div class="small text-black-500">'.$row->time.'</div>
+                    <a href="'.base_url('research/edit/'.$row->publication_id).'"
+                    <Strong>Your Research has been Reviewed</Strong></a>';
+            }else {
+                    $output .= 
+                    '<div class="small text-black-500">'.$row->time.'</div>
+                    <a href="'.base_url('research/view/'.$row->publication_id).'"
+                    <Strong></Strong><b>'.$row->first_name.' '.$row->last_name.'</b> Commented on your Research</Strong></a>';    
+            } }
+        }
+        if($user_type == "Admin"){
+            $datacount = $this->research_model->count_notif_admin();
+        }else if($user_type == "Researcher"){
+            $datacount = $this->research_model->count_notif($submittor);
+        }
+
         $count = $datacount->num_rows();
         $data2 = array(
             'load_notif' => $output,
@@ -221,7 +255,6 @@ class Research extends CI_Controller{
         );
         echo json_encode($data2);
 
-        }
     }
 
 

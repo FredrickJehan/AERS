@@ -27,9 +27,11 @@
     foreach($comment_data as $row){ ?>
         <div class="namedesc1"><label class="label1">By <b><?php echo $row->first_name.' '.$row->last_name ?></b> on <i><?php echo $row->time_created?></i></label>
             <div class="commentsec1"><?php echo $row->message ?></div>
-            <button class="btn btn-danger ml-2 mt-2">Report</button>
+            <?php if($user_type == 'Researcher') {?>
+              <a href="<?php echo base_url('research/comment_report/'.$row->publication_id);?>" class="btn btn-danger ml-2 mt-2">Report</a>
+            <?php } ?>
             <?php if($user_type == 'Admin'){ ?>
-              <a href="<?php echo base_url('research/comment_delete/'.$row->comment_id);?>" class="btn btn-danger ml-2 mt-2">Delete</a>
+              <a href="<?php echo base_url('research/comment_delete/'.$row->publication_id);?>" class="btn btn-danger ml-2 mt-2">Delete</a>
             <?php } ?>
             <!-- <input class="reply1" type="submit" value="Reply"> -->
         </div>      
