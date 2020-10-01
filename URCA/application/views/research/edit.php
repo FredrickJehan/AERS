@@ -18,8 +18,12 @@
     foreach($research_data as $row){
       if($user_type == 'Admin'){ ?>
         <div class="form-group" style="text-align:center;">
-          <a class="btn btn-danger" href="#" id="reject" data-toggle="modal" data-target="#rejectModal">Reject</a>
-          <a href="<?php echo base_url('admin/review/'.$row->publication_id);?>" class="btn btn-primary">Accept</a>
+          <?php if($row->status == 'Approved' || $row->status == 'Unreviewed'){?>
+            <a class="btn btn-danger" href="#" id="reject" data-toggle="modal" data-target="#rejectModal">Reject</a>
+          <?php } ?>
+          <?php if($row->status == 'Rejected' || $row->status == 'Unreviewed'){?>
+            <a href="<?php echo base_url('admin/review/'.$row->publication_id);?>" class="btn btn-primary">Accept</a>
+          <?php } ?>
         </div><?php 
       }
     }
