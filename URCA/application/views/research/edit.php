@@ -54,7 +54,9 @@
             <div class = "rdesign">This Research has been Approved!</div>
         <?php 
         }else if($row->status == 'Rejected'){ ?>
-            <div class = "rdesign2">This Research has been Rejected. You are given a the following feedback. <strong><?php echo $row->feedback; ?></strong></div>
+            <div class = "rdesign2"><p>This Research has been Rejected. You are given the following feedback:<p>
+            <strong><p><?php echo $row->feedback; ?><p></strong>
+            </div>
         <?php
         }else if($row->status == 'Unreviewed'){ ?>
             <div class = "rdesign3">This Research has not been Reviewed yet</div>

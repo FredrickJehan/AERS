@@ -51,17 +51,18 @@
     <div class="container">
       <h2 class="mb-4 mt-3">Recent Publications</h2>
       <form action="<?php echo base_url('main/search_filter'); ?>" method="post">
+      <!--
       <div class="row mb-3">
             <div class="col"></div>
             <label>Sort by:</label>
             <div class="col-3">
               <select class="form-control form-control-sm" name="department">
                 <option value="">Department</option>
-                <!--
+                //not working start
                 <php foreach($dept as $row){ ?>
                   <option value="<php echo $row->department ?>"><php echo $row->department ?></option>
                 <php } ?>
-                -->
+                // end
                 <option value="Department of Media Studies">Department of Media Studies</option>
                 <option value="Department of Social Studies">Department of Social Studies</option>
                 <option value="Department of Literature and Language Studies">Department of Literature and Language Studies</option>
@@ -79,11 +80,11 @@
             <div class="col-3">
               <select class="form-control form-control-sm" name="type_research">
                 <option value="">Type of Research</option>
-                <!--
+                 //not working start
                 <php foreach($type as $row){ ?>
                   <option value="<php echo $row->publication_type ?>"><php echo $row->publication_type ?></option>
                 <php } ?>
-                -->
+                 // end
                 <option value="Completed Research">Completed Research</option>
                 <option value="Presented Research">Presented Research</option>
                 <option value="Published Research">Published Research</option>
@@ -92,7 +93,7 @@
             </div>
             <button type="submit" class="btn btn-info btn-sm">Filter</button>
             <div class="col"></div>
-      </div>
+      </div>-->
       </form>
         <?php foreach($recent_com as $row){ ?>
       <div class="row">

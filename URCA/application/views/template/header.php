@@ -124,7 +124,7 @@
       <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url('export');?>">
           <i class="fas fa-fw fa-table"></i>
-          <span>Reports</span></a>
+          <span>Reports & Archive</span></a>
       </li>
 
       <li class="nav-item">
