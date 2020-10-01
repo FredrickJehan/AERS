@@ -152,9 +152,7 @@
                     <span class="text-danger"><?php echo form_error("location"); ?>
                     </span>
                 </div>
-                <div class="form-group">
-                    <p><b>Note: Before clicking the edit button, please reupload file.</b></p>
-                </div>
+
                 <div class="form-group">
                     <label>Current file: </label>
                     <a href="<?=base_url().'pdf/'.$row->file;?>" target="_blank"><?php echo $row->file; ?></a>
@@ -247,9 +245,7 @@
                             <span class="text-danger"><?php echo form_error("location");?></span>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <p><b>Note: Before clicking the edit button, please reupload file.</b></p>
-                    </div>
+
                     <div class="form-group">
                         <label>Current file: </label>
                         <a href="<?=base_url().'pdf/'.$row->file;?>" target="_blank"><?php echo $row->file; ?></a>
@@ -365,9 +361,6 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <p><b>Note: Before clicking the edit button, please reupload file.</b></p>
-                    </div>
-                    <div class="form-group">
                         <label>Current file: </label>
                         <a href="<?=base_url().'pdf/'.$row->file;?>" target="_blank"><?php echo $row->file; ?></a>
                     </div>
@@ -456,9 +449,6 @@
                         <input type="text" name="place_conference" value="<?php echo $row->place_conference?>" class="form-control">
                         <span class="text-danger"><?php echo form_error("place_conference");?></span>
                     </div>
-                    </div>
-                    <div class="form-group">
-                        <p><b>Note: Before clicking the edit button, please reupload file.</b></p>
                     </div>
                     <div class="form-group">
                         <label>Current file: </label>
@@ -619,9 +609,6 @@
                     </div>
                 </div>
                     <div class="form-group">
-                        <p><b>Note: Before clicking the edit button, please reupload file.</b></p>
-                    </div>
-                    <div class="form-group">
                         <label>Current file: </label>
                         <a href="<?=base_url().'pdf/'.$row->file;?>" target="_blank"><?php echo $row->file; ?></a>
                     </div>
@@ -715,9 +702,7 @@
                             <span class="text-danger"><?php echo form_error("place");?></span>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <p><b>Note: Before clicking the edit button, please reupload file.</b></p>
-                    </div>
+
                     <div class="form-group">
                         <label>Current file: </label>
                         <a href="<?=base_url().'pdf/'.$row->file;?>" target="_blank"><?php echo $row->file; ?></a>
@@ -853,9 +838,6 @@
                             <input type="text" name="place" class="form-control" value="<?php echo $row->place_of_publication?>" required>
                             <span class="text-danger"><?php echo form_error("place");?></span>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <p><b>Note: Before clicking the edit button, please reupload file.</b></p>
                     </div>
                     <div class="form-group">
                         <label>Current file: </label>
@@ -1010,9 +992,6 @@
                         <span class="text-danger"><?php echo form_error("url");?></span>
                     </div>
                     <?php } ?>
-                </div>
-                <div class="form-group">
-                    <p><b>Note: Before clicking the edit button, please reupload file.</b></p>
                 </div>
                 <div class="form-group">
                     <label>Current file: </label>
@@ -1288,9 +1267,6 @@
                             <input type="text" name="award" class="form-control">
                         <?php } ?>
                     </div>
-                </div>
-                <div class="form-group">
-                    <p><b>Note: Before clicking the edit button, please reupload file.</b></p>
                 </div>
                 <div class="form-group">
                     <label>Current file: </label>
