@@ -163,7 +163,7 @@
                     <label>
                         SUBMIT / UPLOAD in one file: Copy of front page, approval pages, table of contents for unpublished thesis*
                     </label>
-                    <input type="file" name="file" class="form-control-file">
+                    <input type="file" name="file" class="form-control-file">.filename
                 </div>
                 <div class="form-group">
                     <label>Abstract</label>

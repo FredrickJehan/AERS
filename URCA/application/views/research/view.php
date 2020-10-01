@@ -18,7 +18,7 @@
 
 <div class="card shadow mb-4">
 <div class="card-body">
-  <?php
+<?php
     if($publication_type == 'Completed Research'){
         foreach($research_data as $row){
             if($row->completed_type == 'Thesis / Dissertation'){?>
@@ -31,8 +31,17 @@
             </tr>
             <tr>
                 <td width="200"><b>Author Name</b></td>
-                <td><?php echo $row->last_name?>, <?php echo $row->first_name?> <?php echo $row->middle_initial?></td>
+                <td>            
+                    <?php foreach($author_data as $name){ 
+                    if($row->publication_id == $name->publication_id){ ?>
+                        <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
+                    <?php } } ?>
+                </td>
             </tr>  
+            <tr>
+                <td width="200"><b>Email</b></td>
+                <td><?php echo $row->email?></td>
+            </tr>
             <tr>
                 <td width="200"><b>Abstract</b></td>
                 <td><?php echo $row->abstract?></td>
@@ -57,7 +66,16 @@
             </tr>
             <tr>
                 <td width="200"><b>Author Name</b></td>
-                <td><?php echo $row->last_name?>, <?php echo $row->first_name?> <?php echo $row->middle_initial?></td>
+                <td>
+                    <?php foreach($author_data as $name){ 
+                    if($row->publication_id == $name->publication_id){ ?>
+                        <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
+                    <?php } } ?>
+                </td>
+            </tr>
+            <tr>
+                <td width="200"><b>Email</b></td>
+                <td><?php echo $row->email?></td>
             </tr>  
             <tr>
                 <td width="200"><b>Abstract</b></td>
@@ -91,6 +109,10 @@
                     <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
             <?php } } ?>
             </td>
+            </tr>
+            <tr>
+                <td width="200"><b>Email</b></td>
+                <td><?php echo $row->email?></td>
             </tr>  
             <tr>
                 <td width="200"><b>Abstract</b></td>
@@ -122,6 +144,10 @@
                     <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
             <?php } } ?>
             </td>
+            </tr>
+            <tr>
+                <td width="200"><b>Email</b></td>
+                <td><?php echo $row->email?></td>
             </tr>  
             <tr>
                 <td width="200"><b>Abstract</b></td>
@@ -145,7 +171,7 @@
         <tbody>
             <tr>
                 <td width="200"><b>Title of Research</b></td>
-                <td><?php echo $row->title_article?></td>
+                <td><?php echo $row->title_journal?></td>
             </tr>
             <tr>
             <td width="200"><b>Authors Name</b></td>
@@ -155,6 +181,10 @@
                     <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
             <?php } } ?>
             </td>
+            </tr>
+            <tr>
+                <td width="200"><b>Email</b></td>
+                <td><?php echo $row->email?></td>
             </tr>  
             <tr>
                 <td width="200"><b>Abstract</b></td>
@@ -175,7 +205,7 @@
         <tbody>
             <tr>
                 <td width="200"><b>Title of Research</b></td>
-                <td><?php echo $row->title_article?></td>
+                <td><?php echo $row->title_book?></td>
             </tr>
             <tr>
             <td width="200"><b>Authors Name</b></td>
@@ -185,6 +215,10 @@
                     <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
             <?php } } ?>
             </td>
+            </tr>
+            <tr>
+                <td width="200"><b>Email</b></td>
+                <td><?php echo $row->email?></td>
             </tr>  
             <tr>
                 <td width="200"><b>Abstract</b></td>
@@ -205,7 +239,7 @@
         <tbody>
             <tr>
                 <td width="200"><b>Title of Research</b></td>
-                <td><?php echo $row->title_article?></td>
+                <td><?php echo $row->title_chapter?></td>
             </tr>
             <tr>
             <td width="200"><b>Authors Name</b></td>
@@ -215,6 +249,10 @@
                     <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
             <?php } } ?>
             </td>
+            </tr>
+            <tr>
+                <td width="200"><b>Email</b></td>
+                <td><?php echo $row->email?></td>
             </tr>  
             <tr>
                 <td width="200"><b>Abstract</b></td>
@@ -245,6 +283,10 @@
                     <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
             <?php } } ?>
             </td>
+            </tr>
+            <tr>
+                <td width="200"><b>Email</b></td>
+                <td><?php echo $row->email?></td>
             </tr>  
             <tr>
                 <td width="200"><b>Abstract</b></td>
