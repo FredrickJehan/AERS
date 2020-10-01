@@ -94,7 +94,7 @@
             if($row->completed_type == 'Thesis / Dissertation'){ ?>
                 <!-- Thesis / Dissertation form -->
                 <div id="thesis">
-                <form method="post" action="<?php echo base_url('research/completed_update/'.$row->publication_id)?>" enctype="multipart/form-data">
+                <form id="rush" method="post" action="<?php echo base_url('research/completed_update/'.$row->publication_id)?>" enctype="multipart/form-data">
                 <label>Author*</label>
                 <input type='text' style="display:none" name="research_type" value='Thesis / Dissertation'></input>
                 <div class="form-row">
@@ -173,13 +173,13 @@
                 <?php
                     foreach($research_data as $row){
                         if($user_type == 'Admin'){ ?>
-                            <input type="submit" name="submit" value="Edit" class="btn btn-primary"></input>
+                            <input type="submit" name="submit" value="Save" class="btn btn-primary"></input>
                         <?php 
                         }else if($user_type == 'Researcher' && $row->status == 'Unreviewed' || $row->status == 'Rejected'){ ?>
                             <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
                         <?php
                         }else if($user_type == 'Researcher' && $row->status == 'Approved'){ ?>
-                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Unsubmit</a>
+                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Revise</a>
                         <?php
                         }
                     }
@@ -193,7 +193,7 @@
             }else{ ?>
                 <!-- Technical / Research form -->
                 <div id="technical">
-                <form method="post" action="<?php echo base_url('research/completed_update/'.$row->publication_id)?>" enctype="multipart/form-data">
+                <form id="rush" method="post" action="<?php echo base_url('research/completed_update/'.$row->publication_id)?>" enctype="multipart/form-data">
                     <p>Author*</p>
                     <input type='text' style="display:none" name="research_type" value='Technical / Research Report'></input>
                     <div class="form-row">
@@ -267,13 +267,13 @@
                     <?php
                     foreach($research_data as $row){
                         if($user_type == 'Admin'){ ?>
-                            <input type="submit" name="submit" value="Edit" class="btn btn-primary"></input>
+                            <input type="submit" name="submit" value="Save" class="btn btn-primary"></input>
                         <?php 
                         }else if($user_type == 'Researcher' && $row->status == 'Unreviewed' || $row->status == 'Rejected'){ ?>
                             <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
                         <?php
                         }else if($user_type == 'Researcher' && $row->status == 'Approved'){ ?>
-                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Unsubmit</a>
+                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Revise</a>
                         <?php
                         }
                     }
@@ -282,14 +282,33 @@
                     </form>
                 </div>
                 <!-- ./Technical / Research form -->
-        <?php }   
-        }
+        <?php } ?>
+                <!--
+                <script>
+                    let file_value = document.getElementById("file");
+                    let file_db = <php echo $row->file; ?>
+                    rush.onsubmit = async (e) => {
+                        e.preventDefault();
+                        
+                        if(file_value != NULL){
+                            rush.append("file", file_db);
+                
+                            fetch('<php echo base_url('research/completed_update/'.$row->publication_id)?>', {
+                                method: "POST",
+                                body: new FormData(rush)
+                            });
+                        }else{
+
+                        }
+                    };
+                </script> -->  
+    <?php    }
     }elseif($publication_type == 'Presented Research'){
         foreach($research_data as $row){
             if($row->presented_type == 'Conference Paper'){ ?>
                 <!-- Conference Paper form -->
                 <div id="conference">
-                <form method="post" action="<?php echo base_url('research/presented_update/'.$row->publication_id)?>" enctype="multipart/form-data">
+                <form id="rush" method="post" action="<?php echo base_url('research/presented_update/'.$row->publication_id)?>" enctype="multipart/form-data">
                     <label>Author*</label>
                     <input type='text' style="display:none" name="research_type" value='Conference Paper'></input>
                     <!--<php foreach($author_data as $row){ ?>-->
@@ -364,13 +383,13 @@
                     <?php
                     foreach($research_data as $row){
                         if($user_type == 'Admin'){ ?>
-                            <input type="submit" name="submit" value="Edit" class="btn btn-primary"></input>
+                            <input type="submit" name="submit" value="Save" class="btn btn-primary"></input>
                         <?php 
                         }else if($user_type == 'Researcher' && $row->status == 'Unreviewed' || $row->status == 'Rejected'){ ?>
                             <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
                         <?php
                         }else if($user_type == 'Researcher' && $row->status == 'Approved'){ ?>
-                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Unsubmit</a>
+                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Revise</a>
                         <?php
                         }
                     }
@@ -384,7 +403,7 @@
             }elseif($row->presented_type == 'Conference Poster'){?>
                 <!-- Conference Poster form -->
                 <div id="poster">
-                <form method="post" action="<?php echo base_url('research/presented_update/'.$row->publication_id)?>" enctype="multipart/form-data">
+                <form id="rush" method="post" action="<?php echo base_url('research/presented_update/'.$row->publication_id)?>" enctype="multipart/form-data">
                     <div class="form-group"><label>Author*</label></div>
                     <input type='number' style="display:none" name="research_type" value='Conference Paper'></input>
                     <div class="form-row">
@@ -459,13 +478,13 @@
                     <?php
                     foreach($research_data as $row){
                         if($user_type == 'Admin'){ ?>
-                            <input type="submit" name="submit" value="Edit" class="btn btn-primary"></input>
+                            <input type="submit" name="submit" value="Save" class="btn btn-primary"></input>
                         <?php 
                         }else if($user_type == 'Researcher' && $row->status == 'Unreviewed' || $row->status == 'Rejected'){ ?>
                             <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
                         <?php
                         }else if($user_type == 'Researcher' && $row->status == 'Approved'){ ?>
-                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Unsubmit</a>
+                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Revise</a>
                         <?php
                         }
                     }
@@ -482,7 +501,7 @@
             if($row->published_type == 'Journal Article'){ ?>
                 <!-- Journal Article -->
                 <div id="journal">
-                <form method="post" action="<?php echo base_url('research/published_update/'.$row->publication_id)?>" enctype="multipart/form-data">
+                <form id="rush" method="post" action="<?php echo base_url('research/published_update/'.$row->publication_id)?>" enctype="multipart/form-data">
                 <div class="form-group">
                     <label>Author*</label>
                 </div>
@@ -620,13 +639,13 @@
                 <?php
                     foreach($research_data as $row){
                         if($user_type == 'Admin'){ ?>
-                            <input type="submit" name="submit" value="Edit" class="btn btn-primary"></input>
+                            <input type="submit" name="submit" value="Save" class="btn btn-primary"></input>
                         <?php 
                         }else if($user_type == 'Researcher' && $row->status == 'Unreviewed' || $row->status == 'Rejected'){ ?>
                             <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
                         <?php
                         }else if($user_type == 'Researcher' && $row->status == 'Approved'){ ?>
-                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Unsubmit</a>
+                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Revise</a>
                         <?php
                         }
                     }
@@ -638,7 +657,7 @@
         <?php
             }elseif($row->published_type == 'Book / Textbook'){ ?>
                 <div id="book">
-                    <form method="post" action="<?php echo base_url('research/published_update/'.$row->publication_id)?>" enctype="multipart/form-data">
+                    <form id="rush" method="post" action="<?php echo base_url('research/published_update/'.$row->publication_id)?>" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>Author*</label>
                     </div>
@@ -717,13 +736,13 @@
                     <?php
                     foreach($research_data as $row){
                         if($user_type == 'Admin'){ ?>
-                            <input type="submit" name="submit" value="Edit" class="btn btn-primary"></input>
+                            <input type="submit" name="submit" value="Save" class="btn btn-primary"></input>
                         <?php 
                         }else if($user_type == 'Researcher' && $row->status == 'Unreviewed' || $row->status == 'Rejected'){ ?>
                             <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
                         <?php
                         }else if($user_type == 'Researcher' && $row->status == 'Approved'){ ?>
-                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Unsubmit</a>
+                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Revise</a>
                         <?php
                         }
                     }
@@ -736,7 +755,7 @@
             }elseif($row->published_type == 'Book Chapter'){?>
                 <!-- Book Chapter form -->
                 <div id="chapter">
-                    <form method="post" action="<?php echo base_url('research/published_update/'.$row->publication_id)?>" enctype="multipart/form-data">
+                    <form id="rush" method="post" action="<?php echo base_url('research/published_update/'.$row->publication_id)?>" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>Author*</label>
                     </div>
@@ -857,13 +876,13 @@
                     <?php
                     foreach($research_data as $row){
                         if($user_type == 'Admin'){ ?>
-                            <input type="submit" name="submit" value="Edit" class="btn btn-primary"></input>
+                            <input type="submit" name="submit" value="Save" class="btn btn-primary"></input>
                         <?php 
                         }else if($user_type == 'Researcher' && $row->status == 'Unreviewed' || $row->status == 'Rejected'){ ?>
                             <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
                         <?php
                         }else if($user_type == 'Researcher' && $row->status == 'Approved'){ ?>
-                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Unsubmit</a>
+                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Revise</a>
                         <?php
                         }
                     }
@@ -875,7 +894,7 @@
 <?php       }else{ ?>
                 <!-- Conference Proceedings form -->
                 <div id="proceedings">
-                <form method="post" action="<?php echo base_url('research/published_update/'.$row->publication_id)?>" enctype="multipart/form-data">
+                <form id="rush" method="post" action="<?php echo base_url('research/published_update/'.$row->publication_id)?>" enctype="multipart/form-data">
                 <div class="form-group">
                     <label>Author*</label>
                 </div>
@@ -1014,13 +1033,13 @@
                 <?php
                     foreach($research_data as $row){
                         if($user_type == 'Admin'){ ?>
-                            <input type="submit" name="submit" value="Edit" class="btn btn-primary"></input>
+                            <input type="submit" name="submit" value="Save" class="btn btn-primary"></input>
                         <?php 
                         }else if($user_type == 'Researcher' && $row->status == 'Unreviewed' || $row->status == 'Rejected'){ ?>
                             <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
                         <?php
                         }else if($user_type == 'Researcher' && $row->status == 'Approved'){ ?>
-                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Unsubmit</a>
+                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Revise</a>
                         <?php
                         }
                     }
@@ -1036,7 +1055,7 @@
 ?>
             <!-- Creative form -->
             <div id="creative">
-                <form method="post" action="<?php echo base_url('research/creative_update/'.$row->publication_id)?>" enctype="multipart/form-data">
+                <form id="rush" method="post" action="<?php echo base_url('research/creative_update/'.$row->publication_id)?>" enctype="multipart/form-data">
                 <!--<a style="display:none" name="research_type" value='9'></a>-->
                 <?php foreach($author_data as $name){ 
                     if($row->publication_id == $name->publication_id){ ?>
@@ -1271,6 +1290,13 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <p><b>Note: Before clicking the edit button, please reupload file.</b></p>
+                </div>
+                <div class="form-group">
+                    <label>Current file: </label>
+                    <a href="<?=base_url().'pdf/'.$row->file;?>" target="_blank"><?php echo $row->file; ?></a>
+                </div>
+                <div class="form-group">
                     <label>
                     SUBMIT / UPLOAD in one file: Documentation (e.g., photos / videos / CD) of the creative work or its
         exhibition / performance*
@@ -1281,13 +1307,13 @@
                 <?php
                     foreach($research_data as $row){
                         if($user_type == 'Admin'){ ?>
-                            <input type="submit" name="submit" value="Edit" class="btn btn-primary"></input>
+                            <input type="submit" name="submit" value="Save" class="btn btn-primary"></input>
                         <?php 
                         }else if($user_type == 'Researcher' && $row->status == 'Unreviewed' || $row->status == 'Rejected'){ ?>
                             <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
                         <?php
                         }else if($user_type == 'Researcher' && $row->status == 'Approved'){ ?>
-                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Unsubmit</a>
+                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Revise</a>
                         <?php
                         }
                     }
@@ -1302,106 +1328,21 @@
 ?>
 </div>
 </div>
+<!--
+<script>
+    let file_value = document.getElementById("file");
+    let file_db = <php echo $row->file; ?>
+    rush.onsubmit = async (e) => {
+        e.preventDefault();
+        
+        if(file_value != NULL){
+            rush.append("file", file_db);
 
-<script type="text/javascript">
-    /*
-    $(document).ready(function(){
-        //html
-        var thesis ='<tr><td><input type="text" name="first_name[]" class="form-control" required></td><td><input type="text" name="middle_initial[]" class="form-control" required></td><td><input type="text" name="last_name[]" class="form-control" required></td><td><input class="btn btn-danger"type="button" id="remove_thesis" name="remove" value="Remove"></td></tr>';
-        var technical ='<tr><td><input type="text" name="first_name[]" class="form-control" required></td><td><input type="text" name="middle_initial[]" class="form-control" required></td><td><input type="text" name="last_name[]" class="form-control" required></td><td><input class="btn btn-danger"type="button" id="remove_technical" name="remove" value="Remove"></td></tr>';
-        var conference ='<tr><td><input type="text" name="first_name[]" class="form-control" required></td><td><input type="text" name="middle_initial[]" class="form-control" required></td><td><input type="text" name="last_name[]" class="form-control" required></td><td><input class="btn btn-danger"type="button" id="remove_conference" name="remove" value="Remove"></td></tr>';
-        var poster ='<tr><td><input type="text" name="first_name[]" class="form-control" required></td><td><input type="text" name="middle_initial[]" class="form-control" required></td><td><input type="text" name="last_name[]" class="form-control" required></td><td><input class="btn btn-danger"type="button" id="remove_poster" name="remove" value="Remove"></td></tr>';
-        var journal = '<tr><td><input type="text" name="first_name[]" class="form-control" required><br /><label>Is Author an employee of ADNU?</label></td><td><input type="text" name="middle_initial[]" class="form-control" required><br /><div class="custom-control custom-radio custom-control-inline"><input type="radio" name="customRadioInline1" class="custom-control-input"><label class="custom-control-label">Yes</label></div><div class="custom-control custom-radio custom-control-inline"><input type="radio" name="customRadioInline2" class="custom-control-input"><label class="custom-control-label">No</label></div></td><td><input type="text" name="last_name[]" class="form-control" required></td><td><input class="btn btn-danger" type="button" id="remove_journal" name="Remove" value="Remove"></td></tr>';
-        var booktext = '<tr><td><input type="text" name="first_name[]" class="form-control" required><br /><label>Is Author an employee of ADNU?</label></td><td><input type="text" name="middle_initial[]" class="form-control" required><br /><div class="custom-control custom-radio custom-control-inline"><input type="radio" name="customRadioInline1" class="custom-control-input"><label class="custom-control-label">Yes</label></div><div class="custom-control custom-radio custom-control-inline"><input type="radio" name="customRadioInline2" class="custom-control-input"><label class="custom-control-label">No</label></div></td><td><input type="text" name="last_name[]" class="form-control" required></td><td><input class="btn btn-danger" type="button" id="remove_booktext" name="Remove" value="Remove"></td></tr>';
-        var bookchap = '<tr><td><input type="text" name="first_name[]" class="form-control" required><br /><label>Is Author an employee of ADNU?</label></td><td><input type="text" name="middle_initial[]" class="form-control" required><br /><div class="custom-control custom-radio custom-control-inline"><input type="radio" name="customRadioInline1" class="custom-control-input"><label class="custom-control-label">Yes</label></div><div class="custom-control custom-radio custom-control-inline"><input type="radio" name="customRadioInline2" class="custom-control-input"><label class="custom-control-label">No</label></div></td><td><input type="text" name="last_name[]" class="form-control" required></td><td><input class="btn btn-danger" type="button" id="remove_bookchap" name="Remove" value="Remove"></td></tr>';
-        var conference_proceedings = '<tr><td><input type="text" name="first_name[]" class="form-control" required><br /><label>Is Author an employee of ADNU?</label></td><td><input type="text" name="middle_initial[]" class="form-control" required><br /><div class="custom-control custom-radio custom-control-inline"><input type="radio" name="customRadioInline1" class="custom-control-input"><label class="custom-control-label">Yes</label></div><div class="custom-control custom-radio custom-control-inline"><input type="radio" name="customRadioInline2" class="custom-control-input"><label class="custom-control-label">No</label></div></td><td><input type="text" name="last_name[]" class="form-control" required></td><td><input class="btn btn-danger" type="button" id="remove_conproc" name="Remove" value="Remove"></td></tr>';
-     
-        var min = 1;
-        var max = 9;
-
-        //add buttons
-        $("#add_thesis").click(function(){
-            if(min <= max){
-                $("#table_thesis").append(thesis);
-                min++;
-            }
-        });
-        $("#add_technical").click(function(){
-            if(min <= max){
-                $("#table_technical").append(technical);
-                min++;
-            }
-        });
-        $("#add_conference").click(function(){
-            if(min <= max){
-                $("#table_conference").append(conference);
-                min++;
-            }
-        });
-        $("#add_poster").click(function(){
-            if(min <= max){
-                $("#table_poster").append(poster);
-                min++;
-            }
-        });
-        $("#add_journal").click(function(){
-            if(min <= max){
-                $("#table_journal").append(journal);
-                min++;
-            }
-        });
-        $("#add_book").click(function(){
-            if(min <= max){
-                $("#table_book").append(booktext);
-                min++;
-            }
-        });
-        $("#add_bookchap").click(function(){
-            if(min <= max){
-                $("#table_bookchap").append(bookchap);
-                min++;
-            }
-        });
-        $("#add_conproc").click(function(){
-            if(min <= max){
-                $("#table_conproc").append(conference_proceedings);
-                min++;
-            }
-        });
-
-        //remove buttons
-        $("#table_thesis").on('click','#remove_thesis',function(){
-            $(this).closest('tr').remove();
-            min--;
-        });
-        $("#table_technical").on('click','#remove_technical',function(){
-            $(this).closest('tr').remove();
-            min--;
-        });
-        $("#table_conference").on('click','#remove_conference',function(){
-            $(this).closest('tr').remove();
-            min--;
-        });
-        $("#table_poster").on('click','#remove_poster',function(){
-            $(this).closest('tr').remove();
-            min--;
-        });
-        $("#table_journal").on('click','#remove_journal',function(){
-            $(this).closest('tr').remove();
-            min--;
-        });
-        $("#table_book").on('click','#remove_booktext',function(){
-            $(this).closest('tr').remove();
-            min--;
-        });
-        $("#table_bookchap").on('click','#remove_bookchap',function(){
-            $(this).closest('tr').remove();
-            min--;
-        });
-        $("#table_conproc").on('click','#remove_conproc',function(){
-            $(this).closest('tr').remove();
-            min--;
-        });
-    });
-    */
+            fetch('<php echo base_url('research/completed_update/'.$row->publication_id)?>', {
+                method: "POST",
+                body: new FormData(rush)
+            });
+        }
+    };
 </script>
+-->
