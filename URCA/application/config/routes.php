@@ -60,7 +60,7 @@ $route['guestform'] = 'main/guestform';
 //RESEARCH
 $route['research/add'] = 'research/research_form';
 $route['research'] = 'research/research_table';
-$route['publication'] = 'research/publication';
+$route['archive'] = 'research/publication';
 $route['research/view/:num'] = 'research/research_view';
 $route['research/edit/:num'] = 'research/edit';
 // $route['research/search/(:any)'] = 'research/search';
