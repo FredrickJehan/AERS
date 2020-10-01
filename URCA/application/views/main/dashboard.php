@@ -147,5 +147,81 @@
             </div>
           </div>
 
+    <div class="d-sm-flex align-items-center justify-content-between mb-2">
+      <h5 class="mb-0 text-gray-800">Most Liked Completed Research</h5>
+    </div>
+
+
+    <?php foreach($most_likes_completed->result() as $row ){ ?>
+  <!-- Testimonials -->
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">
+              <a href="<?php echo base_url('research/view/'.$row->publication_id);?>">
+                <?php echo $row->title?>
+              </a>
+              </h5>
+              <p class="card-text">
+            
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+     
+     <?php } ?>
+
+    <div class="d-sm-flex align-items-center justify-content-between mb-2">
+      <h5 class="mb-0 text-gray-800">Most Liked Presented Research</h5>
+    </div>
+
+     <?php foreach($most_likes_presented->result() as $row ){ ?>
+  <!-- Testimonials -->
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">
+              <a href="<?php echo base_url('research/view/'.$row->publication_id);?>">
+                <?php echo $row->title_presented?>
+              </a>
+              </h5>
+              <p class="card-text">
+            
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+     
+     <?php } ?>
+
+     <div class="d-sm-flex align-items-center justify-content-between mb-2">
+      <h5 class="mb-0 text-gray-800">Most Liked Presented Research</h5>
+    </div>
+
+     <?php foreach($most_likes_published->result() as $row ){ ?>
+  <!-- Testimonials -->
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">
+              <a href="<?php echo base_url('research/view/'.$row->publication_id);?>">
+                <?php echo $row->title_article?>
+              </a>
+              </h5>
+              <p class="card-text">
+            
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+     
+     <?php } ?>
+
           <!-- Content Row -->
         <!-- /.container-fluid -->

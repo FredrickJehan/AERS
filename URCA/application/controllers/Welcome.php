@@ -31,6 +31,28 @@ class Welcome extends CI_Controller{
         $data['published_count'] = $this->research_model->published_count($user_id);
         $data['creative_count'] = $this->research_model->creative_count($user_id);
 
+        // GET TOP 10 HIGHEST RESEARCH
+        $data['most_likes_completed'] = $this->research_model->most_likes_completed();
+        $data['most_likes_presented'] = $this->research_model->most_likes_presented();
+        $data['most_likes_published'] = $this->research_model->most_likes_published();
+        $data['most_likes_creative'] = $this->research_model->most_likes_creative();
+
+        // foreach($data['most_likes'] as $row){
+        //     // if($row->publication_id)
+        //     $pub_type = $this->get_publication_type($publication_id); 
+        // }
+        
+        // FETCH TITLE BASED ON PUBLICATION TYPE
+        // if($pub_type == 'Completed Research'){
+        //     $data['most_likes'] = $this->research_model->most_likes_completed();
+        // }elseif($pub_type == 'Presented Research'){
+        //     $data['most_likes'] = $this->research_model->most_likes_presented();
+        // }elseif($pub_type == 'Published Research'){
+        //     $data['most_likes'] = $this->research_model->most_likes_published();
+        // }else{
+        //     $data['most_likes'] = $this->research_model->most_likes_creative();
+        // }
+        
         $this->load->view('template/header');
 		$this->load->view('main/dashboard', $data);
         $this->load->view('template/footer');
