@@ -216,8 +216,10 @@ class research_model extends CI_Model{
         $this->db->from('notification');
         $this->db->join('user', 'user.user_id = notification.user_id', 'inner');
         $this->db->join('publication', 'publication.publication_id = notification.publication_id', 'inner');
-        $this->db->limit(5);
+        // $this->db->where('user.user_type', 'Researcher');
+        $this->db->where('notification.type', 'Report');
         $this->db->order_by('notification_id', 'DESC');
+        $this->db->limit(5);
         return $this->db->get();
     }
 
@@ -251,7 +253,8 @@ class research_model extends CI_Model{
         $this->db->from('notification');
         $this->db->join('publication', 'publication.publication_id = notification.publication_id', 'inner');
         $this->db->where('notification.status', 'Unread');
-        $this->db->where('notification.type', array('Review', 'Comment'));
+        $this->db->where('notification.type', 'Comment');
+        $this->db->where('notification.type', 'Review');
         $this->db->where('submittor', $submittor);
         return $this->db->get();
     }
