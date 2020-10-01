@@ -30,8 +30,17 @@
             </tr>
             <tr>
                 <td width="200"><b>Author Name</b></td>
-                <td><?php echo $row->last_name?>, <?php echo $row->first_name?> <?php echo $row->middle_initial?></td>
+                <td>            
+                    <?php foreach($author_data as $name){ 
+                    if($row->publication_id == $name->publication_id){ ?>
+                        <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
+                    <?php } } ?>
+                </td>
             </tr>  
+            <tr>
+                <td width="200"><b>Email</b></td>
+                <td><?php echo $row->email?></td>
+            </tr>
             <tr>
                 <td width="200"><b>Abstract</b></td>
                 <td><?php echo $row->abstract?></td>
@@ -56,7 +65,16 @@
             </tr>
             <tr>
                 <td width="200"><b>Author Name</b></td>
-                <td><?php echo $row->last_name?>, <?php echo $row->first_name?> <?php echo $row->middle_initial?></td>
+                <td>
+                    <?php foreach($author_data as $name){ 
+                    if($row->publication_id == $name->publication_id){ ?>
+                        <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
+                    <?php } } ?>
+                </td>
+            </tr>
+            <tr>
+                <td width="200"><b>Email</b></td>
+                <td><?php echo $row->email?></td>
             </tr>  
             <tr>
                 <td width="200"><b>Abstract</b></td>
@@ -90,6 +108,10 @@
                     <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
             <?php } } ?>
             </td>
+            </tr>
+            <tr>
+                <td width="200"><b>Email</b></td>
+                <td><?php echo $row->email?></td>
             </tr>  
             <tr>
                 <td width="200"><b>Abstract</b></td>
@@ -121,6 +143,10 @@
                     <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
             <?php } } ?>
             </td>
+            </tr>
+            <tr>
+                <td width="200"><b>Email</b></td>
+                <td><?php echo $row->email?></td>
             </tr>  
             <tr>
                 <td width="200"><b>Abstract</b></td>
@@ -154,6 +180,10 @@
                     <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
             <?php } } ?>
             </td>
+            </tr>
+            <tr>
+                <td width="200"><b>Email</b></td>
+                <td><?php echo $row->email?></td>
             </tr>  
             <tr>
                 <td width="200"><b>Abstract</b></td>
@@ -184,6 +214,10 @@
                     <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
             <?php } } ?>
             </td>
+            </tr>
+            <tr>
+                <td width="200"><b>Email</b></td>
+                <td><?php echo $row->email?></td>
             </tr>  
             <tr>
                 <td width="200"><b>Abstract</b></td>
@@ -214,6 +248,10 @@
                     <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
             <?php } } ?>
             </td>
+            </tr>
+            <tr>
+                <td width="200"><b>Email</b></td>
+                <td><?php echo $row->email?></td>
             </tr>  
             <tr>
                 <td width="200"><b>Abstract</b></td>
@@ -244,6 +282,10 @@
                     <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
             <?php } } ?>
             </td>
+            </tr>
+            <tr>
+                <td width="200"><b>Email</b></td>
+                <td><?php echo $row->email?></td>
             </tr>  
             <tr>
                 <td width="200"><b>Abstract</b></td>
