@@ -9,6 +9,11 @@ class research_model extends CI_Model{
         return $this->db->get()->row()->user_id;
     }
 
+    public function delete_comment($pub_id) {
+        $this->db->where('publication_id', $pub_id);
+        $this->db->delete('comment');
+    }
+
     public function most_likes_completed() {
         $this->db->select('like_tbl.publication_id, COUNT(like_tbl.user_id) as total, completed.title');
         $this->db->from('like_tbl');

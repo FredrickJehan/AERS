@@ -111,6 +111,12 @@ class Research extends CI_Controller{
     // public function most_likes() {
     //     $data['most_liked'] = $this->research_model->get_most_likes();
     // }
+    public function comment_delete() {
+        $publication_id = $this->uri->segment(3);
+
+        $this->research_model->delete_comment($publication_id);
+        redirect(base_url() . "research/view/".$publication_id);
+    }
 
     public function like_view() {
         $user_id = $this->get_current_user();
