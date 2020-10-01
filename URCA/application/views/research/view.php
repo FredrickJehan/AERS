@@ -1,10 +1,6 @@
 <div class="d-md-flex align-items-center justify-content-between mb-4">
   <h1 class="h3 mb-0 text-gray-800">View</h1>
   
-  Like: 
-  <?php 
-    echo $like_data;
-    ?>
 <?php
   if($like_or_not == FALSE){
     foreach($research_data as $row){ ?>
@@ -43,6 +39,10 @@
                 <td><?php echo $row->email?></td>
             </tr>
             <tr>
+                <td width="200"><b>Likes</b></td>
+                <td><?php echo $like_data;?></td>
+            </tr>
+            <tr>
                 <td width="200"><b>Abstract</b></td>
                 <td><?php echo $row->abstract?></td>
             </tr>
@@ -76,6 +76,10 @@
             <tr>
                 <td width="200"><b>Email</b></td>
                 <td><?php echo $row->email?></td>
+            </tr>
+            <tr>
+                <td width="200"><b>Likes</b></td>
+                <td><?php echo $like_data;?></td>
             </tr>  
             <tr>
                 <td width="200"><b>Abstract</b></td>
@@ -113,6 +117,10 @@
             <tr>
                 <td width="200"><b>Email</b></td>
                 <td><?php echo $row->email?></td>
+            </tr>
+            <tr>
+                <td width="200"><b>Likes</b></td>
+                <td><?php echo $like_data;?></td>
             </tr>  
             <tr>
                 <td width="200"><b>Abstract</b></td>
@@ -148,6 +156,10 @@
             <tr>
                 <td width="200"><b>Email</b></td>
                 <td><?php echo $row->email?></td>
+            </tr>
+            <tr>
+                <td width="200"><b>Likes</b></td>
+                <td><?php echo $like_data;?></td>
             </tr>  
             <tr>
                 <td width="200"><b>Abstract</b></td>
@@ -185,6 +197,10 @@
             <tr>
                 <td width="200"><b>Email</b></td>
                 <td><?php echo $row->email?></td>
+            </tr>
+            <tr>
+                <td width="200"><b>Likes</b></td>
+                <td><?php echo $like_data;?></td>
             </tr>  
             <tr>
                 <td width="200"><b>Abstract</b></td>
@@ -219,6 +235,10 @@
             <tr>
                 <td width="200"><b>Email</b></td>
                 <td><?php echo $row->email?></td>
+            </tr>
+            <tr>
+                <td width="200"><b>Likes</b></td>
+                <td><?php echo $like_data;?></td>
             </tr>  
             <tr>
                 <td width="200"><b>Abstract</b></td>
@@ -253,6 +273,10 @@
             <tr>
                 <td width="200"><b>Email</b></td>
                 <td><?php echo $row->email?></td>
+            </tr>
+            <tr>
+                <td width="200"><b>Likes</b></td>
+                <td><?php echo $like_data;?></td>
             </tr>  
             <tr>
                 <td width="200"><b>Abstract</b></td>
@@ -287,6 +311,10 @@
             <tr>
                 <td width="200"><b>Email</b></td>
                 <td><?php echo $row->email?></td>
+            </tr>
+            <tr>
+                <td width="200"><b>Likes</b></td>
+                <td><?php echo $like_data;?></td>
             </tr>  
             <tr>
                 <td width="200"><b>Abstract</b></td>
@@ -321,6 +349,14 @@
                     <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
             <?php } } ?>
             </td>
+            <tr>
+                <td width="200"><b>Email</b></td>
+                <td><?php echo $row->email?></td>
+            </tr>
+            <tr>
+                <td width="200"><b>Likes</b></td>
+                <td><?php echo $like_data;?></td>
+            </tr>
             </tr>  
             <tr>
                 <td width="200"><b>Abstract</b></td>
