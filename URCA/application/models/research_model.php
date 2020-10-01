@@ -337,6 +337,12 @@ class research_model extends CI_Model{
         return $this->db->get()->result();
     }
 
+    public function fetch_all_publication(){
+        $this->db->select('*');
+        $this->db->from('publication');
+        return $this->db->get()->result();
+    }
+
     public function display_authors($publication_id){
         $this->db->select('*');
         $this->db->from('author');

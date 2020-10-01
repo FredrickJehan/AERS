@@ -360,7 +360,7 @@ class Research extends CI_Controller{
         $this->load->view("template/footer");    
     }
 
-    public function upload_file(){
+    public function upload_file($publication_id){
         $config['upload_path'] =  './pdf/';
         $config['allowed_types'] = 'doc|docx|xls|xlsx|pdf|jpg|png|txt|zip|rar';
         $config['max_size'] = 0;
@@ -369,8 +369,15 @@ class Research extends CI_Controller{
         $this->upload->initialize($config);
 
         if(!$this->upload->do_upload('file')){
-            redirect(base_url() . "research/add");
+            //redirect(base_url() . "research/add");
             //add error when pdf is not uploaded
+            $getfiles = $this->research_model->fetch_all_publication();
+            foreach($getfiles as $key){
+                if($key->publication_id == $publication_id){
+                    $file = $key->file;
+                }
+            }
+            return $file;
         }else{
             //$oldfile = $newfile ($upload['file_name'];
             $upload = $this->upload->data();
@@ -480,7 +487,7 @@ class Research extends CI_Controller{
             }
             $this->db->update_batch('author', $data1, 'author_id');
 
-        $file = $this->upload_file();
+        $file = $this->upload_file($publication_id);
         //data for publication
         date_default_timezone_set('Asia/Karachi');
         $now = date('M d Y');
