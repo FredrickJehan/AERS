@@ -12,8 +12,8 @@ class research_model extends CI_Model{
         $this->db->insert('notification', $data);
     }
 
-    public function delete_comment($pub_id) {
-        $this->db->where('publication_id', $pub_id);
+    public function delete_comment($id) {
+        $this->db->where('comment_id', $id);
         $this->db->delete('comment');
     }
 

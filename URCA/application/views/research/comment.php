@@ -31,7 +31,7 @@
               <a href="<?php echo base_url('research/comment_report/'.$row->publication_id);?>" class="btn btn-danger ml-2 mt-2">Report</a>
             <?php } ?>
             <?php if($user_type == 'Admin'){ ?>
-              <a href="<?php echo base_url('research/comment_delete/'.$row->publication_id);?>" class="btn btn-danger ml-2 mt-2">Delete</a>
+              <a href="<?php echo base_url('research/comment_delete/'.$row->comment_id.'/'.$row->publication_id);?>" class="btn btn-danger ml-2 mt-2">Delete</a>
             <?php } ?>
             <!-- <input class="reply1" type="submit" value="Reply"> -->
         </div>      
