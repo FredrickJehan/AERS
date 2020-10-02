@@ -179,7 +179,7 @@
                             <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
                         <?php
                         }else if($user_type == 'Researcher' && $row->status == 'Approved'){ ?>
-                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Revise</a>
+                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" onclick="note();" class="btn btn-danger">Revise</a>
                         <?php
                         }
                     }
@@ -271,7 +271,7 @@
                             <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
                         <?php
                         }else if($user_type == 'Researcher' && $row->status == 'Approved'){ ?>
-                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Revise</a>
+                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" onclick="note();" class="btn btn-danger">Revise</a>
                         <?php
                         }
                     }
@@ -384,7 +384,7 @@
                             <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
                         <?php
                         }else if($user_type == 'Researcher' && $row->status == 'Approved'){ ?>
-                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Revise</a>
+                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" onclick="note();" class="btn btn-danger">Revise</a>
                         <?php
                         }
                     }
@@ -476,7 +476,7 @@
                             <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
                         <?php
                         }else if($user_type == 'Researcher' && $row->status == 'Approved'){ ?>
-                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Revise</a>
+                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" onclick="note();" class="btn btn-danger">Revise</a>
                         <?php
                         }
                     }
@@ -634,7 +634,7 @@
                             <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
                         <?php
                         }else if($user_type == 'Researcher' && $row->status == 'Approved'){ ?>
-                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Revise</a>
+                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" onclick="note();" class="btn btn-danger">Revise</a>
                         <?php
                         }
                     }
@@ -729,7 +729,7 @@
                             <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
                         <?php
                         }else if($user_type == 'Researcher' && $row->status == 'Approved'){ ?>
-                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Revise</a>
+                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" onclick="note();" class="btn btn-danger">Revise</a>
                         <?php
                         }
                     }
@@ -866,7 +866,7 @@
                             <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
                         <?php
                         }else if($user_type == 'Researcher' && $row->status == 'Approved'){ ?>
-                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Revise</a>
+                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" onclick="note();" class="btn btn-danger">Revise</a>
                         <?php
                         }
                     }
@@ -1020,7 +1020,7 @@
                             <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
                         <?php
                         }else if($user_type == 'Researcher' && $row->status == 'Approved'){ ?>
-                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Revise</a>
+                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" onclick="note();" class="btn btn-danger">Revise</a>
                         <?php
                         }
                     }
@@ -1291,7 +1291,7 @@
                             <input type="submit" name="submit" value="Submit" class="btn btn-primary"></input>
                         <?php
                         }else if($user_type == 'Researcher' && $row->status == 'Approved'){ ?>
-                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" class="btn btn-danger">Revise</a>
+                            <a href="<?php echo base_url('research/unsubmit/'.$row->publication_id);?>" onclick="note();" class="btn btn-danger">Revise</a>
                         <?php
                         }
                     }
@@ -1306,21 +1306,9 @@
 ?>
 </div>
 </div>
-<!--
-<script>
-    let file_value = document.getElementById("file");
-    let file_db = <php echo $row->file; ?>
-    rush.onsubmit = async (e) => {
-        e.preventDefault();
-        
-        if(file_value != NULL){
-            rush.append("file", file_db);
 
-            fetch('<php echo base_url('research/completed_update/'.$row->publication_id)?>', {
-                method: "POST",
-                body: new FormData(rush)
-            });
-        }
-    };
+<script>
+    function note(){
+        alert("Your research has been removed from public view, submit again if you wish for it to be viewed publicly.");
+    }
 </script>
--->
