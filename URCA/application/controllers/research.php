@@ -427,6 +427,14 @@ class Research extends CI_Controller{
             // 'publication_type' => $publication_type
         //);
 
+        if (isset($this->session->userdata['logged_in'])) {
+            $user_type = ($this->session->userdata['logged_in']['user_type']);
+        }
+        if($user_type == 'Admin'){
+            $status = 'Approved';
+        }else{
+            $status = 'Unreviewed';
+        }
         //data for publication
         date_default_timezone_set('Asia/Karachi');
         $now = date('M d Y');
@@ -436,7 +444,7 @@ class Research extends CI_Controller{
             'submittor' => $this->get_current_user(),
             'abstract' => $this->input->post('abstract'),
             'num_views' => '0',
-            'status' => 'Unreviewed',
+            'status' => $status,
             'publication_type' => $publication_type
         );
         $this->research_model->publication_insert($data);

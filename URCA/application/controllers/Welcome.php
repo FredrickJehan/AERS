@@ -32,6 +32,7 @@ class Welcome extends CI_Controller{
         $data['creative_count'] = $this->research_model->creative_count($user_id);
 
         // GET TOP 10 HIGHEST RESEARCH
+        $data["author_data"] = $this->research_model->fetch_all_authors();
         $data['most_likes_completed'] = $this->research_model->most_likes_completed();
         $data['most_likes_presented'] = $this->research_model->most_likes_presented();
         $data['most_likes_published'] = $this->research_model->most_likes_published();
