@@ -128,9 +128,10 @@ class Research extends CI_Controller{
     }
 
     public function comment_delete() {
-        $publication_id = $this->uri->segment(3);
+        $comment_id = $this->uri->segment(3);
+        $publication_id = $this->uri->segment(4);
 
-        $this->research_model->delete_comment($publication_id);
+        $this->research_model->delete_comment($comment_id);
         redirect(base_url() . "research/view/".$publication_id);
     }
 
