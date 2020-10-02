@@ -164,7 +164,12 @@
               </a>
               </h5>
               <p class="card-text">
-            
+                <?php foreach($author_data as $name){
+                  if($row->publication_id == $name->publication_id){ ?>
+                  <?php echo $name->first_name ?>
+                  <?php echo $name->middle_initial ?>
+                  <?php echo $name->last_name ?>
+                <?php } } ?>
               </p>
             </div>
           </div>
@@ -189,7 +194,12 @@
               </a>
               </h5>
               <p class="card-text">
-            
+              <?php foreach($author_data as $name){
+                  if($row->publication_id == $name->publication_id){ ?>
+                  <?php echo $name->first_name ?>
+                  <?php echo $name->middle_initial ?>
+                  <?php echo $name->last_name ?>
+                <?php } } ?>
               </p>
             </div>
           </div>
@@ -210,11 +220,16 @@
             <div class="card-body">
               <h5 class="card-title">
               <a href="<?php echo base_url('research/view/'.$row->publication_id);?>">
-                <?php echo $row->title_article?>
+                <?php echo $row->title_book?>
               </a>
               </h5>
               <p class="card-text">
-            
+              <?php foreach($author_data as $name){
+                  if($row->publication_id == $name->publication_id){ ?>
+                  <?php echo $name->first_name ?>
+                  <?php echo $name->middle_initial ?>
+                  <?php echo $name->last_name ?>
+                <?php } } ?>
               </p>
             </div>
           </div>

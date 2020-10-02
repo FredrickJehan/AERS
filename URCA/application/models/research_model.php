@@ -18,10 +18,12 @@ class research_model extends CI_Model{
     }
 
     public function most_likes_completed() {
-        $this->db->select('like_tbl.publication_id, COUNT(like_tbl.user_id) as total, completed.title');
-        $this->db->from('like_tbl');
+        $this->db->select('like_tbl.publication_id, COUNT(like_tbl.user_id) as total, completed.title', 'author.first_name', 'author.middle_initial', 'author.last_name');
+        $this->db->from('like_tbl',1);
         $this->db->join('publication', 'publication.publication_id = like_tbl.publication_id', 'inner');
         $this->db->join('completed', 'completed.publication_id = publication.publication_id', 'inner');
+        $this->db->join('author', 'author.publication_id = completed.publication_id', 'inner');
+        $this->db->limit(1);
         $this->db->group_by('publication_id');
         $this->db->order_by('total', 'DESC');
         return $this->db->get();
@@ -32,16 +34,18 @@ class research_model extends CI_Model{
         $this->db->from('like_tbl');
         $this->db->join('publication', 'publication.publication_id = like_tbl.publication_id', 'inner');
         $this->db->join('presented', 'presented.publication_id = publication.publication_id', 'inner');
+        $this->db->limit(1);
         $this->db->group_by('publication_id');
         $this->db->order_by('total', 'DESC');
         return $this->db->get();
     }
 
     public function most_likes_published() {
-        $this->db->select('like_tbl.publication_id, COUNT(like_tbl.user_id) as total, published.title_article');
+        $this->db->select('like_tbl.publication_id, COUNT(like_tbl.user_id) as total, published.title_book');
         $this->db->from('like_tbl');
         $this->db->join('publication', 'publication.publication_id = like_tbl.publication_id', 'inner');
         $this->db->join('published', 'published.publication_id = publication.publication_id', 'inner');
+        $this->db->limit(1);
         $this->db->group_by('publication_id');
         $this->db->order_by('total', 'DESC');
         return $this->db->get();
@@ -244,6 +248,7 @@ class research_model extends CI_Model{
         $this->db->select('*');
         $this->db->from('notification');
         $this->db->join('publication', 'publication.publication_id = notification.publication_id', 'inner');
+        $this->db->where('notification.type', 'Report');
         $this->db->where('notification.status', 'Unread');
         return $this->db->get();
     }
