@@ -147,13 +147,15 @@
             </div>
           </div>
 
+    <br />
+    <?php if($most_likes_completed->result() > 0){ ?>
     <div class="d-sm-flex align-items-center justify-content-between mb-2">
       <h5 class="mb-0 text-gray-800">Most Liked Completed Research</h5>
     </div>
 
-
-    <?php foreach($most_likes_completed->result() as $row ){ ?>
+    <?php foreach($most_likes_completed->result() as $row){ ?>
   <!-- Testimonials -->
+    
       <div class="row">
         <div class="col-sm-12">
           <div class="card">
@@ -171,8 +173,9 @@
         </div>
       </div>
      
-     <?php } ?>
-
+     <?php } } ?>
+      <hr/>
+     <?php if($most_likes_presented->result() > 0){ ?>
     <div class="d-sm-flex align-items-center justify-content-between mb-2">
       <h5 class="mb-0 text-gray-800">Most Liked Presented Research</h5>
     </div>
@@ -196,10 +199,12 @@
         </div>
       </div>
      
-     <?php } ?>
+     <?php } } ?>
 
+     <hr/>
+     <?php if($most_likes_published->result() > 0){ ?>
      <div class="d-sm-flex align-items-center justify-content-between mb-2">
-      <h5 class="mb-0 text-gray-800">Most Liked Presented Research</h5>
+      <h5 class="mb-0 text-gray-800">Most Liked Published Research</h5>
     </div>
 
      <?php foreach($most_likes_published->result() as $row ){ ?>
@@ -209,8 +214,49 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">
+              <?php if($row->published_type == 'Journal Article'){ ?>
               <a href="<?php echo base_url('research/view/'.$row->publication_id);?>">
                 <?php echo $row->title_article?>
+              </a>
+              <?php }elseif($row->published_type == 'Book / Textbook'){ ?>
+              <a href="<?php echo base_url('research/view/'.$row->publication_id);?>">
+                <?php echo $row->title_book?>
+              </a>
+              <?php }elseif($row->published_type == 'Book Chapter'){ ?>
+              <a href="<?php echo base_url('research/view/'.$row->publication_id);?>">
+                <?php echo $row->title_chapter?>
+              </a>  
+              <?php }else{ ?>
+                <a href="<?php echo base_url('research/view/'.$row->publication_id);?>">
+                <?php echo $row->title_article?>
+              </a>
+              <?php } ?>
+              </h5>
+              <p class="card-text">
+            
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+     
+     <?php } } ?>
+     <hr/>
+
+     <?php if($most_likes_creative->result() > 0){ ?>
+    <div class="d-sm-flex align-items-center justify-content-between mb-2">
+      <h5 class="mb-0 text-gray-800">Most Liked Creative Work</h5>
+    </div>
+
+     <?php foreach($most_likes_creative->result() as $row ){ ?>
+  <!-- Testimonials -->
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">
+              <a href="<?php echo base_url('research/view/'.$row->publication_id);?>">
+                <?php echo $row->title_work?>
               </a>
               </h5>
               <p class="card-text">
@@ -221,7 +267,6 @@
         </div>
       </div>
      
-     <?php } ?>
-
+     <?php } } ?>
           <!-- Content Row -->
         <!-- /.container-fluid -->
