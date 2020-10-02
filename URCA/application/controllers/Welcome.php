@@ -38,6 +38,8 @@ class Welcome extends CI_Controller{
         $data['most_likes_published'] = $this->research_model->most_likes_published();
         $data['most_likes_creative'] = $this->research_model->most_likes_creative();
 
+        $data['authors'] = $this->research_model->fetch_all_authors();
+
         // foreach($data['most_likes'] as $row){
         //     // if($row->publication_id)
         //     $pub_type = $this->get_publication_type($publication_id); 

@@ -1,0 +1,38 @@
+[
+{
+        "completed_id": "15",
+        "publication_id": "28",
+        "title": "Mapping Datasets to Object Storage System",
+        "year": "2020",
+        "institution": "University of California",
+        "location": "Santa Cruz",
+        "url": "https://arxiv.org/abs/2007.01789",
+        "completed_type": "Thesis \/ Dissertation",
+        "file": "Thesis22.pdf",
+        "abstract": "Access libraries such as ROOT[1] and HDF5[2] allow users to interact with datasets using high level abstractions, like coordinate systems and
+associated slicing operations. Unfortunately, the implementations of access libraries are based on outdated assumptions about storage systems interfaces and
+are generally unable to fully benefit from modern fast storage devices. For example, access libraries often implement buffering and data layout that assume
+that large, single-threaded sequential access patterns are causing less overall latency than small parallel random access: while this is true for spinning media,
+it is not true for flash media. ",
+        "num_views": "0",
+        "status": "Unreviewed",
+        "feedback": null,
+        "publication_type": "Completed Research",
+        "date_submission": "Sep 30 2020",
+        "submittor": "1",
+        "author_id": "90",
+        "user_id": "1",
+        "first_name": "Fred",
+        "middle_initial": "J.",
+        "last_name": "Daluro",
+        "is_employee": "1",
+        "author_type": "Main",
+        "username": "admin",
+        "middle_name": "T.",
+        "email": "dalurof@gmail.com",
+        "password": "admin",
+        "department": "Department of Computer Science",
+        "contact_number": null,
+        "user_type": "Admin"
+    }
+]

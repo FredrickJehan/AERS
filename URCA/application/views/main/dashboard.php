@@ -192,7 +192,6 @@
               </a>
               </h5>
               <p class="card-text">
-            
               </p>
             </div>
           </div>
@@ -268,5 +267,6 @@
       </div>
      
      <?php } } ?>
+     <br />
           <!-- Content Row -->
         <!-- /.container-fluid -->
