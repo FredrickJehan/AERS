@@ -255,7 +255,6 @@
                     <div class="form-group">
                         <label>SUBMIT / UPLOAD in one file: Copy of full technical report*</label>
                         <input type="file" name="file" value="<?php echo $row->file?>" class="form-control-file">
-                        <a href="<?php echo base_url()?>" target="__blank" value="<?php echo $row->file?>"></a>
                     </div>
                     <div class="form-group">
                         <label>Abstract</label>
@@ -618,7 +617,7 @@
                     <label>
                         SUBMIT / UPLOAD in one file: Copy of original article submitted, Copy of peer-review, Copy of full published paper*
                     </label>
-                    <input type="file" name="file" class="form-control-file" required>
+                    <input type="file" name="file" class="form-control-file">
                 </div>
                 <div class="form-group">
                     <label>Abstract</label>
@@ -713,7 +712,7 @@
                         <label>
                             SUBMIT / UPLOAD in one file: Copy of front page, copyright page, table of contents, about the author(s) page*
                         </label>
-                        <input type="file" name="file" class="form-control-file" required>
+                        <input type="file" name="file" class="form-control-file">
                     </div>
                     <div class="form-group">
                         <label>Abstract</label>
@@ -850,7 +849,7 @@
                             SUBMIT / UPLOAD in one file: CCopy of front page of the book, copyright page, table of contents,
                             Copy of peer-review, Copy of full chapter published in the edited book*
                         </label>
-                        <input type="file" name="file" class="form-control-file" required>
+                        <input type="file" name="file" class="form-control-file">
                     </div>
                     <div class="form-group">
                         <label>Abstract</label>
