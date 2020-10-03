@@ -38,6 +38,10 @@ class Main extends CI_Controller{
         $data['search_cre'] = $this->research_model->search_creative($keyword);
         $data['authors'] = $this->research_model->fetch_all_authors();
         $data['editors'] = $this->research_model->fetch_all_editors();
+        $data['dept'] = $this->research_model->getDept();
+        $data['pub'] = $this->research_model->getPub_type();
+        $data['user'] = $this->research_model->getUser();
+
         // if($keyword == NULL){
         //     redirect('search/'.$this->input>post('keyword'));
         // }
@@ -50,6 +54,7 @@ class Main extends CI_Controller{
         $department = $this->input->post('department');
         $year = $this->input->post('year');
         $type_of_research = $this->input->post('type_research');
+        //$author = $this->input->post('auth');
         //$data['dept'] = $this->research_model->getDepartment();
         //$data['type'] = $this->research_model->getType_Research();
         $data['search_com'] = $this->research_model->search_filter_completed($department, $year, $type_of_research);
@@ -58,6 +63,10 @@ class Main extends CI_Controller{
         $data['search_cre'] = $this->research_model->search_filter_creative($department, $year, $type_of_research);
         $data['authors'] = $this->research_model->fetch_all_authors();
         $data['editors'] = $this->research_model->fetch_all_editors();
+        $data['dept'] = $this->research_model->getDept();
+        $data['pub'] = $this->research_model->getPub_type();
+        $data['user'] = $this->research_model->getUser();
+
         $this->load->view('template/header2');
 		$this->load->view('guest/search', $data);
         $this->load->view('template/footer2');

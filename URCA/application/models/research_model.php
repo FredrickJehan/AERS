@@ -844,5 +844,27 @@ class research_model extends CI_Model{
         $this->db->order_by('comment_id', 'DESC');
         return $this->db->get()->result();
     }
+
+    public function getDept(){
+        $this->db->distinct();
+        $this->db->select('*');
+        $this->db->from('user');
+        $this->db->group_by('department');
+        return $this->db->get()->result();
+    }
+
+    public function getPub_type(){
+        $this->db->distinct();
+        $this->db->select('*');
+        $this->db->from('publication');
+        $this->db->group_by('publication_type');
+        return $this->db->get()->result();
+    }
+
+    public function getUser(){
+        $this->db->select('*');
+        $this->db->from('user');
+        return $this->db->get()->result();
+    }
 }
 ?>

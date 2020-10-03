@@ -266,7 +266,7 @@ exhibition / performance*
         </div>
         <div class="form-row">
             <div class="form-group col-md-7">
-                <label>Institution which commissioned the report / where report was completed*</label>
+                <label>Institution where report was completed*</label>
                 <input type="text" name="institution" class="form-control" required>
                 <span class="text-danger"><?php echo form_error("institution");?></span>
             </div>

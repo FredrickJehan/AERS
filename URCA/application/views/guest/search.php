@@ -57,15 +57,15 @@
                 <option value="">Department</option>
                 <!--
                 <php foreach($dept as $row){ ?>
-                  <option value="<php echo $row->department ?>"><php echo $row->department ?></option>
+                  <option value="<php echo $row->department; ?>"><php echo $row->department; ?></option>
                 <php } ?>
                 -->
                 <option value="Department of Media Studies">Department of Media Studies</option>
                 <option value="Department of Social Studies">Department of Social Studies</option>
+                <option value="Department of Computer Science">Department of Computer Science</option>
+                <option value="Department of Psychology">Department of Psychology</option>
                 <option value="Department of Literature and Language Studies">Department of Literature and Language Studies</option>
                 <option value="Department of Philosophy">Department of Philosophy</option>
-                <option value="Department of Psychology">Department of Psychology</option>
-                <option value="Department of Computer Science">Department of Computer Science</option>
                 <option value="Department of Digital Arts and Computer Animation">Department of Digital Arts and Computer Animation</option>
               </select>
             </div>
@@ -78,8 +78,8 @@
               <select class="form-control form-control-sm" name="type_research">
                 <option value="">Type of Research</option>
                 <!--
-                <php foreach($type as $row){ ?>
-                  <option value="<php echo $row->publication_type ?>"><php echo $row->publication_type ?></option>
+                <php foreach($pub as $row){ ?>
+                  <option value="<php echo $row->publication_type; ?>"><php echo $row->publication_type ?></option>
                 <php } ?>
                 -->
                 <option value="Completed Research">Completed Research</option>
@@ -88,6 +88,16 @@
                 <option value="Creative Works">Creative Works</option>
               </select>
             </div>
+            <!--
+            <div class="col-2">
+              <select class="form-control form-control-sm" name="auth">
+                <option value="">Author</option>
+                <php foreach($user as $row){ ?>
+                  <option value="<php echo $row->first_name; ?> <php echo $row->last_name; ?>"><php echo $row->first_name; ?> <php echo $row->last_name; ?></option>
+                <php } ?>
+              </select>
+            </div>
+            -->
             <button type="submit" class="btn btn-info btn-sm">Filter</button>
             <div class="col"></div>
       </div>
@@ -271,7 +281,7 @@
 
 <script>
   var max = new Date().getFullYear(),
-      min = 1900,
+      min = 1950,
       select = document.getElementById('sort_year');
   for(var i = max; i>=min; i--){
     var opt = document.createElement('option');
