@@ -194,6 +194,21 @@ class admin extends CI_Controller{
                     }
 
                     if(isset($row['publication_type'])){
+                        $publication_array = array(
+                            'publication_id' => $row['publication_id'],
+                            'file' => $row['file'],
+                            'abstract' => $row['abstract'],
+                            'num_views' => $row['num_views'],
+                            'status' => $row['status'],
+                            'feedback' => $row['feedback'],
+                            'publication_type' => $row['publication_type'],
+                            'date_submission' => $row['date_submission'],
+                            'submittor' => $row['submittor']
+                        );
+                        $this->admin_model->import_publication($publication_array);
+                    }
+
+                    if(isset($row['author_id'])){
                         $author_array = array(
                             'author_id' => $row['author_id'],
                             'user_id' => $row['user_id'],
@@ -207,19 +222,120 @@ class admin extends CI_Controller{
                         $this->admin_model->import_auth($author_array);
                     }
 
-                    if(isset($row['author_type'])){
-                        $author_array = array(
-                            'author_id' => $row['author_id'],
+                    if(isset($row['completed_id'])){
+                        $com_array = array(
+                            'completed_id' => $row['completed_id'],
+                            'publication_id' => $row['publication_id'],
+                            'title' => $row['title'],
+                            'year' => $row['year'],
+                            'institution' => $row['institution'],
+                            'location' => $row['location'],
+                            'url' => $row['url'],
+                            'completed_type' => $row['completed_type']
+                        );
+                        $this->admin_model->import_completed($com_array);
+                    }
+
+                    if(isset($row['presented_id'])){
+                        $pre_array = array(
+                            'presented_id' => $row['presented_id'],
+                            'publication_id' => $row['publication_id'],
+                            'title_presented' => $row['title_presented'],
+                            'date_presentation' => $row['date_presentation'],
+                            'title_conference' => $row['title_conference'],
+                            'place_conference' => $row['place_conference'],
+                            'presented_type' => $row['presented_type']
+                        );
+                        $this->admin_model->import_presented($pre_array);
+                    }
+
+                    if(isset($row['published_type'])){
+                        $pub_array = array(
+                            'published_id' => $row['published_id'],
+                            'publication_id' => $row['publication_id'],
+                            'year_published' => $row['year_published'],
+                            'title_article' => $row['title_article'],
+                            'title_journal' => $row['title_journal'],
+                            'vol_num' => $row['vol_num'],
+                            'issue_num' => $row['issue_num'],
+                            'page_num' => $row['page_num'],
+                            'indexing_database' => $row['indexing_database'],
+                            'peer_review' => $row['peer_review'],
+                            'title_book' => $row['title_book'],
+                            'title_chapter' => $row['title_chapter'],
+                            'publisher' => $row['publisher'],
+                            'place_of_publication' => $row['place_of_publication'],
+                            'place_of_conference' => $row['place_of_conference'],
+                            'published_type' => $row['published_type'],
+                            'title_conference' => $row['title_conference'],
+                            'url' => $row['url']
+                        );
+                        $this->admin_model->import_published($pub_array);
+                    }
+
+                    if(isset($row['cw_id'])){
+                        $cre_array = array(
+                            'cw_id' => $row['cw_id'],
+                            'publication_id' => $row['publication_id'],
+                            'type_cw' => $row['type_cw'],
+                            'month_year' => $row['month_year'],
+                            'title_work' => $row['tile_work'],
+                            'role' => $row['role'],
+                            'place_perfomance' => $row['place_perfomance'],
+                            'publisher' => $row['publisher'],
+                            'artwork_exhibited' => $row['artwork_exhibited'],
+                            'duration_performance' => $row['commission_agency'],
+                            'scope_audience' => $row['scope_audience'],
+                            'award_received' => $row['award_received']
+                        );
+                        $this->admin_model->import_creative($cre_array);
+                    }
+
+                    if(isset($row['editor_id'])){
+                        $editor_array = array(
+                            'editor_id' => $row['editor_id'],
+                            'published_id' => $row['published_id'],
+                            'editor_fn' => $row['editor_fn'],
+                            'editor_mi' => $row['editor_mi'],
+                            'editor_ln' => $row['editor_ln']
+                        );
+                        $this->admin_model->import_editor($editor_array);
+                    }
+
+                    if(isset($row['comment_id'])){
+                        $comment_array = array(
+                            'comment_id' => $row['comment_id'],
+                            'publication_id' => $row['publication_id'],
+                            'user_id' => $row['user_id'],
+                            'message' => $row['message'],
+                            'time_created' => $row['time_created']
+                        );
+                        $this->admin_model->import_comment($comment_array);
+                    }
+
+                    if(isset($row['like_id'])){
+                        $like_array = array(
+                            'like_id' => $row['like_id'],
+                            'user_id' => $row['user_id'],
+                            'publication_id' => $row['publication_id']
+                        );
+                        $this->admin_model->import_like($like_array);
+                    }
+
+                    if(isset($row['notification_id'])){
+                        $notif_array = array(
+                            'notification_id' => $row['notification_id'],
                             'user_id' => $row['user_id'],
                             'publication_id' => $row['publication_id'],
-                            'first_name' => $row['first_name'],
-                            'middle_initial' => $row['middle_initial'],
-                            'last_name' => $row['last_name'],
-                            'is_employee' => $row['is_employee'],
-                            'author_type' => $row['author_type']
+                            'type' => $row['type'],
+                            'time' => $row['time'],
+                            'status' => $row['status']
                         );
-                        $this->admin_model->import_auth($author_array);
+                        $this->admin_model->import_notif($notif_array);
                     }
+
+                    
+
                     /*
                     if(isset($row['notification_id'])){
                         $notif_array = array(
