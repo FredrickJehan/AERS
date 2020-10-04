@@ -489,6 +489,7 @@ class research_model extends CI_Model{
         if($type_of_research != NULL){
         $this->db->where('publication_type', $type_of_research);
         }
+        $this->db->group_by("title");
         return $this->db->get()->result();
     }
 
@@ -514,6 +515,7 @@ class research_model extends CI_Model{
         if($type_of_research != NULL){
         $this->db->where('publication_type', $type_of_research);
         }
+        $this->db->group_by("title_presented");
         return $this->db->get()->result();
     }
 
@@ -539,6 +541,7 @@ class research_model extends CI_Model{
         if($type_of_research != NULL){
         $this->db->where('publication_type', $type_of_research);
         }
+        $this->db->group_by("publication.abstract");
         return $this->db->get()->result();
     }
 
@@ -564,6 +567,7 @@ class research_model extends CI_Model{
         if($type_of_research != NULL){
         $this->db->where('publication_type', $type_of_research);
         }
+        $this->db->group_by("title_work");
         return $this->db->get()->result();
     }
     //END OF FILTER SEARCH
@@ -573,7 +577,7 @@ class research_model extends CI_Model{
         $this->db->select('*');
         $this->db->from('completed');
         $this->db->join('publication', 'publication.publication_id = completed.publication_id', 'inner');
-        $this->db->join('author', 'publication.publication_id = author.publication_id', 'inner');
+        $this->db->join('author', 'author.publication_id = publication.publication_id', 'inner');
         if($keyword != NULL){
             $this->db->like('title', $keyword);
             $this->db->or_like('year', $keyword);
@@ -585,10 +589,11 @@ class research_model extends CI_Model{
             $this->db->or_like('author.last_name', $keyword);
         }
         $data = array(
-            'author_type' => 'Main',
+            //'author_type' => 'Main',
             'status' => 'Approved'
         );
         $this->db->where($data);
+        $this->db->group_by("title");
         //$this->db->order_by('publication.publication_id', 'DESC');
         return $this->db->get()->result();
     }
@@ -610,10 +615,11 @@ class research_model extends CI_Model{
         }
         
         $data = array(
-            'author_type' => 'Main',
+            //'author_type' => 'Main',
             'status' => 'Approved'
         );
         $this->db->where($data);
+        $this->db->group_by("title_presented");
         //$this->db->order_by('publication.publication_id', 'DESC');
         return $this->db->get()->result();
     }
@@ -639,10 +645,11 @@ class research_model extends CI_Model{
             $this->db->or_like('author.last_name', $keyword);
         }
         $data = array(
-            'author_type' => 'Main',
+            //'author_type' => 'Main',
             'status' => 'Approved'
         );
         $this->db->where($data);
+        $this->db->group_by("publication.abstract");
         //$this->db->order_by('publication.publication_id', 'DESC');
         return $this->db->get()->result();
     }
@@ -668,10 +675,11 @@ class research_model extends CI_Model{
             $this->db->or_like('author.last_name', $keyword);
         }
         $data = array(
-            'author_type' => 'Main',
+            //'author_type' => 'Main',
             'status' => 'Approved'
         );
         $this->db->where($data);
+        $this->db->group_by("title_work");
         //$this->db->order_by('publication.publication_id', 'DESC');
         return $this->db->get()->result();
     }

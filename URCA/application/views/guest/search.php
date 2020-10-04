@@ -103,7 +103,7 @@
       </div>
       </form>
       <?php foreach($search_com as $row){ ?>
-      <?php if($row->author_type == 'Main'){ ?>
+      <!--<php if($row->author_type == 'Main'){ ?> -->
       <div class="row">
           <div class="col-sm-12">
           <div class="card">
@@ -139,11 +139,11 @@
         </div>
       </div>
       <br />
-      <?php } ?>
+      <!--<php } ?> -->
       <?php } ?>
 
       <?php foreach($search_pre as $row){ ?>
-      <?php if($row->author_type == 'Main'){ ?>
+      <!--<php if($row->author_type == 'Main'){ ?>-->
       <div class="row">
           <div class="col-sm-12">
           <div class="card">
@@ -174,11 +174,11 @@
         </div>
       </div>
       <br />
-      <?php }?>
-      <?php }?>
+      <!--<php }?>-->
+      <?php } ?>
 
       <?php foreach($search_pub as $row){ ?>
-      <?php if($row->author_type == 'Main'){ ?>
+      <!-- <php if($row->author_type == 'Main'){ ?> -->
       <div class="row">
           <div class="col-sm-12">
           <div class="card">
@@ -250,11 +250,11 @@
         </div>
       </div>
       <br />
-      <?php }?>
-      <?php }?>
+      <!-- <php } ?> -->
+      <?php } ?>
 
       <?php foreach($search_cre as $row){ ?>
-      <?php if($row->author_type == 'Main'){ ?>
+      <!--<php if($row->author_type == 'Main'){ ?>-->
       <div class="row">
           <div class="col-sm-12">
           <div class="card">
@@ -273,8 +273,8 @@
         </div>
       </div>
       <br />
-      <?php }?>
-      <?php }?>
+      <!-- <php }?> -->
+      <?php } ?>
 
     </div>
   </section>

@@ -33,7 +33,7 @@
                 <td>            
                     <?php foreach($author_data as $name){ 
                     if($row->publication_id == $name->publication_id){ ?>
-                        <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
+                        <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>,&nbsp
                     <?php } } ?>
                 </td>
             </tr>  
@@ -68,7 +68,7 @@
                 <td>
                     <?php foreach($author_data as $name){ 
                     if($row->publication_id == $name->publication_id){ ?>
-                        <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
+                        <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>,&nbsp
                     <?php } } ?>
                 </td>
             </tr>
@@ -105,7 +105,7 @@
             <td>
             <?php foreach($author_data as $name){ 
                 if($row->publication_id == $name->publication_id){ ?>
-                    <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
+                    <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>,&nbsp
             <?php } } ?>
             </td>
             </tr>
@@ -140,7 +140,7 @@
             <td>
             <?php foreach($author_data as $name){ 
                 if($row->publication_id == $name->publication_id){ ?>
-                    <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
+                    <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>,&nbsp
             <?php } } ?>
             </td>
             </tr>
@@ -177,7 +177,7 @@
             <td>
             <?php foreach($author_data as $name){ 
                 if($row->publication_id == $name->publication_id){ ?>
-                    <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
+                    <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>,&nbsp
             <?php } } ?>
             </td>
             </tr>
@@ -211,7 +211,7 @@
             <td>
             <?php foreach($author_data as $name){ 
                 if($row->publication_id == $name->publication_id){ ?>
-                    <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
+                    <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>,&nbsp
             <?php } } ?>
             </td>
             </tr>
@@ -245,7 +245,7 @@
             <td>
             <?php foreach($author_data as $name){ 
                 if($row->publication_id == $name->publication_id){ ?>
-                    <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
+                    <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>,&nbsp
             <?php } } ?>
             </td>
             </tr>
@@ -279,7 +279,7 @@
             <td>
             <?php foreach($author_data as $name){ 
                 if($row->publication_id == $name->publication_id){ ?>
-                    <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
+                    <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>,&nbsp
             <?php } } ?>
             </td>
             </tr>
