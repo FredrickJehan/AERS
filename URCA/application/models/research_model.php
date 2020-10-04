@@ -206,8 +206,17 @@ class research_model extends CI_Model{
 
     //NOTIF
     public function update_notif(){
-        $this->db->where('status', 'Unread');
-        $this->db->set('status', 'Read');
+        // $this->db->where('status', 'Unread');
+        // $this->db->join('publication', 'publication.publication_id = notication.publication_id', 'inner');
+        $this->db->set('notification.status', 'Read');
+        $this->db->where('notification.type !=', 'Report');
+        $this->db->update('notification');
+    }
+
+    public function update_notif_admin(){
+        // $this->db->where('status', 'Unread');
+        $this->db->where('notification.type', 'Report');
+        $this->db->set('notification.status', 'Read');
         $this->db->update('notification');
     }
 
@@ -245,6 +254,7 @@ class research_model extends CI_Model{
         $this->db->from('notification');
         $this->db->join('publication', 'publication.publication_id = notification.publication_id', 'inner');
         $this->db->where('notification.status', 'Unread');
+        $this->db->where('notification.type', 'Report');
         return $this->db->get();
     }
 
@@ -253,8 +263,9 @@ class research_model extends CI_Model{
         $this->db->from('notification');
         $this->db->join('publication', 'publication.publication_id = notification.publication_id', 'inner');
         $this->db->where('notification.status', 'Unread');
-        $this->db->where('notification.type', 'Comment');
-        $this->db->where('notification.type', 'Review');
+        // $this->db->where('notification.type !=', 'Report');
+        // $this->db-where(array('notificaiton.type'), 'Comment', 'Review');
+        // $this->db->where('notification.type', 'Review');
         $this->db->where('submittor', $submittor);
         return $this->db->get();
     }

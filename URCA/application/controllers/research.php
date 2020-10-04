@@ -209,15 +209,19 @@ class Research extends CI_Controller{
     
 
     public function notification(){
-        if(isset($_POST["view"])){
-            if($_POST["view"] != ''){
-                $update_notif = $this->research_model->update_notif();
-            }
         if (isset($this->session->userdata['logged_in'])) {
             $user_type = ($this->session->userdata['logged_in']['user_type']);
         }
-        $output = '';
         $submittor = $this->get_current_user();
+        if(isset($_POST["view"])){
+            if($_POST["view"] != ''){
+                if($user_type == 'Researcher'){
+                    $update_notif = $this->research_model->update_notif();
+                }else{
+                    $update_notif = $this->research_model->update_notif_admin();
+                }
+            }
+        $output = '';
         $data = $this->research_model->select_notif($submittor);
         
         $admin_data = $this->research_model->select_notif_admin();
