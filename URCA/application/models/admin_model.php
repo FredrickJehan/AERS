@@ -147,150 +147,195 @@ class admin_model extends CI_Model{
         return $query->result();
     }
 
+    /*
     public function fetch_json_completed(){
-        $this->db->select('*');
-        $this->db->from('completed AS c');
-        $this->db->join('publication AS p', 'p.publication_id = c.publication_id', 'inner');
-        $this->db->join('author AS a', 'a.publication_id = p.publication_id', 'inner');
-        $this->db->join('user AS u', 'u.user_id = a.user_id', 'inner');
-        //$this->db->join('like_tbl AS lb', 'lb.user_id = u.user_id', 'inner');
-        //$this->db->join('comment AS com', 'com.publication_id = p.publication_id', 'inner');
-        $this->db->order_by('p.publication_id', 'ASC');
+        //$this->db->select('*');
+        $this->db->select('completed.completed_id, completed.publication_id, completed.title, completed.year, completed.institution, completed.location, completed.url, completed.completed_type,
+        publication.publication_id, publication.file, publication.abstract, publication.num_views, publication.status, publication.feedback, publication.publication_type, publication.date_submission, publication.submittor,
+        author.author_id, author.user_id, author.publication_id, author.first_name, author.middle_initial, author.last_name, author.is_employee, author.author_type, 
+        user.user_id, user.username, user.first_name AS fname, user.middle_name, user.last_name AS lname, user.email, user.password, user.department, user.contact_number, user.user_type');
+        $this->db->from('completed');
+        //$this->db->join('publication AS p', 'p.publication_id = c.publication_id', 'inner');
+        //$this->db->join('author AS a', 'a.publication_id = p.publication_id', 'inner');
+        //$this->db->join('user AS u', 'u.user_id = a.user_id', 'inner');
+        $this->db->join('publication', 'publication.publication_id = completed.publication_id', 'inner');
+        $this->db->join('author', 'author.publication_id = publication.publication_id', 'inner');
+        $this->db->join('user', 'user.user_id = author.user_id', 'inner');
+        //$this->db->join('like_tbl', 'like_tbl.user_id = user.user_id', 'right');
+        //$this->db->join('comment', 'comment.publication_id = publication.publication_id', 'right');
+        //$this->db->join('notification', 'notification.publication_id = publication.publication_id', 'right');
+
+        $this->db->order_by('publication.publication_id', 'ASC');
+        //$this->db->group_by('title');
         $query = $this->db->get();
         return json_encode($query->result(), JSON_PRETTY_PRINT);
     }
 
     public function fetch_json_presented(){
-        $this->db->select('*');
-        $this->db->from('presented AS pr');
-        $this->db->join('publication AS p', 'p.publication_id = pr.publication_id', 'inner');
-        $this->db->join('author AS a', 'a.publication_id = p.publication_id', 'inner');
-        $this->db->join('user AS u', 'u.user_id = a.user_id', 'inner');
+        //$this->db->select('*');
+        $this->db->select('presented.presented_id, presented.publication_id, presented.title_presented, presented.date_presentation, presented.title_conference, presented.place_conference, presented.presented_type,        
+        publication.publication_id, publication.file, publication.abstract, publication.num_views, publication.status, publication.feedback, publication.publication_type, publication.date_submission, publication.submittor,
+        author.author_id, author.user_id, author.publication_id, author.first_name, author.middle_initial, author.last_name, author.is_employee, author.author_type, 
+        user.user_id, user.username, user.first_name AS fname, user.middle_name, user.last_name AS lname, user.email, user.password, user.department, user.contact_number, user.user_type');
+        $this->db->from('presented');
+        $this->db->join('publication', 'publication.publication_id = presented.publication_id', 'inner');
+        $this->db->join('author', 'author.publication_id = publication.publication_id', 'inner');
+        $this->db->join('user', 'user.user_id = author.user_id', 'inner');
         //$this->db->join('like_tbl AS lb', 'lb.user_id = u.user_id', 'inner');
         //$this->db->join('comment AS com', 'com.publication_id = p.publication_id', 'inner');
-        $this->db->order_by('p.publication_id', 'ASC');
+        $this->db->order_by('publication.publication_id', 'ASC');
         $query = $this->db->get();
         return json_encode($query->result(), JSON_PRETTY_PRINT);
     }
 
     public function fetch_json_published(){
-        $this->db->select('*');
-        $this->db->from('published AS pp');
-        $this->db->join('publication AS p', 'p.publication_id = pp.publication_id', 'inner');
-        $this->db->join('editor AS e', 'e.published_id = pp.published_id', 'inner');
-        $this->db->join('author AS a', 'a.publication_id = p.publication_id', 'inner');
-        $this->db->join('user AS u', 'u.user_id = a.user_id', 'inner');
+        $this->db->select('published.published_id, published.publication_id, published.year_published, published.title_article, published.title_journal, published.vol_num, published.issue_num, published.page_num, published.indexing_database, published.peer_review, 
+        published.title_book, published.title_chapter, published.publisher, published.place_of_publication, published.place_of_conference, published.published_type, published.title_conference, published.url,         
+        publication.publication_id, publication.file, publication.abstract, publication.num_views, publication.status, publication.feedback, publication.publication_type, publication.date_submission, publication.submittor,
+        editor.editor_id, editor.published_id, editor.editor_fn, editor.editor_mi, editor.editor_ln,
+        author.author_id, author.user_id, author.publication_id, author.first_name, author.middle_initial, author.last_name, author.is_employee, author.author_type, 
+        user.user_id, user.username, user.first_name AS fname, user.middle_name, user.last_name AS lname, user.email, user.password, user.department, user.contact_number, user.user_type');
+        $this->db->from('published');
+        $this->db->join('publication', 'publication.publication_id = published.publication_id', 'inner');
+        $this->db->join('editor', 'editor.published_id = published.published_id', 'right');
+        $this->db->join('author', 'author.publication_id = publication.publication_id', 'inner');
+        $this->db->join('user', 'user.user_id = author.user_id', 'inner');
         //$this->db->join('like_tbl AS lb', 'lb.user_id = u.user_id', 'inner');
         //$this->db->join('comment AS co', 'co.publication_id = p.publication_id', 'inner');
-        $this->db->order_by('p.publication_id', 'ASC');
+        $this->db->order_by('publication.publication_id', 'ASC');
         $query = $this->db->get();
         return json_encode($query->result(), JSON_PRETTY_PRINT);
     }
 
     public function fetch_json_creative(){
-        $this->db->select('*');
-        $this->db->from('creative_works AS c');
-        $this->db->join('publication AS p', 'p.publication_id = c.publication_id', 'inner');
-        $this->db->join('author AS a', 'a.publication_id = p.publication_id', 'iner');
-        $this->db->join('user AS u', 'u.user_id = a.user_id', 'inner');
+        $this->db->select('creative_works.cw_id, creative_works.publication_id, creative_works.type_cw, creative_works.month_year, creative_works.title_work, creative_works.role, creative_works.place_performance, creative_works.publisher, creative_works.artwork_exhibited,
+        creative_works.duration_performance, creative_works.commission_agency, creative_works.scope_audience, creative_works.award_received,        
+        publication.publication_id, publication.file, publication.abstract, publication.num_views, publication.status, publication.feedback, publication.publication_type, publication.date_submission, publication.submittor,
+        author.author_id, author.user_id, author.publication_id, author.first_name, author.middle_initial, author.last_name, author.is_employee, author.author_type, 
+        user.user_id, user.username, user.first_name AS fname, user.middle_name, user.last_name AS lname, user.email, user.password, user.department, user.contact_number, user.user_type');
+        $this->db->from('creative_works');
+        $this->db->join('publication', 'publication.publication_id = creative_works.publication_id', 'inner');
+        $this->db->join('author', 'author.publication_id = publication.publication_id', 'inner');
+        $this->db->join('user', 'user.user_id = author.user_id', 'inner');
         //$this->db->join('like_tbl AS lb', 'lb.user_id = u.user_id', 'inner');
         //$this->db->join('comment AS com', 'com.publication_id = p.publication_id', 'inner');
-        $this->db->order_by('p.publication_id', 'ASC');
+        $this->db->order_by('publication.publication_id', 'ASC');
+        $query = $this->db->get();
+        return json_encode($query->result(), JSON_PRETTY_PRINT);
+    }
+    */
+
+    public function fetch_json_user(){
+        $this->db->select('*');
+        $this->db->from('user');
+        $this->db->order_by('user_id', 'ASC');
         $query = $this->db->get();
         return json_encode($query->result(), JSON_PRETTY_PRINT);
     }
 
-    //Get table contents for import
-    public function import_user_check($data){
-        $this->db->select('*');
-        $this->db->from('user');
-        $this->db->where('user_id', $data['user_id']);
-        $query = $this->db->get();
-        return $query->result_array();
-    }
-
-    public function import_publication_check($data){
-        $this->db->select('*');
+    public function fetch_json_publication(){
+        $this->db->select('publication.publication_id, publication.file, publication.abstract, publication.num_views, publication.status, publication.feedback, publication.publication_type, publication.date_submission, publication.submittor,
+        user.user_id');
         $this->db->from('publication');
-        $this->db->where('publication_id', $data['publication_id']);
+        $this->db->join('user', 'user.user_id = publication.submittor', 'inner');
+        $this->db->order_by('publication.publication_id', 'ASC');
         $query = $this->db->get();
-        return $query->result_array();
+        return json_encode($query->result(), JSON_PRETTY_PRINT);
     }
-    /*
-    public function import_author_check($data){
-        $this->db->select('*');
+
+    public function fetch_json_auth(){
+        $this->db->select('author.author_id, author.user_id, author.publication_id, author.first_name, author.middle_initial, author.last_name, author.is_employee, author.author_type,
+        publication.publication_id, user.user_id');
         $this->db->from('author');
-        $this->db->where('author_id', $data['author_id']);
+        $this->db->join('publication', 'publication.publication_id = author.publication_id', 'inner');
+        $this->db->join('user', 'user.user_id = author.user_id', 'inner');
+        $this->db->order_by('author.author_id', 'ASC');
         $query = $this->db->get();
-        return $query->result_array();
+        return json_encode($query->result(), JSON_PRETTY_PRINT);
     }
 
-    public function import_completed_check($data){
-        $this->db->select('*');
+    public function fetch_json_completed(){
+        $this->db->select('completed.completed_id, completed.publication_id, completed.title, completed.year, completed.institution, completed.location, completed.url, completed.completed_type,
+        publication.publication_id');
         $this->db->from('completed');
-        $this->db->where('completed_id', $data['completed_id']);
+        $this->db->join('publication', 'publication.publication_id = completed.publication_id', 'inner');
+        $this->db->order_by('completed.completed_id', 'ASC');
         $query = $this->db->get();
-        return $query->result_array();
+        return json_encode($query->result(), JSON_PRETTY_PRINT);
     }
 
-    public function import_presented_check($data){
-        $this->db->select('*');
+    public function fetch_json_presented(){
+        $this->db->select('presented.presented_id, presented.publication_id, presented.title_presented, presented.date_presentation, presented.title_conference, presented.place_conference, presented.presented_type,        
+        publication.publication_id');
         $this->db->from('presented');
-        $this->db->where('presented_id', $data['presented_id']);
+        $this->db->join('publication', 'publication.publication_id = presented.publication_id', 'inner');
+        $this->db->order_by('presented.presented_id', 'ASC');
         $query = $this->db->get();
-        return $query->result_array();
+        return json_encode($query->result(), JSON_PRETTY_PRINT);
     }
 
-    public function import_published_check($data){
-        $this->db->select('*');
+    public function fetch_json_published(){
+        $this->db->select('published.published_id, published.publication_id, published.year_published, published.title_article, published.title_journal, published.vol_num, published.issue_num, published.page_num, published.indexing_database, published.peer_review, 
+        published.title_book, published.title_chapter, published.publisher, published.place_of_publication, published.place_of_conference, published.published_type, published.title_conference, published.url,         
+        publication.publication_id');
         $this->db->from('published');
-        $this->db->where('published_id', $data['published_id']);
+        $this->db->join('publication', 'publication.publication_id = published.publication_id', 'inner');
+        $this->db->order_by('published.published_id', 'ASC');
         $query = $this->db->get();
-        return $query->result_array();
+        return json_encode($query->result(), JSON_PRETTY_PRINT);
     }
 
-    public function import_creative_check($data){
-        $this->db->select('*');
+    public function fetch_json_creative(){
+        $this->db->select('creative_works.cw_id, creative_works.publication_id, creative_works.type_cw, creative_works.month_year, creative_works.title_work, creative_works.role, creative_works.place_performance, creative_works.publisher, creative_works.artwork_exhibited,
+        creative_works.duration_performance, creative_works.commission_agency, creative_works.scope_audience, creative_works.award_received,        
+        publication.publication_id');
         $this->db->from('creative_works');
-        $this->db->where('cw_id', $data['cw_id']);
+        $this->db->join('publication', 'publication.publication_id = creative_works.publication_id', 'inner');
+        $this->db->order_by('creative_works.cw_id', 'ASC');
         $query = $this->db->get();
-        return $query->result_array();
+        return json_encode($query->result(), JSON_PRETTY_PRINT);
     }
 
-    public function import_comment_check($data){
-        $this->db->select('*');
-        $this->db->from('comment');
-        $this->db->where('comment_id', $data['comment_id']);
-        $query = $this->db->get();
-        return $query->result_array();
-    }
-
-    public function import_notification_check($data){
-        $this->db->select('*');
-        $this->db->from('notification');
-        $this->db->where('notification_id', $data['notification_id']);
-        $query = $this->db->get();
-        return $query->result_array();
-    }
-
-    public function import_like_tbl_check($data){
-        $this->db->select('*');
-        $this->db->from('like_tbl');
-        $this->db->where('like_id', $data['like_id']);
-        $query = $this->db->get();
-        return $query->result_array();
-    }
-
-    public function import_editor_check($data){
-        $this->db->select('*');
+    public function fetch_json_editor(){
+        $this->db->select('editor.editor_id, editor.published_id, editor.editor_fn, editor.editor_mi, editor.editor_ln, published.published_id');
         $this->db->from('editor');
-        $this->db->where('editor_id', $data['editor_id']);
+        $this->db->join('published', 'published.published_id = editor.published_id', 'inner');
+        $this->db->order_by('editor.editor_id', 'ASC');
         $query = $this->db->get();
-        return $query->result_array();
+        return json_encode($query->result(), JSON_PRETTY_PRINT);
     }
-    */
-    //End of get table contents
 
+    public function fetch_json_comment(){
+        $this->db->select('comment.comment_id, comment.publication_id, comment.user_id, comment.message, comment.time_created, publication.publication_id, user.user_id');
+        $this->db->from('comment');
+        $this->db->join('publication', 'publication.publication_id = comment.publication_id', 'inner');
+        $this->db->join('user', 'user.user_id = comment.user_id', 'inner');
+        $this->db->order_by('comment.comment_id', 'ASC');
+        $query = $this->db->get();
+        return json_encode($query->result(), JSON_PRETTY_PRINT);
+    }
+
+    public function fetch_json_like(){
+        $this->db->select('like_tbl.like_id, like_tbl.user_id, like_tbl.publication_id, publication.publication_id, user.user_id');
+        $this->db->from('like_tbl');
+        $this->db->join('publication', 'publication.publication_id = like_tbl.publication_id', 'inner');
+        $this->db->join('user', 'user.user_id = like_tbl.user_id', 'inner');
+        $this->db->order_by('like_tbl.like_id', 'ASC');
+        $query = $this->db->get();
+        return json_encode($query->result(), JSON_PRETTY_PRINT);
+    }
+
+    public function fetch_json_notif(){
+        $this->db->select('notification.notification_id, notification.user_id, notification.publication_id, notification.type, notification.time, notification.status, publication.publication_id, user.user_id');
+        $this->db->from('notification');
+        $this->db->join('publication', 'publication.publication_id = notification.publication_id', 'inner');
+        $this->db->join('user', 'user.user_id = notification.user_id', 'inner');
+        $this->db->order_by('notification.notification_id', 'ASC');
+        $query = $this->db->get();
+        return json_encode($query->result(), JSON_PRETTY_PRINT);
+    }
+
+    /*
     public function import_completed($user_array, $author_array, $publication_array, $array){
         $user_query = $this->import_user_check($user_array);
         //$author_query = $this->import_author_check($author_array);
@@ -405,6 +450,7 @@ class admin_model extends CI_Model{
             $this->db->update('user', $user_array);
         }
     }
+    */
 
     public function fetch_pdf_completed(){
         $this->db->select('*');
@@ -461,6 +507,144 @@ class admin_model extends CI_Model{
         $this->db->order_by('publication.publication_id', 'DESC');
         return $this->db->get()->result();
     }
+
+    /*
+        //Get table contents for import
+        public function import_user_check($data){
+            $this->db->select('*');
+            $this->db->from('user');
+            $this->db->where('user_id', $data['user_id']);
+            $query = $this->db->get();
+            return $query->result_array();
+        }
+    
+        public function import_publication_check($data){
+            $this->db->select('*');
+            $this->db->from('publication');
+            $this->db->where('publication_id', $data['publication_id']);
+            $query = $this->db->get();
+            return $query->result_array();
+        }
+        
+        public function import_author_check($data){
+            $this->db->select('*');
+            $this->db->from('author');
+            $this->db->where('author_id', $data['author_id']);
+            $query = $this->db->get();
+            return $query->result_array();
+        }
+    
+        public function import_completed_check($data){
+            $this->db->select('*');
+            $this->db->from('completed');
+            $this->db->where('completed_id', $data['completed_id']);
+            $query = $this->db->get();
+            return $query->result_array();
+        }
+    
+        public function import_presented_check($data){
+            $this->db->select('*');
+            $this->db->from('presented');
+            $this->db->where('presented_id', $data['presented_id']);
+            $query = $this->db->get();
+            return $query->result_array();
+        }
+    
+        public function import_published_check($data){
+            $this->db->select('*');
+            $this->db->from('published');
+            $this->db->where('published_id', $data['published_id']);
+            $query = $this->db->get();
+            return $query->result_array();
+        }
+    
+        public function import_creative_check($data){
+            $this->db->select('*');
+            $this->db->from('creative_works');
+            $this->db->where('cw_id', $data['cw_id']);
+            $query = $this->db->get();
+            return $query->result_array();
+        }
+    
+        public function import_comment_check($data){
+            $this->db->select('*');
+            $this->db->from('comment');
+            $this->db->where('comment_id', $data['comment_id']);
+            $query = $this->db->get();
+            return $query->result_array();
+        }
+    
+        public function import_notification_check($data){
+            $this->db->select('*');
+            $this->db->from('notification');
+            $this->db->where('notification_id', $data['notification_id']);
+            $query = $this->db->get();
+            return $query->result_array();
+        }
+    
+        public function import_like_tbl_check($data){
+            $this->db->select('*');
+            $this->db->from('like_tbl');
+            $this->db->where('like_id', $data['like_id']);
+            $query = $this->db->get();
+            return $query->result_array();
+        }
+    
+        public function import_editor_check($data){
+            $this->db->select('*');
+            $this->db->from('editor');
+            $this->db->where('editor_id', $data['editor_id']);
+            $query = $this->db->get();
+            return $query->result_array();
+        }
+        //End of get table contents
+    */
+
+    //Begin of import insert
+    public function import_user($data){
+        $this->db->insert('user', $data);
+    }
+
+    public function import_publication($data){
+        $this->db->insert('publication', $data);
+    }
+
+    public function import_author($data){
+        $this->db->insert('author', $data);
+    }
+
+    public function import_completed($data){
+        $this->db->insert('completed', $data);
+    }
+
+    public function import_presented($data){
+        $this->db->insert('presented', $data);
+    }
+
+    public function import_published($data){
+        $this->db->insert('published', $data);
+    }
+
+    public function import_creative($data){
+        $this->db->insert('creative_works', $data);
+    }
+
+    public function import_editor($data){
+        $this->db->insert('editor', $data);
+    }
+
+    public function import_notif($data){
+        $this->db->insert('notification', $data);
+    }
+
+    public function import_like($data){
+        $this->db->insert('like_tbl', $data);
+    }
+
+    public function import_comment($data){
+        $this->db->insert('comment', $data);
+    }
+    //End of import insert 
 
     public function fetch_all_authors_admin(){
         $this->db->select('*');

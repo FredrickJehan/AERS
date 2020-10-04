@@ -1,0 +1,12 @@
+[
+    {
+        "author_id": "50",
+        "user_id": "1",
+        "publication_id": "3",
+        "first_name": "Kalli",
+        "middle_initial": "T.",
+        "last_name": "Brenton",
+        "is_employee": "1",
+        "author_type": "Extra"
+    }
+]

@@ -107,15 +107,34 @@ class admin extends CI_Controller{
 
     public function export_json(){
         $data["test"] = $this->admin_model->fetch_pdf_completed();
-        $result1 = $this->admin_model->fetch_json_completed();
-        $result2 = $this->admin_model->fetch_json_presented();
-        $result3 = $this->admin_model->fetch_json_published();
-        $result4 = $this->admin_model->fetch_json_creative();
+        //$result1 = $this->admin_model->fetch_json_completed();
+        //$result2 = $this->admin_model->fetch_json_presented();
+        //$result3 = $this->admin_model->fetch_json_published();
+        //$result4 = $this->admin_model->fetch_json_creative();
+        $result1 = $this->admin_model->fetch_json_user();
+        $result2 = $this->admin_model->fetch_json_publication();
+        $result3 = $this->admin_model->fetch_json_auth();
+        $result4 = $this->admin_model->fetch_json_completed();
+        $result5 = $this->admin_model->fetch_json_presented();
+        $result6 = $this->admin_model->fetch_json_published();
+        $result7 = $this->admin_model->fetch_json_creative();
+        $result8 = $this->admin_model->fetch_json_editor();
+        $result9 = $this->admin_model->fetch_json_comment();
+        $result10 = $this->admin_model->fetch_json_like();
+        $result11 = $this->admin_model->fetch_json_notif();
         $filepath = "./download/json_code.txt"; 
+
         if(write_file($filepath, $result1)){
             write_file($filepath, $result2, 'a');
             write_file($filepath, $result3, 'a');
             write_file($filepath, $result4, 'a');
+            write_file($filepath, $result5, 'a');
+            write_file($filepath, $result6, 'a');
+            write_file($filepath, $result7, 'a');
+            write_file($filepath, $result8, 'a');
+            write_file($filepath, $result9, 'a');
+            write_file($filepath, $result10, 'a');
+            write_file($filepath, $result11, 'a');
             if(file_exists($filepath)){
                 $filedata = file_get_contents($filepath);
                 force_download($filepath, $filedata);
@@ -157,6 +176,50 @@ class admin extends CI_Controller{
             //must check if file is not null otherwise error will occur
             if($decode != NULL){
                 foreach($decode as $row){
+
+                    if(isset($row['username'])){
+                        $user_array = array(
+                            'user_id' => $row['user_id'],
+                            'username' => $row['username'],
+                            'first_name' => $row['first_name'],
+                            'middle_name' => $row['middle_name'],
+                            'last_name' => $row['last_name'],
+                            'email' => $row['email'],
+                            'password' => $row['password'],
+                            'department' => $row['department'],
+                            'contact_number' => $row['contact_number'],
+                            'user_type' => $row['user_type']
+                        );
+                        $this->admin_model->import_user($user_array);
+                    }
+
+                    if(isset($row['publication_type'])){
+                        $author_array = array(
+                            'author_id' => $row['author_id'],
+                            'user_id' => $row['user_id'],
+                            'publication_id' => $row['publication_id'],
+                            'first_name' => $row['first_name'],
+                            'middle_initial' => $row['middle_initial'],
+                            'last_name' => $row['last_name'],
+                            'is_employee' => $row['is_employee'],
+                            'author_type' => $row['author_type']
+                        );
+                        $this->admin_model->import_auth($author_array);
+                    }
+
+                    if(isset($row['author_type'])){
+                        $author_array = array(
+                            'author_id' => $row['author_id'],
+                            'user_id' => $row['user_id'],
+                            'publication_id' => $row['publication_id'],
+                            'first_name' => $row['first_name'],
+                            'middle_initial' => $row['middle_initial'],
+                            'last_name' => $row['last_name'],
+                            'is_employee' => $row['is_employee'],
+                            'author_type' => $row['author_type']
+                        );
+                        $this->admin_model->import_auth($author_array);
+                    }
                     /*
                     if(isset($row['notification_id'])){
                         $notif_array = array(
@@ -169,7 +232,7 @@ class admin extends CI_Controller{
                         );
                     }else{
                         $notif_array = array();
-                    }*/
+                    }
 
                     if(isset($row['comment_id'])){
                         $comment_array = array(
@@ -303,6 +366,7 @@ class admin extends CI_Controller{
                         );
                         $this->admin_model->import_creative($user_array, $author_array, $publication_array, $array);
                     }
+                    */
                 }
                 $data['response'] = 'File has been imported.';
             }else{
