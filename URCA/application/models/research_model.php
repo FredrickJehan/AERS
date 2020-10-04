@@ -581,6 +581,7 @@ class research_model extends CI_Model{
             $this->db->or_like('location', $keyword);
             $this->db->or_like('completed_type', $keyword);
             $this->db->or_like('author.first_name', $keyword);
+            $this->db->or_like('author.middle_initial', $keyword);
             $this->db->or_like('author.last_name', $keyword);
         }
         $data = array(
@@ -604,6 +605,7 @@ class research_model extends CI_Model{
             $this->db->or_like('place_conference', $keyword);
             $this->db->or_like('presented_type', $keyword);
             $this->db->or_like('author.first_name', $keyword);
+            $this->db->or_like('author.middle_initial', $keyword);
             $this->db->or_like('author.last_name', $keyword);
         }
         
@@ -633,6 +635,7 @@ class research_model extends CI_Model{
             $this->db->or_like('published_type', $keyword);
             $this->db->or_like('title_conference', $keyword);
             $this->db->or_like('author.first_name', $keyword);
+            $this->db->or_like('author.middle_initial', $keyword);
             $this->db->or_like('author.last_name', $keyword);
         }
         $data = array(
@@ -661,6 +664,7 @@ class research_model extends CI_Model{
             $this->db->or_like('scope_audience', $keyword);
             $this->db->or_like('award_received', $keyword);
             $this->db->or_like('author.first_name', $keyword);
+            $this->db->or_like('author.middle_initial', $keyword);
             $this->db->or_like('author.last_name', $keyword);
         }
         $data = array(

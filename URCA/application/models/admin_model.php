@@ -153,8 +153,8 @@ class admin_model extends CI_Model{
         $this->db->join('publication AS p', 'p.publication_id = c.publication_id', 'inner');
         $this->db->join('author AS a', 'a.publication_id = p.publication_id', 'inner');
         $this->db->join('user AS u', 'u.user_id = a.user_id', 'inner');
-        $this->db->join('like_tbl AS lb', 'lb.user_id = u.user_id', 'inner');
-        $this->db->join('comment AS com', 'com.publication_id = p.publication_id', 'inner');
+        //$this->db->join('like_tbl AS lb', 'lb.user_id = u.user_id', 'inner');
+        //$this->db->join('comment AS com', 'com.publication_id = p.publication_id', 'inner');
         $this->db->order_by('p.publication_id', 'ASC');
         $query = $this->db->get();
         return json_encode($query->result(), JSON_PRETTY_PRINT);
@@ -166,8 +166,8 @@ class admin_model extends CI_Model{
         $this->db->join('publication AS p', 'p.publication_id = pr.publication_id', 'inner');
         $this->db->join('author AS a', 'a.publication_id = p.publication_id', 'inner');
         $this->db->join('user AS u', 'u.user_id = a.user_id', 'inner');
-        $this->db->join('like_tbl AS lb', 'lb.user_id = u.user_id', 'inner');
-        $this->db->join('comment AS com', 'com.publication_id = p.publication_id', 'inner');
+        //$this->db->join('like_tbl AS lb', 'lb.user_id = u.user_id', 'inner');
+        //$this->db->join('comment AS com', 'com.publication_id = p.publication_id', 'inner');
         $this->db->order_by('p.publication_id', 'ASC');
         $query = $this->db->get();
         return json_encode($query->result(), JSON_PRETTY_PRINT);
@@ -180,8 +180,8 @@ class admin_model extends CI_Model{
         $this->db->join('editor AS e', 'e.published_id = pp.published_id', 'inner');
         $this->db->join('author AS a', 'a.publication_id = p.publication_id', 'inner');
         $this->db->join('user AS u', 'u.user_id = a.user_id', 'inner');
-        $this->db->join('like_tbl AS lb', 'lb.user_id = u.user_id', 'inner');
-        $this->db->join('comment AS co', 'co.publication_id = p.publication_id', 'inner');
+        //$this->db->join('like_tbl AS lb', 'lb.user_id = u.user_id', 'inner');
+        //$this->db->join('comment AS co', 'co.publication_id = p.publication_id', 'inner');
         $this->db->order_by('p.publication_id', 'ASC');
         $query = $this->db->get();
         return json_encode($query->result(), JSON_PRETTY_PRINT);
@@ -193,8 +193,8 @@ class admin_model extends CI_Model{
         $this->db->join('publication AS p', 'p.publication_id = c.publication_id', 'inner');
         $this->db->join('author AS a', 'a.publication_id = p.publication_id', 'iner');
         $this->db->join('user AS u', 'u.user_id = a.user_id', 'inner');
-        $this->db->join('like_tbl AS lb', 'lb.user_id = u.user_id', 'inner');
-        $this->db->join('comment AS com', 'com.publication_id = p.publication_id', 'inner');
+        //$this->db->join('like_tbl AS lb', 'lb.user_id = u.user_id', 'inner');
+        //$this->db->join('comment AS com', 'com.publication_id = p.publication_id', 'inner');
         $this->db->order_by('p.publication_id', 'ASC');
         $query = $this->db->get();
         return json_encode($query->result(), JSON_PRETTY_PRINT);

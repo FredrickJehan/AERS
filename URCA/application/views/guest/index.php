@@ -34,7 +34,7 @@
          <form action="<?php echo base_url('main/search');?>" method="post">
             <div class="form-row">
               <div class="col-12 col-md-9 mb-2 mb-md-0" style="text-align: right">
-                <input type="input" name="keyword" id="keyword" class="form-control form-control-lg" placeholder="Search for title...">
+                <input type="input" name="keyword" id="keyword" class="form-control form-control-lg" placeholder="Search...">
               </div>
               <div class="col-12 col-md-3">
                 <button type="submit" class="btn btn-block btn-lg btn-primary">Search &nbsp<i class="fas fa-search fa-sm"></i></button>

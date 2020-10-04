@@ -155,7 +155,20 @@
 
     <?php foreach($most_likes_completed->result() as $row){ ?>
   <!-- Testimonials -->
-    
+    <?php
+            $string = array();
+            $i = 0;
+            foreach($authors as $name){
+              if($row->publication_id == $name->publication_id){
+                if(isset($name->middle_initial)){
+                  $string[$i] = $name->last_name . ", " . substr($name->first_name, 0, 1) . ". " . $name->middle_initial; 
+                }else{
+                  $string[$i] = $name->last_name . ", " . substr($name->first_name, 0, 1) . "."; 
+                }
+                $i++;
+              }
+            }
+      ?>
       <div class="row">
         <div class="col-sm-12">
           <div class="card">
@@ -166,7 +179,7 @@
               </a>
               </h5>
               <p class="card-text">
-            
+                <?php echo implode(', ', $string) ?>
               </p>
             </div>
           </div>
@@ -181,6 +194,20 @@
     </div>
 
      <?php foreach($most_likes_presented->result() as $row ){ ?>
+      <?php
+            $string = array();
+            $i = 0;
+            foreach($authors as $name){
+              if($row->publication_id == $name->publication_id){
+                if(isset($name->middle_initial)){
+                  $string[$i] = $name->last_name . ", " . substr($name->first_name, 0, 1) . ". " . $name->middle_initial; 
+                }else{
+                  $string[$i] = $name->last_name . ", " . substr($name->first_name, 0, 1) . "."; 
+                }
+                $i++;
+              }
+            }
+      ?>
   <!-- Testimonials -->
       <div class="row">
         <div class="col-sm-12">
@@ -192,6 +219,7 @@
               </a>
               </h5>
               <p class="card-text">
+                <?php echo implode(', ', $string) ?>
               </p>
             </div>
           </div>
@@ -208,6 +236,20 @@
 
      <?php foreach($most_likes_published->result() as $row ){ ?>
   <!-- Testimonials -->
+      <?php
+            $string = array();
+            $i = 0;
+            foreach($authors as $name){
+              if($row->publication_id == $name->publication_id){
+                if(isset($name->middle_initial)){
+                  $string[$i] = $name->last_name . ", " . substr($name->first_name, 0, 1) . ". " . $name->middle_initial; 
+                }else{
+                  $string[$i] = $name->last_name . ", " . substr($name->first_name, 0, 1) . "."; 
+                }
+                $i++;
+              }
+            }
+      ?>
       <div class="row">
         <div class="col-sm-12">
           <div class="card">
@@ -232,7 +274,7 @@
               <?php } ?>
               </h5>
               <p class="card-text">
-            
+                <?php echo implode(', ', $string) ?>
               </p>
             </div>
           </div>
@@ -249,6 +291,20 @@
 
      <?php foreach($most_likes_creative->result() as $row ){ ?>
   <!-- Testimonials -->
+  <?php
+            $string = array();
+            $i = 0;
+            foreach($authors as $name){
+              if($row->publication_id == $name->publication_id){
+                if(isset($name->middle_initial)){
+                  $string[$i] = $name->last_name . ", " . substr($name->first_name, 0, 1) . ". " . $name->middle_initial; 
+                }else{
+                  $string[$i] = $name->last_name . ", " . substr($name->first_name, 0, 1) . "."; 
+                }
+                $i++;
+              }
+            }
+      ?>
       <div class="row">
         <div class="col-sm-12">
           <div class="card">
@@ -259,7 +315,7 @@
               </a>
               </h5>
               <p class="card-text">
-            
+              <?php echo implode(', ', $string) ?>
               </p>
             </div>
           </div>
