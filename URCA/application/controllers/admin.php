@@ -178,7 +178,7 @@ class admin extends CI_Controller{
                 foreach($decode as $row){
 
                     if(isset($row['username'])){
-                        $user_array = array(
+                        $array1 = array(
                             'user_id' => $row['user_id'],
                             'username' => $row['username'],
                             'first_name' => $row['first_name'],
@@ -190,11 +190,10 @@ class admin extends CI_Controller{
                             'contact_number' => $row['contact_number'],
                             'user_type' => $row['user_type']
                         );
-                        $this->admin_model->import_user($user_array);
+                        $this->admin_model->import_user($array1);
                     }
-
                     if(isset($row['publication_type'])){
-                        $publication_array = array(
+                        $array2 = array(
                             'publication_id' => $row['publication_id'],
                             'file' => $row['file'],
                             'abstract' => $row['abstract'],
@@ -205,11 +204,10 @@ class admin extends CI_Controller{
                             'date_submission' => $row['date_submission'],
                             'submittor' => $row['submittor']
                         );
-                        $this->admin_model->import_publication($publication_array);
+                        $this->admin_model->import_publication($array2);
                     }
-
                     if(isset($row['author_id'])){
-                        $author_array = array(
+                        $array3 = array(
                             'author_id' => $row['author_id'],
                             'user_id' => $row['user_id'],
                             'publication_id' => $row['publication_id'],
@@ -219,11 +217,10 @@ class admin extends CI_Controller{
                             'is_employee' => $row['is_employee'],
                             'author_type' => $row['author_type']
                         );
-                        $this->admin_model->import_auth($author_array);
+                        $this->admin_model->import_author($array3);
                     }
-
                     if(isset($row['completed_id'])){
-                        $com_array = array(
+                        $array4 = array(
                             'completed_id' => $row['completed_id'],
                             'publication_id' => $row['publication_id'],
                             'title' => $row['title'],
@@ -233,11 +230,10 @@ class admin extends CI_Controller{
                             'url' => $row['url'],
                             'completed_type' => $row['completed_type']
                         );
-                        $this->admin_model->import_completed($com_array);
+                        $this->admin_model->import_completed($array4);
                     }
-
                     if(isset($row['presented_id'])){
-                        $pre_array = array(
+                        $array5 = array(
                             'presented_id' => $row['presented_id'],
                             'publication_id' => $row['publication_id'],
                             'title_presented' => $row['title_presented'],
@@ -246,11 +242,10 @@ class admin extends CI_Controller{
                             'place_conference' => $row['place_conference'],
                             'presented_type' => $row['presented_type']
                         );
-                        $this->admin_model->import_presented($pre_array);
+                        $this->admin_model->import_presented($array5);
                     }
-
                     if(isset($row['published_type'])){
-                        $pub_array = array(
+                        $array6 = array(
                             'published_id' => $row['published_id'],
                             'publication_id' => $row['publication_id'],
                             'year_published' => $row['year_published'],
@@ -270,11 +265,10 @@ class admin extends CI_Controller{
                             'title_conference' => $row['title_conference'],
                             'url' => $row['url']
                         );
-                        $this->admin_model->import_published($pub_array);
+                        $this->admin_model->import_published($array6);
                     }
-
                     if(isset($row['cw_id'])){
-                        $cre_array = array(
+                        $array7 = array(
                             'cw_id' => $row['cw_id'],
                             'publication_id' => $row['publication_id'],
                             'type_cw' => $row['type_cw'],
@@ -288,42 +282,39 @@ class admin extends CI_Controller{
                             'scope_audience' => $row['scope_audience'],
                             'award_received' => $row['award_received']
                         );
-                        $this->admin_model->import_creative($cre_array);
+                        $this->admin_model->import_creative($array7);
                     }
-
                     if(isset($row['editor_id'])){
-                        $editor_array = array(
+                        $array8 = array(
                             'editor_id' => $row['editor_id'],
                             'published_id' => $row['published_id'],
                             'editor_fn' => $row['editor_fn'],
                             'editor_mi' => $row['editor_mi'],
                             'editor_ln' => $row['editor_ln']
                         );
-                        $this->admin_model->import_editor($editor_array);
+                        $this->admin_model->import_editor($array8);
                     }
-
                     if(isset($row['comment_id'])){
-                        $comment_array = array(
+                        $array9 = array(
                             'comment_id' => $row['comment_id'],
                             'publication_id' => $row['publication_id'],
                             'user_id' => $row['user_id'],
                             'message' => $row['message'],
                             'time_created' => $row['time_created']
                         );
-                        $this->admin_model->import_comment($comment_array);
+                        $this->admin_model->import_comment($array9);
                     }
-
                     if(isset($row['like_id'])){
-                        $like_array = array(
+                        $array10 = array(
                             'like_id' => $row['like_id'],
                             'user_id' => $row['user_id'],
                             'publication_id' => $row['publication_id']
                         );
-                        $this->admin_model->import_like($like_array);
+                        $this->admin_model->import_like($array10);
                     }
-
+                    
                     if(isset($row['notification_id'])){
-                        $notif_array = array(
+                        $array11 = array(
                             'notification_id' => $row['notification_id'],
                             'user_id' => $row['user_id'],
                             'publication_id' => $row['publication_id'],
@@ -331,8 +322,10 @@ class admin extends CI_Controller{
                             'time' => $row['time'],
                             'status' => $row['status']
                         );
-                        $this->admin_model->import_notif($notif_array);
+                        $this->admin_model->import_notif($array11);
                     }
+
+                    //$this->admin_model->import_json_all($array1, $array2, $array3, $array4, $array5, $array6, $array7, $array8, $array9, $array10, $array11);
 
                     
 

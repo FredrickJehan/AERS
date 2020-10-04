@@ -1,0 +1,47 @@
+[
+    {
+        "publication_id": "150",
+        "file": "Mapping_Datasets_to_object_storage_system_(3).pdf",
+        "abstract": "sdfasfds",
+        "num_views": "0",
+        "status": "Approved",
+        "feedback": null,
+        "publication_type": "Completed Research",
+        "date_submission": "Sep 30 2020",
+        "submittor": "1",
+	"user_id": "1"
+    }
+]
+[
+    {
+        "author_id": "150",
+        "user_id": "1",
+        "publication_id": "150",
+        "first_name": "kalii",
+        "middle_initial": "T.",
+        "last_name": "CHad",
+        "is_employee": "1",
+        "author_type": "Main"
+    },
+    {
+        "author_id": "151",
+        "user_id": "1",
+        "publication_id": "150",
+        "first_name": "tenz",
+        "middle_initial": "J.",
+        "last_name": "bran",
+        "is_employee": "1",
+        "author_type": "Extra"
+    }
+][
+    {
+        "completed_id": "5",
+        "publication_id": "150",
+        "title": "Mapping Datasets to Object System Storing",
+        "year": "2020",
+        "institution": "University of California",
+        "location": "Santa Cruz",
+        "url": "https://arxiv.org/abs/2007.01789",
+        "completed_type": "Thesis \/ Dissertation"
+    }
+]

@@ -601,6 +601,43 @@ class admin_model extends CI_Model{
     */
 
     //Begin of import insert
+    public function import_json_all($data1, $data2, $data3, $data4, $data5, $data6, $data7, $data8, $data9, $data10, $data11){
+        if($data1 != NULL){
+            $this->db->insert('user', $data1);
+        }
+        if($data1 != NULL){
+            $this->db->insert('publication', $data2);
+        }
+        if($data1 != NULL){
+            $this->db->insert('author', $data3);
+        }
+        if($data1 != NULL){
+            $this->db->insert('completed', $data4);
+        }
+        if($data1 != NULL){
+            $this->db->insert('presented', $data5);
+        }
+        if($data1 != NULL){
+            $this->db->insert('published', $data6);
+        }
+        if($data1 != NULL){
+            $this->db->insert('creative_works', $data7);
+        }
+        if($data1 != NULL){
+            $this->db->insert('editor', $data8);
+        }
+        if($data1 != NULL){
+            $this->db->insert('comment', $data9);
+        }
+        if($data1 != NULL){
+            $this->db->insert('like_tbl', $data10);
+        }
+        if($data1 != NULL){
+            $this->db->insert('notification', $data11);
+        }
+
+    }
+
     public function import_user($data){
         $this->db->insert('user', $data);
     }
