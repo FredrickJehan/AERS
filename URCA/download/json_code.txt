@@ -270,7 +270,7 @@
         "abstract": "Microalgae remain a promising, but underdeveloped source of lipids for sustainable biodiesel. Some of the obstacles to cost-effective commercial-scale production have been culture contamination and expensive harvest methods. A chrysophyte isolated from Berkeley Pit Lake and identified as Chromulina freiburgensis, was found to grow rapidly in a pH 2.5 liquid medium and to amass numerous intracellular lipid bodies. This research addresses the scarcity of published knowledge on the topic of chrysophyte species as potential lipid sources for biodiesel. It investigates how growth phase, culture conditions, and harvest timing influence the quantity and composition of lipids produced by this alga.",
         "num_views": "0",
         "status": "Rejected",
-        "feedback": "Wrong Title",
+        "feedback": "Wrong title",
         "publication_type": "Completed Research",
         "date_submission": "Oct 03 2020",
         "submittor": "4",
@@ -1307,6 +1307,22 @@
         "publication_id": "119",
         "type": "Review",
         "time": "2020-10-04 23:54:41",
+        "status": "Unread"
+    },
+    {
+        "notification_id": "47",
+        "user_id": "1",
+        "publication_id": "121",
+        "type": "Review",
+        "time": "2020-10-05 04:18:25",
+        "status": "Unread"
+    },
+    {
+        "notification_id": "48",
+        "user_id": "1",
+        "publication_id": "121",
+        "type": "Review",
+        "time": "2020-10-05 04:19:04",
         "status": "Unread"
     }
 ]
