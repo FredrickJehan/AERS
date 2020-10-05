@@ -38,7 +38,7 @@ class Research extends CI_Controller{
         $data["creative"] = $this->admin_model->fetch_pdf_creative();
         $data["authors"] = $this->admin_model->fetch_all_authors_admin();
         $data["editors"] = $this->admin_model->fetch_all_editors_admin();
-        $this->load->view('template/header');
+        $this->load->view('template/header_archive');
         $this->load->view('research/pub', $data);
         $this->load->view('template/footer');
     }

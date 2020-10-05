@@ -100,22 +100,41 @@ class admin extends CI_Controller{
         $data["creative"] = $this->admin_model->fetch_pdf_creative();
         $data["authors"] = $this->admin_model->fetch_all_authors_admin();
         $data["editors"] = $this->admin_model->fetch_all_editors_admin();
-        $this->load->view('template/header');
+        $this->load->view('template/header_archive');
         $this->load->view('urc/export', $data);
         $this->load->view('template/footer');
     }
 
     public function export_json(){
         $data["test"] = $this->admin_model->fetch_pdf_completed();
-        $result1 = $this->admin_model->fetch_json_completed();
-        $result2 = $this->admin_model->fetch_json_presented();
-        $result3 = $this->admin_model->fetch_json_published();
-        $result4 = $this->admin_model->fetch_json_creative();
+        //$result1 = $this->admin_model->fetch_json_completed();
+        //$result2 = $this->admin_model->fetch_json_presented();
+        //$result3 = $this->admin_model->fetch_json_published();
+        //$result4 = $this->admin_model->fetch_json_creative();
+        $result1 = $this->admin_model->fetch_json_user();
+        $result2 = $this->admin_model->fetch_json_publication();
+        $result3 = $this->admin_model->fetch_json_auth();
+        $result4 = $this->admin_model->fetch_json_completed();
+        $result5 = $this->admin_model->fetch_json_presented();
+        $result6 = $this->admin_model->fetch_json_published();
+        $result7 = $this->admin_model->fetch_json_creative();
+        $result8 = $this->admin_model->fetch_json_editor();
+        $result9 = $this->admin_model->fetch_json_comment();
+        $result10 = $this->admin_model->fetch_json_like();
+        $result11 = $this->admin_model->fetch_json_notif();
         $filepath = "./download/json_code.txt"; 
+
         if(write_file($filepath, $result1)){
             write_file($filepath, $result2, 'a');
             write_file($filepath, $result3, 'a');
             write_file($filepath, $result4, 'a');
+            write_file($filepath, $result5, 'a');
+            write_file($filepath, $result6, 'a');
+            write_file($filepath, $result7, 'a');
+            write_file($filepath, $result8, 'a');
+            write_file($filepath, $result9, 'a');
+            write_file($filepath, $result10, 'a');
+            write_file($filepath, $result11, 'a');
             if(file_exists($filepath)){
                 $filedata = file_get_contents($filepath);
                 force_download($filepath, $filedata);
@@ -144,7 +163,7 @@ class admin extends CI_Controller{
             $data["published"] = $this->admin_model->fetch_pdf_published();
             $data["creative"] = $this->admin_model->fetch_pdf_creative();
             $data["authors"] = $this->admin_model->fetch_all_authors_admin();
-            $this->load->view('template/header');
+            $this->load->view('template/header_archive');
             $this->load->view('urc/export', $error, $data);
         }else{
             //gets uploaded file
@@ -157,6 +176,159 @@ class admin extends CI_Controller{
             //must check if file is not null otherwise error will occur
             if($decode != NULL){
                 foreach($decode as $row){
+
+                    if(isset($row['username'])){
+                        $array1 = array(
+                            'user_id' => $row['user_id'],
+                            'username' => $row['username'],
+                            'first_name' => $row['first_name'],
+                            'middle_name' => $row['middle_name'],
+                            'last_name' => $row['last_name'],
+                            'email' => $row['email'],
+                            'password' => $row['password'],
+                            'department' => $row['department'],
+                            'contact_number' => $row['contact_number'],
+                            'user_type' => $row['user_type']
+                        );
+                        $this->admin_model->import_user($array1);
+                    }
+                    if(isset($row['publication_type'])){
+                        $array2 = array(
+                            'publication_id' => $row['publication_id'],
+                            'file' => $row['file'],
+                            'abstract' => $row['abstract'],
+                            'num_views' => $row['num_views'],
+                            'status' => $row['status'],
+                            'feedback' => $row['feedback'],
+                            'publication_type' => $row['publication_type'],
+                            'date_submission' => $row['date_submission'],
+                            'submittor' => $row['submittor']
+                        );
+                        $this->admin_model->import_publication($array2);
+                    }
+                    if(isset($row['author_id'])){
+                        $array3 = array(
+                            'author_id' => $row['author_id'],
+                            'user_id' => $row['user_id'],
+                            'publication_id' => $row['publication_id'],
+                            'first_name' => $row['first_name'],
+                            'middle_initial' => $row['middle_initial'],
+                            'last_name' => $row['last_name'],
+                            'is_employee' => $row['is_employee'],
+                            'author_type' => $row['author_type']
+                        );
+                        $this->admin_model->import_author($array3);
+                    }
+                    if(isset($row['completed_id'])){
+                        $array4 = array(
+                            'completed_id' => $row['completed_id'],
+                            'publication_id' => $row['publication_id'],
+                            'title' => $row['title'],
+                            'year' => $row['year'],
+                            'institution' => $row['institution'],
+                            'location' => $row['location'],
+                            'url' => $row['url'],
+                            'completed_type' => $row['completed_type']
+                        );
+                        $this->admin_model->import_completed($array4);
+                    }
+                    if(isset($row['presented_id'])){
+                        $array5 = array(
+                            'presented_id' => $row['presented_id'],
+                            'publication_id' => $row['publication_id'],
+                            'title_presented' => $row['title_presented'],
+                            'date_presentation' => $row['date_presentation'],
+                            'title_conference' => $row['title_conference'],
+                            'place_conference' => $row['place_conference'],
+                            'presented_type' => $row['presented_type']
+                        );
+                        $this->admin_model->import_presented($array5);
+                    }
+                    if(isset($row['published_type'])){
+                        $array6 = array(
+                            'published_id' => $row['published_id'],
+                            'publication_id' => $row['publication_id'],
+                            'year_published' => $row['year_published'],
+                            'title_article' => $row['title_article'],
+                            'title_journal' => $row['title_journal'],
+                            'vol_num' => $row['vol_num'],
+                            'issue_num' => $row['issue_num'],
+                            'page_num' => $row['page_num'],
+                            'indexing_database' => $row['indexing_database'],
+                            'peer_review' => $row['peer_review'],
+                            'title_book' => $row['title_book'],
+                            'title_chapter' => $row['title_chapter'],
+                            'publisher' => $row['publisher'],
+                            'place_of_publication' => $row['place_of_publication'],
+                            'place_of_conference' => $row['place_of_conference'],
+                            'published_type' => $row['published_type'],
+                            'title_conference' => $row['title_conference'],
+                            'url' => $row['url']
+                        );
+                        $this->admin_model->import_published($array6);
+                    }
+                    if(isset($row['cw_id'])){
+                        $array7 = array(
+                            'cw_id' => $row['cw_id'],
+                            'publication_id' => $row['publication_id'],
+                            'type_cw' => $row['type_cw'],
+                            'month_year' => $row['month_year'],
+                            'title_work' => $row['tile_work'],
+                            'role' => $row['role'],
+                            'place_perfomance' => $row['place_perfomance'],
+                            'publisher' => $row['publisher'],
+                            'artwork_exhibited' => $row['artwork_exhibited'],
+                            'duration_performance' => $row['commission_agency'],
+                            'scope_audience' => $row['scope_audience'],
+                            'award_received' => $row['award_received']
+                        );
+                        $this->admin_model->import_creative($array7);
+                    }
+                    if(isset($row['editor_id'])){
+                        $array8 = array(
+                            'editor_id' => $row['editor_id'],
+                            'published_id' => $row['published_id'],
+                            'editor_fn' => $row['editor_fn'],
+                            'editor_mi' => $row['editor_mi'],
+                            'editor_ln' => $row['editor_ln']
+                        );
+                        $this->admin_model->import_editor($array8);
+                    }
+                    if(isset($row['comment_id'])){
+                        $array9 = array(
+                            'comment_id' => $row['comment_id'],
+                            'publication_id' => $row['publication_id'],
+                            'user_id' => $row['user_id'],
+                            'message' => $row['message'],
+                            'time_created' => $row['time_created']
+                        );
+                        $this->admin_model->import_comment($array9);
+                    }
+                    if(isset($row['like_id'])){
+                        $array10 = array(
+                            'like_id' => $row['like_id'],
+                            'user_id' => $row['user_id'],
+                            'publication_id' => $row['publication_id']
+                        );
+                        $this->admin_model->import_like($array10);
+                    }
+                    
+                    if(isset($row['notification_id'])){
+                        $array11 = array(
+                            'notification_id' => $row['notification_id'],
+                            'user_id' => $row['user_id'],
+                            'publication_id' => $row['publication_id'],
+                            'type' => $row['type'],
+                            'time' => $row['time'],
+                            'status' => $row['status']
+                        );
+                        $this->admin_model->import_notif($array11);
+                    }
+
+                    //$this->admin_model->import_json_all($array1, $array2, $array3, $array4, $array5, $array6, $array7, $array8, $array9, $array10, $array11);
+
+                    
+
                     /*
                     if(isset($row['notification_id'])){
                         $notif_array = array(
@@ -169,7 +341,7 @@ class admin extends CI_Controller{
                         );
                     }else{
                         $notif_array = array();
-                    }*/
+                    }
 
                     if(isset($row['comment_id'])){
                         $comment_array = array(
@@ -303,6 +475,7 @@ class admin extends CI_Controller{
                         );
                         $this->admin_model->import_creative($user_array, $author_array, $publication_array, $array);
                     }
+                    */
                 }
                 $data['response'] = 'File has been imported.';
             }else{
@@ -314,7 +487,7 @@ class admin extends CI_Controller{
             $data["creative"] = $this->admin_model->fetch_pdf_creative();
             $data["authors"] = $this->admin_model->fetch_all_authors_admin();
             $data["editors"] = $this->admin_model->fetch_all_editors_admin();
-            $this->load->view('template/header');
+            $this->load->view('template/header_archive');
             $this->load->view('urc/export', $data);
         }
     }

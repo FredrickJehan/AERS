@@ -1,0 +1,14 @@
+[
+    {
+        "publication_id": "150",
+        "file": "Mapping_Datasets_to_object_storage_system_(3).pdf",
+        "abstract": "sdfasfds",
+        "num_views": "0",
+        "status": "Approved",
+        "feedback": null,
+        "publication_type": "Completed Research",
+        "date_submission": "Sep 30 2020",
+        "submittor": "1",
+	"user_id": "1"
+    }
+]

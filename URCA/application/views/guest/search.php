@@ -52,7 +52,15 @@
       <div class="row mb-3">
             <div class="col"></div>
             <label>Sort by:</label>
-            <div class="col-3">
+            <div class="col-2">
+              <select class="form-control form-control-sm" name="faculty">
+                <option value="">Faculty Name</option>
+                <?php foreach($user as $row){ ?>
+                  <option value="<?php echo $row->username; ?>"><?php echo $row->first_name; ?> <?php echo $row->last_name; ?></option>
+                <?php } ?>
+              </select>
+            </div>
+            <div class="col-2">
               <select class="form-control form-control-sm" name="department">
                 <option value="">Department</option>
                 <!--
@@ -74,7 +82,7 @@
                 <option value="">Year</option>
               </select>
             </div>
-            <div class="col-3">
+            <div class="col-2">
               <select class="form-control form-control-sm" name="type_research">
                 <option value="">Type of Research</option>
                 <!--

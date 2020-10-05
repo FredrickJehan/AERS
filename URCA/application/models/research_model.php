@@ -480,7 +480,7 @@ class research_model extends CI_Model{
     }
     */
     //Fetch Search Filter Data
-    public function search_filter_completed($department, $year, $type_of_research){
+    public function search_filter_completed($department, $year, $type_of_research, $faculty){
         $this->db->select('*');
         $this->db->from('completed');
         $this->db->join('publication', 'publication.publication_id = completed.publication_id', 'inner');
@@ -495,20 +495,23 @@ class research_model extends CI_Model{
         );
         */
         $this->db->where('status', 'Approved');
+        if($faculty != NULL){
+            $this->db->where('user.username', $faculty);
+        }
         if($department != NULL){
-        $this->db->where('department', $department);
+            $this->db->where('department', $department);
         }
         if($year != NULL){
-        $this->db->where('year', $year);
+            $this->db->where('year', $year);
         }
         if($type_of_research != NULL){
-        $this->db->where('publication_type', $type_of_research);
+            $this->db->where('publication_type', $type_of_research);
         }
         $this->db->group_by("title");
         return $this->db->get()->result();
     }
 
-    public function search_filter_presented($department, $year, $type_of_research){
+    public function search_filter_presented($department, $year, $type_of_research, $faculty){
         $this->db->select('*');
         $this->db->from('presented');
         $this->db->join('publication', 'publication.publication_id = presented.publication_id', 'inner');
@@ -521,20 +524,23 @@ class research_model extends CI_Model{
             'publication_type' => $type_of_research
         );
         $this->db->where('status', 'Approved');
+        if($faculty != NULL){
+            $this->db->where('user.username', $faculty);
+        }
         if($department != NULL){
-        $this->db->where('department', $department);
+            $this->db->where('department', $department);
         }
         if($year != NULL){
-        $this->db->like('date_presentation', $year);
+            $this->db->like('date_presentation', $year);
         }
         if($type_of_research != NULL){
-        $this->db->where('publication_type', $type_of_research);
+            $this->db->where('publication_type', $type_of_research);
         }
         $this->db->group_by("title_presented");
         return $this->db->get()->result();
     }
 
-    public function search_filter_published($department, $year, $type_of_research){
+    public function search_filter_published($department, $year, $type_of_research, $faculty){
         $this->db->select('*');
         $this->db->from('published');
         $this->db->join('publication', 'publication.publication_id = published.publication_id', 'inner');
@@ -547,20 +553,23 @@ class research_model extends CI_Model{
             'publication_type' => $type_of_research
         );
         $this->db->where('status', 'Approved');
+        if($faculty != NULL){
+            $this->db->where('user.username', $faculty);
+        }
         if($department != NULL){
-        $this->db->where('department', $department);
+            $this->db->where('department', $department);
         }
         if($year != NULL){
-        $this->db->where('year_published', $year);
+            $this->db->where('year_published', $year);
         }
         if($type_of_research != NULL){
-        $this->db->where('publication_type', $type_of_research);
+            $this->db->where('publication_type', $type_of_research);
         }
         $this->db->group_by("publication.abstract");
         return $this->db->get()->result();
     }
 
-    public function search_filter_creative($department, $year, $type_of_research){
+    public function search_filter_creative($department, $year, $type_of_research, $faculty){
         $this->db->select('*');
         $this->db->from('creative_works');
         $this->db->join('publication', 'publication.publication_id = creative_works.publication_id', 'inner');
@@ -573,14 +582,17 @@ class research_model extends CI_Model{
             'publication_type' => $type_of_research
         );
         $this->db->where('status', 'Approved');
+        if($faculty != NULL){
+            $this->db->where('user.username', $faculty);
+        }
         if($department != NULL){
-        $this->db->where('department', $department);
+            $this->db->where('department', $department);
         }
         if($year != NULL){
-        $this->db->where('month_year', $year);
+            $this->db->where('month_year', $year);
         }
         if($type_of_research != NULL){
-        $this->db->where('publication_type', $type_of_research);
+            $this->db->where('publication_type', $type_of_research);
         }
         $this->db->group_by("title_work");
         return $this->db->get()->result();
@@ -893,5 +905,6 @@ class research_model extends CI_Model{
         $this->db->from('user');
         return $this->db->get()->result();
     }
+
 }
 ?>
