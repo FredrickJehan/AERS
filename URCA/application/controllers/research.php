@@ -526,7 +526,6 @@ class Research extends CI_Controller{
         $data = array(
             'file' => $file,
             'date_submission' => $now,
-            'submittor' => $this->get_current_user(),
             'abstract' => $this->input->post('abstract'),
             'num_views' => '0',
             'status' => 'Unreviewed'

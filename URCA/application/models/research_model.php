@@ -207,9 +207,13 @@ class research_model extends CI_Model{
     //NOTIF
     public function update_notif(){
         // $this->db->where('status', 'Unread');
-        // $this->db->join('publication', 'publication.publication_id = notication.publication_id', 'inner');
+        // $this->db->from('notification');
+        // $this->db->join('publication', 'publication.publication_id = notification.publication_id', 'inner');
         $this->db->set('notification.status', 'Read');
         $this->db->where('notification.type !=', 'Report');
+        // $this->db->update('notification');
+        // $this->db->where('submittor', $submittor);
+        // $this->db->where('notification.publication_id = publication.notification_id');
         $this->db->update('notification');
     }
 
