@@ -1,0 +1,22 @@
+[
+    {
+        "author_id": "150",
+        "user_id": "1",
+        "publication_id": "150",
+        "first_name": "Xiaowei",
+        "middle_initial": "S.",
+        "last_name": "Chu",
+        "is_employee": "1",
+        "author_type": "Main"
+    },
+    {
+        "author_id": "151",
+        "user_id": "1",
+        "publication_id": "150",
+        "first_name": "Jeff",
+        "middle_initial": "J.",
+        "last_name": "LeFevre",
+        "is_employee": "1",
+        "author_type": "Extra"
+    }
+]

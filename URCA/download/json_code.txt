@@ -58,6 +58,18 @@
         "department": "Department of Computer Science",
         "contact_number": "1231423525",
         "user_type": "Researcher"
+    },
+    {
+        "user_id": "8",
+        "username": "Sean",
+        "first_name": "Sean",
+        "middle_name": "A.",
+        "last_name": "Dean",
+        "email": "sdean@gmail.com",
+        "password": "sean",
+        "department": "Select",
+        "contact_number": "0",
+        "user_type": "Admin"
     }
 ][
     {
@@ -77,10 +89,10 @@
         "file": "ISA-_An_Intelligent_Shopping_assistant.pdf",
         "abstract": "Despite the growth of e-commerce, brick-andmortar stores are still the preferred destinations for many people. In this paper, we\r\npresent ISA, a mobile-based intelligent shopping assistant that is designed to improve shopping experience in physical stores. ISA assists users by leveraging advanced techniques in\r\ncomputer vision, speech processing, and natural language processing. An in-store user only needs to take a picture or scan the barcode of the product of interest, and then the user can talk to the assistant about the product. The assistant can also guide the user through the purchase process or recommend other similar products to the user.",
         "num_views": "0",
-        "status": "Approved",
+        "status": "Unreviewed",
         "feedback": null,
         "publication_type": "Presented Research",
-        "date_submission": "Oct 02 2020",
+        "date_submission": "Oct 05 2020",
         "submittor": "1",
         "user_id": "1"
     },
@@ -150,7 +162,7 @@
         "abstract": "Emotions are a central key for understanding human beings and of fundamental importance regarding their impact in human and animal behaviors.\r\nThey have been for a long time a subject of study for various scholars including in particular philosophers and mystics [5, 7, 27, 29, 22, 31, 35, 36]. In\r\nmodern science, the emotional phenomenon has attracted for a few decades\r\nan increasing number of studies, notably in the fields of Psychology, Psychiatry, Neuroscience and Biochemistry [1, 3, 2, 9, 11, 17, 16, 19, 20, 23,\r\n24, 25, 26, 32, 34]. However, since our perception of emotions is not, so\r\nfar, directly detectable nor recordable by our measure instruments, Physics\r\nand Mathematics have not been so far used academically to provide a precise description of the phenomenon of feeling an emotion. Relying upon the\r\nworks of O. Elahi [10, 14] and on the hypothesis that the human soul and its\r\npsyche may manifest in ourselves (in both conscious and unconscious manner) in an analog way as electromagnetic waves [13], we propose here a few\r\nmathematical descriptions consistent with the human personal experience,\r\nof the feeling and cognition of emotions.",
         "num_views": "0",
         "status": "Approved",
-        "feedback": null,
+        "feedback": "wrong title",
         "publication_type": "Presented Research",
         "date_submission": "Oct 02 2020",
         "submittor": "4",
@@ -167,30 +179,6 @@
         "date_submission": "Oct 02 2020",
         "submittor": "3",
         "user_id": "3"
-    },
-    {
-        "publication_id": "111",
-        "file": "Programming_model_for_hybrid_workflows.pdf",
-        "abstract": "In the past years, e-Science applications have evolved from large-scale simulations executed in a single cluster to more complex workflows where these\r\nsimulations are combined with High-Performance Data Analytics (HPDA). To\r\nimplement these workflows, developers are currently using different patterns;\r\nmainly task-based and dataflow. However, since these patterns are usually managed by separated frameworks, the implementation of these applications requires\r\nto combine them; considerably increasing the effort for learning, deploying, and\r\nintegrating applications in the different frameworks.\r\nThis paper tries to reduce this effort by proposing a way to extend taskbased management systems to support continuous input and output data to\r\nenable the combination of task-based workflows and dataflows (Hybrid Workflows from now on) using a single programming model. Hence, developers can\r\nbuild complex Data Science workflows with different approaches depending on\r\nthe requirements. To illustrate the capabilities of Hybrid Workflows, we have\r\nbuilt a Distributed Stream Library and a fully functional prototype extending\r\nCOMPSs, a mature, general-purpose, task-based, parallel programming model.",
-        "num_views": "0",
-        "status": "Approved",
-        "feedback": null,
-        "publication_type": "Presented Research",
-        "date_submission": "Oct 02 2020",
-        "submittor": "5",
-        "user_id": "5"
-    },
-    {
-        "publication_id": "112",
-        "file": "Mapping_Datasets_to_object_storage_system_(3).pdf",
-        "abstract": "The library is definitely one of the most visited place in a university. The main objective of this research is to develop a mobile application to make students stay more connected with the library. Research has been carried out to know the main problems faced by students in the library. The system developed tackles the problems of finding free seats, as well as keeping bags safe by automating a locker. Besides, the application also provide students a way of filtering their seats to\r\nknow if seats are available on the same table. Additionally, if seats are not available when filtering, students can get a notification as soon as the seats are available.",
-        "num_views": "0",
-        "status": "Approved",
-        "feedback": null,
-        "publication_type": "Presented Research",
-        "date_submission": "Oct 02 2020",
-        "submittor": "5",
-        "user_id": "5"
     },
     {
         "publication_id": "113",
@@ -233,10 +221,10 @@
         "file": "Programming_model_for_hybrid_workflows1.pdf",
         "abstract": "With the increased attention on thermal imagery for Covid-19 screening, the public sector may believe there are new opportunities to exploit thermal as a modality for computer vision and AI. Thermal physiology research has been ongoing since the late nineties. This research lies at the intersections of medicine, psychology, machine learning, optics, and affective computing. We\r\nwill review the known factors of thermal vs. RGB imaging for facial emotion recognition. But we also propose that thermal imagery may provide a semi-anonymous modality for computer vision, over RGB, which has been plagued by misuse in facial recognition. However, the transition to adopting thermal imagery as a source for any human-centered AI task is not easy and relies on the availability of high fidelity data sources across multiple demographics and thorough validation. This paper takes the reader on a short review of machine learning in thermal FER and the limitations of collecting and developing thermal FER data for AI training. Our motivation is to provide an introductory overview into recent advances for thermal FER and stimulate conversation about the limitations in current datasets.",
         "num_views": "0",
-        "status": "Approved",
+        "status": "Unreviewed",
         "feedback": null,
         "publication_type": "Presented Research",
-        "date_submission": "Oct 02 2020",
+        "date_submission": "Oct 05 2020",
         "submittor": "5",
         "user_id": "5"
     },
@@ -275,6 +263,18 @@
         "date_submission": "Oct 03 2020",
         "submittor": "4",
         "user_id": "4"
+    },
+    {
+        "publication_id": "155",
+        "file": "ADNU_EMPLOYEE_RESEARCH_SYSTEM_AERS__(3)3.pdf",
+        "abstract": "Content-based image retrieval (CBIR) is an essential part of\r\ncomputer vision research, especially in medical expert systems. Having a\r\ndiscriminative image descriptor with the least number of parameters for\r\ntuning is desirable in CBIR systems. In this paper, we introduce a new\r\nsimple descriptor based on the histogram of local Radon projections.\r\nWe also propose a very fast convolution-based local Radon estimator\r\nto overcome the slow process of Radon projections. We performed our\r\nexperiments using pathology images (KimiaPath24) and lung CT patches\r\nand test our proposed solution for medical image processing. We achieved\r\nsuperior results compared with other histogram-based descriptors such\r\nas LBP and HoG as well as some pre-trained CNNs.",
+        "num_views": "0",
+        "status": "Unreviewed",
+        "feedback": null,
+        "publication_type": "Completed Research",
+        "date_submission": "Oct 05 2020",
+        "submittor": "5",
+        "user_id": "5"
     }
 ][
     {
@@ -313,7 +313,7 @@
         "publication_id": "4",
         "first_name": "Tuan ",
         "middle_initial": "M.",
-        "last_name": "Lai   ",
+        "last_name": "Chu",
         "is_employee": "1",
         "author_type": "Main"
     },
@@ -323,7 +323,7 @@
         "publication_id": "4",
         "first_name": "Trung",
         "middle_initial": "P.",
-        "last_name": "Bui   ",
+        "last_name": "Bui     ",
         "is_employee": "1",
         "author_type": "Extra"
     },
@@ -333,7 +333,7 @@
         "publication_id": "4",
         "first_name": "Nedim",
         "middle_initial": "A.",
-        "last_name": "Lipka   ",
+        "last_name": "Lipka     ",
         "is_employee": "1",
         "author_type": "Extra"
     },
@@ -488,46 +488,6 @@
         "author_type": "Extra"
     },
     {
-        "author_id": "24",
-        "user_id": "5",
-        "publication_id": "111",
-        "first_name": "Christian",
-        "middle_initial": "R.",
-        "last_name": "Cortes  ",
-        "is_employee": "1",
-        "author_type": "Main"
-    },
-    {
-        "author_id": "25",
-        "user_id": "5",
-        "publication_id": "112",
-        "first_name": "Bibi Raissah",
-        "middle_initial": "R.",
-        "last_name": "Oderuth  ",
-        "is_employee": "1",
-        "author_type": "Main"
-    },
-    {
-        "author_id": "26",
-        "user_id": "5",
-        "publication_id": "112",
-        "first_name": "Koseheta",
-        "middle_initial": "K.",
-        "last_name": "Ramkissoon  ",
-        "is_employee": "1",
-        "author_type": "Extra"
-    },
-    {
-        "author_id": "27",
-        "user_id": "5",
-        "publication_id": "112",
-        "first_name": "Roopesh",
-        "middle_initial": "L.",
-        "last_name": "Sungkur  ",
-        "is_employee": "1",
-        "author_type": "Extra"
-    },
-    {
         "author_id": "28",
         "user_id": "5",
         "publication_id": "113",
@@ -633,7 +593,7 @@
         "publication_id": "116",
         "first_name": "Catherine",
         "middle_initial": "A.",
-        "last_name": "Ordun   ",
+        "last_name": "Cortez    ",
         "is_employee": "1",
         "author_type": "Main"
     },
@@ -643,7 +603,7 @@
         "publication_id": "116",
         "first_name": "Edward",
         "middle_initial": "Z.",
-        "last_name": "Raff   ",
+        "last_name": "Raff    ",
         "is_employee": "1",
         "author_type": "Extra"
     },
@@ -653,7 +613,7 @@
         "publication_id": "116",
         "first_name": "Sanjay",
         "middle_initial": "Y.",
-        "last_name": "Purusotham   ",
+        "last_name": "Purusotham    ",
         "is_employee": "1",
         "author_type": "Extra"
     },
@@ -686,6 +646,16 @@
         "last_name": "Mohler ",
         "is_employee": "1",
         "author_type": "Main"
+    },
+    {
+        "author_id": "156",
+        "user_id": "5",
+        "publication_id": "155",
+        "first_name": "Morteza",
+        "middle_initial": "C.",
+        "last_name": "Angeles",
+        "is_employee": "1",
+        "author_type": "Main"
     }
 ][
     {
@@ -716,6 +686,16 @@
         "institution": "Montana Tech",
         "location": "Butte, Montana, USA",
         "url": "https:\/\/digitalcommons.mtech.edu\/grad_rsch\/205\/",
+        "completed_type": "Thesis \/ Dissertation"
+    },
+    {
+        "completed_id": "23",
+        "publication_id": "155",
+        "title": "A new Local Radon Descriptor for Content-Based Image Search",
+        "year": "2020",
+        "institution": "Kimia Lab, University of Waterloo",
+        "location": "Ontario, Canada",
+        "url": "https:\/\/arxiv.org\/abs\/2007.15523",
         "completed_type": "Thesis \/ Dissertation"
     }
 ][
@@ -762,24 +742,6 @@
         "date_presentation": "2020-09",
         "title_conference": "Beyond the brain: towards a mathematical modeling of emotions",
         "place_conference": "University of Normandie",
-        "presented_type": "Conference Paper"
-    },
-    {
-        "presented_id": "6",
-        "publication_id": "111",
-        "title_presented": "A Program Model for Hybrid Workflows",
-        "date_presentation": "2020-07",
-        "title_conference": "Annual MSC Conference",
-        "place_conference": "Barcelona Supercomputing Center (BSC)",
-        "presented_type": "Conference Paper"
-    },
-    {
-        "presented_id": "7",
-        "publication_id": "112",
-        "title_presented": "Smart Campus Library System",
-        "date_presentation": "2019-09",
-        "title_conference": "Conference on Next Generation Computing Applications",
-        "place_conference": "University of Mauritius Reduit, Mauritius",
         "presented_type": "Conference Paper"
     },
     {
@@ -923,20 +885,6 @@
     }
 ][
     {
-        "comment_id": "1",
-        "publication_id": "3",
-        "user_id": "1",
-        "message": "Great work!!",
-        "time_created": "2020-09-30 13:36:11"
-    },
-    {
-        "comment_id": "2",
-        "publication_id": "3",
-        "user_id": "1",
-        "message": "Nice work",
-        "time_created": "2020-09-30 19:25:28"
-    },
-    {
         "comment_id": "4",
         "publication_id": "4",
         "user_id": "2",
@@ -963,6 +911,11 @@
         "like_id": "4",
         "user_id": "5",
         "publication_id": "110"
+    },
+    {
+        "like_id": "5",
+        "user_id": "5",
+        "publication_id": "104"
     }
 ][
     {
@@ -1006,14 +959,6 @@
         "status": "Read"
     },
     {
-        "notification_id": "6",
-        "user_id": "1",
-        "publication_id": "111",
-        "type": "Review",
-        "time": "2020-09-30 13:37:34",
-        "status": "Read"
-    },
-    {
         "notification_id": "7",
         "user_id": "1",
         "publication_id": "110",
@@ -1043,14 +988,6 @@
         "publication_id": "108",
         "type": "Review",
         "time": "2020-09-30 13:37:46",
-        "status": "Read"
-    },
-    {
-        "notification_id": "11",
-        "user_id": "1",
-        "publication_id": "112",
-        "type": "Review",
-        "time": "2020-09-30 13:37:49",
         "status": "Read"
     },
     {
@@ -1118,14 +1055,6 @@
         "status": "Read"
     },
     {
-        "notification_id": "21",
-        "user_id": "1",
-        "publication_id": "111",
-        "type": "Review",
-        "time": "2020-09-30 19:31:03",
-        "status": "Read"
-    },
-    {
         "notification_id": "23",
         "user_id": "1",
         "publication_id": "109",
@@ -1139,14 +1068,6 @@
         "publication_id": "117",
         "type": "Review",
         "time": "2020-10-02 12:22:05",
-        "status": "Read"
-    },
-    {
-        "notification_id": "25",
-        "user_id": "1",
-        "publication_id": "111",
-        "type": "Review",
-        "time": "2020-10-02 12:22:08",
         "status": "Read"
     },
     {
@@ -1187,14 +1108,6 @@
         "publication_id": "108",
         "type": "Review",
         "time": "2020-10-02 12:22:27",
-        "status": "Read"
-    },
-    {
-        "notification_id": "31",
-        "user_id": "1",
-        "publication_id": "112",
-        "type": "Review",
-        "time": "2020-10-02 12:22:30",
         "status": "Read"
     },
     {
@@ -1262,14 +1175,6 @@
         "status": "Read"
     },
     {
-        "notification_id": "40",
-        "user_id": "1",
-        "publication_id": "111",
-        "type": "Comment",
-        "time": "2020-10-03 12:52:06",
-        "status": "Read"
-    },
-    {
         "notification_id": "41",
         "user_id": "2",
         "publication_id": "4",
@@ -1307,7 +1212,7 @@
         "publication_id": "119",
         "type": "Review",
         "time": "2020-10-04 23:54:41",
-        "status": "Unread"
+        "status": "Read"
     },
     {
         "notification_id": "47",
@@ -1315,7 +1220,7 @@
         "publication_id": "121",
         "type": "Review",
         "time": "2020-10-05 04:18:25",
-        "status": "Unread"
+        "status": "Read"
     },
     {
         "notification_id": "48",
@@ -1323,6 +1228,118 @@
         "publication_id": "121",
         "type": "Review",
         "time": "2020-10-05 04:19:04",
+        "status": "Read"
+    },
+    {
+        "notification_id": "49",
+        "user_id": "4",
+        "publication_id": "3",
+        "type": "Report",
+        "time": "2020-10-05 05:30:09",
+        "status": "Read"
+    },
+    {
+        "notification_id": "50",
+        "user_id": "5",
+        "publication_id": "3",
+        "type": "Comment",
+        "time": "2020-10-05 09:29:12",
+        "status": "Read"
+    },
+    {
+        "notification_id": "51",
+        "user_id": "5",
+        "publication_id": "3",
+        "type": "Report",
+        "time": "2020-10-05 09:29:22",
+        "status": "Read"
+    },
+    {
+        "notification_id": "52",
+        "user_id": "1",
+        "publication_id": "3",
+        "type": "Comment",
+        "time": "2020-10-05 09:42:08",
+        "status": "Read"
+    },
+    {
+        "notification_id": "56",
+        "user_id": "1",
+        "publication_id": "109",
+        "type": "Review",
+        "time": "2020-10-05 10:01:55",
+        "status": "Read"
+    },
+    {
+        "notification_id": "58",
+        "user_id": "1",
+        "publication_id": "109",
+        "type": "Review",
+        "time": "2020-10-05 10:03:24",
+        "status": "Read"
+    },
+    {
+        "notification_id": "59",
+        "user_id": "1",
+        "publication_id": "109",
+        "type": "Review",
+        "time": "2020-10-05 10:03:39",
+        "status": "Read"
+    },
+    {
+        "notification_id": "67",
+        "user_id": "5",
+        "publication_id": "3",
+        "type": "Comment",
+        "time": "2020-10-05 11:55:24",
+        "status": "Read"
+    },
+    {
+        "notification_id": "68",
+        "user_id": "5",
+        "publication_id": "3",
+        "type": "Report",
+        "time": "2020-10-05 11:55:30",
+        "status": "Read"
+    },
+    {
+        "notification_id": "71",
+        "user_id": "1",
+        "publication_id": "109",
+        "type": "Review",
+        "time": "2020-10-05 12:26:07",
         "status": "Unread"
+    },
+    {
+        "notification_id": "72",
+        "user_id": "1",
+        "publication_id": "121",
+        "type": "Review",
+        "time": "2020-10-05 12:26:11",
+        "status": "Unread"
+    },
+    {
+        "notification_id": "73",
+        "user_id": "1",
+        "publication_id": "121",
+        "type": "Review",
+        "time": "2020-10-05 12:26:49",
+        "status": "Unread"
+    },
+    {
+        "notification_id": "74",
+        "user_id": "5",
+        "publication_id": "104",
+        "type": "Comment",
+        "time": "2020-10-05 12:33:11",
+        "status": "Unread"
+    },
+    {
+        "notification_id": "75",
+        "user_id": "5",
+        "publication_id": "104",
+        "type": "Report",
+        "time": "2020-10-05 12:33:18",
+        "status": "Read"
     }
 ]

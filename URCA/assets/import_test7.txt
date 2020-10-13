@@ -1,0 +1,46 @@
+[
+{
+        "publication_id": "140",
+        "file": "Mapping_Datasets_to_object_storage_system_(3).pdf",
+        "abstract": "Access Libraries such as ROOt[1] and HDF5[2] allow users to interact with data sets using high level abstractions, like coordinate sytems and associated clicing operations Unfortunately, the implementation of access libraries are based on outdated asssumptions about storage systems interfaces and are generally unable to fully benefit from modern fast storage devices. For example, access libraries often implement buffering and data layout that assume that large, single-threaded sequential access patterns are causing less oeveral latency than small parallel random access.",
+        "num_views": "0",
+        "status": "Approved",
+        "feedback": null,
+        "publication_type": "Completed Research",
+        "date_submission": "Sep 30 2020",
+        "submittor": "1",
+        "user_id": "1"
+}
+][
+    {
+        "author_id": "155",
+        "user_id": "1",
+        "publication_id": "140",
+        "first_name": "kalii",
+        "middle_initial": "T.",
+        "last_name": "CHad",
+        "is_employee": "1",
+        "author_type": "Main"
+    },
+    {
+        "author_id": "156",
+        "user_id": "1",
+        "publication_id": "140",
+        "first_name": "tenz",
+        "middle_initial": "J.",
+        "last_name": "bran",
+        "is_employee": "1",
+        "author_type": "Extra"
+    }
+][
+    {
+        "completed_id": "50",
+        "publication_id": "140",
+        "title": "Mapping Datasets to Object Storage System",
+        "year": "2020",
+        "institution": "University of California",
+        "location": "Santa Cruz",
+        "url": "https://arxiv.org/abs/2007.01789",
+        "completed_type": "Thesis \/ Dissertation"
+    }
+]

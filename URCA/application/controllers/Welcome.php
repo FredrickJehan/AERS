@@ -85,7 +85,7 @@ class Welcome extends CI_Controller{
 
         if ($this->form_validation->run() == FALSE) {
             $this->registration_form();
-        }else {
+        }else{
             $data = array(
                 'username' => $this->input->post('username'),
                 'first_name' => $this->input->post('first_name'),
