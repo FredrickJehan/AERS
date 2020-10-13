@@ -22,12 +22,6 @@ class Main extends CI_Controller{
         $this->load->view('guest/index', $data);
     }
 
-    public function about(){
-        $this->load->view('template/header2');
-        $this->load->view('guest/about');
-        $this->load->view('template/footer2');
-    }
-
     public function search(){
         $keyword = $this->input->post('keyword', true);
         //$data['dept'] = $this->research_model->getDepartment();
@@ -72,27 +66,6 @@ class Main extends CI_Controller{
 		$this->load->view('guest/search', $data);
         $this->load->view('template/footer2');
     }
-    
-    public function submit(){
-    
-        $this->load->view('template/header2');
-		$this->load->view('main/submit');
-		$this->load->view('template/footer2');
-    }
-
-    public function publication(){
-    
-        $this->load->view('template/header');
-		$this->load->view('main/Publication');
-		$this->load->view('template/footer');
-    }
-
-    public function research(){
-    
-        $this->load->view('template/header');
-		$this->load->view('main/research');
-		$this->load->view('template/footer');
-    }
 
     public function get_publication_type($publication_id){
         return $publication_type = $this->research_model->select_publication_type($publication_id);
@@ -115,34 +88,6 @@ class Main extends CI_Controller{
         $this->load->view('template/header2');
         $this->load->view("guest/detailed", $data);
         $this->load->view('template/footer2');
-    }
-
-    public function manage(){
-
-		$this->load->view('template/header');
-		$this->load->view('main/manage');
-		$this->load->view('template/footer');
-    }
-    
-    public function edit(){
-    
-        $this->load->view('template/header');
-		$this->load->view('main/edit');
-		$this->load->view('template/footer');
-    }
-
-    public function unsubmit(){
-    
-        $this->load->view('template/header');
-		$this->load->view('main/unsubmit');
-		$this->load->view('template/footer');
-    }
-
-    public function guestform(){
-    
-        $this->load->view('template/header');
-		$this->load->view('main/guestform');
-		$this->load->view('template/footer');
     }
     
     //localhost/URCA(baseurl)/Controller(main)/Method(index)/Parameter(optional)
