@@ -412,13 +412,7 @@ class admin extends CI_Controller{
                 $string[$i] = $name->first_name . " " . $name->middle_initial . " " . $name->last_name;
                 $i++;           
             }
-            /*
-            foreach($data as $key){
-                $string =''.$key->first_name.' '.$key->middle_initial.' '.$key->last_name.'';
-            }
-            */
-            //$query = $this->admin_model->fetch_author_excel($row->publication_id);
-            //$result = settype($query, 'string');
+
             $object->getActiveSheet()->setCellValueByColumnAndRow(0, $com_row, implode(', ', $string));
             $object->getActiveSheet()->setCellValueByColumnAndRow(1, $com_row, $row->title);
             $object->getActiveSheet()->setCellValueByColumnAndRow(2, $com_row, $row->year);
