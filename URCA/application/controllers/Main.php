@@ -67,6 +67,29 @@ class Main extends CI_Controller{
         $this->load->view('template/footer2');
     }
 
+    public function recent_search_filter(){
+        $department = $this->input->post('department');
+        $year = $this->input->post('year');
+        $type_of_research = $this->input->post('type_research');
+        $faculty = $this->input->post('faculty');
+        //$author = $this->input->post('auth');
+        //$data['dept'] = $this->research_model->getDepartment();
+        //$data['type'] = $this->research_model->getType_Research();
+        $data['recent_com'] = $this->research_model->recent_search_filter_completed($department, $year, $type_of_research, $faculty);
+        $data['recent_pre'] = $this->research_model->recent_search_filter_presented($department, $year, $type_of_research, $faculty);
+        $data['recent_pub'] = $this->research_model->recent_search_filter_published($department, $year, $type_of_research, $faculty);
+        $data['recent_cre'] = $this->research_model->recent_search_filter_creative($department, $year, $type_of_research, $faculty);
+        $data['authors'] = $this->research_model->fetch_all_authors();
+        $data['editors'] = $this->research_model->fetch_all_editors();
+        $data['dept'] = $this->research_model->getDept();
+        $data['pub'] = $this->research_model->getPub_type();
+        $data['user'] = $this->research_model->getUser();
+
+        $this->load->view('template/header2');
+		$this->load->view('guest/index', $data);
+        $this->load->view('template/footer2');
+    }
+
     public function get_publication_type($publication_id){
         return $publication_type = $this->research_model->select_publication_type($publication_id);
     }

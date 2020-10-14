@@ -50,19 +50,21 @@
   <section class="text-left bg-light">
     <div class="container">
       <h2 class="mb-4 mt-3">Recent Publications</h2>
-      <form action="<?php echo base_url('main/search_filter'); ?>" method="post">
-      <!--
+      <form action="<?php echo base_url('main/recent_search_filter'); ?>" method="post">
       <div class="row mb-3">
             <div class="col"></div>
             <label>Search by:</label>
-            <div class="col-3">
+            <div class="col-2">
+              <select class="form-control form-control-sm" name="faculty">
+                <option value="">Faculty Name</option>
+                <?php foreach($user as $row){ ?>
+                  <option value="<?php echo $row->username; ?>"><?php echo $row->first_name; ?> <?php echo $row->last_name; ?></option>
+                <?php } ?>
+              </select>
+            </div>
+            <div class="col-2">
               <select class="form-control form-control-sm" name="department">
                 <option value="">Department</option>
-                //not working start
-                <php foreach($dept as $row){ ?>
-                  <option value="<php echo $row->department ?>"><php echo $row->department ?></option>
-                <php } ?>
-                // end
                 <option value="Department of Media Studies">Department of Media Studies</option>
                 <option value="Department of Social Studies">Department of Social Studies</option>
                 <option value="Department of Literature and Language Studies">Department of Literature and Language Studies</option>
@@ -77,14 +79,9 @@
                 <option value="">Year</option>
               </select>
             </div>
-            <div class="col-3">
+            <div class="col-2">
               <select class="form-control form-control-sm" name="type_research">
                 <option value="">Type of Research</option>
-                 //not working start
-                <php foreach($type as $row){ ?>
-                  <option value="<php echo $row->publication_type ?>"><php echo $row->publication_type ?></option>
-                <php } ?>
-                 // end
                 <option value="Completed Research">Completed Research</option>
                 <option value="Presented Research">Presented Research</option>
                 <option value="Published Research">Published Research</option>
@@ -93,7 +90,7 @@
             </div>
             <button type="submit" class="btn btn-info btn-sm">Filter</button>
             <div class="col"></div>
-      </div>-->
+      </div>
       </form>
         <?php foreach($recent_com as $row){ ?>
       <div class="row">
@@ -131,7 +128,7 @@
         </div>
       </div>
       <br />
-      <?php }?>
+      <?php } ?>
 
       <?php foreach($recent_pre as $row){ ?>
       <div class="row">
@@ -164,7 +161,7 @@
         </div>
       </div>
       <br />
-      <?php }?>
+      <?php } ?>
 
       <?php foreach($recent_pub as $row){ ?>
       <div class="row">
