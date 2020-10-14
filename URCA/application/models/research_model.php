@@ -89,7 +89,7 @@ class research_model extends CI_Model{
     }
 
     public function get_like_published($user_id) {
-        $this->db->select('like_tbl.publication_id, COUNT(like_tbl.user_id) as total, published.title_article');
+        $this->db->select('like_tbl.publication_id, COUNT(like_tbl.user_id) as total, published.title_article, published.title_book, published.title_chapter, published.title_journal, published.published_type');
         $this->db->from('like_tbl');
         $this->db->join('publication', 'publication.publication_id = like_tbl.publication_id', 'inner');
         $this->db->join('published', 'published.publication_id = publication.publication_id', 'inner');

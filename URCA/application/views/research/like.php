@@ -62,7 +62,15 @@
         <div class="col-sm-12">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title"><?php echo $row->title_article?></h5>
+              <?php if($row->published_type == 'Journal Article'){ ?>
+                <h5 class="card-title"><?php echo $row->title_article ?></h5>
+              <?php }elseif($row->published_type == 'Book / Textbook'){ ?>
+                <h5 class="card-title"><?php echo $row->title_book ?></h5>
+              <?php }elseif($row->published_type == 'Book Chapter'){ ?>
+                <h5 class="card-title"><?php echo $row->title_chapter ?></h5>
+              <?php }else{ ?>
+                <h5 class="card-title"><?php echo $row->title_article?></h5>
+              <?php } ?>
               <p class="card-text">
               <?php foreach($author_data as $name){ 
                     if($row->publication_id == $name->publication_id){ 
