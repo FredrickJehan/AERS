@@ -102,45 +102,6 @@ class admin_model extends CI_Model{
         $this->db->update('publication', $data);
     }
 
-    //fetchs completed research similar to query
-    public function search_completed($query){
-        //$this->db->select('c.title, c.year, p.file, a.first_name, a.middle_initial, a.last_name  ');
-        //$this->db->from('completed AS c, publication AS p, author AS a');
-        $this->db->select('*');
-        $this->db->from('completed AS c');
-        $this->db->join('publication AS p', 'p.publication_id = c.publication_id');
-        $this->db->join('author AS a', 'a.publication_id = p.publication_id');
-        if($query != ''){
-            $this->db->like('c.title', $query);
-            $this->db->or_like('c.year', $query);
-            $this->db->or_like('c.institution', $query);
-            $this->db->or_like('c.location', $query);
-            $this->db->or_like('a.first_name', $query);
-            $this->db->or_like('a.middle_initial', $query);
-            $this->db->or_like('a.last_name', $query);
-        }
-        $this->db->order_by('p.publication_id', 'DESC');
-        return $this->db->get();
-    }
-
-    //fetchs presented research similar to query
-    public function search_presented($query){     
-        $this->db->from('presented AS pr');
-        $this->db->join('publication AS p', 'p.publication_id = pr.publication_id');
-        $this->db->join('author AS a', 'a.publication_id = p.publication_id'); 
-        if($query != ''){
-            $this->db->like('pr.title_presented', $query);
-            $this->db->or_like('pr.date_presentation', $query);
-            $this->db->or_like('pr.title_conference', $query);
-            $this->db->or_like('pr.place_conference', $query);
-            $this->db->or_like('a.first_name', $query);
-            $this->db->or_like('a.middle_initial', $query);
-            $this->db->or_like('a.last_name', $query);
-        }
-        $this->db->order_by('p.publication_id', 'DESC');
-        return $this->db->get();
-    }
-
     public function fetch_data(){
         $this->db->order_by("completed_id", "ASC");
         $query = $this->db->get("completed");

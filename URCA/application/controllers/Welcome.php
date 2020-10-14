@@ -39,22 +39,6 @@ class Welcome extends CI_Controller{
         $data['most_likes_creative'] = $this->research_model->most_likes_creative();
 
         $data['authors'] = $this->research_model->fetch_all_authors();
-
-        // foreach($data['most_likes'] as $row){
-        //     // if($row->publication_id)
-        //     $pub_type = $this->get_publication_type($publication_id); 
-        // }
-        
-        // FETCH TITLE BASED ON PUBLICATION TYPE
-        // if($pub_type == 'Completed Research'){
-        //     $data['most_likes'] = $this->research_model->most_likes_completed();
-        // }elseif($pub_type == 'Presented Research'){
-        //     $data['most_likes'] = $this->research_model->most_likes_presented();
-        // }elseif($pub_type == 'Published Research'){
-        //     $data['most_likes'] = $this->research_model->most_likes_published();
-        // }else{
-        //     $data['most_likes'] = $this->research_model->most_likes_creative();
-        // }
         
         $this->load->view('template/header');
 		$this->load->view('main/dashboard', $data);

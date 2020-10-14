@@ -110,14 +110,6 @@ class research_model extends CI_Model{
         return $this->db->get();
     }
 
-    // public function get_like_research($user_id) {
-    //     $this->db->select('publication_id, COUNT(user_id) as total');
-    //     $this->db->from('like_tbl');
-    //     $this->db->group_by('publication_id');
-    //     $this->db->where('user_id', $user_id);
-    //     // $this->db->order_by('user_id', 'DESC');
-    //     return $this->db->get();
-    // }
 
     public function total_pub_count(){
         $this->db->select('*');
@@ -431,24 +423,6 @@ class research_model extends CI_Model{
         return $this->db->get()->result();
     }
     //END OF RECENT VIEW
-
-    //display last 5 publications
-    /*
-    public function recent_pub(){
-        $this->db->select('*');
-        $this->db->from('completed');
-        $this->db->join('publication', 'publication.publication_id = completed.publication_id', 'inner');
-        $this->db->join('author', 'author.publication_id = publication.publication_id', 'inner');
-        $array = array(
-            'author_type' => 'Main',
-            'status' => 'Approved'
-        );
-        $this->db->where($array);
-        $this->db->order_by('publication.publication_id', 'DESC');
-        $this->db->limit(2);
-        //order by publication_id desc and limit 5
-        return $this->db->get()->result();
-    }*/
 
     public function get_notifications($user_id){
         $this->db->select('*');

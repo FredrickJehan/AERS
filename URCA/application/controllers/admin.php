@@ -52,7 +52,6 @@ class admin extends CI_Controller{
 
     public function review(){
         $publication_id = $this->uri->segment(3); //display approve_submissions url
-        // $this->form_validation->set_rules('feedback', 'feedback', 'required');
         if($this->input->post('feedback') == ''){
             //approve
             $data = array(
@@ -78,16 +77,6 @@ class admin extends CI_Controller{
             'status' => 'Unread'
         );
         $this->admin_model->send_notif($data2);
-        // //data for logs
-        // date_default_timezone_set('Asia/Karachi');
-        // $now = date('Y-m-d H:i:s');
-        // $data = array(
-        //     'admin_id' => $this->get_admin_id(),
-        //     'feedback' => $this->input->post('feedback'),
-        //     'time' => $now,
-        //     'publication_id' => $publication_id
-        // );
-        // $this->admin_model->logs_insert($data);
     
         redirect(base_url('research/edit/'.$publication_id));
     }
@@ -107,10 +96,6 @@ class admin extends CI_Controller{
 
     public function export_json(){
         $data["test"] = $this->admin_model->fetch_pdf_completed();
-        //$result1 = $this->admin_model->fetch_json_completed();
-        //$result2 = $this->admin_model->fetch_json_presented();
-        //$result3 = $this->admin_model->fetch_json_published();
-        //$result4 = $this->admin_model->fetch_json_creative();
         $result1 = $this->admin_model->fetch_json_user();
         $result2 = $this->admin_model->fetch_json_publication();
         $result3 = $this->admin_model->fetch_json_auth();
