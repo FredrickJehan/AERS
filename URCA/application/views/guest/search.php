@@ -51,7 +51,7 @@
       <form action="<?php echo base_url('main/search_filter'); ?>" method="post">
       <div class="row mb-3">
             <div class="col"></div>
-            <label>Sort by:</label>
+            <label>Search by:</label>
             <div class="col-2">
               <select class="form-control form-control-sm" name="faculty">
                 <option value="">Faculty Name</option>

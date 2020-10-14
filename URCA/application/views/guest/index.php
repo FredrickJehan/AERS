@@ -54,7 +54,7 @@
       <!--
       <div class="row mb-3">
             <div class="col"></div>
-            <label>Sort by:</label>
+            <label>Search by:</label>
             <div class="col-3">
               <select class="form-control form-control-sm" name="department">
                 <option value="">Department</option>
