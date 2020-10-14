@@ -185,9 +185,9 @@
           </div>
         </div>
       </div>
-     
+      <br/>
      <?php } } ?>
-      <hr/>
+     
      <?php if($most_likes_presented->result() > 0){ ?>
     <div class="d-sm-flex align-items-center justify-content-between mb-2">
       <h5 class="mb-0 text-gray-800">Most Liked Presented Research</h5>
@@ -225,10 +225,9 @@
           </div>
         </div>
       </div>
-     
+      <br/>
      <?php } } ?>
 
-     <hr/>
      <?php if($most_likes_published->result() > 0){ ?>
      <div class="d-sm-flex align-items-center justify-content-between mb-2">
       <h5 class="mb-0 text-gray-800">Most Liked Published Research</h5>
@@ -280,9 +279,8 @@
           </div>
         </div>
       </div>
-     
+      <br/>
      <?php } } ?>
-     <hr/>
 
      <?php if($most_likes_creative->result() > 0){ ?>
     <div class="d-sm-flex align-items-center justify-content-between mb-2">
@@ -321,8 +319,7 @@
           </div>
         </div>
       </div>
-     
+      <br/>
      <?php } } ?>
-     <br />
           <!-- Content Row -->
         <!-- /.container-fluid -->
