@@ -18,6 +18,9 @@ class Main extends CI_Controller{
         $data['recent_cre'] = $this->research_model->select_all_creative_recent();
         $data['authors'] = $this->research_model->fetch_all_authors();
         $data['editors'] = $this->research_model->fetch_all_editors();
+        $data['dept'] = $this->research_model->getDept();
+        $data['pub'] = $this->research_model->getPub_type();
+        $data['user'] = $this->research_model->getUser();
         $this->load->view('template/header2');
         $this->load->view('guest/index', $data);
     }

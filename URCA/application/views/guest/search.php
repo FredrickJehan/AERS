@@ -63,18 +63,9 @@
             <div class="col-2">
               <select class="form-control form-control-sm" name="department">
                 <option value="">Department</option>
-                <!--
-                <php foreach($dept as $row){ ?>
-                  <option value="<php echo $row->department; ?>"><php echo $row->department; ?></option>
-                <php } ?>
-                -->
-                <option value="Department of Media Studies">Department of Media Studies</option>
-                <option value="Department of Social Studies">Department of Social Studies</option>
-                <option value="Department of Computer Science">Department of Computer Science</option>
-                <option value="Department of Psychology">Department of Psychology</option>
-                <option value="Department of Literature and Language Studies">Department of Literature and Language Studies</option>
-                <option value="Department of Philosophy">Department of Philosophy</option>
-                <option value="Department of Digital Arts and Computer Animation">Department of Digital Arts and Computer Animation</option>
+                <?php foreach($dept as $row){ ?>
+                  <option value="<?php echo $row->department; ?>"><?php echo $row->department; ?></option>
+                <?php } ?>
               </select>
             </div>
             <div class="col-2">
@@ -85,11 +76,6 @@
             <div class="col-2">
               <select class="form-control form-control-sm" name="type_research">
                 <option value="">Type of Research</option>
-                <!--
-                <php foreach($pub as $row){ ?>
-                  <option value="<php echo $row->publication_type; ?>"><php echo $row->publication_type ?></option>
-                <php } ?>
-                -->
                 <option value="Completed Research">Completed Research</option>
                 <option value="Presented Research">Presented Research</option>
                 <option value="Published Research">Published Research</option>
@@ -111,7 +97,6 @@
       </div>
       </form>
       <?php foreach($search_com as $row){ ?>
-      <!--<php if($row->author_type == 'Main'){ ?> -->
       <div class="row">
           <div class="col-sm-12">
           <div class="card">
@@ -147,11 +132,9 @@
         </div>
       </div>
       <br />
-      <!--<php } ?> -->
       <?php } ?>
 
       <?php foreach($search_pre as $row){ ?>
-      <!--<php if($row->author_type == 'Main'){ ?>-->
       <div class="row">
           <div class="col-sm-12">
           <div class="card">
@@ -182,11 +165,9 @@
         </div>
       </div>
       <br />
-      <!--<php }?>-->
       <?php } ?>
 
       <?php foreach($search_pub as $row){ ?>
-      <!-- <php if($row->author_type == 'Main'){ ?> -->
       <div class="row">
           <div class="col-sm-12">
           <div class="card">
@@ -258,11 +239,9 @@
         </div>
       </div>
       <br />
-      <!-- <php } ?> -->
       <?php } ?>
 
       <?php foreach($search_cre as $row){ ?>
-      <!--<php if($row->author_type == 'Main'){ ?>-->
       <div class="row">
           <div class="col-sm-12">
           <div class="card">
@@ -281,7 +260,6 @@
         </div>
       </div>
       <br />
-      <!-- <php }?> -->
       <?php } ?>
 
     </div>

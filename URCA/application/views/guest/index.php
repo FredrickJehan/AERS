@@ -66,13 +66,9 @@
             <div class="col-2">
               <select class="form-control form-control-sm" name="department">
                 <option value="">Department</option>
-                <option value="Department of Media Studies">Department of Media Studies</option>
-                <option value="Department of Social Studies">Department of Social Studies</option>
-                <option value="Department of Literature and Language Studies">Department of Literature and Language Studies</option>
-                <option value="Department of Philosophy">Department of Philosophy</option>
-                <option value="Department of Psychology">Department of Psychology</option>
-                <option value="Department of Computer Science">Department of Computer Science</option>
-                <option value="Department of Digital Arts and Computer Animation">Department of Digital Arts and Computer Animation</option>
+                <?php foreach($dept as $row){ ?>
+                  <option value="<?php echo $row->department; ?>"><?php echo $row->department; ?></option>
+                <?php } ?>
               </select>
             </div>
             <div class="col-2">

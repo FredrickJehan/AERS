@@ -550,26 +550,6 @@ class research_model extends CI_Model{
         $this->db->insert('notification');
     }
 
-    /*
-    public function getDepartment(){
-        $this->db->distinct();
-        $this->db->group_by('department');
-        $user = $this->db->get('user');
-        if($user->num_rows() > 0){
-            return $user->result();
-        }
-    }
-
-    public function getType_Research(){
-        $this->db->distinct();
-        $this->db->group_by('publication_type');
-        $type = $this->db->get('publication');
-        if($type->num_rows() > 0){
-            return $type->result();
-        }
-    }
-    */
-
     //Fetch Search Filter Data
     public function search_filter_completed($department, $year, $type_of_research, $faculty){
         $this->db->select('*');
