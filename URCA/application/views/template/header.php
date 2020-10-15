@@ -55,16 +55,15 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
+      </br>
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('dashboard');?>">
-        <div class="sidebar-brand-icon rotate-n-15">
-          
-        </div>
-        <div class="sidebar-brand-text mx-3">AERS</div>
+        <img src="<?php echo base_url('guestdesign2/ateneo_logo.png');?>" alt="ADNU Logo" width="100" height="100">
       </a>
+        <!-- <div class="sidebar-brand-text mx-3">AERS</div> -->
 
       <!-- Divider -->
-      <hr class="sidebar-divider my-0">
-
+      <!-- <hr class="sidebar-divider my-0"> -->
+      </br>
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
         <a class="nav-link" href="<?php echo base_url();?>">
