@@ -27,8 +27,6 @@ class Main extends CI_Controller{
 
     public function search(){
         $keyword = $this->input->post('keyword', true);
-        //$data['dept'] = $this->research_model->getDepartment();
-        //$data['type'] = $this->research_model->getType_Research();
         $data['search_com'] = $this->research_model->search_completed($keyword);
         $data['search_pre'] = $this->research_model->search_presented($keyword);
         $data['search_pub'] = $this->research_model->search_published($keyword);
@@ -39,9 +37,6 @@ class Main extends CI_Controller{
         $data['pub'] = $this->research_model->getPub_type();
         $data['user'] = $this->research_model->getUser();
 
-        // if($keyword == NULL){
-        //     redirect('search/'.$this->input>post('keyword'));
-        // }
         $this->load->view('template/header2');
 		$this->load->view('guest/search', $data);
         $this->load->view('template/footer2');
@@ -52,9 +47,6 @@ class Main extends CI_Controller{
         $year = $this->input->post('year');
         $type_of_research = $this->input->post('type_research');
         $faculty = $this->input->post('faculty');
-        //$author = $this->input->post('auth');
-        //$data['dept'] = $this->research_model->getDepartment();
-        //$data['type'] = $this->research_model->getType_Research();
         $data['search_com'] = $this->research_model->search_filter_completed($department, $year, $type_of_research, $faculty);
         $data['search_pre'] = $this->research_model->search_filter_presented($department, $year, $type_of_research, $faculty);
         $data['search_pub'] = $this->research_model->search_filter_published($department, $year, $type_of_research, $faculty);
@@ -75,9 +67,6 @@ class Main extends CI_Controller{
         $year = $this->input->post('year');
         $type_of_research = $this->input->post('type_research');
         $faculty = $this->input->post('faculty');
-        //$author = $this->input->post('auth');
-        //$data['dept'] = $this->research_model->getDepartment();
-        //$data['type'] = $this->research_model->getType_Research();
         $data['recent_com'] = $this->research_model->recent_search_filter_completed($department, $year, $type_of_research, $faculty);
         $data['recent_pre'] = $this->research_model->recent_search_filter_presented($department, $year, $type_of_research, $faculty);
         $data['recent_pub'] = $this->research_model->recent_search_filter_published($department, $year, $type_of_research, $faculty);
