@@ -10,6 +10,7 @@ class Welcome extends CI_Controller{
         $this->load->library('form_validation');
         $this->load->library('session');
         $this->load->model('login_model');
+        $this->load->library('encryption');
     }
 
     public function get_current_user(){
@@ -76,7 +77,7 @@ class Welcome extends CI_Controller{
                 'middle_name' => $this->input->post('middle_name'),
                 'last_name' => $this->input->post('last_name'),
                 'email' => $this->input->post('email'),
-                'password' => $this->input->post('password'),
+                'password' => $this->encryption->encrypt($this->input->post('password')),
                 'department' => $this->input->post('department'),
                 'contact_number' => $this->input->post('contact_number'),
                 'user_type' => $this->input->post('user_type')
