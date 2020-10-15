@@ -503,6 +503,7 @@
                             <th>First Name*</th>
                             <th>Middle Initial(s)*</th>
                             <th>Last Name*</th>
+                            <th>Is Employee?*</th>
                         </tr>
                         <?php foreach($author_data as $name){ 
                             if($row->publication_id == $name->publication_id){ ?>
@@ -518,6 +519,19 @@
                             <td>
                                 <input type="text" name="last_name[]" value="<?php echo $name->last_name?> "class="form-control" required>
                                 <span class="text-danger"><?php echo form_error("last_name[]");?></span>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <select name="employee[]" class="form-control" id="employee">
+                                    <?php if($name->is_employee == '1'){?>
+                                    <option value="1" selected>Yes</option>
+                                    <option value="0">No</option>
+                                    <?php }else if($name->is_employee == '0'){?>
+                                    <option value="1">No</option>
+                                    <option value="0" selected>No</option>
+                                    <?php } ?>
+                                    </select>
+                                </div>
                             </td>
                         </tr>
                                 <input type="hidden" name="author_id[]" value="<?php echo $name->author_id?>">
@@ -656,6 +670,7 @@
                             <th>First Name*</th>
                             <th>Middle Initial(s)*</th>
                             <th>Last Name*</th>
+                            <th>Is Employee?*</th>
                         </tr>
                         <?php foreach($author_data as $name){ 
                             if($row->publication_id == $name->publication_id){ ?>
@@ -671,6 +686,19 @@
                             <td>
                                 <input type="text" name="last_name[]" value="<?php echo $name->last_name?> "class="form-control" required>
                                 <span class="text-danger"><?php echo form_error("last_name[]");?></span>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <select name="employee[]" class="form-control" id="employee">
+                                    <?php if($name->is_employee == '1'){?>
+                                    <option value="1" selected>Yes</option>
+                                    <option value="0">No</option>
+                                    <?php }else if($name->is_employee == '0'){?>
+                                    <option value="1">No</option>
+                                    <option value="0" selected>No</option>
+                                    <?php } ?>
+                                    </select>
+                                </div>
                             </td>
                         </tr>
                                 <input type="hidden" name="author_id[]" value="<?php echo $name->author_id?>">
@@ -752,6 +780,7 @@
                             <th>First Name*</th>
                             <th>Middle Initial(s)*</th>
                             <th>Last Name*</th>
+                            <th>Is Employee?*</th>
                         </tr>
                         <?php foreach($author_data as $name){ 
                             if($row->publication_id == $name->publication_id){ ?>
@@ -767,6 +796,19 @@
                             <td>
                                 <input type="text" name="last_name[]" value="<?php echo $name->last_name?> "class="form-control" required>
                                 <span class="text-danger"><?php echo form_error("last_name[]");?></span>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <select name="employee[]" class="form-control" id="employee">
+                                    <?php if($name->is_employee == '1'){?>
+                                    <option value="1" selected>Yes</option>
+                                    <option value="0">No</option>
+                                    <?php }else if($name->is_employee == '0'){?>
+                                    <option value="1">No</option>
+                                    <option value="0" selected>No</option>
+                                    <?php } ?>
+                                    </select>
+                                </div>
                             </td>
                         </tr>
                                 <input type="hidden" name="author_id[]" value="<?php echo $name->author_id?>">
@@ -888,6 +930,7 @@
                             <th>First Name*</th>
                             <th>Middle Initial(s)*</th>
                             <th>Last Name*</th>
+                            <th>Is Employee?*</th>
                         </tr>
                         <?php foreach($author_data as $name){ 
                             if($row->publication_id == $name->publication_id){ ?>
@@ -903,6 +946,19 @@
                             <td>
                                 <input type="text" name="last_name[]" value="<?php echo $name->last_name?> "class="form-control" required>
                                 <span class="text-danger"><?php echo form_error("last_name[]");?></span>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <select name="employee[]" class="form-control" id="employee">
+                                    <?php if($name->is_employee == '1'){?>
+                                    <option value="1" selected>Yes</option>
+                                    <option value="0">No</option>
+                                    <?php }else if($name->is_employee == '0'){?>
+                                    <option value="1">No</option>
+                                    <option value="0" selected>No</option>
+                                    <?php } ?>
+                                    </select>
+                                </div>
                             </td>
                         </tr>
                                 <input type="hidden" name="author_id[]" value="<?php echo $name->author_id?>">

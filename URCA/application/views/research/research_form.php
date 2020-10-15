@@ -455,7 +455,7 @@ exhibition / performance*
                     <th>First Name*</th>
                     <th>Middle Initial(s)*</th>
                     <th>Last Name*</th>
-                    <th></th>
+                    <th>Is Employee?</th>
                 </tr>
                 <tr>
                     <td>
@@ -469,6 +469,22 @@ exhibition / performance*
                     <td>
                         <input type="text" name="last_name[]" value="<?php echo $row->last_name?> "class="form-control" required>
                         <span class="text-danger"><?php echo form_error("last_name[]");?></span>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <select name="employee[]" class="form-control" id="employee">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                            </select>
+                        </div>
+                        <!-- <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="employee[]" id="inlineRadio1" value=1 checked>
+                            <label class="form-check-label" for="inlineRadio1">Yes</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="employee[]" id="inlineRadio2" value=0>
+                            <label class="form-check-label" for="inlineRadio2">No</label>
+                        </div> -->
                     </td>
                     <td>
                         <input class="btn btn-primary" type="button" id="add_journal" name="Add" value="Add">
@@ -564,7 +580,7 @@ exhibition / performance*
                     <th>First Name*</th>
                     <th>Middle Initial(s)*</th>
                     <th>Last Name*</th>
-                    <th></th>
+                    <th>Is Employee?</th>
                 </tr>
                 <tr>
                     <td>
@@ -578,6 +594,14 @@ exhibition / performance*
                     <td>
                         <input type="text" name="last_name[]" value="<?php echo $row->last_name?> "class="form-control" required>
                         <span class="text-danger"><?php echo form_error("last_name[]");?></span>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <select name="employee[]" class="form-control" id="employee">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                            </select>
+                        </div>
                     </td>
                     <td>
                         <input class="btn btn-primary" type="button" id="add_book" name="Add" value="Add">
@@ -641,7 +665,7 @@ exhibition / performance*
                     <th>First Name*</th>
                     <th>Middle Initial(s)*</th>
                     <th>Last Name*</th>
-                    <th></th>
+                    <th>Is Employee?</th>
                 </tr>
                 <tr>
                     <td>
@@ -655,6 +679,14 @@ exhibition / performance*
                     <td>
                         <input type="text" name="last_name[]" value="<?php echo $row->last_name?> "class="form-control" required>
                         <span class="text-danger"><?php echo form_error("last_name[]");?></span>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <select name="employee[]" class="form-control" id="employee">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                            </select>
+                        </div>
                     </td>
                     <td>
                         <input class="btn btn-primary" type="button" id="add_bookchap" name="Add" value="Add">
@@ -759,7 +791,7 @@ exhibition / performance*
                     <th>First Name*</th>
                     <th>Middle Initial(s)*</th>
                     <th>Last Name*</th>
-                    <th></th>
+                    <th>Is Employee?</th>
                 </tr>
                 <tr>
                     <td>
@@ -773,6 +805,14 @@ exhibition / performance*
                     <td>
                         <input type="text" name="last_name[]" value="<?php echo $row->last_name?> "class="form-control" required>
                         <span class="text-danger"><?php echo form_error("last_name[]");?></span>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <select name="employee[]" class="form-control" id="employee">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                            </select>
+                        </div>
                     </td>
                     <td>
                         <input class="btn btn-primary" type="button" id="add_conproc" name="Add" value="Add">
@@ -1001,11 +1041,11 @@ of contents, copy of peer-review, copy of published conference proceedings
         var technical ='<tr><td><input type="text" name="first_name[]" class="form-control" required></td><td><input type="text" name="middle_initial[]" class="form-control" required></td><td><input type="text" name="last_name[]" class="form-control" required></td><td><input class="btn btn-danger"type="button" id="remove_technical" name="remove" value="Remove"></td></tr>';
         var conference ='<tr><td><input type="text" name="first_name[]" class="form-control" required></td><td><input type="text" name="middle_initial[]" class="form-control" required></td><td><input type="text" name="last_name[]" class="form-control" required></td><td><input class="btn btn-danger"type="button" id="remove_conference" name="remove" value="Remove"></td></tr>';
         var poster ='<tr><td><input type="text" name="first_name[]" class="form-control" required></td><td><input type="text" name="middle_initial[]" class="form-control" required></td><td><input type="text" name="last_name[]" class="form-control" required></td><td><input class="btn btn-danger"type="button" id="remove_poster" name="remove" value="Remove"></td></tr>';
-        var journal = '<tr><td><input type="text" name="first_name[]" class="form-control" required></td><td><input type="text" name="middle_initial[]" class="form-control" required></td><td><input type="text" name="last_name[]" class="form-control" required></td><td><input class="btn btn-danger" type="button" id="remove_journal" name="Remove" value="Remove"></td></tr>';
-        var booktext = '<tr><td><input type="text" name="first_name[]" class="form-control" required></td><td><input type="text" name="middle_initial[]" class="form-control" required></td><td><input type="text" name="last_name[]" class="form-control" required></td><td><input class="btn btn-danger" type="button" id="remove_booktext" name="Remove" value="Remove"></td></tr>';
-        var bookchap = '<tr><td><input type="text" name="first_name[]" class="form-control" required></td><td><input type="text" name="middle_initial[]" class="form-control" required></td><td><input type="text" name="last_name[]" class="form-control" required></td><td><input class="btn btn-danger" type="button" id="remove_bookchap" name="Remove" value="Remove"></td></tr>';
+        var journal = '<tr><td><input type="text" name="first_name[]" class="form-control" required></td><td><input type="text" name="middle_initial[]" class="form-control" required></td><td><input type="text" name="last_name[]" class="form-control" required></td><td><div class="form-group"><select name="employee[]" class="form-control" id="employee"><option value="1">Yes</option><option value="0">No</option></select></div></td><td><input class="btn btn-danger" type="button" id="remove_journal" name="Remove" value="Remove"></td></tr>';
+        var booktext = '<tr><td><input type="text" name="first_name[]" class="form-control" required></td><td><input type="text" name="middle_initial[]" class="form-control" required></td><td><input type="text" name="last_name[]" class="form-control" required></td><td><div class="form-group"><select name="employee[]" class="form-control" id="employee"><option value="1">Yes</option><option value="0">No</option></select></div></td><td><input class="btn btn-danger" type="button" id="remove_booktext" name="Remove" value="Remove"></td></tr>';
+        var bookchap = '<tr><td><input type="text" name="first_name[]" class="form-control" required></td><td><input type="text" name="middle_initial[]" class="form-control" required></td><td><input type="text" name="last_name[]" class="form-control" required></td><td><div class="form-group"><select name="employee[]" class="form-control" id="employee"><option value="1">Yes</option><option value="0">No</option></select></div></td><td><input class="btn btn-danger" type="button" id="remove_bookchap" name="Remove" value="Remove"></td></tr>';
         var bookchap_ed = '<tr><td><input type="text" name="editor_fn[]"  class="form-control" required></td><td><input type="text" name="editor_mi[]"  class="form-control" required></td><td><input type="text" name="editor_ln[]" class="form-control" required></td><td><input class="btn btn-danger" type="button" id="remove_bookchap_ed" name="remove_ed" value="Remove"></td></tr>'
-        var conference_proceedings = '<tr><td><input type="text" name="first_name[]" class="form-control" required></td><td><input type="text" name="middle_initial[]" class="form-control" required></td><td><input type="text" name="last_name[]" class="form-control" required></td><td><input class="btn btn-danger" type="button" id="remove_conproc" name="Remove" value="Remove"></td></tr>';
+        var conference_proceedings = '<tr><td><input type="text" name="first_name[]" class="form-control" required></td><td><input type="text" name="middle_initial[]" class="form-control" required></td><td><input type="text" name="last_name[]" class="form-control" required></td><td><div class="form-group"><select name="employee[]" class="form-control" id="employee"><option value="1">Yes</option><option value="0">No</option></select></div></td><td><input class="btn btn-danger" type="button" id="remove_conproc" name="Remove" value="Remove"></td></tr>';
         var conference_proceedings_ed = '<tr><td><input type="text" name="editor_fn[]"  class="form-control" required></td><td><input type="text" name="editor_mi[]"  class="form-control" required></td><td><input type="text" name="editor_ln[]" class="form-control" required></td><td><input class="btn btn-danger" type="button" id="remove_conproc_ed" name="remove_ed" value="Remove"></td></tr>'
 
         var min = 1;

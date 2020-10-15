@@ -404,7 +404,8 @@ class Research extends CI_Controller{
         $first_name = $this->input->post('first_name');
         $middle_initial = $this->input->post('middle_initial');
         $last_name = $this->input->post('last_name');
-
+        $employee = $this->input->post('employee');
+        
         for($i = 0; $i < count($first_name); $i++){
             if($i == 0){
                 $data1 = array(
@@ -413,7 +414,7 @@ class Research extends CI_Controller{
                     'first_name' => $first_name[$i],
                     'middle_initial' => $middle_initial[$i],
                     'last_name' => $last_name[$i],
-                    'is_employee' => '1',
+                    'is_employee' => $employee[$i],
                     'author_type' => 'Main'
                 );
             }else{
@@ -423,7 +424,7 @@ class Research extends CI_Controller{
                     'first_name' => $first_name[$i],
                     'middle_initial' => $middle_initial[$i],
                     'last_name' => $last_name[$i],
-                    'is_employee' => '1',
+                    'is_employee' => $employee[$i],
                     'author_type' => 'Extra'
                 );
             }
@@ -437,6 +438,7 @@ class Research extends CI_Controller{
         $first_name = $this->input->post('first_name');
         $middle_initial = $this->input->post('middle_initial');
         $last_name = $this->input->post('last_name');
+        $employee = $this->input->post('employee');
         $author_id = $this->input->post('author_id');
 
             for($i = 0; $i < count($author_id); $i++){
@@ -447,7 +449,7 @@ class Research extends CI_Controller{
                         'first_name' => $first_name[$i],
                         'middle_initial' => $middle_initial[$i],
                         'last_name' => $last_name[$i],
-                        'is_employee' => '1',
+                        'is_employee' => $employee[$i],
                         'author_type' => 'Main'
                     );
                 }else{
@@ -457,7 +459,7 @@ class Research extends CI_Controller{
                         'first_name' => $first_name[$i],
                         'middle_initial' => $middle_initial[$i],
                         'last_name' => $last_name[$i],
-                        'is_employee' => '1',
+                        'is_employee' => $employee[$i],
                         'author_type' => 'Extra'
                     );
                 }

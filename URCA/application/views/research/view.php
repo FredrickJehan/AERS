@@ -29,7 +29,7 @@
                 <td width="200"><b>Author Name</b></td>
                 <td>
                     <?php foreach($author_data as $name) {
-                        if($name->author_type == 'Main') {
+                        if($name->is_employee == 1) {
                             if($row->publication_id == $name->publication_id){ ?>
                             <a href="<?php echo base_url('profile/'.$name->user_id)?>"><i class="fas fa-check"></i>
                                 <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
@@ -77,7 +77,7 @@
                 <td width="200"><b>Author Name</b></td>
                 <td>
                 <?php foreach($author_data as $name) {
-                        if($name->author_type == 'Main') {
+                        if($name->is_employee == 1 ) {
                             if($row->publication_id == $name->publication_id){ ?>
                             <a href="<?php echo base_url('profile/'.$name->user_id)?>"><i class="fas fa-check"></i>
                                 <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
@@ -127,7 +127,7 @@
             <td width="200"><b>Authors Name</b></td>
             <td>
             <?php foreach($author_data as $name) {
-                        if($name->author_type == 'Main') {
+                        if($name->is_employee == 1) {
                             if($row->publication_id == $name->publication_id){ ?>
                             <a href="<?php echo base_url('profile/'.$name->user_id)?>"><i class="fas fa-check"></i>
                                 <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
@@ -175,7 +175,7 @@
             <td width="200"><b>Authors Name</b></td>
             <td>
             <?php foreach($author_data as $name) {
-                        if($name->author_type == 'Main') {
+                        if($name->is_employee == 1) {
                             if($row->publication_id == $name->publication_id){ ?>
                             <a href="<?php echo base_url('profile/'.$name->user_id)?>"><i class="fas fa-check"></i>
                                 <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
@@ -225,7 +225,7 @@
             <td width="200"><b>Authors Name</b></td>
             <td>
             <?php foreach($author_data as $name) {
-                        if($name->author_type == 'Main') {
+                        if($name->is_employee == 1) {
                             if($row->publication_id == $name->publication_id){ ?>
                             <a href="<?php echo base_url('profile/'.$name->user_id)?>"><i class="fas fa-check"></i>
                                 <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
@@ -272,7 +272,7 @@
             <td width="200"><b>Authors Name</b></td>
             <td>
             <?php foreach($author_data as $name) {
-                        if($name->author_type == 'Main') {
+                        if($name->is_employee == 1) {
                             if($row->publication_id == $name->publication_id){ ?>
                             <a href="<?php echo base_url('profile/'.$name->user_id)?>"><i class="fas fa-check"></i>
                                 <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
@@ -319,7 +319,7 @@
             <td width="200"><b>Authors Name</b></td>
             <td>
             <?php foreach($author_data as $name) {
-                        if($name->author_type == 'Main') {
+                        if($name->is_employee == 1) {
                             if($row->publication_id == $name->publication_id){ ?>
                             <a href="<?php echo base_url('profile/'.$name->user_id)?>"><i class="fas fa-check"></i>
                                 <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
@@ -366,7 +366,7 @@
             <td width="200"><b>Authors Name</b></td>
             <td>
             <?php foreach($author_data as $name) {
-                        if($name->author_type == 'Main') {
+                        if($name->is_employee == 1) {
                             if($row->publication_id == $name->publication_id){ ?>
                             <a href="<?php echo base_url('profile/'.$name->user_id)?>"><i class="fas fa-check"></i>
                                 <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
@@ -417,7 +417,7 @@
             <td width="200"><b>Authors Name</b></td>
             <td>
             <?php foreach($author_data as $name) {
-                        if($name->author_type == 'Main') {
+                        if($name->is_employee == 1) {
                             if($row->publication_id == $name->publication_id){ ?>
                             <a href="<?php echo base_url('profile/'.$name->user_id)?>"><i class="fas fa-check"></i>
                                 <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
