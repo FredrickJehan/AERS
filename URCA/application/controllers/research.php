@@ -420,7 +420,7 @@ class Research extends CI_Controller{
             }else{
                 $data1 = array(
                     'publication_id' => $last_id,
-                    'user_id' => $this->get_current_user(),
+                    'user_id' => NULL,
                     'first_name' => $first_name[$i],
                     'middle_initial' => $middle_initial[$i],
                     'last_name' => $last_name[$i],
@@ -455,7 +455,7 @@ class Research extends CI_Controller{
                 }else{
                     $data1[] = array(
                         'author_id' => $author_id[$i],
-                        'user_id' => $this->get_current_user(),
+                        'user_id' => NULL,
                         'first_name' => $first_name[$i],
                         'middle_initial' => $middle_initial[$i],
                         'last_name' => $last_name[$i],
