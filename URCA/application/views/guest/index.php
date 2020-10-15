@@ -19,25 +19,26 @@
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
   <!-- Custom styles for this template -->
-  <link href="<?php echo base_url('guestdesign2/css/landing-page.min.css');?>" rel="stylesheet">
+  <link href="<?php echo base_url('guestdesign2/css/landing-page.css');?>" rel="stylesheet">
 
 </head>
 
 <body>
 
   <!-- Masthead -->
-  <header class="masthead text-white text-center">
-    <div class="overlay"></div>
+  <header class="masthead text-center">
+    <!-- <div class="overlay"></div> -->
     <div class="container">
       <div class="row">
-        <div class="col-md-10  col-lg-8 col-xl-7 mx-auto">
+        <div class="col-md-6 mx-auto">
+        <!-- <div class="col-md-10 col-md-8 mx-auto"> -->
          <form action="<?php echo base_url('main/search');?>" method="post">
             <div class="form-row">
-              <div class="col-12 col-md-9 mb-2 mb-md-0" style="text-align: right">
+              <div class="col-md-9 mb-2 mb-md-0" style="text-align: right">
                 <input type="input" name="keyword" id="keyword" class="form-control form-control-lg" placeholder="Search...">
               </div>
-              <div class="col-12 col-md-3">
-                <button type="submit" class="btn btn-block btn-lg btn-primary">Search &nbsp<i class="fas fa-search fa-sm"></i></button>
+              <div class="col-md-2">
+                <button type="submit" class="btn btn-block btn-lg btn-primary"><i class="fas fa-search fa-sm"></i></button>
               </div>
             </div>
           </form>
