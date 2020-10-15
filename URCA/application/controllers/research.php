@@ -46,7 +46,7 @@ class Research extends CI_Controller{
     public function comment_report() {
         $publication_id = $this->uri->segment(3);
         date_default_timezone_set('Asia/Karachi');
-        $now = date('Y-m-d H:i:s');
+        $now = date('M d Y');
         $data = array(
             'user_id' => $this->get_current_user(),
             'publication_id' => $publication_id,
@@ -248,7 +248,7 @@ class Research extends CI_Controller{
     public function comment(){
         $publication_id = $this->uri->segment(3);
         date_default_timezone_set('Asia/Karachi');
-        $now = date('Y-m-d H:i:s');
+        $now = date('M d Y');
         $this->form_validation->set_rules('comment', 'comment', 'required');
         
         if($this->form_validation->run() == FALSE){

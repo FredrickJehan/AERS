@@ -68,7 +68,7 @@ class admin extends CI_Controller{
         }
         $publication_id = $this->uri->segment(3); 
         date_default_timezone_set('Asia/Karachi');
-        $now = date('Y-m-d H:i:s');
+        $now = date('M d Y');
         $data2 = array(
             'user_id' => $this->get_current_user(),
             'publication_id' => $publication_id,
