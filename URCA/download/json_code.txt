@@ -70,6 +70,18 @@
         "department": "Select",
         "contact_number": "0",
         "user_type": "Admin"
+    },
+    {
+        "user_id": "9",
+        "username": "bianca",
+        "first_name": "Bianca",
+        "middle_name": "C.",
+        "last_name": "Audrey",
+        "email": "baudrey@gmail.com",
+        "password": "bianca",
+        "department": "Select",
+        "contact_number": "0",
+        "user_type": "Admin"
     }
 ][
     {
@@ -81,18 +93,6 @@
         "feedback": null,
         "publication_type": "Completed Research",
         "date_submission": "Oct 02 2020",
-        "submittor": "1",
-        "user_id": "1"
-    },
-    {
-        "publication_id": "4",
-        "file": "ISA-_An_Intelligent_Shopping_assistant.pdf",
-        "abstract": "Despite the growth of e-commerce, brick-andmortar stores are still the preferred destinations for many people. In this paper, we\r\npresent ISA, a mobile-based intelligent shopping assistant that is designed to improve shopping experience in physical stores. ISA assists users by leveraging advanced techniques in\r\ncomputer vision, speech processing, and natural language processing. An in-store user only needs to take a picture or scan the barcode of the product of interest, and then the user can talk to the assistant about the product. The assistant can also guide the user through the purchase process or recommend other similar products to the user.",
-        "num_views": "0",
-        "status": "Unreviewed",
-        "feedback": null,
-        "publication_type": "Presented Research",
-        "date_submission": "Oct 05 2020",
         "submittor": "1",
         "user_id": "1"
     },
@@ -221,8 +221,8 @@
         "file": "Programming_model_for_hybrid_workflows1.pdf",
         "abstract": "With the increased attention on thermal imagery for Covid-19 screening, the public sector may believe there are new opportunities to exploit thermal as a modality for computer vision and AI. Thermal physiology research has been ongoing since the late nineties. This research lies at the intersections of medicine, psychology, machine learning, optics, and affective computing. We\r\nwill review the known factors of thermal vs. RGB imaging for facial emotion recognition. But we also propose that thermal imagery may provide a semi-anonymous modality for computer vision, over RGB, which has been plagued by misuse in facial recognition. However, the transition to adopting thermal imagery as a source for any human-centered AI task is not easy and relies on the availability of high fidelity data sources across multiple demographics and thorough validation. This paper takes the reader on a short review of machine learning in thermal FER and the limitations of collecting and developing thermal FER data for AI training. Our motivation is to provide an introductory overview into recent advances for thermal FER and stimulate conversation about the limitations in current datasets.",
         "num_views": "0",
-        "status": "Unreviewed",
-        "feedback": null,
+        "status": "Rejected",
+        "feedback": "Wrong Title",
         "publication_type": "Presented Research",
         "date_submission": "Oct 05 2020",
         "submittor": "5",
@@ -265,11 +265,23 @@
         "user_id": "4"
     },
     {
+        "publication_id": "150",
+        "file": "Mapping_Datasets_to_object_storage_system_(3).pdf",
+        "abstract": "Access Libraries such as ROOt[1] and HDF5[2] allow users to interact with data sets using high level abstractions, like coordinate sytems and associated clicing operations Unfortunately, the implementation of access libraries are based on outdated asssumptions about storage systems interfaces and are generally unable to fully benefit from modern fast storage devices. For example, access libraries often implement buffering and data layout that assume that large, single-threaded sequential access patterns are causing less oeveral latency than small parallel random access.",
+        "num_views": "0",
+        "status": "Approved",
+        "feedback": null,
+        "publication_type": "Completed Research",
+        "date_submission": "Sep 30 2020",
+        "submittor": "1",
+        "user_id": "1"
+    },
+    {
         "publication_id": "155",
         "file": "ADNU_EMPLOYEE_RESEARCH_SYSTEM_AERS__(3)3.pdf",
         "abstract": "Content-based image retrieval (CBIR) is an essential part of\r\ncomputer vision research, especially in medical expert systems. Having a\r\ndiscriminative image descriptor with the least number of parameters for\r\ntuning is desirable in CBIR systems. In this paper, we introduce a new\r\nsimple descriptor based on the histogram of local Radon projections.\r\nWe also propose a very fast convolution-based local Radon estimator\r\nto overcome the slow process of Radon projections. We performed our\r\nexperiments using pathology images (KimiaPath24) and lung CT patches\r\nand test our proposed solution for medical image processing. We achieved\r\nsuperior results compared with other histogram-based descriptors such\r\nas LBP and HoG as well as some pre-trained CNNs.",
         "num_views": "0",
-        "status": "Unreviewed",
+        "status": "Approved",
         "feedback": null,
         "publication_type": "Completed Research",
         "date_submission": "Oct 05 2020",
@@ -304,36 +316,6 @@
         "first_name": "Hajime",
         "middle_initial": "K.",
         "last_name": "Nagahara  ",
-        "is_employee": "1",
-        "author_type": "Extra"
-    },
-    {
-        "author_id": "6",
-        "user_id": "1",
-        "publication_id": "4",
-        "first_name": "Tuan ",
-        "middle_initial": "M.",
-        "last_name": "Chu",
-        "is_employee": "1",
-        "author_type": "Main"
-    },
-    {
-        "author_id": "7",
-        "user_id": "1",
-        "publication_id": "4",
-        "first_name": "Trung",
-        "middle_initial": "P.",
-        "last_name": "Bui     ",
-        "is_employee": "1",
-        "author_type": "Extra"
-    },
-    {
-        "author_id": "8",
-        "user_id": "1",
-        "publication_id": "4",
-        "first_name": "Nedim",
-        "middle_initial": "A.",
-        "last_name": "Lipka     ",
         "is_employee": "1",
         "author_type": "Extra"
     },
@@ -648,6 +630,26 @@
         "author_type": "Main"
     },
     {
+        "author_id": "150",
+        "user_id": "1",
+        "publication_id": "150",
+        "first_name": "Xiaowei",
+        "middle_initial": "S.",
+        "last_name": "Chu",
+        "is_employee": "1",
+        "author_type": "Main"
+    },
+    {
+        "author_id": "151",
+        "user_id": "1",
+        "publication_id": "150",
+        "first_name": "Jeff",
+        "middle_initial": "J.",
+        "last_name": "LeFevre",
+        "is_employee": "1",
+        "author_type": "Extra"
+    },
+    {
         "author_id": "156",
         "user_id": "5",
         "publication_id": "155",
@@ -658,6 +660,16 @@
         "author_type": "Main"
     }
 ][
+    {
+        "completed_id": "1",
+        "publication_id": "150",
+        "title": "Mapping Datasets to Object Storage System",
+        "year": "2020",
+        "institution": "University of California",
+        "location": "Santa Cruz",
+        "url": "https:\/\/arxiv.org\/abs\/2007.01789",
+        "completed_type": "Thesis \/ Dissertation"
+    },
     {
         "completed_id": "3",
         "publication_id": "3",
@@ -699,15 +711,6 @@
         "completed_type": "Thesis \/ Dissertation"
     }
 ][
-    {
-        "presented_id": "1",
-        "publication_id": "4",
-        "title_presented": "ISA: An Intelligent Shopping Assistant",
-        "date_presentation": "2020-01",
-        "title_conference": "Urbana-Campaign",
-        "place_conference": "University of Illinois",
-        "presented_type": "Conference Paper"
-    },
     {
         "presented_id": "2",
         "publication_id": "104",
@@ -883,15 +886,7 @@
         "editor_mi": "J.",
         "editor_ln": "Gadot"
     }
-][
-    {
-        "comment_id": "4",
-        "publication_id": "4",
-        "user_id": "2",
-        "message": "Nice work!",
-        "time_created": "2020-10-03 12:52:32"
-    }
-][
+][][
     {
         "like_id": "1",
         "user_id": "1",
@@ -924,14 +919,6 @@
         "publication_id": "3",
         "type": "Review",
         "time": "2020-09-30 13:35:16",
-        "status": "Read"
-    },
-    {
-        "notification_id": "2",
-        "user_id": "1",
-        "publication_id": "4",
-        "type": "Review",
-        "time": "2020-09-30 13:35:31",
         "status": "Read"
     },
     {
@@ -1095,14 +1082,6 @@
         "status": "Read"
     },
     {
-        "notification_id": "29",
-        "user_id": "1",
-        "publication_id": "4",
-        "type": "Review",
-        "time": "2020-10-02 12:22:24",
-        "status": "Read"
-    },
-    {
         "notification_id": "30",
         "user_id": "1",
         "publication_id": "108",
@@ -1172,22 +1151,6 @@
         "publication_id": "105",
         "type": "Review",
         "time": "2020-10-03 12:18:29",
-        "status": "Read"
-    },
-    {
-        "notification_id": "41",
-        "user_id": "2",
-        "publication_id": "4",
-        "type": "Comment",
-        "time": "2020-10-03 12:52:32",
-        "status": "Read"
-    },
-    {
-        "notification_id": "42",
-        "user_id": "2",
-        "publication_id": "4",
-        "type": "Report",
-        "time": "2020-10-03 12:52:35",
         "status": "Read"
     },
     {
@@ -1308,7 +1271,7 @@
         "publication_id": "109",
         "type": "Review",
         "time": "2020-10-05 12:26:07",
-        "status": "Unread"
+        "status": "Read"
     },
     {
         "notification_id": "72",
@@ -1316,7 +1279,7 @@
         "publication_id": "121",
         "type": "Review",
         "time": "2020-10-05 12:26:11",
-        "status": "Unread"
+        "status": "Read"
     },
     {
         "notification_id": "73",
@@ -1324,7 +1287,7 @@
         "publication_id": "121",
         "type": "Review",
         "time": "2020-10-05 12:26:49",
-        "status": "Unread"
+        "status": "Read"
     },
     {
         "notification_id": "74",
@@ -1332,7 +1295,7 @@
         "publication_id": "104",
         "type": "Comment",
         "time": "2020-10-05 12:33:11",
-        "status": "Unread"
+        "status": "Read"
     },
     {
         "notification_id": "75",
@@ -1340,6 +1303,22 @@
         "publication_id": "104",
         "type": "Report",
         "time": "2020-10-05 12:33:18",
+        "status": "Read"
+    },
+    {
+        "notification_id": "76",
+        "user_id": "9",
+        "publication_id": "155",
+        "type": "Review",
+        "time": "2020-10-05 12:47:05",
+        "status": "Read"
+    },
+    {
+        "notification_id": "77",
+        "user_id": "9",
+        "publication_id": "116",
+        "type": "Review",
+        "time": "2020-10-05 12:47:24",
         "status": "Read"
     }
 ]

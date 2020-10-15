@@ -66,7 +66,6 @@ class Welcome extends CI_Controller{
         $this->form_validation->set_rules('password', 'password', 'required');
         $this->form_validation->set_rules('user_type', 'user_type', 'required');
         $this->form_validation->set_rules('department', 'department', 'required');
-        // $this->form_validation->set_rules('contact_number', 'contact_number', 'required|exact_length[11]');
 
         if ($this->form_validation->run() == FALSE) {
             $this->registration_form();
@@ -79,7 +78,6 @@ class Welcome extends CI_Controller{
                 'email' => $this->input->post('email'),
                 'password' => $this->encryption->encrypt($this->input->post('password')),
                 'department' => $this->input->post('department'),
-                'contact_number' => $this->input->post('contact_number'),
                 'user_type' => $this->input->post('user_type')
             );
             $this->login_model->user_insert($data);

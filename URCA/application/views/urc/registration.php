@@ -56,7 +56,7 @@
     </div>
     <div id="Researcher" stlye="display:none">
         <div class="form-row">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-12">
                 <label>Department</label>
                 <select class="form-control" name="department">
                     <option>Select</option>
@@ -83,11 +83,6 @@
                     <option value="Graduate School">Graduate School</option>
                 </select>
                 <span class="text-danger"><?php echo form_error("department");?></span>
-            </div>
-            <div class="form-group col-md-6">
-                <label>Contact Number</label>
-                <input id="contactid" type="number" name="contact_number" class="form-control">
-                <span class="text-danger"><?php echo form_error("contact_number");?></span>
             </div>
         </div>
     </div>
