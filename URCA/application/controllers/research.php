@@ -43,6 +43,21 @@ class Research extends CI_Controller{
         $this->load->view('template/footer');
     }
 
+    public function profile() {
+        $profile_id = $this->uri->segment(2);
+        $data["authors"] = $this->research_model->fetch_all_authors();
+        $data["editors"] = $this->research_model->fetch_all_editors();
+        $data['user_details'] = $this->research_model->user_details($profile_id);
+        $data["completed_research"] = $this->research_model->select_all_completed($profile_id);
+        $data["presented_research"] = $this->research_model->select_all_presented($profile_id);
+        $data["published_research"] = $this->research_model->select_all_published($profile_id);
+        $data["creative_research"] = $this->research_model->select_all_creative($profile_id);
+
+        $this->load->view('template/header');
+        $this->load->view('research/profile', $data);
+        $this->load->view('template/footer');
+    }
+
     public function comment_report() {
         $publication_id = $this->uri->segment(3);
         date_default_timezone_set('Asia/Karachi');
@@ -74,7 +89,6 @@ class Research extends CI_Controller{
         $data['liked_published'] = $this->research_model->get_like_published($user_id);
         $data['liked_creative'] = $this->research_model->get_like_creative($user_id);
         
-
         $this->load->view('template/header');
 		$this->load->view('research/like', $data);
         $this->load->view('template/footer');

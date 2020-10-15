@@ -8,6 +8,15 @@ class research_model extends CI_Model{
         $this->db->where('username', $username);
         return $this->db->get()->row()->user_id;
     }
+
+    public function user_details($profile_id) {
+        $this->db->select('*');
+        $this->db->from('user');
+        $this->db->where('user_id', $profile_id);
+        return $this->db->get()->result();
+    }
+
+
     function report_comment($data){
         $this->db->insert('notification', $data);
     }
