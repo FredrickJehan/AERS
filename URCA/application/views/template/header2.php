@@ -11,7 +11,7 @@
         <header>
             <div class="container mb-3">
                 <div id ="branding">
-                    <img src="<?php echo base_url('gueststyle/img/logo.png');?>" style="width: 500px; height: 100x;">
+                    <img src="<?php echo base_url('gueststyle/img/logo_new.png');?>" style="width: 500px; height: 100x;">
                 </div>
                 <nav>
                     <ul>
