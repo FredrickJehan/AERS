@@ -60,13 +60,27 @@
                 <label>Department</label>
                 <select class="form-control" name="department">
                     <option>Select</option>
-                    <option value="Department of Media Studies">Department of Media Studies</option>
-                    <option value="Department of Social Studies">Department of Social Studies</option>
-                    <option value="Department of Literature and Language Studies">Department of Literature and Language Studies</option>
-                    <option value="Department of Philosophy">Department of Philosophy</option>
-                    <option value="Department of Psychology">Department of Psychology</option>
-                    <option value="Department of Computer Science">Department of Computer Science</option>
-                    <option value="Department of Digital Arts and Computer Animation">Department of Digital Arts and Computer Animation</option>
+                    <option value="Accountancy">Accountancy</option>
+                    <option value="Allied Business Courses">Allied Business Courses</option>
+                    <option value="Business Management">Business Management</option>
+                    <option value="Financial Management">Financial Management</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Digital Arts and Computer Animation">Digital Arts and Computer Animation</option>
+                    <option value="Elementary Education">Elementary Education</option>
+                    <option value="Secondary Education">Secondary Education</option>
+                    <option value="Library Information Science">Library Information Science</option>
+                    <option value="Physical Education">Physical Education</option>
+                    <option value="Media Studies">Media Studies</option>
+                    <option value="Social Sciences">Social Sciences</option>
+                    <option value="Literature and Language Studies">Literature and Language Studies</option>
+                    <option value="Philosopy">Philosopy</option>
+                    <option value="Psychology">Psychology</option>
+                    <option value="Nursing">Nursing</option>
+                    <option value="Electronics and Computer Engineering">Electronics and Computer Engineering</option>
+                    <option value="Civil Engineering">Civil Engineering</option>
+                    <option value="Natural Sciences">Natural Sciences</option>
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="Graduate School">Graduate School</option>
                 </select>
                 <span class="text-danger"><?php echo form_error("department");?></span>
             </div>
