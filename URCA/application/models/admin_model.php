@@ -388,13 +388,21 @@ class admin_model extends CI_Model{
         $authors = $this->fetch_all_authors_admin();
         $editors = $this->fetch_all_editors_admin();
         $output ='
-            <table width="100%" cellspacing="5" cellpadding="5">
+            <div class="container">
+                <div class="row">
+                    <img src="./gueststyle/img/logo_new.png" style="height: 70px;"/>
+                </div>
+            </div>
+            <br/>
+            <hr/>
+            <br/>
+            <table width="100%" cellspacing="5" cellpadding="5" style="text-align: center;">
         ';
         $output .='
         <tr>
-            <p><b><th width="20%">Author</th></b></p>
-            <p><b><th width="20%">Department</th></b></p> 
-            <p><b><th width="10%">Type of Research</th></b></p>
+            <p><b><th width="20%">Department</th></b></p>
+            <p><b><th width="10%">Research Type</th></b></p> 
+            <p><b><th width="20%">Publication Type</th></b></p>
             <p><b><th width="50%">Citation</th></b></p>
         </tr>
         ';
@@ -416,20 +424,20 @@ class admin_model extends CI_Model{
                 }
         $output .='
                     <tr>
-                        <td width="20%">'.implode(', ', $string).'</td>
-                        <td width="20%">'.$row->department.'</td>
+                        <td width="20%" style="text-align: left;">'.$row->department.'</td>
                         <td width="10%">'.$row->publication_type.'</td>
+                        <td width="20%">'.$row->completed_type.'</td>
                     ';
         if(!empty($row->url)){
         $output .='    
-                    <td width="50%">
+                    <td width="50%" style="text-align: left;">
                     '.implode(', ', $string).'('.$row->year.').
                     <i>'.$row->title.'</i>. '.$row->location.': '.$row->institution.'. Retrieved from '.$row->url.'
                     </td>
             ';    
         }else{
         $output .='
-                    <td width="50%">
+                    <td width="50%" style="text-align: left;">
                     '.implode(', ', $string).'('.$row->year.'). 
                     <i>'.$row->title.'</i>. '.$row->location.': '.$row->institution.'.
                     </td>
@@ -459,10 +467,10 @@ class admin_model extends CI_Model{
                 $date = date_create("$row->date_presentation");
                 $output .='
                 <tr>
-                    <td width="20%">'.implode(', ', $string).'</td>
-                    <td width="20%">'.$row->department.'</td>
+                    <td width="20%" style="text-align: left;">'.$row->department.'</td>
                     <td width="10%">'.$row->publication_type.'</td>
-                    <td width="50%">
+                    <td width="20%">'.$row->presented_type.'</td>
+                    <td width="50%" style="text-align: left;">
                         '.implode(', ', $string).'('.date_format($date, 'Y').', '.date_format($date, 'F').'). 
                         <i>'.$row->title_presented.'</i>. '.$row->title_conference.': '.$row->place_conference.'.
                     </td>
@@ -500,12 +508,12 @@ class admin_model extends CI_Model{
                 }
                 $output .='
                 <tr>
-                    <td width="20%">'.implode(', ', $string).'</td>
-                    <td width="20%">'.$row->department.'</td>
+                    <td width="20%" style="text-align: left;">'.$row->department.'</td>
                     <td width="10%">'.$row->publication_type.'</td>
-                    <td width="50%">
+                    <td width="20%">'.$row->published_type.'</td>
+                    <td width="50%" style="text-align: left;">
                 ';
-                if($row->publication_type == 'Journal Article'){
+                if($row->published_type == 'Journal Article'){
                 $output .='
                         '.implode(', ', $string).'('.$row->year_published.'). '.$title_article.'
                         <i>'.$row->title_journal.'</i>. '.$row->vol_num.'';if(isset($row->issue_num)){$output .='('.$row->issue_num.'), ';
@@ -551,17 +559,10 @@ class admin_model extends CI_Model{
             foreach($cre as $row){
                 $output .='
                 <tr>
-                    <td width="20%">';
-                    if(isset($name->middle_initial)){
-                $output .=''.$row->first_name.' '.$row->middle_initial.' '.$row->last_name.'';
-                    }else{
-                $output .=''.$row->first_name.' '.$row->last_name.'';
-                    }
-                $output .='    
-                    </td>
-                    <td width="20%">'.$row->department.'</td>
+                    <td width="20%" style="text-align: left;">'.$row->department.'</td>
                     <td width="10%">'.$row->publication_type.'</td>
-                    <td width="50%">
+                    <td width="20%">'.$row->type_cw.'</td>
+                    <td width="50%" style="text-align: left;">
                 ';
                 if(isset($row->middle_initial)){
                     $output .=''.$row->title_work.' by '.$row->last_name.', '.substr($row->first_name, 0, 1).'. '.$row->middle_initial.'';
