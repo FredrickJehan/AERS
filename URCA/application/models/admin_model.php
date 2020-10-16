@@ -407,7 +407,7 @@ class admin_model extends CI_Model{
                     head of ORCE. The employee will be held responsible for the privacy of said data and will be
                     held accountable for any unauthorized disclosure of information.</p>
                 </div>
-            <p>The following are research data of Ateneo de naga University: </p>
+            <p>The following are research data of Ateneo de Naga University: </p>
             <table width="100%" cellspacing="5" cellpadding="5" style="text-align: left;">
         ';
         $output .='
