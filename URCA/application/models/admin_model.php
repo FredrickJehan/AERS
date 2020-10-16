@@ -387,23 +387,35 @@ class admin_model extends CI_Model{
         $cre = $this->fetch_pdf_creative();
         $authors = $this->fetch_all_authors_admin();
         $editors = $this->fetch_all_editors_admin();
+        date_default_timezone_set('Asia/Karachi');
+        $date = date('M d Y');
         $output ='
-            <div class="container">
                 <div class="row">
                     <img src="./gueststyle/img/logo_new.png" style="height: 70px;"/>
                 </div>
-            </div>
-            <br/>
-            <hr/>
-            <br/>
-            <table width="100%" cellspacing="5" cellpadding="5" style="text-align: center;">
+                <br/>
+                <hr/>
+                <div class="row">
+                    <p>Date: '.$date.'</p>
+                    <p>To: All Employees</p>
+                    <p>From: Office for Research and Creative Endeavors</p>
+                    <p>Subject: Borrowing Research Report</p>
+                </div>
+                <div class="row">
+                    <p>The Office for Research and Creative Endeavors(ORCE) will give permission to employees
+                    for borrowing research data owned by the Ateneo de Naga University upon approval by the
+                    head of ORCE. The employee will be held responsible for the privacy of said data and will be
+                    held responsible for unauthorized disclosure of information.</p>
+                </div>
+            <p>The following are research data of Ateneo de naga University: </p>
+            <table width="100%" cellspacing="5" cellpadding="5" style="text-align: left;">
         ';
         $output .='
         <tr>
-            <p><b><th width="20%">Department</th></b></p>
-            <p><b><th width="10%">Research Type</th></b></p> 
-            <p><b><th width="20%">Publication Type</th></b></p>
-            <p><b><th width="50%">Citation</th></b></p>
+            <p><b><th width="20%" style="text-align: left;">Department</th></b></p>
+            <p><b><th width="20%" style="text-align: left;">Research Type</th></b></p> 
+            <p><b><th width="20%" style="text-align: left;">Publication Type</th></b></p>
+            <p><b><th width="40%" style="text-align: left;">Citation</th></b></p>
         </tr>
         ';
 
