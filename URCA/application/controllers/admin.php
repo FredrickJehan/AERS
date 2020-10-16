@@ -348,10 +348,10 @@ class admin extends CI_Controller{
         $object->addSheet($published_sheet, 2);
         $object->addSheet($creative_sheet, 3);
 
-        $completed_columns = array("Author Name(s)", "Title", "Year", "Institute", "Location", "Url", "Completed Type");
-        $presented_columns = array("Author Name(s)", "Title Presented", "Date Presented", "Title of Conference", "Place of Conference", "Presented Type");
-        $published_columns = array("Author Name(s)", "Published Type", "Title of Article", "Editor Name(s)", "Title of Journal", "Title of Book", "Title_Chapter", "Title of Conference", "Year Published", "Vol. Number", "Issue Number", "Page Number", "Indexing Database", "Peer Review", "Publisher", "Place of Publication", "Place of Conference", "URL");
-        $creative_columns = array("Creator", "Type of Creative Work", "Date", "Title of Work", "Role", "Place of Performance/Exhibition/Publication", "Producer/Organizer/Publisher", "Number of Artworks Exhibited", "Duration of Performance/Exhibition", "Commissioning Agency", "Scope of Audience", "Award Received");
+        $completed_columns = array("Author Name(s)", "Department", "Completed Type", "Title", "Year", "Institute", "Location", "Url");
+        $presented_columns = array("Author Name(s)", "Department", "Presented Type", "Title Presented", "Date Presented", "Title of Conference", "Place of Conference");
+        $published_columns = array("Author Name(s)", "Department", "Published Type", "Title of Article", "Title of Journal", "Title of Book", "Title_Chapter", "Editor Name(s)", "Title of Conference", "Year Published", "Vol. Number", "Issue Number", "Page Number", "Indexing Database", "Peer Review", "Publisher", "Place of Publication", "Place of Conference", "Url");
+        $creative_columns = array("Creator", "Department", "Type of Creative Work", "Date", "Title of Work", "Role", "Place of Performance/Exhibition/Publication", "Producer/Organizer/Publisher", "Number of Artworks Exhibited", "Duration of Performance/Exhibition", "Commissioning Agency", "Scope of Audience", "Award Received");
         
         $com_column = 0;
         $pre_column = 0;
@@ -399,12 +399,13 @@ class admin extends CI_Controller{
             }
 
             $object->getActiveSheet()->setCellValueByColumnAndRow(0, $com_row, implode(', ', $string));
-            $object->getActiveSheet()->setCellValueByColumnAndRow(1, $com_row, $row->title);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(2, $com_row, $row->year);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(3, $com_row, $row->institution);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(4, $com_row, $row->location);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(5, $com_row, $row->url);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(6, $com_row, $row->completed_type);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(1, $com_row, $row->department);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(2, $com_row, $row->completed_type);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(3, $com_row, $row->title);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(4, $com_row, $row->year);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(5, $com_row, $row->institution);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(6, $com_row, $row->location);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(7, $com_row, $row->url);
             $com_row++;
         }
 
@@ -417,11 +418,12 @@ class admin extends CI_Controller{
                 $i++;           
             }
             $object->getSheet(1)->setCellValueByColumnAndRow(0, $pre_row, implode(', ', $string));
-            $object->getSheet(1)->setCellValueByColumnAndRow(1, $pre_row, $row->title_presented);
-            $object->getSheet(1)->setCellValueByColumnAndRow(2, $pre_row, $row->date_presentation);
-            $object->getSheet(1)->setCellValueByColumnAndRow(3, $pre_row, $row->title_conference);
-            $object->getSheet(1)->setCellValueByColumnAndRow(4, $pre_row, $row->place_conference);
-            $object->getSheet(1)->setCellValueByColumnAndRow(5, $pre_row, $row->presented_type);
+            $object->getSheet(1)->setCellValueByColumnAndRow(1, $pre_row, $row->department);
+            $object->getSheet(1)->setCellValueByColumnAndRow(2, $pre_row, $row->presented_type);
+            $object->getSheet(1)->setCellValueByColumnAndRow(3, $pre_row, $row->title_presented);
+            $object->getSheet(1)->setCellValueByColumnAndRow(4, $pre_row, $row->date_presentation);
+            $object->getSheet(1)->setCellValueByColumnAndRow(5, $pre_row, $row->title_conference);
+            $object->getSheet(1)->setCellValueByColumnAndRow(6, $pre_row, $row->place_conference);
             $pre_row++;
         }
 
@@ -443,22 +445,24 @@ class admin extends CI_Controller{
                 }
             }
             $object->getSheet(2)->setCellValueByColumnAndRow(0, $pub_row, implode(', ', $string));
-            $object->getSheet(2)->setCellValueByColumnAndRow(1, $pub_row, $row->published_type);
-            $object->getSheet(2)->setCellValueByColumnAndRow(2, $pub_row, $row->title_article);
-            $object->getSheet(2)->setCellValueByColumnAndRow(3, $pub_row, implode(', ', $string1));
+            $object->getSheet(2)->setCellValueByColumnAndRow(1, $pub_row, $row->department);
+            $object->getSheet(2)->setCellValueByColumnAndRow(2, $pub_row, $row->published_type);
+            $object->getSheet(2)->setCellValueByColumnAndRow(3, $pub_row, $row->title_article);
             $object->getSheet(2)->setCellValueByColumnAndRow(4, $pub_row, $row->title_journal);     
             $object->getSheet(2)->setCellValueByColumnAndRow(5, $pub_row, $row->title_book);
             $object->getSheet(2)->setCellValueByColumnAndRow(6, $pub_row, $row->title_chapter);
-            $object->getSheet(2)->setCellValueByColumnAndRow(7, $pub_row, $row->title_conference);
-            $object->getSheet(2)->setCellValueByColumnAndRow(8, $pub_row, $row->year_published);
-            $object->getSheet(2)->setCellValueByColumnAndRow(9, $pub_row, $row->vol_num);
-            $object->getSheet(2)->setCellValueByColumnAndRow(10, $pub_row, $row->issue_num);
-            $object->getSheet(2)->setCellValueByColumnAndRow(11, $pub_row, $row->page_num);
-            $object->getSheet(2)->setCellValueByColumnAndRow(12, $pub_row, $row->peer_review);
-            $object->getSheet(2)->setCellValueByColumnAndRow(13, $pub_row, $row->publisher);
-            $object->getSheet(2)->setCellValueByColumnAndRow(14, $pub_row, $row->place_of_publication);
-            $object->getSheet(2)->setCellValueByColumnAndRow(15, $pub_row, $row->place_of_conference);
-            $object->getSheet(2)->setCellValueByColumnAndRow(16, $pub_row, $row->url);
+            $object->getSheet(2)->setCellValueByColumnAndRow(7, $pub_row, implode(', ', $string1));
+            $object->getSheet(2)->setCellValueByColumnAndRow(8, $pub_row, $row->title_conference);
+            $object->getSheet(2)->setCellValueByColumnAndRow(9, $pub_row, $row->year_published);
+            $object->getSheet(2)->setCellValueByColumnAndRow(10, $pub_row, $row->vol_num);
+            $object->getSheet(2)->setCellValueByColumnAndRow(11, $pub_row, $row->issue_num);
+            $object->getSheet(2)->setCellValueByColumnAndRow(12, $pub_row, $row->page_num);
+            $object->getSheet(2)->setCellValueByColumnAndRow(13, $pub_row, $row->indexing_database);
+            $object->getSheet(2)->setCellValueByColumnAndRow(14, $pub_row, $row->peer_review);
+            $object->getSheet(2)->setCellValueByColumnAndRow(15, $pub_row, $row->publisher);
+            $object->getSheet(2)->setCellValueByColumnAndRow(16, $pub_row, $row->place_of_publication);
+            $object->getSheet(2)->setCellValueByColumnAndRow(17, $pub_row, $row->place_of_conference);
+            $object->getSheet(2)->setCellValueByColumnAndRow(18, $pub_row, $row->url);
             $pub_row++;
         }
 
@@ -471,17 +475,18 @@ class admin extends CI_Controller{
                 $i++;           
             }
             $object->getSheet(3)->setCellValueByColumnAndRow(0, $cre_row, implode(', ', $string));
-            $object->getSheet(3)->setCellValueByColumnAndRow(1, $cre_row, $row->cw_type);
-            $object->getSheet(3)->setCellValueByColumnAndRow(2, $cre_row, $row->month_year);
-            $object->getSheet(3)->setCellValueByColumnAndRow(3, $cre_row, $row->title_work);
-            $object->getSheet(3)->setCellValueByColumnAndRow(4, $cre_row, $row->role);
-            $object->getSheet(3)->setCellValueByColumnAndRow(5, $cre_row, $row->place_performance);
-            $object->getSheet(3)->setCellValueByColumnAndRow(6, $cre_row, $row->publisher);
-            $object->getSheet(3)->setCellValueByColumnAndRow(7, $cre_row, $row->artwork_exhibited);
-            $object->getSheet(3)->setCellValueByColumnAndRow(8, $cre_row, $row->duration_performance);
-            $object->getSheet(3)->setCellValueByColumnAndRow(9, $cre_row, $row->commission_agency);
-            $object->getSheet(3)->setCellValueByColumnAndRow(10, $cre_row, $row->scope_audience);
-            $object->getSheet(3)->setCellValueByColumnAndRow(11, $cre_row, $row->award_received);
+            $object->getSheet(3)->setCellValueByColumnAndRow(1, $cre_row, $row->department);
+            $object->getSheet(3)->setCellValueByColumnAndRow(2, $cre_row, $row->cw_type);
+            $object->getSheet(3)->setCellValueByColumnAndRow(3, $cre_row, $row->month_year);
+            $object->getSheet(3)->setCellValueByColumnAndRow(4, $cre_row, $row->title_work);
+            $object->getSheet(3)->setCellValueByColumnAndRow(5, $cre_row, $row->role);
+            $object->getSheet(3)->setCellValueByColumnAndRow(6, $cre_row, $row->place_performance);
+            $object->getSheet(3)->setCellValueByColumnAndRow(7, $cre_row, $row->publisher);
+            $object->getSheet(3)->setCellValueByColumnAndRow(8, $cre_row, $row->artwork_exhibited);
+            $object->getSheet(3)->setCellValueByColumnAndRow(9, $cre_row, $row->duration_performance);
+            $object->getSheet(3)->setCellValueByColumnAndRow(10, $cre_row, $row->commission_agency);
+            $object->getSheet(3)->setCellValueByColumnAndRow(11, $cre_row, $row->scope_audience);
+            $object->getSheet(3)->setCellValueByColumnAndRow(12, $cre_row, $row->award_received);
             $cre_row++;
         }
 
