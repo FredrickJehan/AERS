@@ -1101,7 +1101,7 @@
                         <input type="text" name="first_name[]" value="<?php echo $name->first_name?>" class="form-control" required>
                     </div>
                     <div class="form-group col-md-2">
-                        <label>M.I.(S)*</label>
+                        <label>M.I.(s)*</label>
                         <input type="text" name="middle_initial[]" value="<?php echo $name->middle_initial?>" class="form-control" required>
                     </div>
                     <div class="form-group col-md-5">
@@ -1252,15 +1252,15 @@
                         <label>Role*</label>
                         <input type="text" name="role" placeholder="(e.g. Director, Actor, Translator)" value="<?php echo $row->role?>" class="form-control" required>
                     </div>
-                    <div class="form-group col-md-4">
-                        <label>Place of performance / publication / exhibition*</label>
-                        <input type="text" name="place" value="<?php echo $row->place_performance?>" class="form-control" required>
-                    </div>
-                </div>
-                <div class="form-row">
                     <div class="form-group col-md-4">  
                         <label>Producer / Organizer / Publisher</label>
                         <input type="text" name="publisher" value="<?php echo $row->publisher?>" class="form-control">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label>Place of performance / publication / exhibition*</label>
+                        <input type="text" name="place" value="<?php echo $row->place_performance?>" class="form-control" required>
                     </div>
                     <div class="form-group col-md-4">
                         <label>Number of artworks exhibited (if applicable)</label>
@@ -1272,7 +1272,7 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-6">
                         <label>Scope of audience*</label>
                         <select name="scope" class="form-control" required>
                         <?php if($row->scope_audience == 'Institutional'){ ?>
@@ -1308,7 +1308,7 @@
                         <?php } ?>
                         </select>
                     </div>
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-6">
                         <label>Commissioning agency (if applicable)</label>
                         <?php if(isset($row->commission_agency)){ ?>
                             <input type="text" name="comm" class="form-control" value="<?php echo $row->commission_agency?>">
@@ -1316,7 +1316,9 @@
                             <input type="text" name="comm" class="form-control">
                         <?php } ?>
                     </div>
-                    <div class="form-group col-md-4">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
                         <label>Award received (if applicable)</label>
                         <?php if(isset($row->award_received)){ ?>
                             <input type="text" name="award" class="form-control" value="<?php echo $row->award_received?>">
