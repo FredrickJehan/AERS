@@ -408,7 +408,7 @@ class admin_model extends CI_Model{
                     held accountable for any unauthorized disclosure of information.</p>
                 </div>
             <p>The following are research data of Ateneo de Naga University: </p>
-            <table width="100%" cellspacing="5" cellpadding="5" style="text-align: left;">
+            <table width="100%" cellspacing="5" cellpadding="5" style="text-align: left; margin-bottom:110px;">
         ';
         $output .='
         <tr>
@@ -588,6 +588,14 @@ class admin_model extends CI_Model{
             ';
         }
         $output .='
+            </table>
+            <br/>
+            <table width="100%" cellspacing="5" cellpadding="5" style="text-align: center;">
+            <tr>
+                <p><b><th width="30%"></th></b></p>
+                <p><b><th width="30%"></th></b></p> 
+                <p><b><th width="30%"><hr/>Signature Over Printed Name</th></b></p>
+            </tr>
             </table>
         ';
         return $output;
