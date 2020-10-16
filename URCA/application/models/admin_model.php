@@ -405,7 +405,7 @@ class admin_model extends CI_Model{
                     <p>The Office for Research and Creative Endeavors(ORCE) will give permission to employees
                     for borrowing research data owned by the Ateneo de Naga University upon approval by the
                     head of ORCE. The employee will be held responsible for the privacy of said data and will be
-                    held responsible for unauthorized disclosure of information.</p>
+                    held accountable for any unauthorized disclosure of information.</p>
                 </div>
             <p>The following are research data of Ateneo de naga University: </p>
             <table width="100%" cellspacing="5" cellpadding="5" style="text-align: left;">
