@@ -428,10 +428,6 @@ class Research extends CI_Controller{
                     );
                 }
             }elseif($i != 0 && !empty($user_check)){
-                /*$user_id = 0;
-                foreach($user_check as $row){
-                    $user_id = $row->user_id;
-                }*/
                 if($publication_type == 'Published Research'){
                     $data1 = array(
                         'publication_id' => $last_id,

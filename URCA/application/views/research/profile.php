@@ -66,6 +66,7 @@
       </a>
       </div>
     </div>
+    <br/>
     <?php } ?>
   </div>
   </div>
@@ -100,6 +101,7 @@
         </a>
       </div>
     </div>
+    <br/>
     <?php } ?>
   </div>
   </div>
@@ -166,6 +168,7 @@
         </a>
       </div>
     </div>
+    <br/>
     <?php } ?>
   </div>
 </div>
@@ -188,6 +191,7 @@
         </a>
       </div>
     </div>
+    <br/>
     <?php } ?>
   </div>
   </div>
