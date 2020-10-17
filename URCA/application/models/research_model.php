@@ -359,6 +359,14 @@ class research_model extends CI_Model{
         return $this->db->get()->result();
     }
 
+    public function user_check($fn, $ln){
+        $this->db->select('user_id');
+        $this->db->from('user');
+        $this->db->where('first_name', $fn);
+        $this->db->where('last_name', $ln);
+        return $this->db->get()->row()->user_id;
+    }
+
     public function display_authors($publication_id){
         $this->db->select('*');
         $this->db->from('author');
