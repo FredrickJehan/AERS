@@ -65,6 +65,7 @@ $route['research/view/:num'] = 'research/research_view';
 $route['research/edit/:num'] = 'research/edit';
 $route['liked_research'] = 'research/like_view';
 $route['profile/:num'] = 'research/profile';
+$route['profile/empty'] = 'research/profile_empty';
 
 // $route['research/search/(:any)'] = 'research/search';
 $route['research/search'] = 'research/search';

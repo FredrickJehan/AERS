@@ -58,6 +58,12 @@ class Research extends CI_Controller{
         $this->load->view('template/footer');
     }
 
+    public function profile_empty(){
+        $this->load->view('template/header');
+        $this->load->view('research/profile_empty');
+        $this->load->view('template/footer');
+    }
+
     public function comment_report() {
         $publication_id = $this->uri->segment(3);
         date_default_timezone_set('Asia/Karachi');

@@ -29,17 +29,23 @@
                 <td width="200"><b>Author Name</b></td>
                 <td>
                     <?php foreach($author_data as $name) {
-                        if($name->is_employee == 1) {
+                        if($name->is_employee == 1 && $name->user_id != NULL) {
                             if($row->publication_id == $name->publication_id){ ?>
                             <a href="<?php echo base_url('profile/'.$name->user_id)?>"><i class="fas fa-check"></i>
                                 <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
                             </a>         
-                            <?php }
-                        }else {
+                        <?php } 
+                        }elseif($name->is_employee == 1 && $name->user_id == NULL){
+                            if($row->publication_id == $name->publication_id){ ?>
+                            <a href="<?php echo base_url('profile/empty')?>"><i class="fas fa-check"></i>
+                                <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
+                            </a>   
+                        <?php }
+                        }else{
                             if($row->publication_id == $name->publication_id){ ?>
                                 <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp            
                             <?php }
-                        } 
+                        }  
                     } ?>
                 </td>
             </tr>  
@@ -77,17 +83,23 @@
                 <td width="200"><b>Author Name</b></td>
                 <td>
                 <?php foreach($author_data as $name) {
-                        if($name->is_employee == 1 ) {
+                        if($name->is_employee == 1 && $name->user_id != NULL) {
                             if($row->publication_id == $name->publication_id){ ?>
                             <a href="<?php echo base_url('profile/'.$name->user_id)?>"><i class="fas fa-check"></i>
                                 <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
                             </a>         
-                            <?php }
-                        }else {
+                        <?php } 
+                        }elseif($name->is_employee == 1 && $name->user_id == NULL){
+                            if($row->publication_id == $name->publication_id){ ?>
+                            <a href="<?php echo base_url('profile/empty')?>"><i class="fas fa-check"></i>
+                                <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
+                            </a>   
+                        <?php }
+                        }else{
                             if($row->publication_id == $name->publication_id){ ?>
                                 <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp            
                             <?php }
-                        } 
+                        }  
                     } ?>
                 </td>
             </tr>
@@ -127,13 +139,19 @@
             <td width="200"><b>Authors Name</b></td>
             <td>
             <?php foreach($author_data as $name) {
-                        if($name->is_employee == 1) {
+                        if($name->is_employee == 1 && $name->user_id != NULL) {
                             if($row->publication_id == $name->publication_id){ ?>
                             <a href="<?php echo base_url('profile/'.$name->user_id)?>"><i class="fas fa-check"></i>
                                 <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
                             </a>         
-                            <?php }
-                        }else {
+                        <?php } 
+                        }elseif($name->is_employee == 1 && $name->user_id == NULL){
+                            if($row->publication_id == $name->publication_id){ ?>
+                            <a href="<?php echo base_url('profile/empty')?>"><i class="fas fa-check"></i>
+                                <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
+                            </a>   
+                        <?php }
+                        }else{
                             if($row->publication_id == $name->publication_id){ ?>
                                 <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp            
                             <?php }
@@ -175,17 +193,23 @@
             <td width="200"><b>Authors Name</b></td>
             <td>
             <?php foreach($author_data as $name) {
-                        if($name->is_employee == 1) {
+                        if($name->is_employee == 1 && $name->user_id != NULL) {
                             if($row->publication_id == $name->publication_id){ ?>
                             <a href="<?php echo base_url('profile/'.$name->user_id)?>"><i class="fas fa-check"></i>
                                 <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
                             </a>         
-                            <?php }
-                        }else {
+                        <?php } 
+                        }elseif($name->is_employee == 1 && $name->user_id == NULL){
+                            if($row->publication_id == $name->publication_id){ ?>
+                            <a href="<?php echo base_url('profile/empty')?>"><i class="fas fa-check"></i>
+                                <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
+                            </a>   
+                        <?php }
+                        }else{
                             if($row->publication_id == $name->publication_id){ ?>
                                 <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp            
                             <?php }
-                        } 
+                        }  
                     } ?>
             </td>
             </tr>
@@ -225,13 +249,19 @@
             <td width="200"><b>Authors Name</b></td>
             <td>
             <?php foreach($author_data as $name) {
-                        if($name->is_employee == 1) {
+                        if($name->is_employee == 1 && $name->user_id != NULL) {
                             if($row->publication_id == $name->publication_id){ ?>
                             <a href="<?php echo base_url('profile/'.$name->user_id)?>"><i class="fas fa-check"></i>
                                 <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
                             </a>         
-                            <?php }
-                        }else {
+                        <?php } 
+                        }elseif($name->is_employee == 1 && $name->user_id == NULL){
+                            if($row->publication_id == $name->publication_id){ ?>
+                            <a href="<?php echo base_url('profile/empty')?>"><i class="fas fa-check"></i>
+                                <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
+                            </a>   
+                        <?php }
+                        }else{
                             if($row->publication_id == $name->publication_id){ ?>
                                 <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp            
                             <?php }
@@ -272,13 +302,19 @@
             <td width="200"><b>Authors Name</b></td>
             <td>
             <?php foreach($author_data as $name) {
-                        if($name->is_employee == 1) {
+                        if($name->is_employee == 1 && $name->user_id != NULL) {
                             if($row->publication_id == $name->publication_id){ ?>
                             <a href="<?php echo base_url('profile/'.$name->user_id)?>"><i class="fas fa-check"></i>
                                 <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
                             </a>         
-                            <?php }
-                        }else {
+                        <?php } 
+                        }elseif($name->is_employee == 1 && $name->user_id == NULL){
+                            if($row->publication_id == $name->publication_id){ ?>
+                            <a href="<?php echo base_url('profile/empty')?>"><i class="fas fa-check"></i>
+                                <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
+                            </a>   
+                        <?php }
+                        }else{
                             if($row->publication_id == $name->publication_id){ ?>
                                 <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp            
                             <?php }
@@ -319,13 +355,19 @@
             <td width="200"><b>Authors Name</b></td>
             <td>
             <?php foreach($author_data as $name) {
-                        if($name->is_employee == 1) {
+                        if($name->is_employee == 1 && $name->user_id != NULL) {
                             if($row->publication_id == $name->publication_id){ ?>
                             <a href="<?php echo base_url('profile/'.$name->user_id)?>"><i class="fas fa-check"></i>
                                 <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
                             </a>         
-                            <?php }
-                        }else {
+                        <?php } 
+                        }elseif($name->is_employee == 1 && $name->user_id == NULL){
+                            if($row->publication_id == $name->publication_id){ ?>
+                            <a href="<?php echo base_url('profile/empty')?>"><i class="fas fa-check"></i>
+                                <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
+                            </a>   
+                        <?php }
+                        }else{
                             if($row->publication_id == $name->publication_id){ ?>
                                 <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp            
                             <?php }
@@ -366,17 +408,23 @@
             <td width="200"><b>Authors Name</b></td>
             <td>
             <?php foreach($author_data as $name) {
-                        if($name->is_employee == 1) {
+                        if($name->is_employee == 1 && $name->user_id != NULL) {
                             if($row->publication_id == $name->publication_id){ ?>
                             <a href="<?php echo base_url('profile/'.$name->user_id)?>"><i class="fas fa-check"></i>
                                 <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
                             </a>         
-                            <?php }
-                        }else {
+                        <?php } 
+                        }elseif($name->is_employee == 1 && $name->user_id == NULL){
+                            if($row->publication_id == $name->publication_id){ ?>
+                            <a href="<?php echo base_url('profile/empty')?>"><i class="fas fa-check"></i>
+                                <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
+                            </a>   
+                        <?php }
+                        }else{
                             if($row->publication_id == $name->publication_id){ ?>
                                 <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp            
                             <?php }
-                        } 
+                        }  
                     } ?>
             </td>
             </tr>
@@ -417,17 +465,23 @@
             <td width="200"><b>Authors Name</b></td>
             <td>
             <?php foreach($author_data as $name) {
-                        if($name->is_employee == 1) {
+                        if($name->is_employee == 1 && $name->user_id != NULL) {
                             if($row->publication_id == $name->publication_id){ ?>
                             <a href="<?php echo base_url('profile/'.$name->user_id)?>"><i class="fas fa-check"></i>
                                 <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
                             </a>         
-                            <?php }
-                        }else {
+                        <?php } 
+                        }elseif($name->is_employee == 1 && $name->user_id == NULL){
+                            if($row->publication_id == $name->publication_id){ ?>
+                            <a href="<?php echo base_url('profile/empty')?>"><i class="fas fa-check"></i>
+                                <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp
+                            </a>   
+                        <?php }
+                        }else{
                             if($row->publication_id == $name->publication_id){ ?>
                                 <?php echo $name->last_name?>, <?php echo $name->first_name?> <?php echo $name->middle_initial?>&nbsp            
                             <?php }
-                        } 
+                        }  
                     } ?>
             </td>
             <tr>
